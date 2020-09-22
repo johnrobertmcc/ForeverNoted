@@ -9,7 +9,7 @@ class API::SessionsController < ApplicationController
 
         if @user
             login!(@user)
-            render "api/users/show"
+            render json: ["logged in"]
 
         else
              render json: ["Invalid username or password"]

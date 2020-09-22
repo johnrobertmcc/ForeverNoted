@@ -6,8 +6,6 @@ class LogInForm extends React.Component {
 
     constructor(props) {
         super(props);
-
-        debugger
         this.state = {
             username: '',
             password: ''
@@ -17,7 +15,6 @@ class LogInForm extends React.Component {
 
 
     handleSubmit(e) {
-        debugger
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.logIn(user);

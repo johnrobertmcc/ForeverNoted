@@ -1,10 +1,17 @@
 import React from 'react';
+import SignUpForm from '../components/session/sign_up_form';
 
 class HomePage extends React.Component {
 
     render() {
-        render(
-            <header>ForeverNoted</header>
+        return(
+            <>
+            <header>homepage</header>
+            <div>
+
+            <SignUpForm />
+            </div>
+            </>
         )
     }
 }
