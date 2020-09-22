@@ -25,25 +25,16 @@ const logoutCurrentUser = () => ({
     type: LOGOUT_CURRENT_USER,
 });
 
-const receiveErrors = errors => ({
-    type: RECEIVE_SESSION_ERRORS,
-    data: [...errors]
-});
-
 export const signUp = user => dispatch => (
     PostApiUtil.signUp(user).then(user => (
         dispatch(receiveCurrentUser(user))
-    ), error => (
-        dispatch(receiveErrors(error.responseJSON))
-    ))
+    )
 );
 
 export const logIn = user => dispatch => (
     PostApiUtil.logIn(user).then(user => (
         dispatch(receiveCurrentUser(user))
-    ), error => (
-        dispatch(receiveErrors(error.responseJSON))
-    ))
+    )
 );
 
 export const logOut = () => dispatch => (

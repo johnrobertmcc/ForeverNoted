@@ -91,87 +91,9 @@
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
 /*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, signUp, logIn, logOut */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_USER", function() { return RECEIVE_CURRENT_USER; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_SESSION_ERRORS", function() { return RECEIVE_SESSION_ERRORS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signUp", function() { return signUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logIn", function() { return logIn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logOut", function() { return logOut; });
-/* harmony import */ var _util_session_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_util */ "./frontend/util/session_util.js");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-
-var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
-var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS'; // switch (action.type) { //receiveCurrentUser.
-//     // RECEIVE_CURRENT_USER
-//     case RECEIVE_CURRENT_USER:
-//         //does something        
-//         // break;
-//     default:
-//         break;
-// }
-
-var receiveCurrentUser = function receiveCurrentUser(currentUser) {
-  return {
-    //pojo goes to reducer --always pass in actin to dispatch
-    type: RECEIVE_CURRENT_USER,
-    currentUser: currentUser
-  };
-};
-
-var logoutCurrentUser = function logoutCurrentUser() {
-  return {
-    type: LOGOUT_CURRENT_USER
-  };
-};
-
-var receiveErrors = function receiveErrors(errors) {
-  return {
-    type: RECEIVE_SESSION_ERRORS,
-    data: _toConsumableArray(errors)
-  };
-};
-
-var signUp = function signUp(user) {
-  return function (dispatch) {
-    return _util_session_util__WEBPACK_IMPORTED_MODULE_0__["signUp"](user).then(function (user) {
-      return dispatch(receiveCurrentUser(user));
-    }, function (error) {
-      return dispatch(receiveErrors(error.responseJSON));
-    });
-  };
-};
-var logIn = function logIn(user) {
-  return function (dispatch) {
-    return _util_session_util__WEBPACK_IMPORTED_MODULE_0__["logIn"](user).then(function (user) {
-      return dispatch(receiveCurrentUser(user));
-    }, function (error) {
-      return dispatch(receiveErrors(error.responseJSON));
-    });
-  };
-};
-var logOut = function logOut() {
-  return function (dispatch) {
-    return _util_session_util__WEBPACK_IMPORTED_MODULE_0__["logOut"]().then(function (user) {
-      return dispatch(logoutCurrentUser());
-    });
-  };
-};
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/frontend/actions/session_actions.js: Unexpected token, expected \",\" (32:1)\n\n\u001b[0m \u001b[90m 30 | \u001b[39m        dispatch(receiveCurrentUser(user))\u001b[0m\n\u001b[0m \u001b[90m 31 | \u001b[39m    )\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 32 | \u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 33 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 34 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m logIn \u001b[33m=\u001b[39m user \u001b[33m=>\u001b[39m dispatch \u001b[33m=>\u001b[39m (\u001b[0m\n\u001b[0m \u001b[90m 35 | \u001b[39m    \u001b[33mPostApiUtil\u001b[39m\u001b[33m.\u001b[39mlogIn(user)\u001b[33m.\u001b[39mthen(user \u001b[33m=>\u001b[39m (\u001b[0m\n    at Object._raise (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:766:17)\n    at Object.raiseWithData (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:759:17)\n    at Object.raise (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:753:17)\n    at Object.unexpected (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:8966:16)\n    at Object.expect (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:8952:28)\n    at Object.parseParenAndDistinguishExpression (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:10457:14)\n    at Object.parseExprAtom (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:10177:21)\n    at Object.parseExprAtom (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:4718:20)\n    at Object.parseExprSubscripts (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9844:23)\n    at Object.parseUpdate (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9824:21)\n    at Object.parseMaybeUnary (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9813:17)\n    at Object.parseExprOps (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9683:23)\n    at Object.parseMaybeConditional (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9657:23)\n    at Object.parseMaybeAssign (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9620:21)\n    at Object.parseFunctionBody (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:10956:24)\n    at Object.parseArrowExpression (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:10932:10)\n    at Object.parseExprAtom (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:10135:25)\n    at Object.parseExprAtom (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:4718:20)\n    at Object.parseExprSubscripts (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9844:23)\n    at Object.parseUpdate (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9824:21)\n    at Object.parseMaybeUnary (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9813:17)\n    at Object.parseExprOps (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9683:23)\n    at Object.parseMaybeConditional (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9657:23)\n    at Object.parseMaybeAssign (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9620:21)\n    at Object.parseFunctionBody (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:10956:24)\n    at Object.parseArrowExpression (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:10932:10)\n    at Object.parseExprAtom (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:10135:25)\n    at Object.parseExprAtom (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:4718:20)\n    at Object.parseExprSubscripts (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9844:23)\n    at Object.parseUpdate (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9824:21)");
 
 /***/ }),
 
@@ -267,10 +189,13 @@ document.addEventListener("DOMContentLoaded", function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/index.js");
 /* harmony import */ var _session_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_reducer */ "./frontend/reducers/session_reducer.js");
+/* harmony import */ var _user_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./user_reducer */ "./frontend/reducers/user_reducer.js");
+
 
 
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  session: _session_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  session: _session_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  users: _user_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
 
@@ -314,6 +239,38 @@ var sessionReducer = function sessionReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/user_reducer.js":
+/*!*******************************************!*\
+  !*** ./frontend/reducers/user_reducer.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var usersReducer = function usersReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+      return Object.assign({}, state, _defineProperty({}, action.user.id, action.user));
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (usersReducer);
+
+/***/ }),
+
 /***/ "./frontend/store/store.js":
 /*!*********************************!*\
   !*** ./frontend/store/store.js ***!
@@ -340,45 +297,6 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
-
-/***/ }),
-
-/***/ "./frontend/util/session_util.js":
-/*!***************************************!*\
-  !*** ./frontend/util/session_util.js ***!
-  \***************************************/
-/*! exports provided: signUp, logIn, logOut */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signUp", function() { return signUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logIn", function() { return logIn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logOut", function() { return logOut; });
-var signUp = function signUp(user) {
-  return $.ajax({
-    url: "api/users",
-    method: "POST",
-    data: {
-      user: user
-    }
-  });
-};
-var logIn = function logIn(user) {
-  return $.ajax({
-    url: "api/sessions",
-    method: "POST",
-    data: {
-      user: user
-    }
-  });
-};
-var logOut = function logOut() {
-  return $.ajax({
-    url: "api/sessions",
-    method: "DELETE"
-  });
-};
 
 /***/ }),
 
@@ -2846,6 +2764,20 @@ module.exports = invariant;
 
 /***/ }),
 
+/***/ "./node_modules/isarray/index.js":
+/*!***************************************!*\
+  !*** ./node_modules/isarray/index.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = Array.isArray || function (arr) {
+  return Object.prototype.toString.call(arr) == '[object Array]';
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/lodash-es/_Symbol.js":
 /*!*******************************************!*\
   !*** ./node_modules/lodash-es/_Symbol.js ***!
@@ -3857,7 +3789,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isarray = __webpack_require__(/*! isarray */ "./node_modules/path-to-regexp/node_modules/isarray/index.js")
+var isarray = __webpack_require__(/*! isarray */ "./node_modules/isarray/index.js")
 
 /**
  * Expose `pathToRegexp`.
@@ -4283,20 +4215,6 @@ function pathToRegexp (path, keys, options) {
 
   return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
 }
-
-
-/***/ }),
-
-/***/ "./node_modules/path-to-regexp/node_modules/isarray/index.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/path-to-regexp/node_modules/isarray/index.js ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = Array.isArray || function (arr) {
-  return Object.prototype.toString.call(arr) == '[object Array]';
-};
 
 
 /***/ }),
