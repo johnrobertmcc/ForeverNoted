@@ -2,7 +2,7 @@ class API::SessionsController < ApplicationController
         skip_before_action :verify_authenticity_token
 
     def new
-        render :new
+        render json: ['reate new user']
     end
 
     def create
@@ -13,10 +13,10 @@ class API::SessionsController < ApplicationController
 
         if @user
             login!(@user)
-            redirect_to users_url
+            render "api/users/show"
 
         else
-            flash[:errors] = ["Invalid username or password"]
+             render json: ["Invalid username or password"]
             new
         end
 
@@ -25,6 +25,7 @@ class API::SessionsController < ApplicationController
 
     def destroy
         logout! if current_user
-        redirect_to new_session_url
+        render json: ["logged out"]
+
     end
 end

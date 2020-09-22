@@ -217,6 +217,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
+/* harmony import */ var _util_session_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util/session_util */ "./frontend/util/session_util.js");
+
 
 
 
@@ -224,6 +226,13 @@ __webpack_require__.r(__webpack_exports__);
 document.addEventListener("DOMContentLoaded", function () {
   var store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
   var root = document.getElementById("root");
+  window.store = store;
+  window.logIn = _util_session_util__WEBPACK_IMPORTED_MODULE_4__["logIn"];
+  window.logOut = _util_session_util__WEBPACK_IMPORTED_MODULE_4__["logOut"];
+  window.signUp = _util_session_util__WEBPACK_IMPORTED_MODULE_4__["signUp"];
+  window.store = store;
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
   }), root);
