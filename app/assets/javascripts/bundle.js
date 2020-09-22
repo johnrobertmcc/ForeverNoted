@@ -90,10 +90,63 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, RECEIVE_SESSION_ERRORS, signUp, logIn, logOut */
-/***/ (function(module, exports) {
+/*! exports provided: RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER, signUp, logIn, logOut */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/frontend/actions/session_actions.js: Unexpected token, expected \",\" (32:1)\n\n\u001b[0m \u001b[90m 30 | \u001b[39m        dispatch(receiveCurrentUser(user))\u001b[0m\n\u001b[0m \u001b[90m 31 | \u001b[39m    )\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 32 | \u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 33 | \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 34 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m logIn \u001b[33m=\u001b[39m user \u001b[33m=>\u001b[39m dispatch \u001b[33m=>\u001b[39m (\u001b[0m\n\u001b[0m \u001b[90m 35 | \u001b[39m    \u001b[33mPostApiUtil\u001b[39m\u001b[33m.\u001b[39mlogIn(user)\u001b[33m.\u001b[39mthen(user \u001b[33m=>\u001b[39m (\u001b[0m\n    at Object._raise (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:766:17)\n    at Object.raiseWithData (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:759:17)\n    at Object.raise (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:753:17)\n    at Object.unexpected (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:8966:16)\n    at Object.expect (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:8952:28)\n    at Object.parseParenAndDistinguishExpression (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:10457:14)\n    at Object.parseExprAtom (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:10177:21)\n    at Object.parseExprAtom (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:4718:20)\n    at Object.parseExprSubscripts (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9844:23)\n    at Object.parseUpdate (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9824:21)\n    at Object.parseMaybeUnary (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9813:17)\n    at Object.parseExprOps (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9683:23)\n    at Object.parseMaybeConditional (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9657:23)\n    at Object.parseMaybeAssign (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9620:21)\n    at Object.parseFunctionBody (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:10956:24)\n    at Object.parseArrowExpression (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:10932:10)\n    at Object.parseExprAtom (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:10135:25)\n    at Object.parseExprAtom (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:4718:20)\n    at Object.parseExprSubscripts (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9844:23)\n    at Object.parseUpdate (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9824:21)\n    at Object.parseMaybeUnary (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9813:17)\n    at Object.parseExprOps (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9683:23)\n    at Object.parseMaybeConditional (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9657:23)\n    at Object.parseMaybeAssign (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9620:21)\n    at Object.parseFunctionBody (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:10956:24)\n    at Object.parseArrowExpression (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:10932:10)\n    at Object.parseExprAtom (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:10135:25)\n    at Object.parseExprAtom (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:4718:20)\n    at Object.parseExprSubscripts (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9844:23)\n    at Object.parseUpdate (/home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules/@babel/parser/lib/index.js:9824:21)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_CURRENT_USER", function() { return RECEIVE_CURRENT_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CURRENT_USER", function() { return LOGOUT_CURRENT_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signUp", function() { return signUp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logIn", function() { return logIn; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logOut", function() { return logOut; });
+/* harmony import */ var _util_session_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_util */ "./frontend/util/session_util.js");
+
+var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER'; // switch (action.type) { //receiveCurrentUser.
+//     // RECEIVE_CURRENT_USER
+//     case RECEIVE_CURRENT_USER:
+//         //does something        
+//         // break;
+//     default:
+//         break;
+// }
+
+var receiveCurrentUser = function receiveCurrentUser(currentUser) {
+  return {
+    //pojo goes to reducer --always pass in actin to dispatch
+    type: RECEIVE_CURRENT_USER,
+    currentUser: currentUser
+  };
+};
+
+var logoutCurrentUser = function logoutCurrentUser() {
+  return {
+    type: LOGOUT_CURRENT_USER
+  };
+};
+
+var signUp = function signUp(user) {
+  return function (dispatch) {
+    return _util_session_util__WEBPACK_IMPORTED_MODULE_0__["signUp"](user).then(function (user) {
+      return dispatch(receiveCurrentUser(user));
+    });
+  };
+};
+var logIn = function logIn(user) {
+  return function (dispatch) {
+    return _util_session_util__WEBPACK_IMPORTED_MODULE_0__["logIn"](user).then(function (user) {
+      return dispatch(receiveCurrentUser(user));
+    });
+  };
+};
+var logOut = function logOut() {
+  return function (dispatch) {
+    return _util_session_util__WEBPACK_IMPORTED_MODULE_0__["logOut"]().then(function () {
+      return dispatch(logoutCurrentUser());
+    });
+  };
+};
 
 /***/ }),
 
@@ -297,6 +350,45 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/session_util.js":
+/*!***************************************!*\
+  !*** ./frontend/util/session_util.js ***!
+  \***************************************/
+/*! exports provided: signUp, logIn, logOut */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "signUp", function() { return signUp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logIn", function() { return logIn; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logOut", function() { return logOut; });
+var signUp = function signUp(user) {
+  return $.ajax({
+    url: "api/users",
+    method: "POST",
+    data: {
+      user: user
+    }
+  });
+};
+var logIn = function logIn(user) {
+  return $.ajax({
+    url: "api/sessions",
+    method: "POST",
+    data: {
+      user: user
+    }
+  });
+};
+var logOut = function logOut() {
+  return $.ajax({
+    url: "api/sessions",
+    method: "DELETE"
+  });
+};
 
 /***/ }),
 
