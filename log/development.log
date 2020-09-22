@@ -668,3 +668,167 @@ Checked in these paths:
   app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__1374933556076812199_47214740851060'
 
 Started POST "/__better_errors/4b117c7200a5fd1c/variables" for ::1 at 2020-09-22 09:56:42 -0400
+Started POST "/__better_errors/4b117c7200a5fd1c/variables" for ::1 at 2020-09-22 10:45:02 -0400
+Started GET "/" for ::1 at 2020-09-22 10:45:09 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+
+Sprockets::FileNotFound - couldn't find file 'jquery' with type 'application/javascript'
+Checked in these paths: 
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/config
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/images
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/javascripts
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/stylesheets
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.4.4/lib/assets/compiled
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activestorage-5.2.4.4/app/assets/javascripts
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.4.4/lib/assets/compiled
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules:
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__1374933556076812199_70025152587900'
+
+Started POST "/__better_errors/e5a40b0744498296/variables" for ::1 at 2020-09-22 10:45:09 -0400
+Started GET "/" for ::1 at 2020-09-22 10:49:06 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+
+Sprockets::FileNotFound - couldn't find file 'jquery' with type 'application/javascript'
+Checked in these paths: 
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/config
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/images
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/javascripts
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/stylesheets
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.4.4/lib/assets/compiled
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activestorage-5.2.4.4/app/assets/javascripts
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.4.4/lib/assets/compiled
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules:
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__1374933556076812199_70025162985320'
+
+Started POST "/__better_errors/53df1bc8e63a59c8/variables" for ::1 at 2020-09-22 10:49:06 -0400
+Started GET "/" for ::1 at 2020-09-22 10:49:08 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms)
+
+
+
+Sprockets::FileNotFound - couldn't find file 'jquery' with type 'application/javascript'
+Checked in these paths: 
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/config
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/images
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/javascripts
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/stylesheets
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.4.4/lib/assets/compiled
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activestorage-5.2.4.4/app/assets/javascripts
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.4.4/lib/assets/compiled
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules:
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__1374933556076812199_70025162902880'
+
+Started POST "/__better_errors/949782469d7da243/variables" for ::1 at 2020-09-22 10:49:08 -0400
+Started GET "/" for ::1 at 2020-09-22 10:50:25 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms)
+
+
+
+Sprockets::FileNotFound - couldn't find file 'jquery' with type 'application/javascript'
+Checked in these paths: 
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/config
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/images
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/javascripts
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/stylesheets
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.4.4/lib/assets/compiled
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activestorage-5.2.4.4/app/assets/javascripts
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.4.4/lib/assets/compiled
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules:
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__1374933556076812199_47214723270600'
+
+Started POST "/__better_errors/22ab0eecac9d8664/variables" for ::1 at 2020-09-22 10:50:25 -0400
+Started GET "/" for ::1 at 2020-09-22 10:50:26 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+
+
+Sprockets::FileNotFound - couldn't find file 'jquery' with type 'application/javascript'
+Checked in these paths: 
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/config
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/images
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/javascripts
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/stylesheets
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.4.4/lib/assets/compiled
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activestorage-5.2.4.4/app/assets/javascripts
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.4.4/lib/assets/compiled
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules:
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__1374933556076812199_70025166253060'
+
+Started POST "/__better_errors/1a56e627fc527cf3/variables" for ::1 at 2020-09-22 10:50:26 -0400
+Started GET "/" for ::1 at 2020-09-22 10:51:05 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.2ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+
+Sprockets::FileNotFound - couldn't find file 'jquery' with type 'application/javascript'
+Checked in these paths: 
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/config
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/images
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/javascripts
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/stylesheets
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.4.4/lib/assets/compiled
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activestorage-5.2.4.4/app/assets/javascripts
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.4.4/lib/assets/compiled
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules:
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__1374933556076812199_70025183957600'
+
+Started POST "/__better_errors/67a6c56d2228f89a/variables" for ::1 at 2020-09-22 10:51:06 -0400
+Started GET "/" for ::1 at 2020-09-22 10:51:07 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+
+Sprockets::FileNotFound - couldn't find file 'jquery' with type 'application/javascript'
+Checked in these paths: 
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/config
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/images
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/javascripts
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/app/assets/stylesheets
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actioncable-5.2.4.4/lib/assets/compiled
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activestorage-5.2.4.4/app/assets/javascripts
+  /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/actionview-5.2.4.4/lib/assets/compiled
+  /home/johnrobertmcc/Documents/ForeverNoted/ForeverNoted/node_modules:
+  app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__1374933556076812199_70025174095480'
+
+Started POST "/__better_errors/1b5539faa1778622/variables" for ::1 at 2020-09-22 10:51:07 -0400
+Started GET "/" for ::1 at 2020-09-22 10:52:08 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/johnrobertmcc/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 1035ms (Views: 1034.1ms | ActiveRecord: 0.0ms)
+
+
