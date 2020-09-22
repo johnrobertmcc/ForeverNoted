@@ -1,23 +1,17 @@
 import { connect } from 'react-redux';
-import Session from './log_in_form';
-import { logIn, logOut, signUp } from '../../actions/session_actions';
+import LogInForm from '././log_in_form';
+import { signUp, logIn, logOut } from '../../actions/session_actions';
 
 
-const mSTP = state => {
-    return (
-        //state of the session container ?
-  )
+
+const mDTP = dispatch => {
+
+    return {
+        signUp: user => dispatch(signUp(user)),
+        logIn: user => dispatch(logIn(user)),
+        logOut: user => dispatch(logOut(user))
+    };
+
 };
 
-
-const mdTP = dispatch => {
-    return (
-        {
-            logIn : user=> dispatch(logIn(user)),
-            logOut :() => dispatch(logOut(())),
-            signUp :() => dispatch(signUp(())),
-        }
-    )
-};
-
-export default connect(mSTP, mDTP)(Session);
+export default connect(null, mDTP)(LogInForm);

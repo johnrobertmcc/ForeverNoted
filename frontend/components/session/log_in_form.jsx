@@ -3,21 +3,24 @@ import React from 'react';
 
 class LogInForm extends React.Component {
 
+
     constructor(props) {
-        super(props)
+        super(props);
+
         debugger
-
-        this.state = this.props
-
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.state = {
+            username: '',
+            password: ''
+        }
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
 
     handleSubmit(e) {
+        debugger
         e.preventDefault();
-        const user = Object.assign({}, this.state)
-
-        this.state.signUp(user)
+        const user = Object.assign({}, this.state);
+        this.props.logIn(user);
     }
 
     update(str) {
@@ -25,12 +28,13 @@ class LogInForm extends React.Component {
             this.setState(
                 { [str]: e.target.value }
             )
-        }
+        };
     }
 
     render() {
         return (
-            <div>
+            <div className='login-form'>
+                <h1>Log In</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label>Enter a Username
                         <input
