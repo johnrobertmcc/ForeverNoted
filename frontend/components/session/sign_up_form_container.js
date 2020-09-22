@@ -1,21 +1,20 @@
 import { connect } from 'react-redux';
-import User from '../user/user';
+import SignUpForm from './sign_up_form';
 import { signUp } from '../../actions/session_actions';
 
 
-const mSTP = state => {
-    return (
-        //state of the user container ?
-  )
-};
+// const mSTP = state => {
+// // debugger
+//     return "hello";
+// };
 
 
 const mDTP = dispatch => {
-    return (
-        {
+
+    return { 
             signUp : user => dispatch(signUp(user))
-        }
-    )
+        };
+    
 };
 
-export default connect(mSTP, mDTP)(User);
+export default connect(null, mDTP)(SignUpForm);

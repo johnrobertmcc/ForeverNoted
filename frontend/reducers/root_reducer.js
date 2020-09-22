@@ -3,7 +3,7 @@ import sessionReducer from './session_reducer';
 import usersReducer from './user_reducer';
 
 const rootReducer = combineReducers(
-    { session : sessionReducer, users : usersReducer}
+    { session : sessionReducer, user : usersReducer }
 );
 
 export default rootReducer;

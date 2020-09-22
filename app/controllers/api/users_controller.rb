@@ -1,20 +1,17 @@
 class Api::UsersController < ApplicationController
 
-        skip_before_action :verify_authenticity_token
+        # skip_before_action :verify_authenticity_token
     
-
-    def new
-        @user = User.new
-        redirect_to 'api/users/new'
-    end
 
     def create
         @user = User.new(user_params)
-
+        debugger
         if @user.save
-            login(@user)
-            render "api/users/show"
+            debugger
+            login!(@user)
+            render :show
         else
+            debugger
             flash[:errors] = ["Invalid credentials"]
         end
     end
@@ -22,6 +19,6 @@ class Api::UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username, :password)
+        params.require(:user).permit(:username, :password, :email)
     end
 end

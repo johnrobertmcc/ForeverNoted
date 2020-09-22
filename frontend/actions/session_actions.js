@@ -1,4 +1,4 @@
-import * as PostApiUtil from '../util/session_util'
+import * as PostApiUtil from '../util/session_util';
 
 
 
@@ -24,9 +24,9 @@ const logoutCurrentUser = () => ({
     type: LOGOUT_CURRENT_USER,
 });
 
-export const signUp = user => dispatch => (
-    PostApiUtil.signUp(user).then(user => (dispatch(receiveCurrentUser(user))))
-);
+export const signUp = user => dispatch => {
+   return PostApiUtil.signUp(user).then(user => (dispatch(receiveCurrentUser(user))))
+};
     
 export const logIn = user => dispatch => (
     PostApiUtil.logIn(user).then(user => (dispatch(receiveCurrentUser(user)))
