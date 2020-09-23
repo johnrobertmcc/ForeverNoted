@@ -1,16 +1,17 @@
 .background-image {
     /* background-color: blue; */
     display: flex;
-    background-image: url('../../assets/images/animal-crossing.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
+    background-image: image-url('animal-crossing-opaque.png');
+    // background: rgba(0, 128, 0, 0.3);
+    background-repeat: initial;
+    background-size: cover; 
     text-align: center;
+    opacity: 1;
     min-height: 80%;
     min-width: 311px;
     position: fixed;
     width: 100%;
-    height: auto;
+    height: 100%;
    
 
     
@@ -19,15 +20,17 @@
     /* background: purple; */
     display: inline-block;
     justify-content: center;
+    background-color: white;
     border: 1px black solid;
     padding: 5px;
     margin: auto;
     width: 40%;
--webkit-box-shadow: 10px 10px 25px 4px rgba(122,122,122,0.33);
--moz-box-shadow: 10px 10px 25px 4px rgba(122,122,122,0.33);
-box-shadow: 10px 10px 25px 4px rgba(122,122,122,0.33);
+    -webkit-box-shadow: 10px 10px 25px 4px rgba(122,122,122,0.33);
+    -moz-box-shadow: 10px 10px 25px 4px rgba(122,122,122,0.33);
+    box-shadow: 10px 10px 25px 4px rgba(122,122,122,0.33);
      border: 2px slategrey;
     outline: none;
+    opacity: none;
     
 }
 .signup-button {

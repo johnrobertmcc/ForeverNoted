@@ -810,15 +810,6 @@ var SignUpForm = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
-    key: "guestLogin",
-    value: function guestLogin() {
-      var _this3 = this;
-
-      return function (e) {
-        _this3.setState({});
-      };
-    }
-  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -838,11 +829,11 @@ var SignUpForm = /*#__PURE__*/function (_React$Component) {
         className: "guest-button",
         value: "submit"
       }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        "class": "fa fa-user-circle-o",
+        className: "fa fa-user-circle-o",
         "aria-hidden": "true"
-      }), "Continue as Guest "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      }), "    Continue as Guest "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "head"
-      }, "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 or \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 or \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "signup-input",
         type: "text",
         placeholder: "    Email",
