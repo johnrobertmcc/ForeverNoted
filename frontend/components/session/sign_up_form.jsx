@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 
 class SignUpForm extends React.Component {
@@ -13,6 +13,7 @@ class SignUpForm extends React.Component {
             email: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoLogin = this.demoLogin.bind(this);
         // this.update = this.update.bind(this);
     }
 
@@ -32,6 +33,16 @@ class SignUpForm extends React.Component {
         this.props.signUp(user);
     }
 
+    demoLogin(e) {
+        e.preventDefault();
+        const demoUser = {
+            email: 'demo_user@demo.co.it',
+            password: 'password'
+        };
+        this.props.logIn(demoUser);
+    }
+
+
     update(str) {
         return e => { 
            this.setState( 
@@ -48,13 +59,15 @@ class SignUpForm extends React.Component {
                         <h1 className='logo-form'><i className="fas fa-horse-head"></i></h1>
                         <h1>ForeverNoted</h1>
                         <p className='slogan'>Remember everything important.</p>
+                        
                         <form onSubmit={this.handleSubmit}>
+                            
                             {this.renderErrors()}
 
                             <button
                                 type='button'
                                 className='guest-button'
-                                value='submit'
+                                onClick={this.demoLogin}
                             > <i className="fa fa-user-circle-o" aria-hidden="true"></i>    Continue as Guest </button>
 
 

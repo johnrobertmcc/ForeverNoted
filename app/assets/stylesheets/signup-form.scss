@@ -33,10 +33,6 @@
     opacity: none;
     
 }
-.signup-button {
-    color: rgb(0,168,45);
-    text-decoration: none;
-}
 
 .terms {
     font-size: 11px;
@@ -111,4 +107,8 @@
     border-radius: 7px;
     height: 30px;
 
+}
+
+.guest-button:hover {
+    background-color: rgb(235, 235, 235);
 }

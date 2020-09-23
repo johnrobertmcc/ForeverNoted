@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 class LogInForm extends React.Component {
@@ -11,6 +12,7 @@ class LogInForm extends React.Component {
             password: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoLogin = this.demoLogin.bind(this);
     }
 
     renderErrors() {
@@ -30,6 +32,15 @@ class LogInForm extends React.Component {
         this.props.logIn(user);
     }
 
+    demoLogin(e) {
+        e.preventDefault();
+        const demoUser = {
+            email: 'demo_user@demo.co.it',
+            password: 'password'
+            };
+        this.props.logIn(demoUser);
+    }
+
     update(str) {
         return e => {
             this.setState(
@@ -40,32 +51,57 @@ class LogInForm extends React.Component {
 
     render() {
         return (
-            <div className='login-form'>
-                <h1>Log In</h1>
-                <form onSubmit={this.handleSubmit}>
-                    {this.renderErrors()}
 
-                    <label>Email
+            <div className="background-image">
+                <div className='signupform'>
+                    <h1 className='logo-form'><i className="fas fa-horse-head"></i></h1>
+                    <h1>ForeverNoted</h1>
+                    <p className='slogan'>Remember everything important.</p>
+                    <br></br>
+                    <form onSubmit={this.handleSubmit}>
+                        {this.renderErrors()}
+
+                        <button
+                            type='button'
+                            className='guest-button'
+                            onClick={this.demoLogin}
+                        > <i className="fa fa-user-circle-o" aria-hidden="true"></i>    Continue as Guest </button>
+
+
+                        <p className='head'>─────────────── or ───────────────</p>
+
                         <input
+                            className='signup-input'
                             type='text'
+                            placeholder='    Email'
                             value={this.state.email}
                             onChange={this.update('email')}
                         />
-                    </label>
+                        <br></br>
 
-                    <label>Password
                         <input
+                            className='signup-input'
                             type='password'
                             value={this.state.password}
+                            placeholder='    Password'
                             onChange={this.update('password')}
                         />
-                    </label>
 
-                    <button
-                        value='submit'
-                    />
-                </form>
+                        <br></br>
+
+                        <button
+                            type='button'
+                            className='signup-button'
+                            value='submit'
+                        > Continue </button>
+                    </form>
+                
+                    <br></br>
+                    <p className='redirect'>Don't have an account?</p>
+                    <p className='redirect-button'><Link to='/signup'>Create Account</Link></p>
+                </div>
             </div>
+
         )
     }
 };
