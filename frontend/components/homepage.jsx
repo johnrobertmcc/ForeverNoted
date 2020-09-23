@@ -1,24 +1,22 @@
 import React from 'react';
-import SignUpForm from '../components/session/sign_up_form';
+import SignUpFormContainer from '../components/session/sign_up_form';
+import NavBar from './navbar/navbar';
+import DropDown from './navbar/dropdown';
 
-// class HomePage extends React.Component {
+class HomePage extends React.Component {
 
-//     render() {
-//         return(
-//             <>
-//             <header>homepage</header>
-//             <div>
+    render() {
+        return(
+            <div>
 
-//             <SignUpForm />
-//             </div>
-//             </>
-//         )
-//     }
-// }
-
-// export default HomePage;
-
-const HomePage =() => {
-
-    
+                <header>
+                    <NavBar/>
+                    <DropDown />
+                </header>
+                {/* <SignUpFormContainer /> */}
+            </div>
+        )
+    }
 }
+
+export default HomePage;

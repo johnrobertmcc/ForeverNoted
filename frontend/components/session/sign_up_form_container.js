@@ -3,11 +3,9 @@ import SignUpForm from './sign_up_form';
 import { signUp, logIn, logOut } from '../../actions/session_actions';
 
 
-// const mSTP = state => {
-// // debugger
-//     return "hello";
-// };
-
+const mSTP = ({ errors }, state) => (
+    { errors: errors.session }
+)
 
 const mDTP = dispatch => {
 
@@ -19,4 +17,4 @@ const mDTP = dispatch => {
     
 };
 
-export default connect(null, mDTP)(SignUpForm);
+export default connect(mSTP, mDTP)(SignUpForm);

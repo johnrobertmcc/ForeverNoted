@@ -16,6 +16,15 @@ class SignUpForm extends React.Component {
         // this.update = this.update.bind(this);
     }
 
+    renderErrors() {
+        return (
+            <ul>
+                {   this.props.errors.map((error, i) => (
+                    <li key={i}> {error} </li>
+                ))}
+            </ul>
+        )
+    }
     
     handleSubmit(e) {
         e.preventDefault();
@@ -36,7 +45,8 @@ class SignUpForm extends React.Component {
             <div className='signupform'>
                 <h1>Sign Up</h1>
                 <form onSubmit={this.handleSubmit}>
-
+                    {this.renderErrors()}
+                    
                     <label>Enter an email
                         <input
                             type='text'

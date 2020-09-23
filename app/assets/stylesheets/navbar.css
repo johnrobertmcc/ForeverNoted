@@ -1,5 +1,9 @@
+*{
+    font-family: 'Lato', sans-serif; ;
+}
+
 .navbar {
-    background: #FFA954;
+    background: FFFFF;
     display: flex;
     list-style: none;
     justify-content: space-between;
@@ -43,6 +47,7 @@
     list-style: none;
     display:flex;
     justify-content: flex-end;
+    text-decoration: black;
 
 }
 .dropdown-listed{
@@ -56,5 +61,24 @@
 .nav-links-download-dropdown {
     padding: 10px;
     text-decoration: black;
+
+}
+.dropdown-list{
+    text-decoration: black;
+}
+.dropdown-list-header {
+    color: rgb(0,168,45);
+    display: flex;
+    text-decoration: black;
+}
+
+.dropdown-list-title {
+    font-weight: 700;
+    font-size: larger;
+    text-decoration: black;
+}
+
+.logo-nav:first-child {
+    color: rgb(0,168,45);
 
 }

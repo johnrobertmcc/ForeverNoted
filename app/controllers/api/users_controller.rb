@@ -11,7 +11,7 @@ class Api::UsersController < ApplicationController
             render :show
         else
     
-            flash[:errors] = ["Invalid credentials"]
+            p 'invalid'
         end
     end
 

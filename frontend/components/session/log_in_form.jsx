@@ -13,6 +13,16 @@ class LogInForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    renderErrors() {
+        return(
+            <ul>
+             {   this.props.errors.map((error, i) => (
+                    <li key={i}> {error} </li>
+                ))}
+            </ul>
+        )
+    }
+
 
     handleSubmit(e) {
         e.preventDefault();
@@ -33,6 +43,8 @@ class LogInForm extends React.Component {
             <div className='login-form'>
                 <h1>Log In</h1>
                 <form onSubmit={this.handleSubmit}>
+                    {this.renderErrors()}
+                    
                     <label>Enter a Username
                         <input
                             type='text'

@@ -2,7 +2,9 @@ import { connect } from 'react-redux';
 import LogInForm from '././log_in_form';
 import { logIn, logOut } from '../../actions/session_actions';
 
-
+const mSTP = ({errors}, state) => (
+   { errors : errors.session}
+)
 
 const mDTP = dispatch => {
 debugger
@@ -13,4 +15,4 @@ debugger
 
 };
 
-export default connect(null, mDTP)(LogInForm);
+export default connect(mSTP, mDTP)(LogInForm);

@@ -14,8 +14,8 @@ class NavBar extends React.Component {
                 <div className="navbar">
                 <h1 className='logo-nav'>
                     <i className="fas fa-horse-head"></i>
-                        ForeverNoted
                 </h1>
+                <h1> ForeverNoted </h1>
                     <div className="links-nav">
 
                         <ul className="listed-items">
