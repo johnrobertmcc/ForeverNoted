@@ -8,7 +8,6 @@ class SignUpForm extends React.Component {
 
         // this.state = this.props
         this.state = { 
-            username: '',
             password: '',
             email: ''
         }
@@ -42,39 +41,37 @@ class SignUpForm extends React.Component {
 
     render() {
         return (
-            <div className='signupform'>
-                <h1>Sign Up</h1>
-                <form onSubmit={this.handleSubmit}>
-                    {this.renderErrors()}
-                    
-                    <label>Enter an email
-                        <input
-                            type='text'
-                            value={this.state.email}
-                            onChange={this.update('email')}
-                        />
-                    </label>
+            <div className="background-image">
+                <div className='signupform'>
+                    <h1><i className="fas fa-horse-head"></i></h1>
+                    <h1>ForeverNoted</h1>
+                    <p className='slogan'>Remember everything important</p>
+                    <form onSubmit={this.handleSubmit}>
+                        {this.renderErrors()}
 
-                    <label>Enter a Username
-                        <input
-                            type='text'
-                            value={this.state.username}
-                            onChange={this.update('username')}
-                        />
-                    </label>
+                        <label>Email
+                            <input
+                                type='text'
+                                value={this.state.email}
+                                onChange={this.update('email')}
+                                />
+                        </label>
 
-                    <label>Enter a Password
-                        <input
-                            type='password'
-                            value={this.state.password}
-                            onChange={this.update('password')}
+
+                        <label>Password
+                            <input
+                                type='password'
+                                value={this.state.password}
+                                onChange={this.update('password')}
+                                />
+                        </label>
+                        
+                        <button
+                        className='signup-button'
+                        value='submit'
                         />
-                    </label>
-                    
-                    <button
-                    value='submit'
-                    />
-                </form>
+                    </form>
+                </div>
             </div>
         )
     }
