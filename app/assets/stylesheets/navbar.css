@@ -1,0 +1,60 @@
+.navbar {
+    background: #FFA954;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+    /* max-width: 80%; */
+}
+
+.listed-items {
+    flex-direction: row;
+    list-style: none;
+    display: flex;
+    padding: 10px;
+
+}
+
+.nav-links {
+    padding: 10px;
+    text-decoration: black;
+}
+
+.nav-links-download {
+    padding: 10px;
+    border: green 1.5px solid;
+    text-decoration: black;
+
+}
+
+.nav-links-logIn{
+    padding:10px;
+    text-decoration: black;
+    
+
+}
+
+.logo-nav {
+    padding-left: 10px;
+    top: 50px;
+}
+
+.dropdown*{
+    list-style: none;
+    display:flex;
+    justify-content: flex-end;
+
+}
+.dropdown-listed{
+    list-style: none;
+    display:flex;
+    justify-content: flex-end;
+    text-decoration: black;
+
+}
+
+.nav-links-download-dropdown {
+    padding: 10px;
+    text-decoration: black;
+
+}

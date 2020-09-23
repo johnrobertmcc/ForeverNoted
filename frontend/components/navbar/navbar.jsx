@@ -1,40 +1,48 @@
 import React from 'react';
-import { render } from 'react-dom';
-import MenuItems from './nav_items';
+import {MenuItems} from './nav_items';
 
 class NavBar extends React.Component {
 
+
+    // navBar = () => {
+    //     return (
+        
+
     render() {
 
-        let navBar = () => {
-            return (
+        return(
                 <div className="navbar">
-                    <h1 className='logo-nav'>ForeverNoted</h1>
+                <h1 className='logo-nav'>
+                    <i className="fas fa-horse-head"></i>
+                        ForeverNoted
+                </h1>
                     <div className="links-nav">
 
-                        <ul>
+                        <ul className="listed-items">
                             {
                                 MenuItems.map((item, i) => {
                                     return (
+
                                         <li>
-                                            <a className={item.cName} href={item.url} key={i}>
-                                                {item.title}
+                                            <a 
+                                            className={item.cName} 
+                                            href={item.url} 
+                                            key={i}
+                                            >
+                                            {item.title}
                                             </a>
                                         </li>
+                                    
                                     )
                                 })
                             }
                         </ul>
                     </div>
                 </div>
-            )
-        }
 
-        return(
-            {navBar}
         )
 
     }
     
-}
+};
 export default NavBar;

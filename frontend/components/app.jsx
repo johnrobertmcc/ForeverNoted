@@ -1,23 +1,31 @@
 import React from "react";
 import SignUpFormContainer from '../components/session/sign_up_form_container';
-import LogInForm from '../components/session/session_container';
-import {Route} from "react-router-dom";
-import HomePage from "../components/homepage";
+import LogInContainer from '../components/session/session_container';
+import {Route, Switch} from "react-router-dom";
+// import HomePage from "../components/homepage";
 import NavBar from "../components/navbar/navbar";
+import DropDown from "./navbar/dropdown";
 
-const App = () => {
+const App = () =>{
+    
+    // debugger
     return(
-        <> 
-            <div>
+        <div> 
+            <header>
                 <NavBar/>
+                <DropDown />
+            </header>
+            <body>{SignUpFormContainer}</body>
+            
+            <Switch>
                 <Route exact path="/signup" component={SignUpFormContainer} />
-                <Route exact path="/login" component={LogInForm} />
-                <Route exact path="/" component={HomePage} />
-            </div>
+                <Route exact path="/login" component={LogInContainer} />
+            </Switch>
 
-            </>
+        </div>
     )
-    };
+};
+    
 
 export default App;
 
