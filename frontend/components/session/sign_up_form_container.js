@@ -4,7 +4,6 @@ import { signUp, logIn, logOut } from '../../actions/session_actions';
 
 
 const mSTP = ({ errors }, state) => {
-    debugger
     return { errors: errors.session }
 };
 

@@ -1,13 +1,15 @@
 import { connect } from 'react-redux';
 import HomePage from './homepage';
-import {logOut } from '../actions/session_actions';
+import {logOut, signUp } from '../actions/session_actions';
 
 
 const mDTP = dispatch => {
     debugger
 
     return {
-        logOut: () => dispatch(logOut())
+        logOut: () => dispatch(logOut()),
+        signUp: (user) => dispatch(signUp(user))
+
     };
 
 };

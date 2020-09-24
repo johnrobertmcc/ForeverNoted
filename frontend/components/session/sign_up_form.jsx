@@ -11,7 +11,6 @@ class SignUpForm extends React.Component {
             password: '',
             email: ''
         }
-        debugger
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demoLogin = this.demoLogin.bind(this);
         // this.renderErrors = this.renderErrors.bind(this);

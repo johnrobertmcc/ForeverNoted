@@ -1,37 +1,35 @@
 export const MenuItems =[
         {
-            title: 'Plans',
-                url: '',
+            title: 'GitHub',
+        url: 'https://github.com/johnrobertmcc?tab=repositories',
                     cName: 'nav-links',
                         id: 1
             },
 
         {
-            title: 'Features',
-                url: '#',
+            title: 'LinkedIn',
+            url: 'https://www.linkedin.com/in/jrmcc/',
                     cName: 'nav-links',
                         id: 2
         },
 
-        {
-            title: 'Help & Learning',
-                url: '#',
-                    cName: 'nav-links',
-                        id: 3
-        },
+        // {
+        //     title: 'About Me',
+        //         url: '#',
+        //             cName: 'nav-links',
+        //                 id: 4
+        // },
 
         {
-            title: 'About Us',
-                url: '#',
-                    cName: 'nav-links',
-                        id: 4
-        },
-
-        {
-            title: 'Download',
-                url: '#',
-                    cName: 'nav-links-download',
+            title: 'Sign Up',
+                url: '#/signup',
+                    cName: 'nav-links-signup',
                         id: 5
+        },
+        {
+            title: 'or',
+                url: '',
+                    cName: 'nav-links-or',
         },
         {
             title: 'Log in',

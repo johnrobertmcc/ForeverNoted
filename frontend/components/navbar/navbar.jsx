@@ -9,9 +9,8 @@ class NavBar extends React.Component {
         return(
                 <div className="navbar">
                 <h1 className='logo-nav'>
-                    <i className="fas fa-leaf"></i>
+                    <i className="fas fa-leaf" style={{ color: "mediumseagreen" }}></i>    ForeverNoted 
                 </h1>
-                <h1> ForeverNoted </h1>
                     <div className="links-nav">
 
                         <ul className="listed-items">
