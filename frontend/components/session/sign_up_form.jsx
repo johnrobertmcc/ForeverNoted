@@ -55,6 +55,9 @@ class SignUpForm extends React.Component {
     }
 
     render() {
+
+
+        // debugger
         return (
 
                 <div className="background-image">
@@ -75,7 +78,7 @@ class SignUpForm extends React.Component {
 
                             <p className='head'>─────────────── or ───────────────</p>
 
-                                {this.renderErrors}
+                                {this.renderErrors()}
                                 <input
                                     className='signup-input'
                                     type='text'
