@@ -8,4 +8,4 @@
 
 User.delete_all
 
-users = User.create( [ {username: "demo_user", email: "demo@test.co.it", password: "password"} ])
+users = User.create( [ { email: 'demo_user@demo.co.it', password: 'password' }])
