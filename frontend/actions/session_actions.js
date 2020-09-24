@@ -16,13 +16,16 @@ const logoutCurrentUser = () => ({
 });
 
 export const signUp = user => dispatch => {
-   return PostApiUtil.signUp(user).then(user => (dispatch(receiveCurrentUser(user))))
+   return PostApiUtil.signUp(user).then(user => dispatch(receiveCurrentUser(user)),
+   error => dispatch(receiveErrors(error.responseJSON)));
 };
     
 export const logIn = user => dispatch => (
 
-    PostApiUtil.logIn(user).then(user => (dispatch(receiveCurrentUser(user)))
-));
+    PostApiUtil.logIn(user).then(user => (dispatch(receiveCurrentUser(user))),
+        error => dispatch(receiveErrors(error.responseJSON))
+)
+)
 
 export const logOut = () => dispatch => {
  
@@ -31,6 +34,6 @@ export const logOut = () => dispatch => {
 
 const receiveErrors = errors => ({
     type: RECEIVE_SESSION_ERRORS,
-    data: [...errors]
+    errors
 });
 

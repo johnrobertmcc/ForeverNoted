@@ -7,25 +7,29 @@ class SignUpForm extends React.Component {
     constructor(props){
         super(props);
 
-        // this.state = this.props
         this.state = { 
             password: '',
             email: ''
         }
+        debugger
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demoLogin = this.demoLogin.bind(this);
-        // this.update = this.update.bind(this);
+        // this.renderErrors = this.renderErrors.bind(this);
     }
+
+
+
 
     renderErrors() {
         return (
-            <ul>
+            <ul className='errors-ul'>
                 {   this.props.errors.map((error, i) => (
-                    <li key={i}> {error} </li>
+                    <li className='errors-li' key={i}> {error} </li>
                 ))}
             </ul>
         )
     }
+
     
     handleSubmit(e) {
         e.preventDefault();
@@ -58,10 +62,9 @@ class SignUpForm extends React.Component {
                     <h1 className='logo-form'> <i className="fas fa-leaf"></i></h1>
                         <h1>ForeverNoted</h1>
                         <p className='slogan'>Remember everything important.</p>
-                        
+                        <br></br>
                         <form onSubmit={this.handleSubmit}>
-                            
-                            {this.renderErrors()}
+                        
 
                             <button
                                 type='button'
@@ -72,6 +75,7 @@ class SignUpForm extends React.Component {
 
                             <p className='head'>─────────────── or ───────────────</p>
 
+                                {this.renderErrors}
                                 <input
                                     className='signup-input'
                                     type='text'
@@ -99,11 +103,10 @@ class SignUpForm extends React.Component {
                         </form>
 
                         <p className='terms'>
-                            By creating an account, you are agreeing to our
+                            Come In
                         </p>
-                    <p className='terms'> <Link to='#'><p className='green-word'>Terms of Service</p></Link> <p>and</p> <Link to='#'><p className='green-word'>Privacy Policy</p></Link> </p>
-                    {/* <p className='terms'> <Link to='#'>Terms of Service</Link>and<Link to='#'>Privacy Policy</Link> </p> */}
-                        <br></br>
+                    {/* <p className='terms'> <Link to='#'><p className='green-word'>Terms of Service</p></Link> <p>and</p> <Link to='#'><p className='green-word'>Privacy Policy</p></Link> </p> */}
+                    {/* <p className='terms'> <a  href='#'>Terms of Service</a>and<a href='#'>Privacy Policy</a> </p> */}
                         <p className='redirect'>Already have an account?</p>
                     <Link to='/login'><p className='redirect-button'>Sign in</p></Link>
                     </div>

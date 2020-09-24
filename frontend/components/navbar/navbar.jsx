@@ -4,10 +4,6 @@ import {MenuItems} from './nav_items';
 class NavBar extends React.Component {
 
 
-    // navBar = () => {
-    //     return (
-        
-
     render() {
 
         return(

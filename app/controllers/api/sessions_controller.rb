@@ -12,7 +12,7 @@ class Api::SessionsController < ApplicationController
             render 'api/users/show'
 
         else
-             render json: ['wrong'], status: 400
+             render json: ['Not a valid Email address'], status: 422
         end
 
     

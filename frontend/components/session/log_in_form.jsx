@@ -17,9 +17,9 @@ class LogInForm extends React.Component {
 
     renderErrors() {
         return(
-            <ul>
+            <ul className='errors-ul'>
              {   this.props.errors.map((error, i) => (
-                    <li key={i}> {error} </li>
+                    <li className='errors-li' key={i}> {error} </li>
                 ))}
             </ul>
         )
@@ -59,17 +59,17 @@ class LogInForm extends React.Component {
                     <p className='slogan'>Remember everything important.</p>
                     <br></br>
                     <form onSubmit={this.handleSubmit}>
-                        {this.renderErrors()}
 
                         <button
                             type='button'
                             className='guest-button'
                             onClick={(e)=>this.demoLogin(e)}
-                        > <i className="fa fa-user-circle-o" aria-hidden="true"></i> Continue as Guest </button>
+                            > <i className="fa fa-user-circle-o" aria-hidden="true"></i> Continue as Guest </button>
 
 
                         <p className='head'>─────────────── or ───────────────</p>
 
+                        {this.renderErrors()}
                         <input
                             className='signup-input'
                             type='text'

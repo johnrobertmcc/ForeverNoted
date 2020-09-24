@@ -14,7 +14,6 @@ class DropDown extends React.Component {
                 key={i}
                 >
                     <a
-                        
                         className={item.cName}
                         href={item.url}
                     >
@@ -27,7 +26,7 @@ class DropDown extends React.Component {
 
         return(
             <div className='dropdown'>
-                {/* <i className="fas fa-bars"></i> */}
+                <i className="fas fa-bars"></i>
                 {menu}
             </div>
         )

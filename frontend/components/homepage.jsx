@@ -2,6 +2,7 @@ import React from 'react';
 // import SignUpFormContainer from '../components/session/sign_up_form';
 import NavBar from './navbar/navbar';
 import DropDown from './navbar/dropdown';
+import {logOut} from '../actions/session_actions';
 
 
 
@@ -12,12 +13,10 @@ class HomePage extends React.Component {
        
         return(
             <div>
-
-                {/* <li>
                     <button
                         onClick={logOut}
                     >LogOut</button>
-                </li> */}
+               
 
                 <header>
                     <NavBar/>

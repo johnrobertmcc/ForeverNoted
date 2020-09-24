@@ -66,6 +66,7 @@
 
 .signup-button:hover {
     cursor: pointer;
+    background-color: rgb(19, 128, 48);
 }
 
 .head{
@@ -90,11 +91,11 @@
     font-size: 13px;
     text-decoration: none;
     color: rgb(0,168,45);
-
     height: 60px;
-//     &:visited {
-//         color: rgb(0,168,45);
-//     }
+}
+
+.redirect-button:hover{
+    color: rgb(19, 128, 48);
 }
 
 .signup-input {
@@ -141,4 +142,20 @@
 .remember {
     color: grey;
     font-size: 12.5px;
+}
+
+.errors-li{
+    color: red;
+    list-style: none;
+    font-size: 11px;
+    font-weight: 500;
+    padding-left: 25px;
+    position: absolute ;
+
+}
+
+.errors-ul {
+    // left: 100px;
+    display: flex;
+    
 }
