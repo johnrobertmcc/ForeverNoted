@@ -7,7 +7,6 @@
     padding-right: 300px;
     padding-left: 300px;
     height: 500px;
-    // display: flex;
 }
 .second-level{
     padding-right: 300px;
@@ -37,7 +36,7 @@
 
    /* body */
 
-   .image-words {
+.image-words {
     display: flex; 
     flex-direction: column;   
     flex-wrap: wrap;
@@ -47,7 +46,7 @@
 .image-words > div {
     flex: 1 50 10px ;            
     width: calc(50% - 10px);
-    height: calc(100% - 10px) ;
+    height: calc(120% - 10px) ;
     margin: 5px;
 }
 
@@ -63,8 +62,9 @@
 }
 
 .home-image {
-   background-image:url('top-view-white-computer-keyboard.jpg');
+   background-image:url('tom-nook.jpg');
    height: 500px;
+   box-shadow: 9px 9px 10px 2px white inset, -9px -9px 10px 2px white inset; 
 }
 
 .home-words{
@@ -130,12 +130,14 @@
 }
 
 .name{
-    font-weight: 700;
+    font-weight: 500;
+    font-size: 12px;
 }
 
 .footer-line{
-    color: pink;
-    font-weight: 100;
+    // border-color: rgb(206, 250, 219);
+    border-color: ghostwhite;
+    height: 0px;
     width: 70%
 }
 
@@ -143,6 +145,7 @@ footer{
     padding-right: 250px;
     padding-left: 250px;
     display: flex;
+    font-size: 12px;
 }
 
 footer a{

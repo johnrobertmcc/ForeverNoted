@@ -18,7 +18,7 @@ class HomePage extends React.Component {
                 <header>
                     <button
                     onClick={logOut}
-                    >LogOut</button>
+                    >TemporaryLogOut</button>
                     <NavBar/>
                     <DropDown />
                 </header>
@@ -78,7 +78,7 @@ class HomePage extends React.Component {
 
                 <hr className='footer-line'></hr>
                 <footer className='footer-home'>
-                    <p className='name'>John Robert McCann:</p>
+                    <p className='name'>John Robert McCann</p>
                     <a href="https://github.com/johnrobertmcc?tab=repositories">GitHub</a>
                     <a href="https://www.linkedin.com/in/jrmcc/">LinkedIn</a>
                     {/* <a>J.R. McCann(in progress)</a> */}
