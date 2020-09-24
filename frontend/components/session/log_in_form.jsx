@@ -64,8 +64,8 @@ class LogInForm extends React.Component {
                         <button
                             type='button'
                             className='guest-button'
-                            onClick={this.demoLogin}
-                        > <i className="fa fa-user-circle-o" aria-hidden="true"></i>    Continue as Guest </button>
+                            onClick={(e)=>this.demoLogin(e)}
+                        > <i className="fa fa-user-circle-o" aria-hidden="true"></i> Continue as Guest </button>
 
 
                         <p className='head'>─────────────── or ───────────────</p>
@@ -97,11 +97,11 @@ class LogInForm extends React.Component {
 
                     </form>
                         <br></br>
+                        <br></br>
                         <div className="remember">
                         <input type="checkbox" value="remember" />
                             Remember me for 30 days
                         </div>
-
 
                     <br></br>
                     <p className='redirect'>Don't have an account?</p>

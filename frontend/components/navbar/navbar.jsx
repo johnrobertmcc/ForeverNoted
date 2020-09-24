@@ -22,7 +22,7 @@ class NavBar extends React.Component {
                             {
                                 MenuItems.map((item, i) => {
                                     return (
-
+                                    
                                         <li key={i}>
                                             <a 
                                             className={item.cName} 
@@ -32,6 +32,8 @@ class NavBar extends React.Component {
                                             {item.title}
                                             </a>
                                         </li>
+
+                                    
                                     
                                     )
                                 })

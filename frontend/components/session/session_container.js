@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 import LogInForm from '././log_in_form';
 import { logIn, logOut } from '../../actions/session_actions';
 
-const mSTP = ({errors}, state) => {
+const mSTP = ({ errors }, state) => {
 
-    return { errors : errors.session}
+    return { errors: errors.session }
 }
 
 const mDTP = dispatch => {
