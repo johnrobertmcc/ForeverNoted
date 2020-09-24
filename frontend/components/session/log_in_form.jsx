@@ -93,6 +93,7 @@ class LogInForm extends React.Component {
                             type='button'
                             className='signup-button'
                             value='submit'
+                            onClick={this.handleSubmit}
                         > Continue </button>
 
                     </form>
