@@ -102,11 +102,17 @@
     padding: 6px;
     border-radius: 6px;
     box-sizing: border-box;
-    border: 1px solid grey;
+    border: 1px solid lightgrey;
     margin-top: 3px;
     margin-bottom: 6px;
     width: 311px;
     // z-index: 1;
+
+}
+
+.signup-input:focus{
+    border: .8px solid rgb(155, 209, 169);
+    outline: none;
 
 }
 

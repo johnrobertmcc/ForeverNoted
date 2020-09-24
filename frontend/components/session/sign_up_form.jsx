@@ -73,7 +73,7 @@ class SignUpForm extends React.Component {
                                 type='button'
                                 className='guest-button'
                                 onClick={this.demoLogin}
-                            > <i className="fa fa-user-circle-o" aria-hidden="true"></i>    Continue as Guest </button>
+                        > <i className="fa fa-user-circle-o" aria-hidden="true" style={{ color: "green" }}></i>    Continue as Guest </button>
 
 
                             <p className='head'>─────────────── or ───────────────</p>
