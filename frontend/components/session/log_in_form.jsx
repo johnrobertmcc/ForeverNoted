@@ -94,11 +94,13 @@ class LogInForm extends React.Component {
                             className='signup-button'
                             value='submit'
                         > Continue </button>
+
                     </form>
-                
+
+                    
                     <br></br>
                     <p className='redirect'>Don't have an account?</p>
-                    <p className='redirect-button'><Link to='/signup'>Create Account</Link></p>
+                    <Link to='/signup'><p className='redirect-button'>Create Account</p></Link>
                 </div>
             </div>
 

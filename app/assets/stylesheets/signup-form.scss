@@ -24,7 +24,7 @@
     border: 1px black solid;
     padding: 5px;
     margin: auto;
-    width: 40%;
+    width: 435px;
     -webkit-box-shadow: 10px 10px 25px 4px rgba(122,122,122,0.33);
     -moz-box-shadow: 10px 10px 25px 4px rgba(122,122,122,0.33);
     box-shadow: 10px 10px 25px 4px rgba(122,122,122,0.33);
@@ -38,6 +38,9 @@
     font-size: 11px;
     color : rgb(166,166,166);
     font-weight: 500;
+    // display: flex;
+    // justify-content: space-around;
+    // width: 0%;
 
 }
 .terms :link {
@@ -78,11 +81,15 @@
     font-size: 12px;
 }
 
-.redirect-button :link{
+.redirect-button{
     font-size: 13px;
     text-decoration: none;
     color: rgb(0,168,45);
+
     height: 60px;
+//     &:visited {
+//         color: rgb(0,168,45);
+//     }
 }
 
 .signup-input {
@@ -111,4 +118,14 @@
 
 .guest-button:hover {
     background-color: rgb(235, 235, 235);
+}
+
+:link{
+    text-decoration: none;
+}
+
+.green-word{
+    display: flex;
+    justify-content: center;
+    color: rgb(0,168,45);
 }

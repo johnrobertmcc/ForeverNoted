@@ -93,19 +93,19 @@ class SignUpForm extends React.Component {
                             <br></br>
                             
                             <button
-                            type='button'
+                            // type='button'
                             className='signup-button'
-                            value='submit'
+                            // value='submit'
                             > Continue </button>
                         </form>
 
                         <p className='terms'>
                             By creating an account, you are agreeing to our
                         </p>
-                        <p className='terms'> <Link to='#'>Terms of Service</Link> and <Link to='#'>Privacy Policy</Link> </p>
+                    <p className='terms'> <Link to='#'><p className='green-word'>Terms of Service</p></Link> <p>and</p> <Link to='#'><p className='green-word'>Privacy Policy</p></Link> </p>
                         <br></br>
                         <p className='redirect'>Already have an account?</p>
-                        <p className='redirect-button'><Link to='/login'>Sign in</Link></p>
+                    <Link to='/login'><p className='redirect-button'>Sign in</p></Link>
                     </div>
                 </div>
 
