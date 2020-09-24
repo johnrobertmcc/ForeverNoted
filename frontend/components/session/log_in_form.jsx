@@ -54,7 +54,7 @@ class LogInForm extends React.Component {
 
             <div className="background-image">
                 <div className='signupform'>
-                    <h1 className='logo-form'><i className="fas fa-horse-head"></i></h1>
+                    <h1 className='logo-form'> <i className="fas fa-leaf"></i></h1>
                     <h1>ForeverNoted</h1>
                     <p className='slogan'>Remember everything important.</p>
                     <br></br>
@@ -96,8 +96,13 @@ class LogInForm extends React.Component {
                         > Continue </button>
 
                     </form>
+                        <br></br>
+                        <div className="remember">
+                        <input type="checkbox" value="remember" />
+                            Remember me for 30 days
+                        </div>
 
-                    
+
                     <br></br>
                     <p className='redirect'>Don't have an account?</p>
                     <Link to='/signup'><p className='redirect-button'>Create Account</p></Link>

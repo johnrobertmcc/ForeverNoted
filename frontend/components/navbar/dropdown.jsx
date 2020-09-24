@@ -9,9 +9,12 @@ class DropDown extends React.Component {
 
         const menu = DropDownItems.map((item, i) => {
                  return (
-                <li className='dropdown-listed'>
+                <li 
+                className='dropdown-listed'
+                key={i}
+                >
                     <a
-                        key={i}
+                        
                         className={item.cName}
                         href={item.url}
                     >

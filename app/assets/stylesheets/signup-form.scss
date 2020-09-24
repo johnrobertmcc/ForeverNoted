@@ -38,16 +38,16 @@
     font-size: 11px;
     color : rgb(166,166,166);
     font-weight: 500;
-    // display: flex;
+    display: inline;
     // justify-content: space-around;
     // width: 0%;
 
 }
-.terms :link {
-    font-size: 11px;
-    /* color: ; */
-    text-decoration: rgb(0,168,45);
-}
+// .terms :link {
+//     font-size: 11px;
+//     /* color: ; */
+//     text-decoration: rgb(0,168,45);
+// }
 
 .logo-form{
     color: rgb(0,168,45);
@@ -128,4 +128,9 @@
     display: flex;
     justify-content: center;
     color: rgb(0,168,45);
+}
+
+.remember {
+    color: grey;
+    font-size: 12.5px;
 }

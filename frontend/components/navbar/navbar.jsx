@@ -13,7 +13,7 @@ class NavBar extends React.Component {
         return(
                 <div className="navbar">
                 <h1 className='logo-nav'>
-                    <i className="fas fa-horse-head"></i>
+                    <i className="fas fa-leaf"></i>
                 </h1>
                 <h1> ForeverNoted </h1>
                     <div className="links-nav">
@@ -23,11 +23,11 @@ class NavBar extends React.Component {
                                 MenuItems.map((item, i) => {
                                     return (
 
-                                        <li>
+                                        <li key={i}>
                                             <a 
                                             className={item.cName} 
                                             href={item.url} 
-                                            key={i}
+                                            
                                             >
                                             {item.title}
                                             </a>
