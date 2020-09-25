@@ -3,10 +3,6 @@ import {MenuItems} from './nav_items';
 
 class NavBar extends React.Component {
 
-    // slide() {
-    //     const 
-    // }
-
 
     render() {
 

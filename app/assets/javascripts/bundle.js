@@ -629,9 +629,6 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
 
   _createClass(NavBar, [{
     key: "render",
-    // slide() {
-    //     const 
-    // }
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "navbar"
