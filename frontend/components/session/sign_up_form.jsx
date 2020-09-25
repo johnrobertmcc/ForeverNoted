@@ -7,6 +7,7 @@ class SignUpForm extends React.Component {
     constructor(props){
         super(props);
 
+        debugger
         this.state = { 
             password: '',
             email: ''
@@ -16,7 +17,9 @@ class SignUpForm extends React.Component {
         // this.renderErrors = this.renderErrors.bind(this);
     }
 
-
+    componentWillUnmount(){
+        this.props.removeErrors();
+    }
 
 
     renderErrors() {

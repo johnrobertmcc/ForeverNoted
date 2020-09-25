@@ -15,6 +15,10 @@ class LogInForm extends React.Component {
         this.demoLogin = this.demoLogin.bind(this);
     }
 
+    componentWillUnmount() {
+        this.props.removeErrors();
+    }
+
     renderErrors() {
         return(
             <ul className='errors-ul'>

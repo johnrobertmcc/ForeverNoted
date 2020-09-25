@@ -69,7 +69,7 @@ class HomePage extends React.Component {
                     <h1 className='slogan-third'> At work, at home, and everywhere in between</h1>
 
                     <div className='inside-third'>
-                        
+                        <p className='first-p'>inspired by Evernote and Tom Nook</p>
                         
 
                     </div>
