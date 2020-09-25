@@ -10,8 +10,8 @@ class Note < ApplicationRecord
     belongs_to :user
 
 
-    # generate notebook id
+    # generate notebook id?
 
 
-    # generate date
+    # generate date?
 end

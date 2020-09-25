@@ -27,7 +27,7 @@ export const createNotebook = (notebook) => {
         {
             url: `/api/notebooks`,
             method: "POST",
-            { notebook }
+            notebook
         }
     )
 };
@@ -37,7 +37,7 @@ export const updateNotebook = (notebook) => {
         {
             url: `/api/notebooks/${notebook.id}`,
             method: "PATCH",
-            { notebook }
+             notebook
         }
     )
 };
@@ -50,4 +50,4 @@ export const deleteNotebook = (notebookId) => {
         }
     )
 ;}
- xc
+ 

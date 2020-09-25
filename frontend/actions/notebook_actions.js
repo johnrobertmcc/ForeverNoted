@@ -14,7 +14,7 @@ const receiveAllNotes = (notebooks) => {
     )
 }
 
-export const fetchNotebook = () => dispatch => {
+export const fetchNotebooks = () => dispatch => {
 
     return NoteBookUtil.fetchNotebook().then(notebooks => dispatch(receiveAllNotes(notebooks)));
 };
@@ -29,18 +29,18 @@ const receiveNotebook = notebook => {
 };
 
 export const fetchNotebook = notebookId => dispatch => {
-    return NoteBookUtil.fetchNote(notebookId).then(notebook => dispatch(receiveNotebook(notebook)))
+    return NoteBookUtil.fetchNotebook(notebookId).then(notebook => dispatch(receiveNotebook(notebook)))
 };
 
-export const createNote = notebook => dispatch => {
-    return NoteBookUtil.createNote(notebook).then(notebook => dispatch(receiveNotebook(notebook)));
+export const createNotebook = notebook => dispatch => {
+    return NoteBookUtil.createNotebook(notebook).then(notebook => dispatch(receiveNotebook(notebook)));
 };
 
-export const updateNote = notebook => dispatch => {
-    return NoteBookUtil.updateNote(notebook).then(notebook => dispatch(receiveNotebook(notebook)));
+export const updateNotebook = notebook => dispatch => {
+    return NoteBookUtil.updateNotebook(notebook).then(notebook => dispatch(receiveNotebook(notebook)));
 };
 
-const removeNote = notebookId => {
+const removeNotebook = notebookId => {
     return (
         {
             type: REMOVE_NOTEBOOK,
@@ -50,5 +50,5 @@ const removeNote = notebookId => {
 };
 
 export const deleteNote = notebookId => dispatch => {
-    return NoteBookUtil.deleteNote(notebookId).then(notebookId => dispatch(removeNote(notebookId)))
+    return NoteBookUtil.deleteNotebook(notebookId).then(notebookId => dispatch(removeNotebook(notebookId)))
 };

@@ -15,22 +15,31 @@ class HomePage extends React.Component {
             <div>
                
 
+                <div className='top-level'> <NavBar /></div>
                 <div className='first-level'>
-                    <NavBar/>
                 <header>
-                    <DropDown />
                 </header>
-                            <br></br>
-                            <br></br>
-                 
+                         
+                  <div className='right-home'>
+                         <h1 className="home-slogan">Simplify your life</h1>
+                        <div className="home-words">ForeverNoted is the home for everything you need to remember, and everything you want to achieve.</div>
+                        <br></br> 
+                        <br></br> 
+                        <div className='flex-button'><a href='#/signup'><button className='signup-button-homepage'>Sign up for free</button></a></div>
 
-                    <h1 className="home-slogan">Simplify your life</h1>
+                 </div>
+
+                    <div className='home-image'></div>
+
+                    {/* <h1 className="home-slogan">Simplify your life</h1>
                     <div className='image-words'>
-                            <div className="home-words">ForeverNoted is the home for everything you need to remember,<br></br> and everything you want to achieve.</div>
+                            <div className="home-words">ForeverNoted is the home for everything you need to remember, and everything you want to achieve.</div>
                             <div className='flex-button'><a href='#/signup'><button className='signup-button-homepage'>Sign up for free</button></a></div>
                             <div className='home-image'></div>
                     </div>
-                    
+                     */}
+
+                     
 
                     
 

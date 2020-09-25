@@ -8,11 +8,17 @@
     background: FFFFF;
     display: flex;
     list-style: none;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     min-width: 800px;
 }
 
+.links-nav{
+    padding-left: 100px;
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap; 
+}
 
 
 
@@ -25,11 +31,13 @@
 }
 
 .nav-links {
-    padding-right: 90px;
+    padding-right: 120px;
+
     text-decoration: black;
     color: black;
     font-size: 18px;
     font-weight: 900px;
+    
 }
 
 .nav-links:hover{
@@ -38,16 +46,24 @@
 }
 
 .nav-links-signup {
-    padding: 8px;
+    padding: 10px;
+    width: 120%;
+    padding-left: 30px;
+    padding-right: 30px;
     border: rgb(0,168,45) 1.5px solid;
     text-decoration: none;
     color: rgb(0,168,45);
-    font-size: 18px;
+    font-size: 15px;
+    font-weight: 900px;
+    margin-left: 380px;
+    
 }
 
 .nav-links-or{
-    padding-left: 15px;  
-    cursor: default;            
+    padding-left: 15px;
+
+    font-size:16px;
+    cursor: default;         
 }
 
 .nav-links-or:hover{
@@ -63,6 +79,7 @@
 }
 
 .nav-links-logIn:hover{
+
     color: rgb(68, 221, 109);
 }
 
@@ -73,11 +90,11 @@
 }
 
 .nav-links-signup:hover{
-    padding: 8px;
-    border: rgb(145, 214, 164) 2px solid;
+    /* padding: 8px; */
+    /* border: rgb(145, 214, 164) 2px solid; */
     text-decoration: none;
     color: rgb(66, 140, 86);
-    font-size: 18px;
+    /* font-size: 18px; */
 }
 
      /* dropdown */
