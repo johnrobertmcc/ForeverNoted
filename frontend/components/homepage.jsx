@@ -50,7 +50,7 @@ class HomePage extends React.Component {
                         </div>
 
                         <div className='inside-second'>
-                            Capture ideas and inspiration in notes, voice, and pictures. sdsdsdfsdfsdf. Please fucking align for the love of god.
+                            Capture ideas and inspiration in notes, voice, and pictures.
                         </div>
 
                         <div className='inside-second'>
@@ -67,7 +67,7 @@ class HomePage extends React.Component {
                     <h1 className='slogan-third'> At work, at home, and everywhere in between</h1>
 
                     <div className='inside-third'>
-                        <p className='first-p'>inspired by Evernote and Tom Nook</p>
+                        <p className='first-p'>inspired by Evernote</p>
                         
 
                     </div>

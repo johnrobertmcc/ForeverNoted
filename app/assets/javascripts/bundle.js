@@ -296,7 +296,7 @@ var HomePage = /*#__PURE__*/function (_React$Component) {
         className: "inside-second"
       }, "Manage everything from big projects to personal moments."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "inside-second"
-      }, "Capture ideas and inspiration in notes, voice, and pictures. sdsdsdfsdfsdf. Please fucking align for the love of god."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Capture ideas and inspiration in notes, voice, and pictures."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "inside-second"
       }, "Never lose track of your tasks and deadlines."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "third-level"
@@ -313,7 +313,7 @@ var HomePage = /*#__PURE__*/function (_React$Component) {
         className: "inside-third"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "first-p"
-      }, "inspired by Evernote and Tom Nook"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+      }, "inspired by Evernote"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         className: "footer-line"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
         className: "footer-home"
