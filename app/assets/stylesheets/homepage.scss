@@ -12,7 +12,8 @@
     padding-right: 300px;
     padding-left: 300px;
     background-color: ghostwhite;
-    height: 500px
+    height: 500px;
+    min-width: 400px;
 }
 .third-level{
     padding-right: 300px;
@@ -48,6 +49,7 @@
     width: calc(50% - 10px);
     height: calc(120% - 10px) ;
     margin: 5px;
+    min-width: 300px;
 }
 
 
