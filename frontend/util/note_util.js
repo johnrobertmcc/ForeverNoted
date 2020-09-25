@@ -4,7 +4,6 @@
 // updateNote
 // destroyNote
 
-import { $CombinedState } from "redux"
 
 export const fetchNotes = () => {
     return $.ajax(
@@ -44,7 +43,7 @@ export const updateNote = (note) => {
     )
 };
 
-export const destroyNote = (noteId) => {
+export const deleteNote = (noteId) => {
     return $.ajax(
         {
             url: `/api/notes/${noteId}`,
