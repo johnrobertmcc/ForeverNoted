@@ -21,7 +21,7 @@ export const MenuItems =[
         // },
 
         {
-            title: 'Sign Up',
+            title: '    Sign Up    ',
                 url: '#/signup',
                     cName: 'nav-links-signup',
                         id: 5

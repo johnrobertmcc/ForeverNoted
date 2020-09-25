@@ -65,7 +65,7 @@ class SignUpForm extends React.Component {
                 <div className="background-image">
                     <div className='signupform'>
                     <h1 className='logo-form'> <i className="fas fa-leaf"></i></h1>
-                        <h1>ForeverNoted</h1>
+                    <h1 className='form-app'>ForeverNoted</h1>
                         <p className='slogan'>Remember everything important.</p>
                         <br></br>
                         <form onSubmit={this.handleSubmit}>
@@ -78,7 +78,7 @@ class SignUpForm extends React.Component {
                         > <i className="fa fa-user-circle-o" aria-hidden="true" style={{ color: "green" }}></i>    Continue as Guest </button>
 
 
-                            <p className='head'>─────────────── or ───────────────</p>
+                            <p className='head'>──────────── or ────────────</p>
 
                                 {this.renderErrors()}
                                 <input
@@ -108,10 +108,12 @@ class SignUpForm extends React.Component {
                         </form>
 
                         <p className='terms'>
+                            <br></br>
                             Come In
                         </p>
                     {/* <p className='terms'> <Link to='#'><p className='green-word'>Terms of Service</p></Link> <p>and</p> <Link to='#'><p className='green-word'>Privacy Policy</p></Link> </p> */}
                     {/* <p className='terms'> <a  href='#'>Terms of Service</a>and<a href='#'>Privacy Policy</a> </p> */}
+                    <br></br>
                         <p className='redirect'>Already have an account?</p>
                     <Link to='/login'><p className='redirect-button'>Sign in</p></Link>
                     </div>
