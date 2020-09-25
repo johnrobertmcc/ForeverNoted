@@ -628,24 +628,10 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(NavBar, [{
-    key: "scrollHandle",
-    value: function scrollHandle() {
-      window.onscroll = function () {
-        var currentScrollPos = window.pageYOffset;
-
-        if (currentScrollPos > 383) {
-          document.getElementsByClassName("navbar-links").style.display = "none"; // ReactDOM.findDOMNode("navbar").style.display = "none";
-        } else {
-          document.getElementsByClassName("navbar").style.display = "initial";
-        }
-      };
-    }
-  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "navbar",
-        onScroll: this.scrollHandle()
+        className: "navbar"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "logo-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
