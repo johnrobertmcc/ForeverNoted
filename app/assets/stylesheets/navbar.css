@@ -11,7 +11,14 @@
     justify-content: space-between;
     align-items: center;
     min-width: 800px;
+    webkitTransition: 'all .5s ease-in-out'
+  mozTransition: 'all .5s ease-in-out'
+  oTransition: 'all .5s ease-in-out'
+  transition: all .5s ease-in-out
+    
 }
+
+
 
 .listed-items {
     flex-direction: row;
@@ -62,7 +69,7 @@
 }
 
 .nav-links-logIn:hover{
-    color: rgb(0,168,45);
+    color: rgb(68, 221, 109);
 }
 
 .nav-links-download-dropdown {

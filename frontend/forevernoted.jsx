@@ -22,11 +22,24 @@ document.addEventListener("DOMContentLoaded", () => {
         store = configureStore();
     }
 
+    // window.addEventListener('scroll', () => {
+    //     // console.log('scrolled');
+    //     const scrolled = window.scrollY;
+    //     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+
+    //     console.log(scrollable);
+
+    //     if (Math.ceil(scrolled) === scrollable) {
+    //         alert('bottom')
+    //     }
+    // });
+
+  
     window.store = store;
     window.logIn = logIn;
     window.logOut = logOut;
     window.signUp = signUp;
-    window.store = store;
+    // window.store = store;
     window.getState = store.getState;
     window.dispatch = store.dispatch;
 

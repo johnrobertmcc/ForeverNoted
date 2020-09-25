@@ -7,19 +7,17 @@ import DropDown from './navbar/dropdown';
 
 class HomePage extends React.Component {
 
+
     render() {
-        const {logOut} = this.props;
-       
+    
+        const { logOut } = this.props;
         return(
             <div>
                
 
                 <div className='first-level'>
-                <header>
-                    <button
-                    onClick={logOut}
-                    >TemporaryLogOut</button>
                     <NavBar/>
+                <header>
                     <DropDown />
                 </header>
                             <br></br>
@@ -84,6 +82,9 @@ class HomePage extends React.Component {
                     {/* <a>J.R. McCann(in progress)</a> */}
                     
                 </footer>
+                <button
+                onClick={logOut}
+                >TemporaryLogOut</button>
             </div>
         )
     }

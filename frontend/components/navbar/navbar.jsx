@@ -3,11 +3,25 @@ import {MenuItems} from './nav_items';
 
 class NavBar extends React.Component {
 
+    scrollHandle(){
+      window.onscroll = function () {
+        let currentScrollPos = window.pageYOffset;
+
+        if (currentScrollPos > 383) {
+            document.getElementsByClassName("navbar-links").style.display = "none";
+            // ReactDOM.findDOMNode("navbar").style.display = "none";
+        } else {
+            document.getElementsByClassName("navbar").style.display = "initial";
+        }
+    }
+}
+
 
     render() {
 
+
         return(
-                <div className="navbar">
+            <nav className="navbar"  onScroll={this.scrollHandle()}>
                 <h1 className='logo-nav'>
                     <i className="fas fa-leaf" style={{ color: "mediumseagreen" }}></i>    ForeverNoted 
                 </h1>
@@ -35,9 +49,11 @@ class NavBar extends React.Component {
                             }
                         </ul>
                     </div>
-                </div>
+                </nav>
 
         )
+
+     
 
     }
     

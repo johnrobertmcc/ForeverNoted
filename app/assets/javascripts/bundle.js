@@ -265,9 +265,7 @@ var HomePage = /*#__PURE__*/function (_React$Component) {
       var logOut = this.props.logOut;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "first-level"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: logOut
-      }, "TemporaryLogOut"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_navbar__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_dropdown__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_navbar__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_dropdown__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "home-slogan"
       }, "Simplify your life"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "image-words"
@@ -325,7 +323,9 @@ var HomePage = /*#__PURE__*/function (_React$Component) {
         href: "https://github.com/johnrobertmcc?tab=repositories"
       }, "GitHub"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         href: "https://www.linkedin.com/in/jrmcc/"
-      }, "LinkedIn")));
+      }, "LinkedIn")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: logOut
+      }, "TemporaryLogOut"));
     }
   }]);
 
@@ -628,10 +628,24 @@ var NavBar = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(NavBar, [{
+    key: "scrollHandle",
+    value: function scrollHandle() {
+      window.onscroll = function () {
+        var currentScrollPos = window.pageYOffset;
+
+        if (currentScrollPos > 383) {
+          document.getElementsByClassName("navbar-links").style.display = "none"; // ReactDOM.findDOMNode("navbar").style.display = "none";
+        } else {
+          document.getElementsByClassName("navbar").style.display = "initial";
+        }
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "navbar"
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: "navbar",
+        onScroll: this.scrollHandle()
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "logo-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -1161,13 +1175,22 @@ document.addEventListener("DOMContentLoaded", function () {
     delete window.currentUser;
   } else {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
-  }
+  } // window.addEventListener('scroll', () => {
+  //     // console.log('scrolled');
+  //     const scrolled = window.scrollY;
+  //     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  //     console.log(scrollable);
+  //     if (Math.ceil(scrolled) === scrollable) {
+  //         alert('bottom')
+  //     }
+  // });
+
 
   window.store = store;
   window.logIn = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["logIn"];
   window.logOut = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["logOut"];
-  window.signUp = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["signUp"];
-  window.store = store;
+  window.signUp = _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__["signUp"]; // window.store = store;
+
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
