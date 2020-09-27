@@ -2,7 +2,7 @@ import React from 'react';
 
 class NoteIndex extends React.Component {
     constructor(props) {
-        // debugger
+   
         super(props);  
     }
 
@@ -11,14 +11,26 @@ class NoteIndex extends React.Component {
         this.props.fetchNotes();
     }
 
+    notebookIndex() {
+        let {notes} = this.props;
+
+        if(notes.length > 0){
+            return notes.map(note => (
+               <li>{note.title}</li>
+            ))
+        }else{
+            return "no notes yet!"
+        }
+
+    }
+
     render() {
-        // debugger
-        // if (this.props.notes.length == 0) {
-        //     return <span>No notes yet!</span>;
-        // }
+        
 
         return(
-            <div>nothing yet</div>
+            <div>
+                <ul>{this.notebookIndex()}</ul>
+            </div>
         )
     }
 }

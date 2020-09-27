@@ -6,8 +6,6 @@ class SignUpForm extends React.Component {
 
     constructor(props){
         super(props);
-
-        debugger
         this.state = { 
             password: '',
             email: ''
@@ -58,8 +56,6 @@ class SignUpForm extends React.Component {
 
     render() {
 
-
-        // debugger
         return (
 
                 <div className="background-image">

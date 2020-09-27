@@ -15,18 +15,16 @@ class Api::NotesController < ApplicationController
         else
             render json: [@note.errors.full_messages], status: 422
         end
-
+        
     end
 
    
     def create
-
         @note = Note.new(note_params)
 
         if @note.save
-            login!(@note)
             render 'api/notes/show'
-        else
+        else  
             render json: ["notes must have a title"], status: 422    
         end
         

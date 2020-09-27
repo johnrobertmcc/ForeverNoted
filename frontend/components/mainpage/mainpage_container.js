@@ -4,7 +4,7 @@ import { fetchNotes } from '../../actions/note_actions';
 
 
 const mSTP = state => {
-    debugger
+ 
     return {users : state.entities.users}
 }
 

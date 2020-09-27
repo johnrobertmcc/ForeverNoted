@@ -5,17 +5,18 @@ import SideBar from './sidebar/sidebar_form';
 import Editor from './editor';
 import NoteIndex from './note/notes_index_container';
 import NotebookIndex from './notebook/notebook_index_container';
+// import NotebookIndex from './notebook/notebook_index';
 
 class MainPage extends React.Component{
 
     constructor(props){
-        debugger
-    
         super(props)
     }
 
 
     render(){
+
+        
 
         return(
 
@@ -31,7 +32,8 @@ class MainPage extends React.Component{
                         </div>
 
                 </div>
-                
+
+
                 <div className="inner-sidebar">
                 <h1>All Notes</h1>
                 <NoteIndex />
@@ -53,6 +55,8 @@ class MainPage extends React.Component{
                     notebook
                     based on a switch inside of the editor function
                      */}
+
+                     
 
                      <Editor />
                     <h1></h1>

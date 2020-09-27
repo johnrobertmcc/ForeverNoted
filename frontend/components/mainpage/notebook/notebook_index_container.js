@@ -3,7 +3,7 @@ import NotebookIndex from './notebook_index';
 import { fetchNotebooks } from '../../../actions/notebook_actions';
 
 const mapStateToProps = (state) => {
-    debugger
+
     return {
         notebooks: Object.values(state.entities.notebooks),
         users: state.entities.users
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => {
-    debugger
+
     return { fetchNotebooks: () => dispatch(fetchNotebooks()) }
 };
 
