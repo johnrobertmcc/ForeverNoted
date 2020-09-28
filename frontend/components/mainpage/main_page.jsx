@@ -7,12 +7,14 @@ import CreateNote from './note/create_note_container';
 class MainPage extends React.Component{
 
     constructor(props){
-        super(props)
+        super(props);
     }
 
 
 
     render(){
+        // debugger
+        const {logOut} = this.props
 
         const editorSwitch = (string) => {
 
@@ -26,9 +28,10 @@ class MainPage extends React.Component{
         
             default:
                 return <CreateNote />;
+            }
+
         }
 
-    }
 
         return(
 
@@ -38,8 +41,12 @@ class MainPage extends React.Component{
         
                     <p className='user-info'>
                         <i className="fa fa-pagelines" aria-hidden="true"></i>
-                        {/* {this.state.entities.users.email} */}
+                        {/* <span className='username'> {this.props.users[this.props.session.id]}</span> */}
+                         
                     </p>
+                    <button
+                        onClick={logOut}
+                    >LogOut</button>
 
                                 <ul>
                                     <li>

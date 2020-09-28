@@ -349,11 +349,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _components_homepage_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/homepage_container */ "./frontend/components/homepage_container.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var _components_mainpage_main_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/mainpage/main_page */ "./frontend/components/mainpage/main_page.jsx");
+/* harmony import */ var _components_mainpage_mainpage_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/mainpage/mainpage_container */ "./frontend/components/mainpage/mainpage_container.js");
 /* harmony import */ var _mainpage_note_notes_index_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./mainpage/note/notes_index_container */ "./frontend/components/mainpage/note/notes_index_container.js");
 /* harmony import */ var _mainpage_notebook_notebook_index_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./mainpage/notebook/notebook_index_container */ "./frontend/components/mainpage/notebook/notebook_index_container.js");
-/* harmony import */ var _components_mainpage_note_create_note_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/mainpage/note/create_note_container */ "./frontend/components/mainpage/note/create_note_container.js");
-
 
 
 
@@ -377,10 +375,10 @@ var App = function App() {
     exact: true,
     path: "/",
     component: _components_homepage_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/main",
-    component: _components_mainpage_main_page__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _components_mainpage_mainpage_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
     exact: true,
     path: "/notes",
@@ -612,6 +610,9 @@ var MainPage = /*#__PURE__*/function (_React$Component) {
   _createClass(MainPage, [{
     key: "render",
     value: function render() {
+      // debugger
+      var logOut = this.props.logOut;
+
       var editorSwitch = function editorSwitch(string) {
         switch (string) {
           case "Note":
@@ -634,7 +635,9 @@ var MainPage = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-pagelines",
         "aria-hidden": "true"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: logOut
+      }, "LogOut"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         // onClick={editorSwitch('note')}
         className: "newnote-btn"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -666,6 +669,43 @@ var MainPage = /*#__PURE__*/function (_React$Component) {
 
 ;
 /* harmony default export */ __webpack_exports__["default"] = (MainPage);
+
+/***/ }),
+
+/***/ "./frontend/components/mainpage/mainpage_container.js":
+/*!************************************************************!*\
+  !*** ./frontend/components/mainpage/mainpage_container.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/lib/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _main_page__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./main_page */ "./frontend/components/mainpage/main_page.jsx");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
+
+
+
+var mSTP = function mSTP(state) {
+  // debugger
+  return {
+    users: state.entities.users,
+    session: state.session
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    logOut: function logOut() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["logOut"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_main_page__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
