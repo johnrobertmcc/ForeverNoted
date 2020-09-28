@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import 'react-quill/dist/quill.bubble.css';
+
 
 
 class CreateNote extends React.Component {
@@ -32,8 +31,6 @@ class CreateNote extends React.Component {
             'align',
             'color', 'background'
         ];
-
-        // this.newNote = this.newNote.bind(this);
         
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -59,13 +56,16 @@ class CreateNote extends React.Component {
     render() {
         return (
             <div>
-                <ReactQuill 
+                <h1>Create a New Note</h1>
+                {/* <ReactQuill 
                 // theme="snow" 
-                // modules={this.modules}
+                modules={this.modules}
                 formats={this.formats} 
                 onChange={this.handleSubmit}
                 value={this.state.notes || ''}
-                     />
+                
+                /> */}
+
             </div>
         );
     }

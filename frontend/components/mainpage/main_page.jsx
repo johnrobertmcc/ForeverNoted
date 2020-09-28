@@ -1,11 +1,9 @@
 // this will hold the side bar Component, as well as the notes and notebook forms
 
 import React from 'react';
-import SideBar from './sidebar/sidebar_form';
-import Editor from './editor';
 import NoteIndex from './note/notes_index_container';
 import NotebookIndex from './notebook/notebook_index_container';
-// import NotebookIndex from './notebook/notebook_index';
+import CreateNote from './note/create_note_container';
 
 class MainPage extends React.Component{
 
@@ -14,59 +12,67 @@ class MainPage extends React.Component{
     }
 
 
+
     render(){
 
-        
+        const editorSwitch = (string) => {
 
+            switch(string) {
+
+            case "Note":
+                return <CreateNote /> 
+
+            case "Notebook":
+                return <NotebookIndex />
+        
+            default:
+                return<NoteIndex />;
+        }
+
+    }
+
+    
         return(
 
             <div>
-            <div className='main-top-level'>
-                    
-                <div className="sidebar">
-                    {/* side bar component */}
-                        <h1>username </h1>
+                <div className='main-top-level'>
+                        
+                    <div className="sidebar">
+        
+                            <h1>username </h1>
 
-                        <div>
-                            <SideBar />
-                        </div>
+                                <ul>
+                                    <li>
+                                        <button
+                                            onClick={editorSwitch('note')}
+                                        >
+                                        New Note</button>
+                                    </li>
 
+                                    <li>
+                                        <button
+                                    onClick={editorSwitch('note')}
+                                        >All Notes</button>
+                                    </li>
+
+                                    <li>
+                                        <button
+                                    onClick={editorSwitch('notebook')}
+                                        >All Notebooks</button>
+
+                                    </li>
+        
+                                </ul>
+
+                    </div>
+
+                    <div className='editor'>
+
+                       {editorSwitch()}
+
+                    </div>
+                
                 </div>
-
-
-                <div className="inner-sidebar">
-                <h1>All Notes</h1>
-                <NoteIndex />
-
-                {/* has a switch that shows either note index or notebook index */}
-                {/* shows notes or notesbooks, depending on the switch insdie of the inner sidebar modal */}
-               
-                <h1>All Notebooks</h1>
-                <NotebookIndex />
-
-                </div>
-
-                {/* <div className="notes-show"> */}
-                    {/* rich text editing modal */}
-
-                    {/* modal is going to show either:
-                    edit note
-                    new note
-                    notebook
-                    based on a switch inside of the editor function
-                     */}
-
-                     
-
-                     <Editor />
-                    <h1></h1>
-                    <br></br>
-                    <hr></hr>
-    
-
-                {/* </div> */}
-            
-            </div>
             </div>
         )
 

@@ -7,6 +7,8 @@ import { AuthRoute } from '../util/route_util';
 import MainPageContainer from '../components/mainpage/main_page';
 import NoteIndex from './mainpage/note/notes_index_container';
 import NoteBookIndex from './mainpage/notebook/notebook_index_container';
+import CreateNote from '../components/mainpage/note/create_note_container';
+
 
 const App = () =>{
     
