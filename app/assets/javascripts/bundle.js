@@ -569,9 +569,8 @@ var mDTP = function mDTP(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _note_notes_index_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./note/notes_index_container */ "./frontend/components/mainpage/note/notes_index_container.js");
-/* harmony import */ var _notebook_notebook_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./notebook/notebook_index_container */ "./frontend/components/mainpage/notebook/notebook_index_container.js");
-/* harmony import */ var _note_create_note_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./note/create_note_container */ "./frontend/components/mainpage/note/create_note_container.js");
+/* harmony import */ var _notebook_notebook_index_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notebook/notebook_index_container */ "./frontend/components/mainpage/notebook/notebook_index_container.js");
+/* harmony import */ var _note_create_note_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./note/create_note_container */ "./frontend/components/mainpage/note/create_note_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -599,7 +598,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
 var MainPage = /*#__PURE__*/function (_React$Component) {
   _inherits(MainPage, _React$Component);
 
@@ -617,29 +615,49 @@ var MainPage = /*#__PURE__*/function (_React$Component) {
       var editorSwitch = function editorSwitch(string) {
         switch (string) {
           case "Note":
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_create_note_container__WEBPACK_IMPORTED_MODULE_3__["default"], null);
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_create_note_container__WEBPACK_IMPORTED_MODULE_2__["default"], null);
 
           case "Notebook":
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notebook_notebook_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null);
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notebook_notebook_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], null);
 
           default:
-            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_notes_index_container__WEBPACK_IMPORTED_MODULE_1__["default"], null);
+            return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_note_create_note_container__WEBPACK_IMPORTED_MODULE_2__["default"], null);
         }
       };
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "main-top-level"
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "homepage"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sidebar"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "username "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: editorSwitch('note')
-      }, "New Note")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: editorSwitch('note')
-      }, "All Notes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: editorSwitch('notebook')
-      }, "All Notebooks")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "user-info"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-pagelines",
+        "aria-hidden": "true"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        // onClick={editorSwitch('note')}
+        className: "newnote-btn"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "plus"
+      }, "+"), " New Note")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "links-home"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn-home" // onClick={editorSwitch('note')}
+
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-sticky-note-o",
+        "aria-hidden": "true"
+      }), "All Notes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "links-home"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn-home" // onClick={editorSwitch('notebook')}
+
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fa fa-book",
+        "aria-hidden": "true"
+      }), "All Notebooks")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "editor"
-      }, editorSwitch())));
+      }, editorSwitch()));
     }
   }]);
 
@@ -664,6 +682,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_quill__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-quill */ "./node_modules/react-quill/lib/index.js");
 /* harmony import */ var react_quill__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_quill__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _notes_index_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./notes_index_container */ "./frontend/components/mainpage/note/notes_index_container.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -691,6 +710,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var CreateNote = /*#__PURE__*/function (_React$Component) {
   _inherits(CreateNote, _React$Component);
 
@@ -701,30 +721,30 @@ var CreateNote = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, CreateNote);
 
-    _this = _super.call(this, props); // debugger
-
+    _this = _super.call(this, props);
     _this.state = {
       title: '',
       body: ''
-    };
-    _this.modules = {
-      toolbar: [[{
-        'font': []
-      }], [{
-        'size': ['small', false, 'large', 'huge']
-      }], ['bold', 'italic', 'underline'], [{
-        'list': 'ordered'
-      }, {
-        'list': 'bullet'
-      }], [{
-        'align': []
-      }], [{
-        'color': []
-      }, {
-        'background': []
-      }], ['clean']]
-    };
-    _this.formats = ['font', 'size', 'bold', 'italic', 'underline', 'list', 'bullet', 'align', 'color', 'background'];
+    }; // this.modules = {
+    //     toolbar: [
+    //         [{ 'font': [] }],
+    //         [{ 'size': ['small', false, 'large', 'huge'] }],
+    //         ['bold', 'italic', 'underline'],
+    //         [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+    //         [{ 'align': [] }],
+    //         [{ 'color': [] }, { 'background': [] }],
+    //         ['clean']
+    //     ]
+    // };
+    // this.formats = [
+    //     'font',
+    //     'size',
+    //     'bold', 'italic', 'underline',
+    //     'list', 'bullet',
+    //     'align',
+    //     'color', 'background'
+    // ];
+
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -751,7 +771,28 @@ var CreateNote = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Create a New Note"));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "create-note-main"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "inner-sidebar"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_notes_index_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "note-editor"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "note-form",
+        onSubmit: this.handleSubmit
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        id: "note-title",
+        onChange: this.update('title'),
+        placeholder: "title",
+        value: this.state.title
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        id: "note-body",
+        placeholder: "body",
+        onChange: this.update("body"),
+        value: this.state.body
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "please work"))));
     } //     render() {
     //         <ReactQuill
     //         placeholder="Create a new Note"
@@ -764,24 +805,6 @@ var CreateNote = /*#__PURE__*/function (_React$Component) {
     //                 <ReactQuill
     //                     placeholder="Create a new Note"
     //                 />
-    // {/* 
-    //                 <form className="note-form" onSubmit={this.handleSubmit}>
-    //                     <input 
-    //                     type="text"
-    //                     id="note-title"
-    //                     onChange={this.update('title')}
-    //                     placeholder='title'
-    //                     value={this.state.title}
-    //                     />
-    //                     <input
-    //                         type="text"
-    //                         id="note-body"
-    //                         placeholder='body'
-    //                         onChange={this.update("body")}
-    //                         value={this.state.body}
-    //                     />
-    //                     <button>please work</button>
-    //                 </form> */}
     //             </div>
     //         );
     //     }
@@ -857,7 +880,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-
+ // import Datetime from 'react-datetime';
 
 var NoteIndex = /*#__PURE__*/function (_React$Component) {
   _inherits(NoteIndex, _React$Component);
@@ -876,13 +899,37 @@ var NoteIndex = /*#__PURE__*/function (_React$Component) {
       this.props.fetchNotes();
     }
   }, {
-    key: "notebookIndex",
-    value: function notebookIndex() {
+    key: "currentDate",
+    value: function currentDate(date) {
+      var temp = new Date().getMinutes();
+
+      if (temp - date === 1) {
+        return temp - date + " minute ago";
+      } else {
+        return temp - date + " minutes ago";
+      }
+    }
+  }, {
+    key: "noteIndex",
+    value: function noteIndex() {
+      var _this = this;
+
       var notes = this.props.notes;
+      var date = new Date().getMinutes();
 
       if (notes.length > 0) {
-        return notes.map(function (note) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, note.title);
+        return notes.map(function (note, i) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "ind-note"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: note.id
+          }, note.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            className: "note-body",
+            key: i + 11
+          }, note.body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            className: "date",
+            key: i
+          }, _this.currentDate(date)));
         });
       } else {
         return "no notes yet!";
@@ -891,7 +938,25 @@ var NoteIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.notebookIndex()));
+      var notes = this.props.notes;
+
+      var noteCount = function noteCount() {
+        if (notes.length === 1) {
+          return notes.length + " note";
+        } else {
+          return notes.length + " notes";
+        }
+      };
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "note-index-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "All Notes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "note-count"
+      }, noteCount()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
+        className: "note-index-line"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "note-index"
+      }, this.noteIndex()));
     }
   }]);
 

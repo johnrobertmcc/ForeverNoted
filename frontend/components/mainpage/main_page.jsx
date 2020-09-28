@@ -1,7 +1,6 @@
 // this will hold the side bar Component, as well as the notes and notebook forms
 
 import React from 'react';
-import NoteIndex from './note/notes_index_container';
 import NotebookIndex from './notebook/notebook_index_container';
 import CreateNote from './note/create_note_container';
 
@@ -20,45 +19,49 @@ class MainPage extends React.Component{
             switch(string) {
 
             case "Note":
-                return <CreateNote /> 
+                return <CreateNote />;
 
             case "Notebook":
-                return <NotebookIndex />
+                return <NotebookIndex />;
         
             default:
-                return<NoteIndex />;
+                return <CreateNote />;
         }
 
     }
 
-    
         return(
 
-            <div>
-                <div className='main-top-level'>
+            <div className='homepage'>
                         
                     <div className="sidebar">
         
-                            <h1>username </h1>
+                    <p className='user-info'>
+                        <i className="fa fa-pagelines" aria-hidden="true"></i>
+                        {/* {this.state.entities.users.email} */}
+                    </p>
 
                                 <ul>
                                     <li>
                                         <button
-                                            onClick={editorSwitch('note')}
+                                            // onClick={editorSwitch('note')}
+                                            className="newnote-btn"
                                         >
-                                        New Note</button>
+                                        <span className='plus'>+</span> New Note</button>
                                     </li>
 
-                                    <li>
+                                    <li className='links-home'>
                                         <button
-                                    onClick={editorSwitch('note')}
-                                        >All Notes</button>
+                                            className='btn-home'
+                                            // onClick={editorSwitch('note')}
+                            ><i className="fa fa-sticky-note-o" aria-hidden="true"></i>All Notes</button>
                                     </li>
 
-                                    <li>
+                                    <li className='links-home'>
                                         <button
-                                    onClick={editorSwitch('notebook')}
-                                        >All Notebooks</button>
+                                            className='btn-home'
+                                            // onClick={editorSwitch('notebook')}
+                            ><i className="fa fa-book" aria-hidden="true"></i>All Notebooks</button>
 
                                     </li>
         
@@ -72,7 +75,7 @@ class MainPage extends React.Component{
 
                     </div>
                 
-                </div>
+ 
             </div>
         )
 
