@@ -2,6 +2,13 @@ import { connect } from 'react-redux';
 import CreateNote from './create_note';
 import { createNote } from '../../../actions/note_actions';
 
+
+const mSTP = (state, ownProps) => {
+    // debugger
+    return {currentUser : state.entities.users[state.session.id]}
+};
+
+
 const mapDispatchToProps = dispatch => {
 
     return {
@@ -9,4 +16,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(null, mapDispatchToProps)(CreateNote); 
+export default connect(mSTP, mapDispatchToProps)(CreateNote); 

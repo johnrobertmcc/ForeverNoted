@@ -6,7 +6,7 @@ const mapStateToProps = (state) => {
 
     return {
         notebooks: Object.values(state.entities.notebooks),
-        users: state.entities.users
+        currentUser: state.entities.users[state.session.id]
     }
 };
 

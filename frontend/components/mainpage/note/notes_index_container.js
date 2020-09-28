@@ -3,10 +3,11 @@ import NoteIndex from './note_index';
 import { fetchNotes } from '../../../actions/note_actions';
 
 const mapStateToProps = (state) => {
+
     
     return {
         notes: Object.values(state.entities.notes), 
-        users: state.entities.users
+        currentUser: state.entities.users[state.session.id]
     }
 };
 

@@ -6,7 +6,7 @@ import {logOut} from '../../actions/session_actions';
 const mSTP = state => {
     // debugger
  
-    return ({users : state.entities.users, session: state.session})
+    return {currentUser: state.entities.users[state.session.id]} 
 }
 
 const mDTP = dispatch => {

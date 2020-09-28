@@ -1,4 +1,5 @@
 import React from 'react';
+import CreateNotebook from './create_notebook_container';
 
 class NotebookIndex extends React.Component {
     constructor(props) {
@@ -8,7 +9,7 @@ class NotebookIndex extends React.Component {
 
     componentDidMount() {
   
-        this.props.fetchNotebooks();
+        this.props.fetchNotebooks(this.props.currentUser.id);
     }
 
 
@@ -17,7 +18,7 @@ class NotebookIndex extends React.Component {
 
         if (notebooks.length > 0) {
             return notebooks.map(notebook => (
-                <li>{notebook.title}</li>
+                <li className='notebook'>{notebook.title}</li>
             ))
         } else {
             return "no notebooks yet!"
@@ -27,8 +28,22 @@ class NotebookIndex extends React.Component {
 
     render() {
         return (
-            <div>
-                <ul>{this.notebookIndex()}</ul>
+            <div className='notebook-full-index'>
+                <div className='notebook-index-header'>
+                    <h3 className='notebook-header'>Notebooks</h3>
+
+                    <p> My notebook list</p>
+                    <hr className='notebooks-index-line'></hr>
+                </div>
+
+                <div className='notebook-list-container'>
+                    <ul className='notebook-list'>{this.notebookIndex()}</ul>
+                </div>
+
+                <div className='create-note-index'>
+                    <CreateNotebook />
+
+                </div>
             </div>
         )
     }

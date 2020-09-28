@@ -5,7 +5,10 @@ class CreateNotebook extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = { title: ''}
+        this.state = { 
+            title: '',
+            user_id: this.props.currentUser.id,
+            }
 
 
         this.handleSubmit = this.handleSubmit.bind(this);

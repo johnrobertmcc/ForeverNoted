@@ -9,8 +9,14 @@ class CreateNote extends React.Component {
     constructor(props) {
         super(props)
 
+        // debugger
 
-        this.state = { title: '', body: ''}
+
+        this.state = { 
+                title: '', 
+                body: '', 
+                user_id: this.props.currentUser.id
+            }
 
         // this.modules = {
         //     toolbar: [

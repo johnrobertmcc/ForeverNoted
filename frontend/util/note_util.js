@@ -4,11 +4,12 @@
 // updateNote
 // destroyNote
 
-
-export const fetchNotes = () => {
+// user id 
+export const fetchNotes = (userId) => {
     return $.ajax(
         {
-            url: '/api/notes',
+            url: `/api/users/${userId}/notes`,
+            //  /api/users/:user_id/notes
             method: "GET"
         }
     )

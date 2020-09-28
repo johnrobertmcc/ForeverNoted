@@ -8,30 +8,35 @@ class MainPage extends React.Component{
 
     constructor(props){
         super(props);
+        // this.editorSwitch = this.editorSwitch.bind(this)
+    }
+
+
+    editorSwitch(string){
+
+        switch (string) {
+
+            case 'note':
+                return <CreateNote />;
+
+            case 'notebook':
+                return <CreateNote />;
+                
+            default:
+                return <NotebookIndex />;
+            
+            }
+
     }
 
 
 
     render(){
-        // debugger
-        const {logOut} = this.props
 
-        const editorSwitch = (string) => {
+        const {logOut} = this.props;
 
-            switch(string) {
-
-            case "Note":
-                return <CreateNote />;
-
-            case "Notebook":
-                return <NotebookIndex />;
-        
-            default:
-                return <CreateNote />;
-            }
-
-        }
-
+        const note = 'note';
+        const notebook = 'notebook';
 
         return(
 
@@ -41,7 +46,7 @@ class MainPage extends React.Component{
         
                     <p className='user-info'>
                         <i className="fa fa-pagelines" aria-hidden="true"></i>
-                        {/* <span className='username'> {this.props.users[this.props.session.id]}</span> */}
+                        <span className='username'> {this.props.currentUser.email}</span>
                          
                     </p>
                     <button
@@ -51,7 +56,7 @@ class MainPage extends React.Component{
                                 <ul>
                                     <li>
                                         <button
-                                            // onClick={editorSwitch('note')}
+                                            // onClick={this.editorSwitch(note)}
                                             className="newnote-btn"
                                         >
                                         <span className='plus'>+</span> New Note</button>
@@ -60,14 +65,14 @@ class MainPage extends React.Component{
                                     <li className='links-home'>
                                         <button
                                             className='btn-home'
-                                            // onClick={editorSwitch('note')}
+                                            // onClick={this.editorSwitch(note)}
                             ><i className="fa fa-sticky-note-o" aria-hidden="true"></i>All Notes</button>
                                     </li>
 
                                     <li className='links-home'>
                                         <button
                                             className='btn-home'
-                                            // onClick={editorSwitch('notebook')}
+                                            // onClick={this.editorSwitch(notebook)}
                             ><i className="fa fa-book" aria-hidden="true"></i>All Notebooks</button>
 
                                     </li>
@@ -78,7 +83,7 @@ class MainPage extends React.Component{
 
                     <div className='editor'>
 
-                       {editorSwitch()}
+                       {this.editorSwitch()}
 
                     </div>
                 
