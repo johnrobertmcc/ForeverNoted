@@ -23,11 +23,11 @@ class Api::NotebooksController < ApplicationController
 
         @notebook = Notebook.new(notebook_params)
 
+        
         if @notebook.save
-            login!(@notebook)
             render 'api/notebooks/show'
         else
-            render json: ["notes must have a title"], status: 422    
+            render json: ["notebooks must have a title status 4fucking22"], status: 422    
         end
         
     end

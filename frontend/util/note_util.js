@@ -28,7 +28,7 @@ export const createNote = (note) => {
         {
             url: `/api/notes`,
             method: "POST",
-            note
+            data: {note}
         }
     )
 };
@@ -38,7 +38,7 @@ export const updateNote = (note) => {
         {
             url: `/api/notes/${note.id}`,
             method: "PATCH",
-            note
+            data: {note}
         }
     )
 };

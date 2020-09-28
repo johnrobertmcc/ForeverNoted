@@ -27,7 +27,7 @@ export const createNotebook = (notebook) => {
         {
             url: `/api/notebooks`,
             method: "POST",
-            notebook
+            data: { notebook }
         }
     )
 };
@@ -37,7 +37,7 @@ export const updateNotebook = (notebook) => {
         {
             url: `/api/notebooks/${notebook.id}`,
             method: "PATCH",
-             notebook
+             data: {notebook}
         }
     )
 };
