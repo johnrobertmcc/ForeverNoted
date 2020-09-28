@@ -3,8 +3,10 @@ import CreateNotebook from './create_notebook_container';
 
 class NotebookIndex extends React.Component {
     constructor(props) {
-   
+
+        
         super(props);
+        debugger
     }
 
     componentDidMount() {

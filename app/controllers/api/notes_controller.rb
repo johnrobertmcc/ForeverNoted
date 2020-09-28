@@ -1,6 +1,7 @@
 class Api::NotesController < ApplicationController
 
     def index
+        # debugger
         @notes = current_user.notes
         render :index
     end
@@ -27,7 +28,7 @@ class Api::NotesController < ApplicationController
 
    
     def create
-        # debugger
+        debugger
         @note = Note.new(note_params)
 
         if @note.save

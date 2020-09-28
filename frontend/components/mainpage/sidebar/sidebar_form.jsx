@@ -6,21 +6,34 @@ import { Link } from 'react-router-dom';
 
 class SideBar extends React.Component{
 
-    switchEditor(str){
-
-
-    }
-
 
     render(){
 
+        const {logOut} = this.props;
+
 
         return(
-        <div>
-          
-        </div>    
-        )
-    }
+
+            <div className="sidebar">
+
+                <p className='user-info'>
+                    <i className="fa fa-pagelines" aria-hidden="true"></i>
+                    {/* <span className='username'> {this.props.currentUser.email}</span> */}
+
+                </p>
+                <button
+                    onClick={logOut}
+                >LogOut</button>
+
+                <ul>
+                    <Link to='/notes'>Notes</Link>
+                    <Link to='/notebooks'>Notebooks</Link>
+                
+
+                </ul>
+
+            </div>
+        )}
 }
 
 

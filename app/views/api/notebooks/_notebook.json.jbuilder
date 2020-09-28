@@ -1,1 +1,1 @@
-json.extract! notebook, :title, :id
+json.extract! notebook, :title, :id, :user_id

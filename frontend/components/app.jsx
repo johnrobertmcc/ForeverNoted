@@ -7,6 +7,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import MainPageContainer from '../components/mainpage/mainpage_container';
 import NoteIndex from './mainpage/note/notes_index_container';
 import NoteBookIndex from './mainpage/notebook/notebook_index_container';
+import SideBar from './mainpage/sidebar/sidebar_container';
 
 
 const App = () =>{
@@ -14,14 +15,15 @@ const App = () =>{
     return(
         <div> 
                 
-            <Switch>
+            {/* <Switch> */}
                 <AuthRoute exact path="/signup" component={SignUpFormContainer} />
                 <AuthRoute exact path="/login" component={LogInContainer} />
                 <Route exact path="/" component={HomePage} />
+                <SideBar />
                 <ProtectedRoute exact path='/main' component={MainPageContainer}/>
-                <Route exact path='/notes' component={NoteIndex}/>
-                <Route exact path='/notebooks' component={NoteBookIndex}/>
-            </Switch>
+                {/* <ProtectedRoute exact path='/notes' component={NoteIndex} />
+                <ProtectedRoute exact path='/notebooks' component={NoteBookIndex} /> */}
+            {/* </Switch> */}
 
         </div>
     )

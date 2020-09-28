@@ -4,6 +4,8 @@ import { fetchNotebooks } from '../../../actions/notebook_actions';
 
 const mapStateToProps = (state) => {
 
+    debugger
+
     return {
         notebooks: Object.values(state.entities.notebooks),
         currentUser: state.entities.users[state.session.id]
@@ -12,7 +14,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
 
-    return { fetchNotebooks: () => dispatch(fetchNotebooks()) }
+    return { fetchNotebooks: (id) => dispatch(fetchNotebooks(id)) }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NotebookIndex); 

@@ -27,6 +27,8 @@ class Api::NotebooksController < ApplicationController
    
     def create
 
+        debugger
+
         @notebook = Notebook.new(notebook_params)
 
         
@@ -55,7 +57,7 @@ class Api::NotebooksController < ApplicationController
     private
 
     def notebook_params
-        params.require(:notebook).permit(:title)
+        params.require(:notebook).permit(:title, :user_id)
     end
 
 
