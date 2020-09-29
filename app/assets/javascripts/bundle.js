@@ -1152,7 +1152,7 @@ var NotebookIndex = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notebook-full-index"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "note-index-container"
+        className: "notebook-index-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "notebook-header"
       }, "Notebooks"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " My notebook list"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
@@ -2256,7 +2256,7 @@ var NotesReducer = function NotesReducer() {
       return Object.assign({}, state, _defineProperty({}, action.note.id, action.note));
 
     case _actions_note_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_NOTES"]:
-      return Object.assign({}, state, action.notes);
+      return Object.assign({}, action.notes);
 
     case _actions_note_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_NOTE"]:
       var temp = Object.assign({}, state);
@@ -2499,6 +2499,7 @@ __webpack_require__.r(__webpack_exports__);
 var fetchNotes = function fetchNotes(userId) {
   return $.ajax({
     url: "/api/users/".concat(userId, "/notes"),
+    // url: `/api/notebooks/${notebookId}/notes`,
     //  /api/users/:user_id/notes
     method: "GET"
   });

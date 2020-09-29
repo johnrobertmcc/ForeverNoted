@@ -73,6 +73,7 @@ class NoteIndex extends React.Component {
                 <hr className="note-index-line"></hr>
 
                 <ul className="note-index">{this.noteIndex()}</ul>
+                {/* //clicking link will open edit in rich text editor */}
             </div>
         )
     }

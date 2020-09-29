@@ -9,6 +9,7 @@ export const fetchNotes = (userId) => {
     return $.ajax(
         {
             url: `/api/users/${userId}/notes`,
+            // url: `/api/notebooks/${notebookId}/notes`,
             //  /api/users/:user_id/notes
             method: "GET"
         }

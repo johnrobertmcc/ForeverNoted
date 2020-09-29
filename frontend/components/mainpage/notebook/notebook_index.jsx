@@ -35,7 +35,7 @@ class NotebookIndex extends React.Component {
 
         return (
             <div className='notebook-full-index'>
-                <div className='note-index-container'>
+                <div className='notebook-index-container'>
                         <h3 className='notebook-header'>Notebooks</h3>
                         <p> My notebook list</p>
                         <hr className='notebooks-index-line'></hr>
