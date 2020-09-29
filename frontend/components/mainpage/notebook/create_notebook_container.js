@@ -2,6 +2,12 @@ import { connect } from 'react-redux';
 import CreateNotebook from './create_notebook';
 import { createNotebook } from '../../../actions/notebook_actions';
 
+
+const mSTP = (state, ownProps) => {
+
+    return { currentUser: state.entities.users[state.session.id] }
+};
+
 const mapDispatchToProps = dispatch => {
 
     return {
@@ -9,4 +15,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(null, mapDispatchToProps)(CreateNotebook); 
+export default connect(mSTP, mapDispatchToProps)(CreateNotebook); 

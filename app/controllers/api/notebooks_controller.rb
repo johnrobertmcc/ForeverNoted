@@ -1,5 +1,12 @@
 class Api::NotebooksController < ApplicationController
 
+    
+    def index
+       
+        @notebooks = current_user.notebooks
+        render :index
+    end
+
     def show
         @notebook = Notebook.find(params[:id])
         render 'api/notebooks/notebook'
@@ -20,6 +27,7 @@ class Api::NotebooksController < ApplicationController
 
    
     def create
+
 
         @notebook = Notebook.new(notebook_params)
 
@@ -49,7 +57,7 @@ class Api::NotebooksController < ApplicationController
     private
 
     def notebook_params
-        params.require(:notebook).permit(:title)
+        params.require(:notebook).permit(:title, :user_id)
     end
 
 

@@ -1,1 +1,0 @@
-json.extract! notebook, :title, :id

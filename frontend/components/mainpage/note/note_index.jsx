@@ -8,7 +8,7 @@ class NoteIndex extends React.Component {
 
     componentDidMount() {
 
-        this.props.fetchNotes();
+        this.props.fetchNotes(this.props.currentUser.id);
     }
 
     currentDate(date){
@@ -17,9 +17,9 @@ class NoteIndex extends React.Component {
             return ((temp-date) + " minute ago")
         } else {
             return ((temp-date) + " minutes ago")
-        }
-        
+        }   
     }
+    
     noteIndex() {
         let {notes} = this.props;
         let date = new Date().getMinutes();
@@ -73,6 +73,7 @@ class NoteIndex extends React.Component {
                 <hr className="note-index-line"></hr>
 
                 <ul className="note-index">{this.noteIndex()}</ul>
+                {/* //clicking link will open edit in rich text editor */}
             </div>
         )
     }

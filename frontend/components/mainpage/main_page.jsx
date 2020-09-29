@@ -3,93 +3,23 @@
 import React from 'react';
 import NotebookIndex from './notebook/notebook_index_container';
 import CreateNote from './note/create_note_container';
-
-class MainPage extends React.Component{
-
-    constructor(props){
-        super(props);
-    }
+import SideBar from './sidebar/sidebar_container';
+import { Route } from "react-router-dom";
+import NotebookShow from './notebook/notebook_show';
+import NoteShow from './note/note_show';
 
 
-
-    render(){
-        // debugger
-        const {logOut} = this.props
-
-        const editorSwitch = (string) => {
-
-            switch(string) {
-
-            case "Note":
-                return <CreateNote />;
-
-            case "Notebook":
-                return <NotebookIndex />;
-        
-            default:
-                return <CreateNote />;
-            }
-
-        }
-
-
-        return(
-
-            <div className='homepage'>
-                        
-                    <div className="sidebar">
-        
-                    <p className='user-info'>
-                        <i className="fa fa-pagelines" aria-hidden="true"></i>
-                        {/* <span className='username'> {this.props.users[this.props.session.id]}</span> */}
-                         
-                    </p>
-                    <button
-                        onClick={logOut}
-                    >LogOut</button>
-
-                                <ul>
-                                    <li>
-                                        <button
-                                            // onClick={editorSwitch('note')}
-                                            className="newnote-btn"
-                                        >
-                                        <span className='plus'>+</span> New Note</button>
-                                    </li>
-
-                                    <li className='links-home'>
-                                        <button
-                                            className='btn-home'
-                                            // onClick={editorSwitch('note')}
-                            ><i className="fa fa-sticky-note-o" aria-hidden="true"></i>All Notes</button>
-                                    </li>
-
-                                    <li className='links-home'>
-                                        <button
-                                            className='btn-home'
-                                            // onClick={editorSwitch('notebook')}
-                            ><i className="fa fa-book" aria-hidden="true"></i>All Notebooks</button>
-
-                                    </li>
-        
-                                </ul>
-
-                    </div>
-
-                    <div className='editor'>
-
-                       {editorSwitch()}
-
-                    </div>
-                
- 
-            </div>
-        )
-
-    }
-
-
+const MainPage = () => {
+    
+    return (
+        <div className='mainpage'>
+            <SideBar />
+            <Route exact path='/main/notes' component={CreateNote} />
+            <Route exact path='/main/notebooks' component={NotebookIndex} />            
+            <Route exact path='/main/notebook' component={NotebookShow} />            
+            <Route exact path='/main/note' component={NoteShow} />            
+        </div>
+    )
 };
-
 
 export default MainPage;
