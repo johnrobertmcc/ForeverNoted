@@ -2,6 +2,7 @@ class Api::NotebooksController < ApplicationController
 
     
     def index
+       
         @notebooks = current_user.notebooks
         render :index
     end
@@ -27,7 +28,6 @@ class Api::NotebooksController < ApplicationController
    
     def create
 
-        debugger
 
         @notebook = Notebook.new(notebook_params)
 

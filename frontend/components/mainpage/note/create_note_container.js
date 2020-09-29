@@ -4,7 +4,7 @@ import { createNote } from '../../../actions/note_actions';
 
 
 const mSTP = (state, ownProps) => {
-    // debugger
+
     return {currentUser : state.entities.users[state.session.id]}
 };
 

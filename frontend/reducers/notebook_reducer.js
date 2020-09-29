@@ -9,7 +9,7 @@ const NotebookReducer = (state = {}, action) => {
             return Object.assign({}, state, { [action.notebook.id]: action.notebook })
 
         case RECEIVE_ALL_NOTEBOOKS:
-            return Object.assign({}, state, action.notebooks)
+            return action.notebooks;
 
         case REMOVE_NOTEBOOK:
             const temp = Object.assign({}, state)

@@ -200,9 +200,9 @@ var receiveAllNotes = function receiveAllNotes(notebooks) {
   };
 };
 
-var fetchNotebooks = function fetchNotebooks() {
+var fetchNotebooks = function fetchNotebooks(id) {
   return function (dispatch) {
-    return _util_notebook_util__WEBPACK_IMPORTED_MODULE_0__["fetchNotebook"]().then(function (notebooks) {
+    return _util_notebook_util__WEBPACK_IMPORTED_MODULE_0__["fetchNotebooks"](id).then(function (notebooks) {
       return dispatch(receiveAllNotes(notebooks));
     });
   };
@@ -350,12 +350,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_homepage_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/homepage_container */ "./frontend/components/homepage_container.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _components_mainpage_mainpage_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/mainpage/mainpage_container */ "./frontend/components/mainpage/mainpage_container.js");
-/* harmony import */ var _mainpage_note_notes_index_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./mainpage/note/notes_index_container */ "./frontend/components/mainpage/note/notes_index_container.js");
-/* harmony import */ var _mainpage_notebook_notebook_index_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./mainpage/notebook/notebook_index_container */ "./frontend/components/mainpage/notebook/notebook_index_container.js");
-/* harmony import */ var _mainpage_sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./mainpage/sidebar/sidebar_container */ "./frontend/components/mainpage/sidebar/sidebar_container.js");
-
-
-
 
 
 
@@ -377,8 +371,7 @@ var App = function App() {
     exact: true,
     path: "/",
     component: _components_homepage_container__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_mainpage_sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
-    exact: true,
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     path: "/main",
     component: _components_mainpage_mainpage_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }));
@@ -564,8 +557,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _notebook_notebook_index_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notebook/notebook_index_container */ "./frontend/components/mainpage/notebook/notebook_index_container.js");
 /* harmony import */ var _note_create_note_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./note/create_note_container */ "./frontend/components/mainpage/note/create_note_container.js");
 /* harmony import */ var _sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sidebar/sidebar_container */ "./frontend/components/mainpage/sidebar/sidebar_container.js");
-/* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/route_util */ "./frontend/util/route_util.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 // this will hold the side bar Component, as well as the notes and notebook forms
 
 
@@ -573,15 +565,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var MainPage = function MainPage() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["ProtectedRoute"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "mainpage"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sidebar_sidebar_container__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
     exact: true,
-    path: "/notes",
+    path: "/main/notes",
     component: _note_create_note_container__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__["ProtectedRoute"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
     exact: true,
-    path: "/notebooks",
+    path: "/main/notebooks",
     component: _notebook_notebook_index_container__WEBPACK_IMPORTED_MODULE_1__["default"]
   }));
 };
@@ -608,7 +601,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state) {
-  // debugger
   return {
     currentUser: state.entities.users[state.session.id]
   };
@@ -678,12 +670,12 @@ var CreateNote = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, CreateNote);
 
-    _this = _super.call(this, props); // debugger
-
+    _this = _super.call(this, props);
     _this.state = {
       title: '',
       body: '',
-      user_id: _this.props.currentUser.id
+      user_id: _this.props.currentUser.id,
+      notebook_id: 1
     }; // this.modules = {
     //     toolbar: [
     //         [{ 'font': [] }],
@@ -752,22 +744,7 @@ var CreateNote = /*#__PURE__*/function (_React$Component) {
         onChange: this.update("body"),
         value: this.state.body
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "please work"))));
-    } //     render() {
-    //         <ReactQuill
-    //         placeholder="Create a new Note"
-    //         theme='null'
-    //         onChange={this.props}
-    //         />
-    //         return (
-    //             <div>
-    //                 <h2>New Note</h2>
-    //                 <ReactQuill
-    //                     placeholder="Create a new Note"
-    //                 />
-    //             </div>
-    //         );
-    //     }
-
+    }
   }]);
 
   return CreateNote;
@@ -795,7 +772,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
-  // debugger
   return {
     currentUser: state.entities.users[state.session.id]
   };
@@ -1084,7 +1060,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state, ownProps) {
-  // debugger
   return {
     currentUser: state.entities.users[state.session.id]
   };
@@ -1145,13 +1120,9 @@ var NotebookIndex = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(NotebookIndex);
 
   function NotebookIndex(props) {
-    var _this;
-
     _classCallCheck(this, NotebookIndex);
 
-    _this = _super.call(this, props);
-    debugger;
-    return _this;
+    return _super.call(this, props);
   }
 
   _createClass(NotebookIndex, [{
@@ -1165,9 +1136,10 @@ var NotebookIndex = /*#__PURE__*/function (_React$Component) {
       var notebooks = this.props.notebooks;
 
       if (notebooks.length > 0) {
-        return notebooks.map(function (notebook) {
+        return notebooks.map(function (notebook, i) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-            className: "notebook"
+            className: "notebook",
+            key: i
           }, notebook.title);
         });
       } else {
@@ -1180,14 +1152,12 @@ var NotebookIndex = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "notebook-full-index"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "notebook-index-header"
+        className: "note-index-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         className: "notebook-header"
       }, "Notebooks"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " My notebook list"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", {
         className: "notebooks-index-line"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "notebook-list-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "notebook-list"
       }, this.notebookIndex())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "create-note-index"
@@ -1219,8 +1189,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var mapStateToProps = function mapStateToProps(state) {
-  debugger;
+var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     notebooks: Object.values(state.entities.notebooks),
     currentUser: state.entities.users[state.session.id]
@@ -1285,8 +1254,7 @@ var mDTP = function mDTP(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/react.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _note_create_note_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../note/create_note_container */ "./frontend/components/mainpage/note/create_note_container.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1312,7 +1280,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
 var SideBar = /*#__PURE__*/function (_React$Component) {
   _inherits(SideBar, _React$Component);
 
@@ -1329,19 +1296,37 @@ var SideBar = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var logOut = this.props.logOut;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "homepage"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sidebar"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "user-info"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "fa fa-pagelines",
         "aria-hidden": "true"
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "username"
+      }, " ", this.props.currentUser.email)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: logOut
-      }, "LogOut"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/notes"
-      }, "Notes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/notebooks"
-      }, "Notebooks")));
+      }, "TemporaryLogOut"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "links-home"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "newnote-btn"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/main/notes"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "plus"
+      }, "+ ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "btn-words"
+      }, "Create a new note")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "switch-links"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/main/notes"
+      }, "Notes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "switch-links"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/main/notebooks"
+      }, "Notebooks")))));
     }
   }]);
 
@@ -2156,11 +2141,35 @@ document.addEventListener("DOMContentLoaded", function () {
   //     // console.log('scrolled');
   //     const scrolled = window.scrollY;
   //     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  // (document.documentElement.scrollHeight - 50vh);
   //     console.log(scrollable);
   //     if (Math.ceil(scrolled) === scrollable) {
   //         alert('bottom')
   //     }
   // });
+  // const el = document.querySelector(".sidebar");
+  // el.addEventListener('mousedown', mousedown);
+  // const resizer = document.querySelector(".resizer");
+  // let currentResizer;
+  // resizer.addEventListener('mousedown', mousedown);
+  // function mousedown(e) {
+  //     currentResizer = e.target;
+  //     window.addEventListener('mousemove', mousemove);
+  //     window.addEventListener('mouseup', mouseup);
+  //     let prevX = e.clientX; //shows where is mouse on x axis --2
+  //     let prevY = e.clientY; //shows where is mouse on x axis --2
+  //     function mousemove(e) {
+  //         const rect = el.getBoundingClientRect();
+  //         el.style.width = rect.width - (prevX - e.clientX) + 'px';
+  //         el.style.height = rect.height - (prevY - e.clientY) + 'px';
+  //         prevX = e.clientX;
+  //         prevY = e.clientY;
+  //     }
+  //     function mouseup() { //release the mouse
+  //         window.removeEventListener("mousemove", mousemove);
+  //         window.removeEventListener('mouseup', mouseup);
+  //     }
+  // }
 
 
   window.store = store;
@@ -2287,7 +2296,7 @@ var NotebookReducer = function NotebookReducer() {
       return Object.assign({}, state, _defineProperty({}, action.notebook.id, action.notebook));
 
     case _actions_notebook_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ALL_NOTEBOOKS"]:
-      return Object.assign({}, state, action.notebooks);
+      return action.notebooks;
 
     case _actions_notebook_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_NOTEBOOK"]:
       var temp = Object.assign({}, state);

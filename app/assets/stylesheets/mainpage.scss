@@ -1,74 +1,9 @@
-.homepage{
+.mainpage{
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
-.user-info{
-    font-size: 20px;
-}
-
-.sidebar{
-    background-color: black;
-    height: 100vh;
-    color: slategray;
-    width: 285px;
-}
-
-.links-home{
-     list-style: none;
-     border: none;
-     background-color: black;
-    outline: none;
-        &:hover{
-            background-color: rgb(64,64,64);
-            outline: none;
-        }
-
-        &:target{
-            background-color: transparent;
-            outline: none;
-        }
-}
-
-.btn-home{
-    color: white;
-    border: 0px; 
-    box-sizing: none; 
-    // width: 100%;
-
-    background-color: transparent; 
-      &:hover{
-            cursor: pointer;
-            outline: none;
-        }
-
-}
-
-.newnote-btn{
-    background-color:rgb(0,168,45);
-    font-size: 13.5px;
-    color: white;
-    margin-bottom: 20px;
-    width: 250px;
-    border-radius: 30px;
-    margin-left: -20px;
-    border-radius: 1px solid black;
-    border: none;
-    &:hover{
-        background-color: rgb(0,143,38);
-        cursor: pointer;
-
-    }
-    
-}
-
-.plus {
-    font-size: 25px;
-    margin-right: 10px;
-    color: white;
-    text-align: center;
-    margin-left: -130px;
-}
 
 .inner-sidebar{
     height: 100vh;
@@ -78,12 +13,11 @@
 
 .ind-note:hover{
     background-color: rgb(255,255,255);
-    // border: 1px solid rgb(16,136,197);
+    cursor: pointer;
 }
 
 .ind-note{
-    // margin-top: -14.5px;
-     height: 110px;
+    height: 110px;
     width: 124.3%;
     margin-left: -38px;
     display: flex;
@@ -116,7 +50,6 @@
     font-size: 11px;
     color: grey;
     // margin: 0;
-    
 }
 
 .note-index{
@@ -132,7 +65,44 @@
     padding-left: 12px;
 }
 
-.username{
-    color:white;
-    font-size: 14px;
+
+.editor{
+    display: inline-block;
+    // flex: left;
+}
+
+.notebook-full-index{
+    padding-left: 12px;
+    display: flex;
+    // flex-direction: row;
+}
+
+.notebooks-index-line{
+    background-color:lightgray;
+    height: 1px;
+    border: none;
+
+}
+
+.notebook-list{
+    list-style: none;
+}
+
+.create-note-index{
+    margin-left: 40px;
+}
+
+.notebook{
+    height: 110px;
+    width: 120px;
+    margin-left: -38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-bottom: 1px lightgrey solid;
+}
+
+.notebook:hover{
+    background-color: lightgrey;
+    cursor: pointer;
 }

@@ -1,7 +1,6 @@
 class Api::NotesController < ApplicationController
 
     def index
-        # debugger
         @notes = current_user.notes
         render :index
     end
@@ -10,10 +9,6 @@ class Api::NotesController < ApplicationController
         @note = Note.find(params[:id])
         render 'api/notes/note'
     end
-
-
-
-
 
     def destroy
         @note = Note.find(params[:id])
@@ -28,7 +23,7 @@ class Api::NotesController < ApplicationController
 
    
     def create
-        debugger
+     
         @note = Note.new(note_params)
 
         if @note.save
@@ -56,7 +51,7 @@ class Api::NotesController < ApplicationController
     private
 
     def note_params
-        params.require(:note).permit(:body, :title, :user_id)
+        params.require(:note).permit(:body, :title, :user_id, :notebook_id)
     end
 
 

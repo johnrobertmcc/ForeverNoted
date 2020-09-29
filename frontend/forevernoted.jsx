@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //     // console.log('scrolled');
     //     const scrolled = window.scrollY;
     //     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    // (document.documentElement.scrollHeight - 50vh);
 
     //     console.log(scrollable);
 
@@ -33,6 +34,45 @@ document.addEventListener("DOMContentLoaded", () => {
     //         alert('bottom')
     //     }
     // });
+
+
+    // const el = document.querySelector(".sidebar");
+
+    // el.addEventListener('mousedown', mousedown);
+
+    // const resizer = document.querySelector(".resizer");
+
+    // let currentResizer;
+
+    // resizer.addEventListener('mousedown', mousedown);
+
+    // function mousedown(e) {
+    //     currentResizer = e.target;
+
+    //     window.addEventListener('mousemove', mousemove);
+    //     window.addEventListener('mouseup', mouseup);
+
+    //     let prevX = e.clientX; //shows where is mouse on x axis --2
+    //     let prevY = e.clientY; //shows where is mouse on x axis --2
+
+    //     function mousemove(e) {
+    //         const rect = el.getBoundingClientRect();
+
+    //         el.style.width = rect.width - (prevX - e.clientX) + 'px';
+    //         el.style.height = rect.height - (prevY - e.clientY) + 'px';
+            
+    //         prevX = e.clientX;
+    //         prevY = e.clientY;
+
+    //     }
+
+    //     function mouseup() { //release the mouse
+    //         window.removeEventListener("mousemove", mousemove);
+    //         window.removeEventListener('mouseup', mouseup);
+    //     }
+    // }
+
+
 
   
     window.store = store;

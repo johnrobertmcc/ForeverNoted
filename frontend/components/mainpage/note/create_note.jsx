@@ -9,13 +9,13 @@ class CreateNote extends React.Component {
     constructor(props) {
         super(props)
 
-        // debugger
 
 
         this.state = { 
                 title: '', 
                 body: '', 
-                user_id: this.props.currentUser.id
+                user_id: this.props.currentUser.id,
+                notebook_id: 1
             }
 
         // this.modules = {
@@ -100,26 +100,6 @@ class CreateNote extends React.Component {
             
         );
     }
-
-//     render() {
-
-//         <ReactQuill
-//         placeholder="Create a new Note"
-//         theme='null'
-//         onChange={this.props}
-//         />
-
-
-//         return (
-//             <div>
-//                 <h2>New Note</h2>
-
-//                 <ReactQuill
-//                     placeholder="Create a new Note"
-//                 />
-//             </div>
-//         );
-//     }
 }
 
 export default CreateNote;

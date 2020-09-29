@@ -6,7 +6,7 @@ class NotebookIndex extends React.Component {
 
         
         super(props);
-        debugger
+
     }
 
     componentDidMount() {
@@ -19,8 +19,11 @@ class NotebookIndex extends React.Component {
         let { notebooks } = this.props;
 
         if (notebooks.length > 0) {
-            return notebooks.map(notebook => (
-                <li className='notebook'>{notebook.title}</li>
+            return notebooks.map((notebook, i) => (
+                <li 
+                className='notebook'
+                key={i}
+                >{notebook.title}</li>
             ))
         } else {
             return "no notebooks yet!"
@@ -29,22 +32,18 @@ class NotebookIndex extends React.Component {
     }
 
     render() {
+
         return (
             <div className='notebook-full-index'>
-                <div className='notebook-index-header'>
-                    <h3 className='notebook-header'>Notebooks</h3>
-
-                    <p> My notebook list</p>
-                    <hr className='notebooks-index-line'></hr>
-                </div>
-
-                <div className='notebook-list-container'>
-                    <ul className='notebook-list'>{this.notebookIndex()}</ul>
+                <div className='note-index-container'>
+                        <h3 className='notebook-header'>Notebooks</h3>
+                        <p> My notebook list</p>
+                        <hr className='notebooks-index-line'></hr>
+                        <ul className='notebook-list'>{this.notebookIndex()}</ul>
                 </div>
 
                 <div className='create-note-index'>
                     <CreateNotebook />
-
                 </div>
             </div>
         )

@@ -6,6 +6,7 @@ export const RECEIVE_NOTEBOOK = 'RECEIVE_NOTEBOOK';
 export const REMOVE_NOTEBOOK = 'REMOVE_NOTEBOOK';
 
 const receiveAllNotes = (notebooks) => {
+
     return (
         {
             type: RECEIVE_ALL_NOTEBOOKS,
@@ -14,9 +15,10 @@ const receiveAllNotes = (notebooks) => {
     )
 }
 
-export const fetchNotebooks = () => dispatch => {
+export const fetchNotebooks = (id) => dispatch => {
 
-    return NoteBookUtil.fetchNotebook().then(notebooks => dispatch(receiveAllNotes(notebooks)));
+
+    return NoteBookUtil.fetchNotebooks(id).then(notebooks => dispatch(receiveAllNotes(notebooks)));
 };
 
 const receiveNotebook = notebook => {

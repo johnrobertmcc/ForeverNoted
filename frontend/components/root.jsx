@@ -10,8 +10,6 @@ const Root = ({ store }) => (
     <Provider store={store}>
         <HashRouter>
             <App />
-            {/* <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-            <AuthRoute exact path="/login" component={LogInContainer} /> */}
         </HashRouter>
     </Provider>
 
