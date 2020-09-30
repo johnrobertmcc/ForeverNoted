@@ -16,20 +16,32 @@ class SideBar extends React.Component{
             <div className="homepage">
                 
                 <div className='sidebar'>
-                    <p className='user-info'>
-                        <i className="fa fa-pagelines" aria-hidden="true"></i>
-                        <span className='username'> {this.props.currentUser.email}</span>
-                    </p>
-                    <button
-                        onClick={logOut}
-                        >TemporaryLogOut
-                    </button>
+                   <div className='flex-side'>
+                        <p className='user-info'>
+                            <i className="fa fa-pagelines" aria-hidden="true"></i>
+                            <span className='username'> {this.props.currentUser.email}</span>
+                        </p>
+                        <button
+                            className='logout-btn'
+                            onClick={logOut}
+                            >LogOut
+                        </button>
+                    </div>
                     
                     <ul className='links-home'>
-                        <li className='newnote-btn'><Link to='/main/notes'><p className='plus'>+ <span className='btn-words'>Create a new note</span></p></Link></li>
-                        <li className='switch-links'><Link to='/main/notes'>Notes</Link></li>
-                        <li className='switch-links'><Link to='/main/allnotebooks'>Notebooks</Link></li>
+                        <li className='newnote-btn'><Link to='/main/notes'><i className="fa fa-plus" aria-hidden="true"></i><p className='btn-words'>New note</p></Link></li>
+                        <li className='switch-links'><i className="fas fa-edit"></i><Link to='/main/notes'>All Notes</Link></li>
+                        <li className='switch-links'><i className="fas fa-book"></i><Link to='/main/allnotebooks'>Notebooks</Link></li>
                     </ul>
+
+                        <hr className='footer-sidebar'></hr>
+                    <div className='sidebar-icons'>
+                        <a href='https://github.com/johnrobertmcc?tab=repositories'><i className="fab fa-github"></i></a>
+                        <p className='sig'>John Robert McCann</p>
+                        <a href='https://www.linkedin.com/in/jrmcc/'><i className="fab fa-linkedin-in"></i></a>
+
+                        
+                    </div>
                 </div>
 
             </div>

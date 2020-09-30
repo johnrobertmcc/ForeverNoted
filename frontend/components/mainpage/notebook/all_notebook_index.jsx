@@ -8,8 +8,6 @@ import { fetchNotebooks } from '../../../actions/notebook_actions';
 
 class AllNotebookIndex extends React.Component {
     constructor(props) {
-
-
         super(props);
 
     }
@@ -24,17 +22,20 @@ class AllNotebookIndex extends React.Component {
         let { notebooks } = this.props;
 
 
+        debugger
+
         //get an indiviual notebook's show page
         if (notebooks.length > 0) {
             return notebooks.map((notebook, i) => (
-
-                    <Link to={`/main/notebooks/${notebook.id}/notes`}>
-                    <li
-                    className='notebook'
-                    key={i}
-                    >{notebook.title}</li>
-                    </Link>
-                
+                <table 
+                className='notebook-table'
+                >
+                        <tr className='row'>
+                            <Link to={`/main/notebooks/${notebook.id}/notes`}>
+                            <th className='row-content'><i className="fa fa-book" aria-hidden="true"></i>{notebook.title}</th>
+                            </Link>
+                        </tr> 
+                </table>
             ))
         } else {
             return "no notebooks yet!"
@@ -45,12 +46,13 @@ class AllNotebookIndex extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className='table'>
 
-
-                <h3>My Notebooks</h3>
+                <div className='all-notebook-header'>
+                    <h3>Notebooks</h3>
+                    <div className='new-nb-btn'><CreateNotebook /></div>
+                </div>
                 <div className='create-note-index'>
-                    {/* <CreateNotebook /> */}
                 </div>
                 <hr className='notebooks-index-line'></hr>
                 <ul className='all-notebooks'>{this.notebookIndex()}</ul>

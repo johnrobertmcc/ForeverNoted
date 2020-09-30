@@ -5,7 +5,7 @@ json.partial! "api/notebooks/notebook", notebook: @notebook
     json.notes do 
         
         json.set! note.id do
-      \
+            
             json.partial! 'api/notes/note', note: note
         
         end 

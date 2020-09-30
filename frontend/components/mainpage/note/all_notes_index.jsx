@@ -26,8 +26,8 @@ class AllNotesIndex extends React.Component {
     noteIndex() {
         let { notes, deleteNote } = this.props;
         let date = new Date().getMinutes();
-   
-
+        
+        
         if (notes.length > 0) {
             return notes.map((note, i) => (
                 <div className='ind-note'>
@@ -38,8 +38,8 @@ class AllNotesIndex extends React.Component {
                             >
                             {note.title}
                         </li>
-                    </Link>
 
+                    </Link>
                         <li
                             className='note-body'
                             
@@ -52,7 +52,9 @@ class AllNotesIndex extends React.Component {
                             {this.currentDate(date)}
                         </li>
                         <li>
-                            <button onClick={() => deleteNote(note.id)}>delete</button>
+                        <button 
+                        onClick={() => deleteNote(note.id)}
+                        className='delete-btn'><i className="fas fa-trash"></i></button>
                         </li>
                 </div>
             ))
@@ -78,6 +80,8 @@ class AllNotesIndex extends React.Component {
             <div className='allnotes'>
 
                 <div className='note-index-container'>
+                    <div className='note-header'>
+
                     <h3>All Notes</h3>
 
                     <p className="note-count">{noteCount()}</p>
@@ -85,6 +89,7 @@ class AllNotesIndex extends React.Component {
                     <hr className="note-index-line"></hr>
 
                     <ul className="note-index">{this.noteIndex()}</ul>
+                    </div>
                 </div>
 
                 <div className='allnotes-create-form'>
@@ -106,6 +111,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => {
+    dispatch
 
     return { 
         fetchNotes: id => dispatch(fetchNotes(id)),

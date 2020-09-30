@@ -1,19 +1,22 @@
 .homepage{
-    background-color: black;
+    background-color: #1A1A1A;
     height: 100vh;
     color: slategray;
-    width: 285px;
+    width: 360px;
     display: flex;
     flex-direction: column;
+    margin-top: -10px;
+    margin-left: -8px;
 }
 
 .sidebar{
-    width:285px;
+    width:360px;
     height: 100vh;
     z-index: 2;
     bottom: -1px;
     right: -1px;
     display: inline-block;
+    padding-right: 20px;
 
 }
 
@@ -27,10 +30,12 @@
 }
 
 .links-home{
-     list-style: none;
-     border: none;
-     background-color: black;
+    list-style: none;
+    border: none;
+    background-color: transparent;
     outline: none;
+    justify-content: space-between;
+    width: 360px;
         &:hover{
             outline: none;
         }
@@ -48,9 +53,11 @@
     margin-bottom: 20px;
     width: 250px;
     border-radius: 30px;
+    height: 30px;
     margin-left: -20px;
     border-radius: 1px solid black;
     border: none;
+    // text-align: left;
     &:hover{
         background-color: rgb(0,143,38);
         cursor: pointer;
@@ -62,11 +69,88 @@
 .btn-words{
     font-size: 15px;
     background-position: -100px;
+    padding-left: 10px;
+    margin-top: -18px;
+    margin-left: 24px;
+    color: white;
 }
 
 .plus {
     font-size: 25px;
-    margin-right: 30px;
+    margin-right: 930px;
     color: white;
+    position: relative;
+    left: 40px;
 }
 
+.fa.fa-pagelines{
+    padding-right: 9px;
+    padding-left: 9px;
+}
+
+.logout-btn{
+    background-color: #1A1A1A;
+    border-style: none;
+    cursor: pointer;
+    color: rgb(0,168,45);
+}
+
+
+.fa.fa-plus{
+    color: white;
+    padding-left: 15px;
+    margin-top: 10px;
+}
+
+.switch-links{
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    // height: 40px;
+    padding:10px 2px 0 0px;
+    text-align: left;
+    display: flex;
+    // margin-bottom: -10px;
+    &>a{
+        color: white;
+        justify-content: space-around;
+    }
+    &:hover{
+        background-color: #404040;
+        width: 87%;
+        // height: 15px;
+    }
+    &:active{
+         background-color: #404040;
+    }
+}
+
+
+.flex-side{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.fab.fa-github{
+    color: rgb(0,168,45);
+}
+
+.fab.fa-linkedin-in{
+    color: rgb(0,168,45);
+}
+
+.sidebar-icons{
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-sidebar{
+     margin-top: 720px;
+    border: 1px solid rgb(144, 240, 170);
+}
+
+.sig{
+    color: rgb(144, 240, 170);
+    font-size: 12px;
+}

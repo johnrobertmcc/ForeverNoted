@@ -19,9 +19,10 @@ class CreateNote extends React.Component {
 
 
         this.formats = [
+
             'font',
             'size',
-            'bold', 'italic', 'underline',
+            'bold', 'italic', 'underline', 'strike', 'code', 'blockquote',
             'list', 'bullet',
             'align',
             'color', 'background'
@@ -62,8 +63,8 @@ class CreateNote extends React.Component {
 
         const modules = {
             toolbar: [
-                ["bold", "italic"],
-                ["link", "blockquote", "code", "image"],
+                ["bold", "italic", "underline", "strike"],
+                ["blockquote", "code"],
                 [
                     {
                         list: "ordered"
@@ -85,19 +86,20 @@ class CreateNote extends React.Component {
                     <form
                         className="note-form"
                         onSubmit={this.handleSubmit}>
-
-                        <input
-                            type="text"
-
-                            id="note-title"
-                            onChange={this.update('title')}
-                            placeholder='Untitled'
-                            value={this.state.title || 'Unititled'}
-                        />
-
-                        <button className='create-btn'>Create Note</button>
+                        <div className='create-head'>
+                        </div>
 
 
+                            <input
+                                type="text"
+                                className='header-title'
+                                id="note-title"
+                                onChange={this.update('title')}
+                                placeholder='Untitled'
+                                value={this.state.title || 'Untitled'}
+                                />
+
+                            <button className='create-btn'>Create Note</button>
                         <ReactQuill
                             className="quill-editor"
                             modules={modules}
@@ -105,7 +107,7 @@ class CreateNote extends React.Component {
                             formats={this.formats}
                             value={this.state.body}
                             onChange={this.updateQuill}
-                            placeholder={this.state.body}
+                            placeholder="Start writing..."
                        />
 
                        

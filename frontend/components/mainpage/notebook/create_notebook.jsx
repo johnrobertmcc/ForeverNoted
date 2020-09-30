@@ -36,8 +36,6 @@ class CreateNotebook extends React.Component {
     
         return (
             <div>
-                <h2>New Notebook</h2>
-
                 <form className="notebook-form" onSubmit={this.handleSubmit}>
 
                     <input
@@ -48,7 +46,7 @@ class CreateNotebook extends React.Component {
                         value={this.state.title}
                     />
 
-                    <button>please work notebook edition</button>
+                    <button>new notebook</button>
                 </form>
             </div>
         );

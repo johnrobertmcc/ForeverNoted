@@ -1,0 +1,85 @@
+.notebook-full-index{
+    padding-left: 7px;
+    display: flex;
+    height: 100vh;
+    width: 220px;
+    background-color: rgb(248,248,248);
+    // flex-direction: row;
+}
+
+.notebooks-index-line{
+    background-color:lightgray;
+    height: 1px;
+    width: 100%;
+    border: none;
+
+}
+
+
+.notebook{
+    height: 80px;
+    width: 120px;
+    margin-left: -38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-bottom: 1px lightgrey solid;
+}
+
+.notebook:hover{
+    background-color: lightgrey;
+    cursor: pointer;
+}
+
+
+
+.notebook-list{
+    list-style: none;
+}
+
+.table{
+    width: 100%;
+}
+
+.notebook-table{
+    width: 100%;
+     border: .5px solid lightgrey;
+    text-align: left;
+   
+}
+
+.all-notebook-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.all-notebook-header > h3{
+    font-size: 15px;
+
+}
+
+.new-nb-btn{
+    justify-content: flex-end;
+}
+
+ tr:nth-child(odd) {
+    //  background-color: lightgrey;
+}
+
+.row-content{
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+    padding: 5px;
+    &:active{
+        text-decoration: none;;
+    }
+}
+
+.fa.fa-book{
+    padding-right: 5px;
+    // padding-left: 10px;
+}
