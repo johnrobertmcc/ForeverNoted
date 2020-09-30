@@ -1,4 +1,5 @@
 import React from 'react';
+import { deleteNote } from '../../../actions/note_actions';
 // import Datetime from 'react-datetime';
 
 class NoteIndex extends React.Component {
@@ -6,10 +7,6 @@ class NoteIndex extends React.Component {
         super(props);  
     }
 
-    componentDidMount() {
-
-        this.props.fetchNotes(this.props.currentUser.id);
-    }
 
     currentDate(date){
         let temp =  new Date().getMinutes();
@@ -21,7 +18,7 @@ class NoteIndex extends React.Component {
     }
     
     noteIndex() {
-        let {notes} = this.props;
+        let {notes, deleteNote} = this.props;
         let date = new Date().getMinutes();
 
         if(notes.length > 0){
@@ -45,6 +42,9 @@ class NoteIndex extends React.Component {
                 >
                     {this.currentDate(date)}
                 </li>
+                <li>
+                    <button onClick={deleteNote(note.id)}>delete</button>
+                </li>
             </div>
             ))
         }else{
@@ -54,7 +54,7 @@ class NoteIndex extends React.Component {
     }
 
     render() {
-        let {notes} = this.props;
+        let {notes, deleteNote} = this.props;
         let noteCount = () =>{
             if(notes.length === 1){
                 return (notes.length + " note") 
@@ -73,11 +73,11 @@ class NoteIndex extends React.Component {
                 <hr className="note-index-line"></hr>
 
                 <ul className="note-index">{this.noteIndex()}</ul>
-                {/* //clicking link will open edit in rich text editor */}
+
+                
             </div>
         )
     }
 }
-
 
 export default NoteIndex;

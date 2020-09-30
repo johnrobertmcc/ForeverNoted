@@ -9,7 +9,8 @@ class Api::NotebooksController < ApplicationController
 
     def show
         @notebook = Notebook.find(params[:id])
-        render 'api/notebooks/notebook'
+  
+        render :show
     end
 
 

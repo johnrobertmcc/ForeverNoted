@@ -2,11 +2,13 @@
 
 import React from 'react';
 import NotebookIndex from './notebook/notebook_index_container';
-import CreateNote from './note/create_note_container';
 import SideBar from './sidebar/sidebar_container';
 import { Route } from "react-router-dom";
-import NotebookShow from './notebook/notebook_show';
-import NoteShow from './note/note_show';
+import NoteShow from './note/notes_index_container';
+import AllNotebookIndex from './notebook/all_notebook_index';
+import AllNotesIndex from './note/all_notes_index';
+import CreateNote from './note/create_note_container';
+import EditNote from './note/edit_note_container';
 
 
 const MainPage = () => {
@@ -14,10 +16,12 @@ const MainPage = () => {
     return (
         <div className='mainpage'>
             <SideBar />
-            <Route exact path='/main/notes' component={CreateNote} />
-            <Route exact path='/main/notebooks' component={NotebookIndex} />            
-            <Route exact path='/main/notebook' component={NotebookShow} />            
-            <Route exact path='/main/note' component={NoteShow} />            
+            <Route exact path='/main/notes' component={AllNotesIndex} />
+            <Route exact path='/main/allnotebooks' component={AllNotebookIndex} />            
+            <Route exact path='/main/notebooks/:notebookId/notes' component={NotebookIndex} />            
+            <Route exact path='/main/:notebookId/note' component={NoteShow} />            
+            <Route exact path='/main/:notebookId/note/edit/:noteId' component={EditNote} />
+            <Route exact path='/main/:notebookId/note/create' component={CreateNote} />          
         </div>
     )
 };

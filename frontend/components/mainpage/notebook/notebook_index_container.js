@@ -1,18 +1,27 @@
 import { connect } from 'react-redux';
 import NotebookIndex from './notebook_index';
-import { fetchNotebooks } from '../../../actions/notebook_actions';
+import { fetchNotebook } from '../../../actions/notebook_actions';
+
 
 const mapStateToProps = (state, ownProps) => {
 
-    return {
-        notebooks: Object.values(state.entities.notebooks),
-        currentUser: state.entities.users[state.session.id]
-    }
+
+    const notebookId = ownProps.match.params.notebookId;
+    const notebook = state.entities.notebooks[notebookId]
+    const notes = Object.values(state.entities.notes)
+
+    return { 
+        notebook,
+        notes
+     }
 };
 
 const mapDispatchToProps = dispatch => {
 
-    return { fetchNotebooks: (id) => dispatch(fetchNotebooks(id)) }
+    return { 
+        fetchNotebook: (id) => dispatch(fetchNotebook(id)),
+
+     }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NotebookIndex); 

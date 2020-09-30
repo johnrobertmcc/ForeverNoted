@@ -14,6 +14,7 @@ const receiveAllNotes= (notes) =>{
     )
 }
 
+
 export const fetchNotes = () => dispatch => {
 
     return NoteUtil.fetchNotes().then(notes => dispatch(receiveAllNotes(notes)));

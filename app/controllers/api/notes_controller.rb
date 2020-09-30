@@ -7,7 +7,7 @@ class Api::NotesController < ApplicationController
 
     def show
         @note = Note.find(params[:id])
-        render 'api/notes/note'
+        render :show
     end
 
     def destroy
@@ -34,8 +34,7 @@ class Api::NotesController < ApplicationController
         
     end
 
-    def edit
-        
+    def update
         @note = Note.find(params[:id])
 
         if @note.update(note_params)

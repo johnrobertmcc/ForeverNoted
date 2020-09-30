@@ -31,7 +31,11 @@ const receiveNotebook = notebook => {
 };
 
 export const fetchNotebook = notebookId => dispatch => {
-    return NoteBookUtil.fetchNotebook(notebookId).then(notebook => dispatch(receiveNotebook(notebook)))
+
+    return NoteBookUtil.fetchNotebook(notebookId).then(notebook => {
+  
+         return dispatch(receiveNotebook(notebook))
+    })
 };
 
 export const createNotebook = notebook => dispatch => {

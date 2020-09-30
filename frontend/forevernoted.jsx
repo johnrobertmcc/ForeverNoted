@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     //     // console.log('scrolled');
     //     const scrolled = window.scrollY;
     //     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    // (document.documentElement.scrollHeight - 50vh);
 
     //     console.log(scrollable);
 

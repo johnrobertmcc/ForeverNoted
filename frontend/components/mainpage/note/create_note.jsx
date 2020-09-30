@@ -7,9 +7,8 @@ import NoteIndex from './notes_index_container';
 class CreateNote extends React.Component {
 
     constructor(props) {
+
         super(props)
-
-
 
         this.state = { 
                 title: '', 
@@ -63,18 +62,12 @@ class CreateNote extends React.Component {
     render() {
         return (
             <div className="create-note-main">
-
-                <div className='inner-sidebar'>
-                    <NoteIndex />
-
-                </div>
-
                 <div className='note-editor'>
-                    <form 
-                        className="note-form" 
+                    <form
+                        className="note-form"
                         onSubmit={this.handleSubmit}>
 
-                        <input 
+                        <input
                             type="text"
                             id="note-title"
                             onChange={this.update('title')}
@@ -92,10 +85,12 @@ class CreateNote extends React.Component {
 
                         <button>please work</button>
 
-                    </form> 
+                    </form>
 
                 </div>
 
+                <h1>create form</h1>
+       
             </div>
             
         );
@@ -103,3 +98,6 @@ class CreateNote extends React.Component {
 }
 
 export default CreateNote;
+
+
+//add quill, add edit/create container

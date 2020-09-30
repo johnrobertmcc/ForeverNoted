@@ -5,7 +5,7 @@ import { createNote } from '../../../actions/note_actions';
 
 const mSTP = (state, ownProps) => {
 
-    return {currentUser : state.entities.users[state.session.id]}
+    return { currentUser: state.entities.users[state.session.id], formType: "Create Note",}
 };
 
 
@@ -17,3 +17,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mSTP, mapDispatchToProps)(CreateNote); 
+
+
+// add form type
