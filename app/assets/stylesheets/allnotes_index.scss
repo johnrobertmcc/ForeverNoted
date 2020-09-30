@@ -1,0 +1,65 @@
+.allnotes{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.note-index-line{
+    background-color:lightgray;
+    height: 1px;
+    border: none;
+    // position: fixed;
+}
+
+.note-index{
+    margin-top: -7px;
+    list-style: none;
+}
+
+.note-index-container{
+    padding-left: 7px;
+    max-width: 252px;
+    background-color: rgb(248,248,248);
+    
+    
+    // position: fixed;
+}
+
+
+.allnotes-create-form{
+    width: 1400px;
+
+}
+
+.note-body{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    padding: 4px;
+}
+
+.create-note-main{
+    width: 100%;
+}
+
+.quill-editor {
+    width: 100%;
+    height: 90vh;
+}
+
+.note-editor{
+    width: 100%;
+}
+
+.create-btn{
+    z-index:1;
+    cursor: pointer;
+}
+
+.notebook-title-create{
+    color: lightgrey;
+    
+
+}

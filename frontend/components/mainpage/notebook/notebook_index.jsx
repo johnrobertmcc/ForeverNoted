@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateNote from '../note/create_note_container';
+import EditNote from '../note/edit_note_container';
 import { Link } from 'react-router-dom';
 
 
@@ -13,6 +13,7 @@ class NotebookIndex extends React.Component {
     }
 
     componentDidMount() {
+        debugger
   
         this.props.fetchNotebook(this.props.notebook.id);
         
@@ -21,12 +22,13 @@ class NotebookIndex extends React.Component {
 
     render() {
 
+        debugger
 
-        const {notes, notebook} = this.props;
+        const {notebook} = this.props;
 
         const notesFromNotebooks = (notes.length > 0) ? (notes.map((note, idx) => {
            return (
-           <Link to={`/main/${notebook.id}/note/edit/${note.id}`}>
+           <Link to={`/main/notebooks/${notebook.id}/note/edit/${note.id}`}>
                 <li
                         className='note'
                         key={note.id}
@@ -47,7 +49,10 @@ class NotebookIndex extends React.Component {
                         <ul className='notebook-list'>{notesFromNotebooks}</ul>
                 </div>
 
-                    {/* <CreateNote /> */}
+                
+                <div>
+                    {/* <EditNote /> */}
+                </div>
             </div>
         )
     }

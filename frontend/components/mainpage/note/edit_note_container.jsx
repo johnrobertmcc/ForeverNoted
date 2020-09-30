@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchNote, updateNote } from '../../../actions/note_actions';
 import ReactQuill from 'react-quill';
+// import NotebookIndex from '../notebook/notebook_index_container';
 
 class EditNote extends React.Component {
 
@@ -13,11 +14,12 @@ class EditNote extends React.Component {
             title: '',
             body: '',
             user_id: this.props.currentUser.id,
-            notebook_id: 1,
+            notebook_id: 1, //this.props.notebook.id,
             id: this.props.note.id
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.updateQuill = this.updateQuill.bind(this);
     }
 
     componentDidMount() {
@@ -28,6 +30,7 @@ class EditNote extends React.Component {
     update(str) {
 
         return (e) => {
+
             this.setState(
                 { [str]: e.target.value }
             );
@@ -35,61 +38,89 @@ class EditNote extends React.Component {
 
     }
 
+    updateQuill(html){
+        return this.setState(
+            {body: html}
+        ) 
+    
+    }
+
     handleSubmit(e) {
         e.preventDefault();
 
         this.props.updateNote(this.state);
-        // this.setState(
-        //     { 
-        //         title: this.props.note.title, 
-        //         body: this.props.note.body 
-        //     }
-        // )
     }
 
     render() {
 
+        const modules = {
+            toolbar: [
+                ["bold", "italic"],
+                ["link", "blockquote", "code", "image"],
+                [
+                    {
+                        list: "ordered"
+                    },
+                    {
+                        list: "bullet"
+                    }
+                ]
+            ]
+        };
+
         const {note} = this.props;
         return( 
             
-            <div>
+            <div className='editor-page'>
 
-                <div>
-                {note.title}
-                </div>
-
-                <div className='note-editor'>
-                    <ReactQuill 
-                        
-                        value=''
-                        onChange={this.handleSubmit}
-                        modules={modules}>
-                    </ReactQuill>
-{/* 
-                        <input
-                            type="text"
-                            id="note-title"
-                            onChange={this.update('title')}
-                            // placeholder={this.state.title}
-                            value={this.state.title}
-                        />
-
-                        <input
-                            type="textarea"
-                            id="note-body"
-                            // placeholder={this.state.body}
-                            onChange={this.update("body")}
-                            value={this.state.body}
-                        /> */}
-
-                        {/* <button type="submit">Edit</button> */}
+                <div className='editorpage-note-index'>
 
 
                     <div>
-                    
+                        {note.title}
                     </div>
-                </div>
 
+                    <div className='note-editor'>
+                        {/* <NotebookIndex /> */}
+                        {/* no notes in state.entities through this path */}
+                    </div>
+                        
+
+                        <form
+                            onSubmit={this.handleSubmit}>
+
+
+                            <input
+                                type="text"
+                                className="note-title"
+                                onChange={this.update('title')}
+                                placeholder={this.state.title}
+                                value={this.state.title}
+                                />
+
+                            {/* <input
+                                    type="textarea"
+                                    className="note-body"
+                                    placeholder={this.state.body}
+                                    onChange={this.update("body")}
+                                    value={this.state.body}
+                                /> */}
+
+                            <ReactQuill
+                                className="quill-editor"
+                                modules={modules}
+                                theme={'snow'}
+                                value={this.state.body}
+                                onChange={this.updateQuill}
+                                placeholder={this.state.body}
+                                >
+                            </ReactQuill>
+
+                            <button type="submit">Edit</button>
+
+                        </form>
+                    
+                </div>
             </div>
         );
     }
@@ -98,14 +129,16 @@ class EditNote extends React.Component {
 
 const mSTP = (state, ownProps) => {
 
+    debugger
 
     const note = state.entities.notes[ownProps.match.params.noteId]
+    const currentUser = state.entities.users[state.session.id]
 
     return (
         {
-            formType: "Update Note",
-            currentUser: state.entities.users[state.session.id],
-            note
+            currentUser,
+            note,
+            // notebook
         }
     )
 
@@ -123,19 +156,3 @@ const mDTP = dispatch => {
 };
 
 export default connect(mSTP, mDTP)(EditNote)
-
-
-const modules = {
-    toolbar: [
-        ["bold", "italic"],
-        ["link", "blockquote", "code", "image"],
-        [
-            {
-                list: "ordered"
-            },
-            {
-                list: "bullet"
-            }
-        ]
-    ]
-};

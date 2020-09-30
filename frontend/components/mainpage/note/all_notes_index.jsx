@@ -1,7 +1,8 @@
 import React from 'react';
-
+import CreateNote from './create_note_container';
 import { connect } from 'react-redux';
-import { deleteNote } from '../../../actions/note_actions';         
+import { deleteNote, fetchNotes } from '../../../actions/note_actions';    
+import { Link } from 'react-router-dom';     
 
 class AllNotesIndex extends React.Component {
     constructor(props) {
@@ -25,31 +26,34 @@ class AllNotesIndex extends React.Component {
     noteIndex() {
         let { notes, deleteNote } = this.props;
         let date = new Date().getMinutes();
+   
 
         if (notes.length > 0) {
             return notes.map((note, i) => (
                 <div className='ind-note'>
+                    <Link to={`/main/notebooks/${note.notebook_id}/note/edit/${note.id}`}>
 
-                    <li
-                        key={note.id}
-                    >
-                        {note.title}
-                    </li>
+                        <li
+                            key={note.id}
+                            >
+                            {note.title}
+                        </li>
+                    </Link>
 
-                    <li
-                        className='note-body'
-                        key={i + 11}
-                    >
-                        {note.body}</li>
-                    <li
-                        className="date"
-                        key={i}
-                    >
-                        {this.currentDate(date)}
-                    </li>
-                    <li>
-                        <button onClick={deleteNote(note.id)}>delete</button>
-                    </li>
+                        <li
+                            className='note-body'
+                            
+                            >
+                            {note.body}</li>
+                        <li
+                            className="date"
+                            
+                            >
+                            {this.currentDate(date)}
+                        </li>
+                        <li>
+                            <button onClick={() => deleteNote(note.id)}>delete</button>
+                        </li>
                 </div>
             ))
         } else {
@@ -70,16 +74,22 @@ class AllNotesIndex extends React.Component {
 
 
         return (
-            <div className='note-index-container'>
-                <h3>All Notes</h3>
 
-                <p className="note-count">{noteCount()}</p>
+            <div className='allnotes'>
 
-                <hr className="note-index-line"></hr>
+                <div className='note-index-container'>
+                    <h3>All Notes</h3>
 
-                <ul className="note-index">{this.noteIndex()}</ul>
+                    <p className="note-count">{noteCount()}</p>
 
+                    <hr className="note-index-line"></hr>
 
+                    <ul className="note-index">{this.noteIndex()}</ul>
+                </div>
+
+                <div className='allnotes-create-form'>
+                    <CreateNote />
+                </div>
             </div>
         )
     }
@@ -98,6 +108,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
 
     return { 
+        fetchNotes: id => dispatch(fetchNotes(id)),
         deleteNote: (id) => dispatch(deleteNote(id)), 
     }
 };

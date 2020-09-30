@@ -28,9 +28,7 @@
 
 }
 
-.note-index{
-    list-style: none;
-}
+
 .create-note-main{
     display: flex;
 }
@@ -40,11 +38,7 @@
     font-size: 11px;
 }
 
-.note-index-line{
-    background-color:lightgray;
-    height: 1px;
-    border: none;
-}
+
 
 .date{
     font-size: 11px;
@@ -52,18 +46,13 @@
     // margin: 0;
 }
 
-.note-index{
-    margin-top: -7px;
-}
+
 
 .note-body{
     color: grey;
     margin-top: -15px
 }
 
-.note-index-container{
-    padding-left: 7px;
-}
 
 
 .editor{

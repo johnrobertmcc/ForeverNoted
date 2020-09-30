@@ -20,7 +20,7 @@ const MainPage = () => {
             <Route exact path='/main/allnotebooks' component={AllNotebookIndex} />            
             <Route exact path='/main/notebooks/:notebookId/notes' component={NotebookIndex} />            
             <Route exact path='/main/:notebookId/note' component={NoteShow} />            
-            <Route exact path='/main/:notebookId/note/edit/:noteId' component={EditNote} />
+            <Route exact path='/main/notebooks/:notebookId/note/edit/:noteId' component={EditNote} />
             <Route exact path='/main/:notebookId/note/create' component={CreateNote} />          
         </div>
     )

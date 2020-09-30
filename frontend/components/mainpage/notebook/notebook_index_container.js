@@ -5,14 +5,10 @@ import { fetchNotebook } from '../../../actions/notebook_actions';
 
 const mapStateToProps = (state, ownProps) => {
 
-
-    const notebookId = ownProps.match.params.notebookId;
-    const notebook = state.entities.notebooks[notebookId]
-    const notes = Object.values(state.entities.notes)
+    const notebook = state.entities.notebooks[ownProps.match.params.notebookId]
 
     return { 
-        notebook,
-        notes
+        notebook
      }
 };
 

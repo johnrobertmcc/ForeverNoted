@@ -31,7 +31,7 @@ class AllNotebookIndex extends React.Component {
                     <Link to={`/main/notebooks/${notebook.id}/notes`}>
                     <li
                     className='notebook'
-                    key={notebook.id}
+                    key={i}
                     >{notebook.title}</li>
                     </Link>
                 
