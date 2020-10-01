@@ -13,8 +13,6 @@ class NotebookIndex extends React.Component {
     }
 
     componentDidMount() {
-        debugger
-  
         this.props.fetchNotebook(this.props.notebook.id);
         
     }
@@ -22,7 +20,6 @@ class NotebookIndex extends React.Component {
 
     render() {
 
-        debugger
 
         const {notebook} = this.props;
 

@@ -14,7 +14,7 @@ class CreateNote extends React.Component {
             title: '',
             body: '',
             user_id: this.props.currentUser.id,
-            notebook_id: 1, //this.props.notebook.id,
+            notebook_id: 1, //this.props.note.notebook_id
         }
 
 
@@ -33,7 +33,7 @@ class CreateNote extends React.Component {
         }
      
    
-        update(str) {
+    update(str) {
 
         return (e) => {
             this.setState(

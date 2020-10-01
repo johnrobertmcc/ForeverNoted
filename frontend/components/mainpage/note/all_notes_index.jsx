@@ -7,16 +7,18 @@ import { Link } from 'react-router-dom';
 class AllNotesIndex extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = this.props.fetchNotes(this.props.currentUser.id);
     }
 
-    componentDidMount() {
+    // componentDidMount() {
 
-        this.props.fetchNotes(this.props.currentUser.id);
-    }
+    //     this.props.fetchNotes(this.props.currentUser.id);
+    // }
 
     componentDidUpdate(prevProps, prevState) {
-        debugger
-        if(prevProps.notes !== this.props.notes){
+
+        if(prevProps.notes.length !== this.props.notes.length){
             this.props.fetchNotes(this.props.currentUser.id);
         }
     }
@@ -30,6 +32,10 @@ class AllNotesIndex extends React.Component {
         }
     }
 
+    createMarkup(idx){
+        return { __html: this.props.notes[idx].body }
+    }
+
     noteIndex() {
         let { notes, deleteNote } = this.props;
         let date = new Date().getMinutes();
@@ -37,34 +43,36 @@ class AllNotesIndex extends React.Component {
         
         if (notes.length > 0) {
             return notes.map((note, i) => (
-                <div className='ind-note'>
+                <div className='ind-note' key={note.id}>
+
                     <Link to={`/main/notebooks/${note.notebook_id}/note/edit/${note.id}`}>
 
                         <li
-                            key={note.id}
+                            className='note-link'
                             >
                             {note.title}
                         </li>
+    
 
-                    </Link>
-                        <li
-                            className='note-body'
-                            
-                            >
-                            {note.body}</li>
+                        <li className='note-body'>
+                            <div dangerouslySetInnerHTML={this.createMarkup(i)} />
+                        </li>
+                        
                         <li
                             className="date"
                             
                             >
                             {this.currentDate(date)}
                         </li>
-                        <li>
-                            <button 
-                            onClick={() => deleteNote(note.id)}
-                            className='delete-btn'>
-                                <i className="fas fa-trash"></i>
-                            </button>
-                        </li>
+                    </Link>
+                    
+                    <li>
+                        <button 
+                        onClick={() => deleteNote(note.id)}
+                        className='delete-btn'>
+                            <i className="fas fa-trash"></i>
+                        </button>
+                    </li>
                 </div>
             ))
         } else {

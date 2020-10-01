@@ -12,7 +12,6 @@ class Api::NotesController < ApplicationController
 
     def destroy
         @note = Note.find(params[:id])
-        # debugger
         if !@note.destroy
             render json: [@note.errors.full_messages], status: 422
         end

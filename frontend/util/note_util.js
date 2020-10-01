@@ -29,6 +29,7 @@ export const createNote = (note) => {
 };
 
 export const updateNote = (note) => {
+
     return $.ajax(
         {
             url: `/api/notes/${note.id}`,
