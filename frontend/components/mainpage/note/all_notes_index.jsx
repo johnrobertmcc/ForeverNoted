@@ -43,7 +43,7 @@ class AllNotesIndex extends React.Component {
         
         
         if (notes.length > 0) {
-            return notes.map((note, i) => (
+            return notes.reverse().map((note, i) => (
                 <div className='ind-note' key={note.id}>
 
                     <Link to={`/main/notebooks/${note.notebook_id}/note/edit/${note.id}`}>
