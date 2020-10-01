@@ -14,6 +14,13 @@ class AllNotesIndex extends React.Component {
         this.props.fetchNotes(this.props.currentUser.id);
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        debugger
+        if(prevProps.notes !== this.props.notes){
+            this.props.fetchNotes(this.props.currentUser.id);
+        }
+    }
+
     currentDate(date) {
         let temp = new Date().getMinutes();
         if ((temp - date) === 1) {
@@ -67,7 +74,6 @@ class AllNotesIndex extends React.Component {
     }
 
     render() {
-        debugger
         let { notes, deleteNote } = this.props;
         let noteCount = () => {
             if (notes.length === 1) {

@@ -22,6 +22,7 @@ body{
     // padding-left: 7px;
     overflow-y: scroll;
     height: 91vh;
+    width:252px;
     // position: relative;
 }
 
@@ -134,9 +135,9 @@ body{
   width: 8px;
 }
 
-::-webkit-scrollbar-track {
-  background: #light-grey;
-}
+// ::-webkit-scrollbar-track {
+//   background: darkslategrey;
+// }
 
 ::-webkit-scrollbar-thumb {
   background: #black;
@@ -145,4 +146,21 @@ body{
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.ind-note:hover{
+    background-color: rgb(255,255,255);
+    cursor: pointer;
+}
+
+.ind-note{
+    height: 110px;
+    width: 245px;
+    margin-left: -38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // border-top: 1px lightgrey solid;
+    border-bottom: 1px lightgrey solid;
+
 }

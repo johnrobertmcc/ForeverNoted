@@ -22,8 +22,6 @@ class AllNotebookIndex extends React.Component {
         let { notebooks } = this.props;
 
 
-        debugger
-
         //get an indiviual notebook's show page
         if (notebooks.length > 0) {
             return notebooks.map((notebook, i) => (
