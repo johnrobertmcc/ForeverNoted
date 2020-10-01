@@ -2,7 +2,9 @@ import React from 'react';
 import CreateNote from './create_note_container';
 import { connect } from 'react-redux';
 import { deleteNote, fetchNotes } from '../../../actions/note_actions';    
-import { Link } from 'react-router-dom';     
+import { Link } from 'react-router-dom';   
+import Moment from 'react-moment';  
+import EditNote from './edit_note_container';
 
 class AllNotesIndex extends React.Component {
     constructor(props) {
@@ -38,7 +40,6 @@ class AllNotesIndex extends React.Component {
 
     noteIndex() {
         let { notes, deleteNote } = this.props;
-        let date = new Date().getMinutes();
         
         
         if (notes.length > 0) {
@@ -62,7 +63,7 @@ class AllNotesIndex extends React.Component {
                             className="date"
                             
                             >
-                            {this.currentDate(date)}
+                            <Moment fromNow>{note.created_at}</Moment>
                         </li>
                     </Link>
                     

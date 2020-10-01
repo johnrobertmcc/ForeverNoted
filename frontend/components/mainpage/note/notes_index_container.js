@@ -4,7 +4,6 @@ import {fetchNotes, deleteNote} from '../../../actions/note_actions';
 
 
 const mapStateToProps = (state) => {
-
     
     return {
         notes: Object.values(state.entities.notes), 

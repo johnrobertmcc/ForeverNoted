@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchNote, updateNote } from '../../../actions/note_actions';
+import { fetchNote, updateNote, fetchNotes, deleteNote } from '../../../actions/note_actions';
 import ReactQuill from 'react-quill';
-// import NotebookIndex from '../notebook/notebook_index_container';
 import NoteIndex from './notes_index_container';
 
 class EditNote extends React.Component {
@@ -10,10 +9,9 @@ class EditNote extends React.Component {
 
     constructor(props) {
         super(props);
-        // debugger
 
+        this.state = this.props.note;
 
-        this.state = this.props.note
         this.formats = [
 
             'font',
@@ -29,8 +27,10 @@ class EditNote extends React.Component {
         this.updateQuill = this.updateQuill.bind(this);
     }
 
-    componentDidMount() {
-        this.props.fetchNote(this.props.noteId)
+    componentDidUpdate(prevProps){
+        if(this.props.note.id !== prevProps.note.id ){
+            this.props.fetchNote(this.props.noteId)
+        };
     }
 
     createMarkupBody() {
@@ -54,6 +54,7 @@ class EditNote extends React.Component {
     }
 
     updateQuill(html){
+
         return this.setState(
             {body: html}
         ) 
@@ -82,6 +83,10 @@ class EditNote extends React.Component {
                 ]
             ]
         };
+
+ 
+
+
         return( 
             
             <div className="create-note-main">
@@ -102,7 +107,7 @@ class EditNote extends React.Component {
                             className='header-title'
                             id="note-title"
                             onChange={this.update('title')}
-                            // value={this.props.note.title}
+                            value={this.state.title}
                         />
 
                         <button className='create-btn'>Edit Note</button>
@@ -111,8 +116,9 @@ class EditNote extends React.Component {
                             modules={modules}
                             theme={'snow'}
                             formats={this.formats}
-                            // value={this.props.note.body}
+                            value={this.state.body}
                             onChange={this.updateQuill}
+                            // readOnly={true}
                         />
 
 
@@ -137,7 +143,6 @@ const mSTP = (state, ownProps) => {
             currentUser,
             noteId,
             note
-            // notebook
         }
     )
 
@@ -148,7 +153,9 @@ const mDTP = dispatch => {
     return (
         {
             fetchNote: (noteId) => dispatch(fetchNote(noteId)),
-            updateNote: note => dispatch(updateNote(note))
+            fetchNotes: (noteId) => dispatch(fetchNotes(noteId)),
+            updateNote: note => dispatch(updateNote(note)),
+            deleteNote: id=> dispatch(deleteNote(id))
         }
     )
 

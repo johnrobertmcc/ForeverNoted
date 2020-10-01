@@ -45,6 +45,7 @@ class CreateNote extends React.Component {
 
 
     updateQuill(html) {
+
         return this.setState(
             { body: html }
         )

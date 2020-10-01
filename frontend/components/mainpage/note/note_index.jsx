@@ -3,26 +3,29 @@ import { deleteNote } from '../../../actions/note_actions';
 import EditForm from './edit_note_container.jsx';
 // import Datetime from 'react-datetime';
 import { Link } from 'react-router-dom';    
+import Moment from 'react-moment';
 
 
 class NoteIndex extends React.Component {
-        constructor(props) {
-            super(props);
+ 
+    constructor(props) {
 
-            this.state = this.props.fetchNotes(this.props.currentUser.id);
+        super(props);
+
+        // this.state = this.props.fetchNotes(this.props.currentUser.id);
+    }
+
+    componentDidMount() {
+
+        this.props.fetchNotes(this.props.currentUser.id);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+
+        if (prevProps.notes.length !== this.props.notes.length) {
+            this.props.fetchNotes(this.props.currentUser.id);
         }
-
-        // componentDidMount() {
-
-        //     this.props.fetchNotes(this.props.currentUser.id);
-        // }
-
-        componentDidUpdate(prevProps, prevState) {
-
-            if (prevProps.notes.length !== this.props.notes.length) {
-                this.props.fetchNotes(this.props.currentUser.id);
-            }
-        }
+    }
 
     currentDate(date){
         let temp =  new Date().getMinutes();
@@ -38,14 +41,18 @@ class NoteIndex extends React.Component {
         return { __html: this.props.notes[idx].body }
     }
 
+
+    cancelNote(noteId){
+        this.afterDelete(noteId);
+
+        () => this.props.deleteNote(noteId);
+    }
     
     noteIndex() {
         let { notes, deleteNote } = this.props;
-        let date = new Date().getMinutes();
-
 
         if (notes.length > 0) {
-            return notes.map((note, i) => (
+            return notes.reverse().map((note, i) => (
                 <div className='ind-note' key={note.id}>
 
                     <Link to={`/main/notebooks/${note.notebook_id}/note/edit/${note.id}`}>
@@ -65,13 +72,13 @@ class NoteIndex extends React.Component {
                             className="date"
 
                         >
-                            {this.currentDate(date)}
+                            <Moment FromNow ago>{note.created_at}</Moment>
                         </li>
                     </Link>
 
                     <li>
                         <button
-                            onClick={() => deleteNote(note.id)}
+                            onClick={deleteNote}
                             className='delete-btn'>
                             <i className="fas fa-trash"></i>
                         </button>
@@ -86,6 +93,9 @@ class NoteIndex extends React.Component {
 
     render() {
         let {notes} = this.props;
+
+        if (typeof notes === 'undefined') return null;
+
         let noteCount = () =>{
             if(notes.length === 1){
                 return (notes.length + " note") 
