@@ -67,6 +67,7 @@ class AllNotesIndex extends React.Component {
     }
 
     render() {
+        debugger
         let { notes, deleteNote } = this.props;
         let noteCount = () => {
             if (notes.length === 1) {
@@ -84,13 +85,14 @@ class AllNotesIndex extends React.Component {
                 <div className='note-index-container'>
                     <div className='note-header'>
 
-                    <h3>All Notes</h3>
+                        <h3>All Notes</h3>
 
-                    <p className="note-count">{noteCount()}</p>
+                        <p className="note-count">{noteCount()}</p>
 
-                    <hr className="note-index-line"></hr>
+                        <hr className="note-index-line"></hr>
 
-                    <ul className="note-index">{this.noteIndex()}</ul>
+                        <ul className="note-index">{this.noteIndex()}</ul>
+
                     </div>
                 </div>
 
