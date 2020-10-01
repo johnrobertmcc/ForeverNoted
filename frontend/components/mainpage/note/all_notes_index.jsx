@@ -52,9 +52,11 @@ class AllNotesIndex extends React.Component {
                             {this.currentDate(date)}
                         </li>
                         <li>
-                        <button 
-                        onClick={() => deleteNote(note.id)}
-                        className='delete-btn'><i className="fas fa-trash"></i></button>
+                            <button 
+                            onClick={() => deleteNote(note.id)}
+                            className='delete-btn'>
+                                <i className="fas fa-trash"></i>
+                            </button>
                         </li>
                 </div>
             ))
@@ -111,7 +113,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => {
-    dispatch
+
 
     return { 
         fetchNotes: id => dispatch(fetchNotes(id)),

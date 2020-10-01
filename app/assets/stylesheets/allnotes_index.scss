@@ -1,3 +1,8 @@
+body{
+    margin: 0;
+    // position: fixed;
+}
+
 .allnotes{
     display: flex;
     flex-direction: row;
@@ -5,24 +10,19 @@
 
 
 .note-index-line{
-    background-color:lightgray;
+    background-color:lightgrey;
     height: 1px;
     border: none;
     // position: fixed;
 }
 
 .note-index{
-    margin-top: -7px;
+    // margin-top: -7px;
     list-style: none;
-}
-
-.note-index-container{
-    padding-left: 7px;
-    max-width: 252px;
-    background-color: rgb(248,248,248);
-    
-    
-    // position: fixed;
+    // padding-left: 7px;
+    overflow-y: scroll;
+    height: 91vh;
+    // position: relative;
 }
 
 
@@ -46,7 +46,7 @@
 
 .quill-editor {
     width: 100%;
-    height: 90vh;
+    height: 100vh;
 }
 
 .note-editor{
@@ -100,10 +100,49 @@
 
 }
 
-// .note-header{
-//     top: 0;
-//         padding-left: 7px;
-//     max-width: 252px;
-//     // background-color: rgb(248,248,248);
-//     // position: fixed;
-// }
+.note-header{
+    top: 0;
+    padding-left: 7px;
+    max-width: 252px;
+    height: 100vh;
+    // background-color: rgb(248,248,248);
+    // position: sticky;
+    z-index: 100;
+}
+
+.allnotes{
+    margin: 0;
+    position: relative;
+}
+
+.quill.quill-editor{
+    height: 100vh;
+    // overflow-y: scroll;
+}
+
+
+.note-index-container{
+    padding-left: 7px;
+    max-width: 252px;
+    background-color: rgb(248,248,248);
+    height:100vh;
+    border: 1px solid lightgrey;
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #light-grey;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #black;
+  max-height: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

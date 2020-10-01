@@ -51,5 +51,5 @@ const removeNote = noteId => {
 };
 
 export const deleteNote = noteId => dispatch => {
-    return NoteUtil.deleteNote(noteId).then(noteId=> dispatch(removeNote(noteId)))
+    return NoteUtil.deleteNote(noteId).then(note=> dispatch(removeNote(note)))
 };

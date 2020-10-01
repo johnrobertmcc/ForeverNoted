@@ -34,13 +34,13 @@ class SideBar extends React.Component{
                         <li className='switch-links'><i className="fas fa-book"></i><Link to='/main/allnotebooks'>Notebooks</Link></li>
                     </ul>
 
+                    <div className='flex-footer'>
                         <hr className='footer-sidebar'></hr>
-                    <div className='sidebar-icons'>
-                        <a href='https://github.com/johnrobertmcc?tab=repositories'><i className="fab fa-github"></i></a>
-                        <p className='sig'>John Robert McCann</p>
-                        <a href='https://www.linkedin.com/in/jrmcc/'><i className="fab fa-linkedin-in"></i></a>
-
-                        
+                        <div className='sidebar-icons'>
+                            <a href='https://github.com/johnrobertmcc?tab=repositories'><i className="fab fa-github"></i></a>
+                            <p className='sig'>John Robert McCann</p>
+                            <a href='https://www.linkedin.com/in/jrmcc/'><i className="fab fa-linkedin-in"></i></a>
+                        </div>
                     </div>
                 </div>
 

@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: row;
     width: 100%;
+    height: 110vh;
+    position: fixed;
 }
 
 
@@ -65,28 +67,4 @@
 
 .create-note-index{
     margin-left: 110px;
-}
-
-
-.note-index-container{
-    padding-left: 7px;
-    overflow-y: scroll;
-    height: 100vh;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #light-grey;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #black;
-  max-height: 20px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
 }
