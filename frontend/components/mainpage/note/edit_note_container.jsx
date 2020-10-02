@@ -28,8 +28,10 @@ class EditNote extends React.Component {
     }
 
     componentDidUpdate(prevProps){
+        // /is url matches note
+
         if(this.props.note.id !== prevProps.note.id ){
-            this.props.fetchNote(this.props.noteId)
+        this.props.fetchNote(this.props.noteId)
         };
     }
 
@@ -138,6 +140,7 @@ const mSTP = (state, ownProps) => {
     const currentUser = state.entities.users[state.session.id]
     const note = state.entities.notes[noteId]
 
+    debugger
     return (
         {
             currentUser,

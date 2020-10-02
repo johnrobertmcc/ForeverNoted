@@ -20,6 +20,7 @@ class Api::NotesController < ApplicationController
 
    
     def create
+        debugger
      
         @note = Note.new(note_params)
 

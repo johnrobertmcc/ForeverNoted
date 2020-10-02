@@ -12,7 +12,7 @@ class NoteIndex extends React.Component {
 
         super(props);
 
-        // this.state = this.props.fetchNotes(this.props.currentUser.id);
+        this.state = this.props.fetchNotes(this.props.currentUser.id);
     }
 
     componentDidMount() {
@@ -21,10 +21,8 @@ class NoteIndex extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-
-        if (prevProps.notes.length !== this.props.notes.length) {
-            this.props.fetchNotes(this.props.currentUser.id);
-        }
+        this.props.fetchNotes(this.props.currentUser.id);
+        // if (prevProps.no@note
     }
 
     currentDate(date){
