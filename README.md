@@ -7,6 +7,7 @@ ForeverNoted is a note-taking app that offers the ability to take, edit, and del
 <hr></hr>
 
 **Ruby on Rails**
+
 Built with Ruby on Rails in the backend using it's MVC (Model-View-Controller) architecture. This framework makes it secure, cost-effective, and offered the ability to be flexible during production.
 
 
@@ -15,6 +16,7 @@ Built with Ruby on Rails in the backend using it's MVC (Model-View-Controller) a
 Structured as a normalized Redux State with Thunk middleware for asyncronous actions.
 
 **ReactQuill**
+
 The rich-text editor used inside of ForeverNoted was stylized and prepared using React's Quill library
 
 ## Features
@@ -23,39 +25,36 @@ The rich-text editor used inside of ForeverNoted was stylized and prepared using
 
 The core of any note-taking app, dynamic notes are able to be taken in various text-decorations. Notes are saved immediately into the dynamic sidebar:
 
-![alt text](images/peek-good.gif "demo")
+![alt-text](https://github.com/johnrobertmcc/ForeverNoted/blob/master/app/assets/images/Peek-good.gif "demo")
 
 As shown above, the 
 The note-index updates dynamically based on how many notes are inside of the user's index, the logic behind that is shown here:
 
-`
- let noteCount = () =>{
+`let noteCount = () =>{
             if(notes.length === 1){
                 return (notes.length + " note") 
             }else{
                 return (notes.length + " notes")
             }
         }
-        
-`
+        `
+
 The body of the note is markeddown from HTML and displayed in the note index as plain text:
 
-` 
-  createMarkup(idx) {
+` createMarkup(idx) {
         return { __html: this.props.notes[idx].body }
     }
 `
 
-`    <li className='note-body'>
+` <li className='note-body'>
         <div dangerouslySetInnerHTML={this.createMarkup(i)} />
-    </li>
-`
+    </li>`
 
 
 
 Using React-moment, every 60 seconds the timesince note was written is updated. The note index also features smooths scrolling and a delete function:
 
-![alt text](images/note-index.gif 'index')
+![alt-text](https://github.com/johnrobertmcc/ForeverNoted/blob/master/app/assets/images/note-index.gif 'index')
 
 
 ## Planned updates
