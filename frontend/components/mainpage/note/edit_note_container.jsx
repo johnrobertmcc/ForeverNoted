@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchNote, updateNote, fetchNotes, deleteNote } from '../../../actions/note_actions';
+import {fetchNotebooks} from '../../../actions/notebook_actions';
 import ReactQuill from 'react-quill';
 import NoteIndex from './notes_index_container';
 
@@ -25,6 +26,11 @@ class EditNote extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updateQuill = this.updateQuill.bind(this);
+    }
+
+
+    componentDidMount(){
+        this.props.fetchNotebooks(this.props.currentUser.id);
     }
 
     componentDidUpdate(prevProps){
@@ -67,6 +73,17 @@ class EditNote extends React.Component {
         e.preventDefault();
 
         this.props.updateNote(this.state);
+    }
+
+    notebookList(){
+        let {notebooks} = this.props;
+
+        notebooks.map(notebook => {
+            return (
+                <li>
+                    {notebook.title}
+                </li>
+            )})
     }
 
     render() {
@@ -113,6 +130,9 @@ class EditNote extends React.Component {
                         />
 
                         <button className='create-btn'>Edit Note</button>
+                               <select id="notebooks" name="notebooks">
+                            <option>{this.notebookList()}</option>
+                        </select>
                         <ReactQuill
                             className="quill-editor"
                             modules={modules}
@@ -138,12 +158,14 @@ const mSTP = (state, ownProps) => {
     const noteId = ownProps.match.params.noteId
     const currentUser = state.entities.users[state.session.id]
     const note = state.entities.notes[noteId]
+    const notebooks = Object.values(state.entities.notebooks)
 
     return (
         {
             currentUser,
             noteId,
-            note
+            note,
+            notebooks
         }
     )
 
@@ -155,6 +177,7 @@ const mDTP = dispatch => {
         {
             fetchNote: (noteId) => dispatch(fetchNote(noteId)),
             fetchNotes: (noteId) => dispatch(fetchNotes(noteId)),
+            fetchNotebooks: (id) => dispatch(fetchNotebooks(id)),
             updateNote: note => dispatch(updateNote(note)),
             deleteNote: id=> dispatch(deleteNote(id))
         }

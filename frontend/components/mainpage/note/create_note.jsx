@@ -15,6 +15,7 @@ class CreateNote extends React.Component {
             body: '',
             user_id: this.props.currentUser.id,
             notebook_id: 1, //this.props.note.notebook_id
+    
         }
 
 
@@ -30,6 +31,7 @@ class CreateNote extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updateQuill = this.updateQuill.bind(this);
+        this.notebookList = this.notebookList.bind(this)
         }
      
    
@@ -52,55 +54,76 @@ class CreateNote extends React.Component {
 
     }
 
+    componentDidMount(){
+        this.props.fetchNotebooks(this.props.currentUser.id);
+    }
+
+
+    notebookList(){
+        let {notebooks} = this.props
+        notebooks.map(notebook => {
+            return (
+                <li>
+                    {notebook.title}
+                </li>
+            )})
+    }
 
     handleSubmit(e) {
         e.preventDefault();
-        debugger
         this.props.createNote(this.state);
     }
+    
 
     render() {
 
-
-        const modules = {
-            toolbar: [
-                ["bold", "italic", "underline", "strike"],
-                ["blockquote", "code"],
-                [
-                    {
-                        list: "ordered"
-                    },
-                    {
-                        list: "bullet"
-                    }
+            
+            const modules = {
+                toolbar: [
+                    ["bold", "italic", "underline", "strike"],
+                    ["blockquote", "code"],
+                    [
+                        {
+                            list: "ordered"
+                        },
+                        {
+                            list: "bullet"
+                        }
+                    ]
                 ]
-            ]
-        };
-
-        // const notebook = this.props.fetchNotebook(this.props.notebookId)
-    
-        return (
-            <div className="create-note-main">
+            };
+            
+            return (
+                <div className="create-note-main">
                 <div className='note-editor'>
 
-                    {/* <p className='notebook-title-create'>{notebook.title}</p> */}
                     <form
                         className="note-form"
                         onSubmit={this.handleSubmit}>
                         <div className='create-head'>
+                            
                         </div>
 
 
+                          
                             <input
                                 type="text"
                                 className='header-title'
                                 id="note-title"
                                 onChange={this.update('title')}
                                 placeholder='Untitled'
-                                value={this.state.title || 'Untitled'}
+                                value={this.state.title}
                                 />
-
+                            
+                            <label htmlFor="nb-btn">Notebook?</label>
+                                <select id="nb-btn" name="nb-btn">
+                                <option>{this.notebookList()}</option>
+                            </select>
+                            
                             <button className='create-btn'>Create Note</button>
+                            
+                           
+                
                         <ReactQuill
                             className="quill-editor"
                             modules={modules}
@@ -109,7 +132,7 @@ class CreateNote extends React.Component {
                             value={this.state.body}
                             onChange={this.updateQuill}
                             placeholder="Start writing..."
-                       />
+                        />
 
                        
                     </form>
@@ -118,7 +141,8 @@ class CreateNote extends React.Component {
        
             </div>
             
-        );
+            );
+
     }
 }
 

@@ -17,6 +17,13 @@ class AllNotebookIndex extends React.Component {
         this.props.fetchNotebooks(this.props.currentUser.id);
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        debugger
+        if(prevProps.notebooks.length !== this.props.notebooks.length){
+            this.props.fetchNotebooks(this.props.currentUser.id);
+        }
+    }
+
 
     notebookIndex() {
         let { notebooks } = this.props;

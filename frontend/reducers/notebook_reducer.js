@@ -6,6 +6,7 @@ const NotebookReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_NOTEBOOK:
+            debugger
             return { [action.notebook.id]: action.notebook };
 
         case RECEIVE_ALL_NOTEBOOKS:
