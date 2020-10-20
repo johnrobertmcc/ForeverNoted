@@ -15,14 +15,12 @@ class NoteIndex extends React.Component {
         this.state = this.props.fetchNotes(this.props.currentUser.id);
     }
 
-    componentDidMount() {
-
-        this.props.fetchNotes(this.props.currentUser.id);
-    }
 
     componentDidUpdate(prevProps, prevState) {
-        this.props.fetchNotes(this.props.currentUser.id);
-        // if (prevProps.no@note
+
+        if(prevProps.notes.length !== this.props.notes.length){
+            this.props.fetchNotes(this.props.currentUser.id);
+        }
     }
 
     currentDate(date){
@@ -39,12 +37,6 @@ class NoteIndex extends React.Component {
         return { __html: this.props.notes[idx].body }
     }
 
-
-    cancelNote(noteId){
-        this.afterDelete(noteId);
-
-        () => this.props.deleteNote(noteId);
-    }
     
     noteIndex() {
         let { notes, deleteNote } = this.props;

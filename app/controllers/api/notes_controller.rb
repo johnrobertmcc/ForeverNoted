@@ -20,14 +20,12 @@ class Api::NotesController < ApplicationController
 
    
     def create
-        debugger
-     
         @note = Note.new(note_params)
 
         if @note.save
             render 'api/notes/show'
         else  
-            render json: ["notes must have a title"], status: 422    
+            render json: [@note.errors.full_messages], status: 422
         end
         
     end

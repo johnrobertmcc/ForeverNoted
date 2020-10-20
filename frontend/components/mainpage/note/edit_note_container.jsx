@@ -120,7 +120,6 @@ class EditNote extends React.Component {
                             formats={this.formats}
                             value={this.state.body}
                             onChange={this.updateQuill}
-                            // readOnly={true}
                         />
 
 
@@ -140,7 +139,6 @@ const mSTP = (state, ownProps) => {
     const currentUser = state.entities.users[state.session.id]
     const note = state.entities.notes[noteId]
 
-    debugger
     return (
         {
             currentUser,

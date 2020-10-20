@@ -55,7 +55,7 @@ class CreateNote extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-
+        debugger
         this.props.createNote(this.state);
     }
 
@@ -123,6 +123,3 @@ class CreateNote extends React.Component {
 }
 
 export default CreateNote;
-
-
-//add quill, add edit/create container
