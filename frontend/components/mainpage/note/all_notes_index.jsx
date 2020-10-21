@@ -13,10 +13,6 @@ class AllNotesIndex extends React.Component {
         this.state = this.props.fetchNotes(this.props.currentUser.id);
     }
 
-    // componentDidMount() {
-
-    //     this.props.fetchNotes(this.props.currentUser.id);
-    // }
 
     componentDidUpdate(prevProps, prevState) {
 

@@ -17,12 +17,11 @@ class NoteIndex extends React.Component {
 
 
     componentDidUpdate(prevProps, prevState) {
+        debugger
 
         if(prevProps.notes.length !== this.props.notes.length){
             this.props.fetchNotes(this.props.currentUser.id);
         }
-
-        this.forceUpdate();
     }
 
     currentDate(date){
