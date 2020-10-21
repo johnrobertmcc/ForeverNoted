@@ -25,7 +25,7 @@ The rich-text editor used inside of ForeverNoted was stylized and prepared using
 
 The core of any note-taking app, dynamic notes are able to be taken in various text-decorations. Notes are saved immediately into the dynamic sidebar:
 
-![alt-text](https://github.com/johnrobertmcc/ForeverNoted/blob/master/app/assets/images/Peek-good.gif "demo")
+![alt-text](https://github.com/johnrobertmcc/ForeverNoted/blob/master/app/assets/images/metatag.gif "demo")
 
 As shown above, the 
 The note-index updates dynamically based on how many notes are inside of the user's index, the logic behind that is shown here:
