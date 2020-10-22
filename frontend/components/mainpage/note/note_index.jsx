@@ -9,7 +9,6 @@ import Moment from 'react-moment';
 class NoteIndex extends React.Component {
  
     constructor(props) {
-
         super(props);
 
         this.state = this.props.fetchNotes(this.props.currentUser.id);
@@ -17,12 +16,12 @@ class NoteIndex extends React.Component {
 
 
     componentDidUpdate(prevProps, prevState) {
-        debugger
-
         if(prevProps.notes.length !== this.props.notes.length){
             this.props.fetchNotes(this.props.currentUser.id);
         }
     }
+
+
 
     currentDate(date){
         let temp =  new Date().getMinutes();
