@@ -12,6 +12,12 @@ export const MenuItems =[
                     cName: 'nav-links',
                         id: 2
         },
+        {
+            title: 'AngelList',
+            url: 'https://angel.co/u/john-robert-mccann',
+                    cName: 'nav-links',
+                        id: 2
+        },
 
         // {
         //     title: 'About Me',

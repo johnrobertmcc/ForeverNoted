@@ -88,12 +88,9 @@ class HomePage extends React.Component {
                     <p className='name'>John Robert McCann</p>
                     <a href="https://github.com/johnrobertmcc?tab=repositories">GitHub</a>
                     <a href="https://www.linkedin.com/in/jrmcc/">LinkedIn</a>
-                    {/* <a>J.R. McCann(in progress)</a> */}
+                    <a href='https://angel.co/u/john-robert-mccann'>AngelList</a>
                     
                 </footer>
-                <button
-                onClick={logOut}
-                >TemporaryLogOut</button>
             </div>
         )
     }
