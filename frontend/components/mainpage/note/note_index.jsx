@@ -12,6 +12,7 @@ class NoteIndex extends React.Component {
         super(props);
 
         this.state = this.props.fetchNotes(this.props.currentUser.id);
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
 
@@ -35,6 +36,11 @@ class NoteIndex extends React.Component {
 
     createMarkup(idx) {
         return { __html: this.props.notes[idx].body }
+    }
+
+    handleDelete(id){
+        this.props.deleteNote(id);
+        // this.setState(this.props.fetchNotes(this.props.currentUser.id))
     }
 
     
@@ -68,7 +74,7 @@ class NoteIndex extends React.Component {
 
                     <li>
                         <button
-                            onClick={deleteNote}
+                            onClick={this.handleDelete(note.id)}
                             className='delete-btn'>
                             <i className="fas fa-trash"></i>
                         </button>
