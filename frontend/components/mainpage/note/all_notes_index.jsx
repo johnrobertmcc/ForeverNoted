@@ -59,7 +59,7 @@ class AllNotesIndex extends React.Component {
                             className="date"
                             
                             >
-                            <Moment fromNow>{note.created_at}</Moment>
+                            <Moment fromNow ago>{note.created_at}</Moment>
                         </li>
                     </Link>
                     

@@ -30,25 +30,29 @@ The core of any note-taking app, dynamic notes are able to be taken in various t
 As shown above, the 
 The note-index updates dynamically based on how many notes are inside of the user's index, the logic behind that is shown here:
 
-`let noteCount = () =>{
+```Javascript
+let noteCount = () =>{
             if(notes.length === 1){
                 return (notes.length + " note") 
             }else{
                 return (notes.length + " notes")
             }
         }
-        `
+```
 
 The body of the note is markeddown from HTML and displayed in the note index as plain text:
 
-` createMarkup(idx) {
+```Javascript
+ createMarkup(idx) {
         return { __html: this.props.notes[idx].body }
     }
-`
+```
 
-` <li className='note-body'>
+```Javascript
+ <li className='note-body'>
         <div dangerouslySetInnerHTML={this.createMarkup(i)} />
-    </li>`
+    </li>
+```
 
 
 
@@ -59,4 +63,4 @@ Using React-moment, every 60 seconds the timesince note was written is updated. 
 
 ## Planned updates
 
-Currently only one notebook is available per user, but that is meant to be refactored in the very near future
+Soon, multiple notebooks per user will be supported, as well as a search function, and tagsfor individual notes
