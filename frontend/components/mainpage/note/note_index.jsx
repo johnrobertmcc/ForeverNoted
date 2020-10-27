@@ -1,7 +1,4 @@
 import React from 'react';
-import { deleteNote } from '../../../actions/note_actions';
-import EditForm from './edit_note_container.jsx';
-// import Datetime from 'react-datetime';
 import { Link } from 'react-router-dom';    
 import Moment from 'react-moment';
 
