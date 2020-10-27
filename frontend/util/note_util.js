@@ -19,7 +19,6 @@ export const fetchNote = (noteId) => {
 };
 
 export const createNote = (note) => {
-    debugger
     return $.ajax(
         {
             url: `/api/notes`,

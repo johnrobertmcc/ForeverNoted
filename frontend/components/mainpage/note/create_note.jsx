@@ -70,7 +70,6 @@ class CreateNote extends React.Component {
     }
 
     handleSubmit(e) {
-        debugger
         e.preventDefault();
         this.props.createNote(this.state);
     }

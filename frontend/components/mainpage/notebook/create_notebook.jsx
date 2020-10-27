@@ -27,7 +27,7 @@ class CreateNotebook extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        debugger
+        
 
         this.props.createNotebook(this.state);
         this.setState({ title: ''})

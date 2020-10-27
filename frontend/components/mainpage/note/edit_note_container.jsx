@@ -11,7 +11,7 @@ class EditNote extends React.Component {
     constructor(props) {
         super(props);
 
-        debugger
+
         this.state = this.props.note;
 
         this.formats = [
@@ -30,19 +30,16 @@ class EditNote extends React.Component {
     }
 
 
-    componentDidMount(){
-        this.props.fetchNotebooks(this.props.currentUser.id);
-    }
+    // componentDidMount(){
+    //     this.props.fetchNotebooks(this.props.currentUser.id);
+    // }
 
     componentDidUpdate(prevProps){
         // /is url matches note
         debugger
-
         if(this.props.note.id !== prevProps.note.id ){
-        this.props.fetchNote(this.props.noteId)
-        this.setState(
-            this.props.note
-            )
+            this.props.fetchNote(this.props.noteId)
+            this.setState(this.props.note)
         };
 
         
@@ -162,7 +159,6 @@ class EditNote extends React.Component {
 
 const mSTP = (state, ownProps) => {
 
-    debugger
     const noteId = ownProps.match.params.noteId
     const currentUser = state.entities.users[state.session.id]
     const note = state.entities.notes[noteId]

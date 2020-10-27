@@ -88,6 +88,7 @@ class AllNotesIndex extends React.Component {
             }
         }
 
+        debugger
 
         return (
 

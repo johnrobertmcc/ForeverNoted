@@ -6,7 +6,6 @@ import { fetchNotebook, fetchNotebooks } from '../../../actions/notebook_actions
 
 const mSTP = (state, ownProps) => {
     // const notebookId = state.entities.notes[0].notebook_id
-    debugger
     return { 
         currentUser: state.entities.users[state.session.id],
         notebooks: Object.values(state.entities.notebooks)

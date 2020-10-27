@@ -6,7 +6,7 @@ import { fetchNotebook } from '../../../actions/notebook_actions';
 const mapStateToProps = (state, ownProps) => {
 
     const notebook = state.entities.notebooks[ownProps.match.params.notebookId]
-    debugger
+    
 
     return { 
         notebook

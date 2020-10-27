@@ -29,8 +29,6 @@ class Api::NotebooksController < ApplicationController
    
     def create
 
-
-        debugger
         @notebook = Notebook.new(notebook_params)
 
         

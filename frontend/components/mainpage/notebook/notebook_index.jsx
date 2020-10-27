@@ -22,7 +22,7 @@ class NotebookIndex extends React.Component {
 
 
         const {notebook} = this.props;
-        debugger
+    
 
         const notesFromNotebooks = (notes.length > 0) ? (notes.map((note, idx) => {
            return (
