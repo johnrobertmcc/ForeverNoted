@@ -36,7 +36,6 @@ class EditNote extends React.Component {
 
     componentDidUpdate(prevProps){
         // /is url matches note
-        debugger
         if(this.props.note.id !== prevProps.note.id ){
             this.props.fetchNote(this.props.noteId)
             this.setState(this.props.note)

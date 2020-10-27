@@ -9,13 +9,13 @@ class CreateNote extends React.Component {
     constructor(props) {
 
         super(props)
+        debugger
 
         this.state = {
             title: '',
             body: '',
             user_id: this.props.currentUser.id,
-            notebook_id: 14, //this.props.note.notebook_id
-    
+             //this.props.note.notebook_id
         }
 
 
@@ -32,17 +32,22 @@ class CreateNote extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updateQuill = this.updateQuill.bind(this);
         // this.notebookList = this.notebookList.bind(this)
+        this.setNotebookId = this.setNotebookId.bind(this)
         }
      
    
     update(str) {
-
         return (e) => {
             this.setState(
                 { [str]: e.target.value }
             );
         };
     
+    }
+
+    setNotebookId(){
+            debugger
+        this.setState({notebook_id: this.props.notebooks[0].id} )
     }
 
 
@@ -92,7 +97,6 @@ class CreateNote extends React.Component {
                     ]
                 ]
             };
-            
             return (
                 <div className="create-note-main">
                 <div className='note-editor'>
@@ -120,7 +124,7 @@ class CreateNote extends React.Component {
                                 <option>{this.notebookList()}</option>
                             </select> */}
                             
-                            <button className='create-btn'>Create Note</button>
+                            <button onClick={this.setNotebookId}  className='create-btn'>Create Note</button>
                             
                            
                 

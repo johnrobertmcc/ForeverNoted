@@ -65,7 +65,7 @@ class NoteIndex extends React.Component {
                             className="date"
 
                         >
-                            <Moment FromNow ago>{note.created_at}</Moment>
+                            <Moment fromNow ago>{note.created_at}</Moment>
                         </li>
                     </Link>
 

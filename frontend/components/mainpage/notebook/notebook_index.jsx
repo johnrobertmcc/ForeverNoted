@@ -72,7 +72,6 @@ class NotebookIndex extends React.Component {
             }
         }
 
-        debugger
         return (
             <div className='all-notes'>
                 <div className='note-index-container'>

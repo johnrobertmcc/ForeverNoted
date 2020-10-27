@@ -34,6 +34,7 @@ class AllNotebookIndex extends React.Component {
             return notebooks.map((notebook, i) => (
                 <table 
                 className='notebook-table'
+                key={i}
                 >
                         <tr className='row'>
                             <Link to={`/main/notebooks/${notebook.id}/notes`}>
