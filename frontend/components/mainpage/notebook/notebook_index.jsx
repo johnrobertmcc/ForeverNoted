@@ -1,6 +1,7 @@
 import React from 'react';
-import EditNote from '../note/edit_note_container';
+import CreateNote from '../note/create_note_container';
 import { Link } from 'react-router-dom';
+import Moment from 'react-moment'; 
 
 
 //individual notebook and their notes
@@ -17,39 +18,77 @@ class NotebookIndex extends React.Component {
         
     }
 
+    createMarkup(idx){
+        return { __html: this.props.notebook.notes[idx].body }
+    }
+
 
     render() {
 
-
-        const {notebook} = this.props;
+        const {notebook, deleteNote} = this.props;
+        let {notes} = this.props.notebook;
     
 
         const notesFromNotebooks = (notes.length > 0) ? (notes.map((note, idx) => {
            return (
-           <Link to={`/main/notebooks/${notebook.id}/note/edit/${note.id}`}>
-                <li
-                        className='note'
-                        key={note.id}
-                        >{note.title}
-                </li>
-             </Link>)
+            <div className='ind-note' key={note.id}>
+
+                <Link to={`/main/notebooks/${notebook.id}/note/edit/${note.id}`}>
+                    <li
+                            className='note-link'
+                            >{note.title}
+                    </li>
+
+                    <li className='note-body'>
+                        <div dangerouslySetInnerHTML={this.createMarkup(idx)} />
+                    </li>
+
+                    <li
+                        className="date"
+                        >
+                        <Moment fromNow>{note.created_at}</Moment>
+                    </li>
+
+                </Link> 
+                    <li>
+                        <button 
+                        onClick={() => deleteNote(note.id)}
+                        className='delete-btn'>
+                            <i className="fas fa-trash"></i>
+                        </button>
+                    </li>
+   
+            </div>)
            
           
         }
         )) : "no notes yet!"
 
-        return (
-            <div className='notebook-full-index'>
-                
-                <div className='notebook-index-container'>
-                        <p> {this.props.notebook.title}</p>
-                        <hr className='notebook-index-line'></hr>
-                        <ul className='notebook-list'>{notesFromNotebooks}</ul>
-                </div>
+        let noteCount = () => {
+            if (notes.length === 1) {
+                return (notes.length + " note")
+            } else {
+                return (notes.length + " notes")
+            }
+        }
 
-                
-                <div>
-                    {/* <EditNote /> */}
+        debugger
+        return (
+            <div className='all-notes'>
+                <div className='note-index-container'>
+
+                    <div className='note-header'>
+                            <h3> {this.props.notebook.title}</h3>
+                            
+                            <p className="note-count">{noteCount()}</p>
+
+                            <hr className='note-index-line'></hr>
+                            
+                            <ul className='note-index'>{notesFromNotebooks}</ul>
+                    </div>    
+                </div>
+                <div className='allnotes-create-form'>
+                    <CreateNote />
                 </div>
             </div>
         )

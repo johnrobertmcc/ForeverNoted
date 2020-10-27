@@ -3,7 +3,7 @@ class Note < ApplicationRecord
     validates :title, presence: true
     validates :user_id, presence: true
 
-    # belongs_to :notebook
+    belongs_to :notebook
     belongs_to :user
 
 end

@@ -14,7 +14,7 @@ class CreateNote extends React.Component {
             title: '',
             body: '',
             user_id: this.props.currentUser.id,
-            notebook_id: 1, //this.props.note.notebook_id
+            notebook_id: 14, //this.props.note.notebook_id
     
         }
 
@@ -31,7 +31,7 @@ class CreateNote extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updateQuill = this.updateQuill.bind(this);
-        this.notebookList = this.notebookList.bind(this)
+        // this.notebookList = this.notebookList.bind(this)
         }
      
    
@@ -59,15 +59,15 @@ class CreateNote extends React.Component {
     }
 
 
-    notebookList(){
-        let {notebooks} = this.props
-        notebooks.map(notebook => {
-            return (
-                <li>
-                    {notebook.title}
-                </li>
-            )})
-    }
+    // notebookList(){
+    //     let {notebooks} = this.props
+    //     notebooks.map(notebook => {
+    //         return (
+    //             <li>
+    //                 {notebook.title}
+    //             </li>
+    //         )})
+    // }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -115,10 +115,10 @@ class CreateNote extends React.Component {
                                 value={this.state.title}
                                 />
                             
-                            <label htmlFor="nb-btn">Notebook?</label>
+                            {/* <label htmlFor="nb-btn">Notebook?</label>
                                 <select id="nb-btn" name="nb-btn">
                                 <option>{this.notebookList()}</option>
-                            </select>
+                            </select> */}
                             
                             <button className='create-btn'>Create Note</button>
                             
