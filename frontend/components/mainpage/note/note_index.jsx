@@ -12,7 +12,7 @@ class NoteIndex extends React.Component {
         super(props);
 
         this.state = this.props.fetchNotes(this.props.currentUser.id);
-        this.handleDelete = this.handleDelete.bind(this)
+        // this.handleDelete = this.handleDelete.bind(this)
     }
 
 
@@ -38,10 +38,10 @@ class NoteIndex extends React.Component {
         return { __html: this.props.notes[idx].body }
     }
 
-    handleDelete(id){
-        this.props.deleteNote(id);
-        // this.setState(this.props.fetchNotes(this.props.currentUser.id))
-    }
+    // handleDelete(id){
+    //     this.props.deleteNote(id);
+    //     // this.setState(this.props.fetchNotes(this.props.currentUser.id))
+    // }
 
     
     noteIndex() {
@@ -74,7 +74,7 @@ class NoteIndex extends React.Component {
 
                     <li>
                         <button
-                            onClick={this.handleDelete(note.id)}
+                            onClick={deleteNote}
                             className='delete-btn'>
                             <i className="fas fa-trash"></i>
                         </button>
