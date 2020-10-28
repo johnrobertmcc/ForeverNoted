@@ -4,22 +4,30 @@ import { connect } from 'react-redux';
 import { deleteNote, fetchNotes } from '../../../actions/note_actions';    
 import { Link } from 'react-router-dom';   
 import Moment from 'react-moment';  
-import EditNote from './edit_note_container';
+import SearchBar from '../search/search_bar';
 
 class AllNotesIndex extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = this.props.fetchNotes(this.props.currentUser.id);
+        this.state = {
+            filtered: []
+        }
     }
 
 
     componentDidUpdate(prevProps, prevState) {
-
         if(prevProps.notes.length !== this.props.notes.length){
             this.props.fetchNotes(this.props.currentUser.id);
         }
     }
+
+    componentDidMount() {
+    this.setState({
+        filtered: this.props.fetchNotes(this.props.currentUser.id)
+    });
+    }
+
 
     currentDate(date) {
         let temp = new Date().getMinutes();
@@ -43,7 +51,7 @@ class AllNotesIndex extends React.Component {
         
         
         if (notes.length > 0) {
-            debugger
+            
             let sortedNotes = this.sortByEdited(notes)
             return sortedNotes.map((note, i) => (
                 <div className='ind-note' key={note.id}>
@@ -85,7 +93,7 @@ class AllNotesIndex extends React.Component {
     }
 
     render() {
-        let { notes, deleteNote } = this.props;
+        let { notes } = this.props;
         let noteCount = () => {
             if (notes.length === 1) {
                 return (notes.length + " note")
@@ -105,8 +113,8 @@ class AllNotesIndex extends React.Component {
                         <h3>All Notes</h3>
 
                         <p className="note-count">{noteCount()}</p>
-
-                        <input placeholder='Search notes..'></input>
+                        
+                        <SearchBar notes={notes}/>
 
                         <hr className="note-index-line"></hr>
 
