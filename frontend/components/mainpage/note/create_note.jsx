@@ -140,7 +140,7 @@ class CreateNote extends React.Component {
                                 <option>{this.notebookList()}</option>
                             </select>
                             <button onClick={this.setNotebookId}  className='create-btn'>Create Note</button>
-                           {this.renderRedirect()}
+                           {/* {this.renderRedirect()} */}
                 
                         <ReactQuill
                             className="quill-editor"

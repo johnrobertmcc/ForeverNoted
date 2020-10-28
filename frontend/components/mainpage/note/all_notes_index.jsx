@@ -46,6 +46,7 @@ class AllNotesIndex extends React.Component {
 
     sortByEdited(notes){
         return notes[0].id < notes[1].id ? notes.reverse() : notes
+        // return notes
     }
 
     noteIndex() {
@@ -110,8 +111,9 @@ class AllNotesIndex extends React.Component {
                 debugger
             if(notes[i].title.includes(e.target.value)){
                 currentList.push(notes[i])
+            }else if(notes[i].body.includes(e.target.value) && !currentList.includes(notes[i])){
+                currentList.push(notes[i])
             }
-
         }
 
     
@@ -129,11 +131,13 @@ class AllNotesIndex extends React.Component {
 
     render() {
         let { notes } = this.props;
+        let allNotes;
+        this.state.searched ? allNotes = this.state.filtered :  allNotes = notes;
         let noteCount = () => {
-            if (notes.length === 1) {
-                return (notes.length + " note")
+            if (allNotes.length === 1) {
+                return (allNotes.length + " note")
             } else {
-                return (notes.length + " notes")
+                return (allNotes.length + " notes")
             }
         }
 
