@@ -91,20 +91,22 @@ class EditNote extends React.Component {
 
     render() {
 
-        const modules = {
-            toolbar: [
-                ["bold", "italic", "underline", "strike"],
-                ["blockquote", "code"],
-                [
-                    {
-                        list: "ordered"
-                    },
-                    {
-                        list: "bullet"
-                    }
+       const modules = {
+                toolbar: [
+                    ["bold", "italic", "underline", "strike"],
+                    ["blockquote", "code"],
+                    [
+                        {
+                            list: "ordered"
+                        },
+                        {
+                            list: "bullet"
+                        },
+                    ],
+                    [{ 'color': [] }, { 'background': [] }],
                 ]
-            ]
-        };
+            };
+
 
  
 

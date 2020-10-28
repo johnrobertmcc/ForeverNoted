@@ -6,6 +6,7 @@ import { fetchNotebook, fetchNotebooks } from '../../../actions/notebook_actions
 
 const mSTP = (state, ownProps) => {
     return { 
+        
         currentUser: state.entities.users[state.session.id],
         notebooks: Object.values(state.entities.notebooks),
     }

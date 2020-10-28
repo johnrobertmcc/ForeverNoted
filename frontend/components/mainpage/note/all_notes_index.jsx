@@ -34,12 +34,18 @@ class AllNotesIndex extends React.Component {
         return { __html: this.props.notes[idx].body }
     }
 
+    sortByEdited(notes){
+        return notes[0].id < notes[1].id ? notes.reverse() : notes
+    }
+
     noteIndex() {
         let { notes, deleteNote } = this.props;
         
         
         if (notes.length > 0) {
-            return notes.reverse().map((note, i) => (
+            debugger
+            let sortedNotes = this.sortByEdited(notes)
+            return sortedNotes.map((note, i) => (
                 <div className='ind-note' key={note.id}>
 
                     <Link to={`/main/notebooks/${note.notebook_id}/note/edit/${note.id}`}>

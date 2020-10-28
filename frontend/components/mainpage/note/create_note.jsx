@@ -10,7 +10,6 @@ class CreateNote extends React.Component {
     constructor(props) {
 
         super(props)
-        debugger
 
         this.state = {
             title: '',
@@ -47,6 +46,7 @@ class CreateNote extends React.Component {
     
     }
 
+
     setNotebookId(){
 
         this.setState({
@@ -56,9 +56,8 @@ class CreateNote extends React.Component {
     }
 
     renderRedirect(){
-        debugger
     if (this.state.redirect) {
-      return <Redirect to={`/main/notebooks/${this.state.notebook_id}/note/edit/${this.state.note.id}`}/>
+    //   return <Redirect to={`/main/notebooks/${this.state.notebook_id}/notes`}/>
     }
     }
 
@@ -77,7 +76,7 @@ class CreateNote extends React.Component {
 
 
     notebookList(){
-        debugger
+
         let {notebooks} = this.props
         notebooks.map(notebook => {
             return (
@@ -88,6 +87,7 @@ class CreateNote extends React.Component {
     }
 
     handleSubmit(e) {
+        
         e.preventDefault();
         this.props.createNote(this.state);
     }
@@ -111,6 +111,8 @@ class CreateNote extends React.Component {
                     [{ 'color': [] }, { 'background': [] }],
                 ]
             };
+
+
             return (
                 <div className="create-note-main">
                 <div className='note-editor'>
