@@ -11,8 +11,10 @@ class AllNotesIndex extends React.Component {
         super(props);
 
         this.state = {
-            filtered: []
+            filtered: this.props.notes,
+            searched: false
         }
+        this.handleChange = this.handleChange.bind(this);
     }
 
 
@@ -48,11 +50,16 @@ class AllNotesIndex extends React.Component {
 
     noteIndex() {
         let { notes, deleteNote } = this.props;
+
+        let allNotes;
+        debugger
+
+        this.state.searched ? allNotes = this.state.filtered :  allNotes = notes;
         
         
-        if (notes.length > 0) {
+        if (allNotes.length > 0) {
             
-            let sortedNotes = this.sortByEdited(notes)
+            let sortedNotes = this.sortByEdited(allNotes)
             return sortedNotes.map((note, i) => (
                 <div className='ind-note' key={note.id}>
 
@@ -92,6 +99,34 @@ class AllNotesIndex extends React.Component {
 
     }
 
+      handleChange(e) {
+        let {notes} = this.props
+
+        let currentList = [];
+
+        if (e.target.value !== "") {
+
+            for(let i = 0; i < notes.length; i++){
+                debugger
+            if(notes[i].title.includes(e.target.value)){
+                currentList.push(notes[i])
+            }
+
+        }
+
+    
+        console.log(currentList)    
+       ;
+        } else {
+        currentList = notes;
+        };
+
+        this.setState({
+        filtered: currentList,
+        searched: true
+        });
+    }
+
     render() {
         let { notes } = this.props;
         let noteCount = () => {
@@ -114,7 +149,9 @@ class AllNotesIndex extends React.Component {
 
                         <p className="note-count">{noteCount()}</p>
                         
-                        <SearchBar notes={notes}/>
+                        <div className='searchbarcontainer'>
+                            <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
+                        </div>
 
                         <hr className="note-index-line"></hr>
 
