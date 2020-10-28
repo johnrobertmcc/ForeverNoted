@@ -100,6 +100,8 @@ class AllNotesIndex extends React.Component {
 
                         <p className="note-count">{noteCount()}</p>
 
+                        <input placeholder='Search notes..'></input>
+
                         <hr className="note-index-line"></hr>
 
                         <ul className="note-index">{this.noteIndex()}</ul>

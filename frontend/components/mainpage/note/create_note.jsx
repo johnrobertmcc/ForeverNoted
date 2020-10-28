@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
 import NoteIndex from './notes_index_container';
+import {Redirect} from "react-router-dom"
 
 
 
@@ -15,6 +16,7 @@ class CreateNote extends React.Component {
             title: '',
             body: '',
             user_id: this.props.currentUser.id,
+            redirect: false
              //this.props.note.notebook_id
         }
 
@@ -32,7 +34,7 @@ class CreateNote extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updateQuill = this.updateQuill.bind(this);
         // this.notebookList = this.notebookList.bind(this)
-        this.setNotebookId = this.setNotebookId.bind(this)
+        this.setNotebookId = this.setNotebookId.bind(this);
         }
      
    
@@ -47,7 +49,17 @@ class CreateNote extends React.Component {
 
     setNotebookId(){
 
-        this.setState({notebook_id: this.props.notebooks[0].id} )
+        this.setState({
+            notebook_id: this.props.notebooks[0].id,
+            redirect: true
+        } )
+    }
+
+    renderRedirect(){
+        debugger
+    if (this.state.redirect) {
+      return <Redirect to={`/main/notebooks/${this.state.notebook_id}/note/edit/${this.state.note.id}`}/>
+    }
     }
 
 
@@ -94,8 +106,9 @@ class CreateNote extends React.Component {
                         },
                         {
                             list: "bullet"
-                        }
-                    ]
+                        },
+                    ],
+                    [{ 'color': [] }, { 'background': [] }],
                 ]
             };
             return (
@@ -124,15 +137,12 @@ class CreateNote extends React.Component {
                                 <select id="nb-btn" name="nb-btn">
                                 <option>{this.notebookList()}</option>
                             </select>
-                            
                             <button onClick={this.setNotebookId}  className='create-btn'>Create Note</button>
-                            
-                           
+                           {this.renderRedirect()}
                 
                         <ReactQuill
                             className="quill-editor"
                             modules={modules}
-                            theme={'snow'}
                             formats={this.formats}
                             value={this.state.body}
                             onChange={this.updateQuill}
