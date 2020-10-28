@@ -46,7 +46,7 @@ class CreateNote extends React.Component {
     }
 
     setNotebookId(){
-            debugger
+
         this.setState({notebook_id: this.props.notebooks[0].id} )
     }
 
@@ -64,15 +64,16 @@ class CreateNote extends React.Component {
     }
 
 
-    // notebookList(){
-    //     let {notebooks} = this.props
-    //     notebooks.map(notebook => {
-    //         return (
-    //             <li>
-    //                 {notebook.title}
-    //             </li>
-    //         )})
-    // }
+    notebookList(){
+        debugger
+        let {notebooks} = this.props
+        notebooks.map(notebook => {
+            return (
+                <li>
+                    {notebook.title}
+                </li>
+            )})
+    }
 
     handleSubmit(e) {
         e.preventDefault();
@@ -119,10 +120,10 @@ class CreateNote extends React.Component {
                                 value={this.state.title}
                                 />
                             
-                            {/* <label htmlFor="nb-btn">Notebook?</label>
+                            <label htmlFor="nb-btn">Notebook?</label>
                                 <select id="nb-btn" name="nb-btn">
                                 <option>{this.notebookList()}</option>
-                            </select> */}
+                            </select>
                             
                             <button onClick={this.setNotebookId}  className='create-btn'>Create Note</button>
                             
