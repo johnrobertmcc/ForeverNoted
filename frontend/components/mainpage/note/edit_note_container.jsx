@@ -125,6 +125,8 @@ class EditNote extends React.Component {
                             value={this.state.title}
                         />
 
+                        <button className='create-btn'>Edit Note</button>
+    
                         <ReactQuill
                             className="quill-editor"
                             modules={modules}

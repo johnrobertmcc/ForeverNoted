@@ -45,8 +45,12 @@ class NoteIndex extends React.Component {
     // }
 
     
-     sortByEdited(notes){
+      sortByEdited(notes){
+        if(notes.length > 1){
         return notes[0].id < notes[1].id ? notes.reverse() : notes
+        }else{
+            return notes
+        }
         // return notes
     }
 
