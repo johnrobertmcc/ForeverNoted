@@ -78,16 +78,6 @@ class EditNote extends React.Component {
         this.props.updateNote(this.state);
     }
 
-    notebookList(){
-        let {notebooks} = this.props;
-
-        notebooks.map(notebook => {
-            return (
-                <li>
-                    {notebook.title}
-                </li>
-            )})
-    }
 
     render() {
 
@@ -110,6 +100,7 @@ class EditNote extends React.Component {
 
  
 
+            debugger
 
         return( 
             
@@ -134,10 +125,6 @@ class EditNote extends React.Component {
                             value={this.state.title}
                         />
 
-                        <button className='create-btn'>Edit Note</button>
-                               <select id="notebooks" name="notebooks">
-                            <option>{this.notebookList()}</option>
-                        </select>
                         <ReactQuill
                             className="quill-editor"
                             modules={modules}
