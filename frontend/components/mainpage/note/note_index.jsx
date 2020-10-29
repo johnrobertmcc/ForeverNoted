@@ -8,8 +8,12 @@ class NoteIndex extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = this.props.fetchNotes(this.props.currentUser.id);
+        this.state = {
+            filtered: this.props.fetchNotes(this.props.currentUser.id),
+            searched: false
+        }
         // this.handleDelete = this.handleDelete.bind(this)
+         this.handleChange = this.handleChange.bind(this);
     }
 
 
@@ -41,38 +45,51 @@ class NoteIndex extends React.Component {
     // }
 
     
+     sortByEdited(notes){
+        return notes[0].id < notes[1].id ? notes.reverse() : notes
+        // return notes
+    }
+
     noteIndex() {
         let { notes, deleteNote } = this.props;
 
-        if (notes.length > 0) {
-            return notes.reverse().map((note, i) => (
+        let allNotes;
+        debugger
+
+        this.state.searched ? allNotes = this.state.filtered :  allNotes = notes;
+        
+        
+        if (allNotes.length > 0) {
+            
+            let sortedNotes = this.sortByEdited(allNotes)
+            return sortedNotes.map((note, i) => (
                 <div className='ind-note' key={note.id}>
 
                     <Link to={`/main/notebooks/${note.notebook_id}/note/edit/${note.id}`}>
 
                         <li
                             className='note-link'
-                        >
+                            >
                             {note.title}
                         </li>
-
+    
 
                         <li className='note-body'>
                             <div dangerouslySetInnerHTML={this.createMarkup(i)} />
                         </li>
-
+                        
                         <li
                             className="date"
-
-                        >
+                            
+                            >
                             <Moment fromNow ago>{note.created_at}</Moment>
                         </li>
                     </Link>
-
+                    
                     <li>
-                        <button
-                            onClick={deleteNote}
-                            className='delete-btn'>
+                        <button 
+                        onClick={() => deleteNote(note.id)}
+                        className='delete-btn'>
                             <i className="fas fa-trash"></i>
                         </button>
                     </li>
@@ -84,19 +101,48 @@ class NoteIndex extends React.Component {
 
     }
 
+      handleChange(e) {
+        let {notes} = this.props
+
+        let currentList = [];
+
+        if (e.target.value !== "") {
+
+            for(let i = 0; i < notes.length; i++){
+                debugger
+            if(notes[i].title.includes(e.target.value)){
+                currentList.push(notes[i])
+            }else if(notes[i].body.includes(e.target.value) && !currentList.includes(notes[i])){
+                currentList.push(notes[i])
+            }
+        }
+
+    
+        console.log(currentList)    
+       ;
+        } else {
+        currentList = notes;
+        };
+
+        this.setState({
+        filtered: currentList,
+        searched: true
+        });
+    }
     render() {
-        let {notes} = this.props;
+        let { notes } = this.props;
+        let allNotes;
+        this.state.searched ? allNotes = this.state.filtered :  allNotes = notes;
+        let noteCount = () => {
+            if (allNotes.length === 1) {
+                return (allNotes.length + " note")
+            } else {
+                return (allNotes.length + " notes")
+            }
+        }
 
         if (typeof notes === 'undefined') return null;
 
-        let noteCount = () =>{
-            if(notes.length === 1){
-                return (notes.length + " note") 
-            }else{
-                return (notes.length + " notes")
-            }
-        }
-        
 
         return(
 
@@ -105,6 +151,10 @@ class NoteIndex extends React.Component {
                     <div className='note-header'>
                         <h3>All Notes</h3>
                             <p className="note-count">{noteCount()}</p>
+                               
+                        <div className='searchbarcontainer'>
+                            <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
+                        </div>
 
                                 <hr className="note-index-line"></hr>
 
