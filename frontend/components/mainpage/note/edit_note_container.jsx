@@ -98,10 +98,6 @@ class EditNote extends React.Component {
             };
 
 
- 
-
-            debugger
-
         return( 
             
             <div className="create-note-main">
