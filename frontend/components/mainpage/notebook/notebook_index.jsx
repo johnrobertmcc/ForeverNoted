@@ -99,7 +99,8 @@ class NotebookIndex extends React.Component {
 
 
     handleChange(e) {
-        let {notes} = this.props.notebooks
+        let {notes} = this.props.notebook
+        debugger
 
         let currentList = [];
 
@@ -131,12 +132,14 @@ class NotebookIndex extends React.Component {
 
     render() {
         let {notes} = this.props.notebook;
+        let allNotes;
+        this.state.searched ? allNotes = this.state.filtered :  allNotes = notes;
 
         let noteCount = () => {
-            if (notes.length === 1) {
-                return (notes.length + " note")
+            if (allNotes.length === 1) {
+                return (allNotes.length + " note")
             } else {
-                return (notes.length + " notes")
+                return (allNotes.length + " notes")
             }
         }
 
