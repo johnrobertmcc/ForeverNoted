@@ -47,7 +47,7 @@ class AllNotesIndex extends React.Component {
     sortByEdited(notes){
         if(notes.length > 1){
             return notes.sort(function(a, b){
-                return a.updated_at < b.updated_at ? -1 : 1;
+                return a.updated_at > b.updated_at ? -1 : 1;
             })
 
         }else{
