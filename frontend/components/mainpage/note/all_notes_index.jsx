@@ -46,12 +46,15 @@ class AllNotesIndex extends React.Component {
 
     sortByEdited(notes){
         if(notes.length > 1){
-        return notes[0].id < notes[1].id ? notes.reverse() : notes
+            return notes.sort(function(a, b){
+                return a.updated_at < b.updated_at ? -1 : 1;
+            })
+
         }else{
             return notes
         }
-        // return notes
     }
+
 
     noteIndex() {
         let { notes, deleteNote } = this.props;
@@ -83,8 +86,7 @@ class AllNotesIndex extends React.Component {
                         
                         <li
                             className="date"
-                            
-                            >
+                        >
                             <Moment fromNow ago>{note.created_at}</Moment>
                         </li>
                     </Link>
