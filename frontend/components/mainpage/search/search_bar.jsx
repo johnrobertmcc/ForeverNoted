@@ -18,7 +18,6 @@ class SearchBar extends React.Component {
         if (e.target.value !== "") {
 
             for(let i = 0; i < notes.length; i++){
-                debugger
             if(notes[i].title.includes(e.target.value)){
                 currentList.push(notes[i])
             }
@@ -41,7 +40,6 @@ class SearchBar extends React.Component {
 
     render(){
 
-        debugger
         return(
             <div className='searchbarcontainer'>
                 <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />

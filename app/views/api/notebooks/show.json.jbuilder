@@ -1,7 +1,6 @@
 json.partial! "api/notebooks/notebook", notebook: @notebook
 
 # @notebook.notes.each do |note|
-#     # debugger
 
 #     json.notes do 
         

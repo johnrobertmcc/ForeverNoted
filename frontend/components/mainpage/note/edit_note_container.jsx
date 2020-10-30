@@ -11,8 +11,7 @@ class EditNote extends React.Component {
     constructor(props) {
         super(props);
 
-
-        this.state = this.props.note;
+        this.state = this.props.fetchNote(this.props.noteId);
 
         this.formats = [
 
@@ -30,15 +29,18 @@ class EditNote extends React.Component {
     }
 
 
-    // componentDidMount(){
-    //     this.props.fetchNotebooks(this.props.currentUser.id);
-    // }
+    componentDidMount(){
+        this.setState(this.props.note);
+       
+    }
 
     componentDidUpdate(prevProps){
         // /is url matches note
-        if(this.props.note.id !== prevProps.note.id ){
-            this.props.fetchNote(this.props.noteId)
-            this.setState(this.props.note)
+        debugger
+        if(this.props.noteId !== prevProps.noteId ){
+            this.props.fetchNote(this.props.noteId);
+            this.setState(this.props.fetchNote(this.props.noteId));
+   
         };
 
         
@@ -98,6 +100,7 @@ class EditNote extends React.Component {
             };
 
 
+
         return( 
             
             <div className="create-note-main">
@@ -128,7 +131,7 @@ class EditNote extends React.Component {
                             modules={modules}
                             theme={'snow'}
                             formats={this.formats}
-                            value={this.state.body}
+                            value={this.state.body || ''}
                             onChange={this.updateQuill}
                         />
 
@@ -144,10 +147,15 @@ class EditNote extends React.Component {
 
 
 const mSTP = (state, ownProps) => {
-
-    const noteId = ownProps.match.params.noteId
+    let note;
+    const noteId = ownProps.match.params.noteId;
+    for(let i = 0; i < state.entities.notes.length; i++){
+        debugger
+        if(state.entities.notes[i].id === parseInt(ownProps.match.params.noteId)) {
+            note = state.entities.notes[i];
+        }
+    };
     const currentUser = state.entities.users[state.session.id]
-    const note = state.entities.notes[noteId]
     const notebooks = Object.values(state.entities.notebooks)
 
     return (

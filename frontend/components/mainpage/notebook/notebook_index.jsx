@@ -28,8 +28,6 @@ class NotebookIndex extends React.Component {
         const {notebook, deleteNote} = this.props;
         let {notes} = this.props.notebook;
 
-        debugger
-
         const notesFromNotebooks = (notes.length > 0) ? (notes.reverse().map((note, idx) => {
            return (
             <div className='ind-note' key={note.id}>

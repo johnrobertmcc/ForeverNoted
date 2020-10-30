@@ -58,7 +58,6 @@ class NoteIndex extends React.Component {
         let { notes, deleteNote } = this.props;
 
         let allNotes;
-        debugger
 
         this.state.searched ? allNotes = this.state.filtered :  allNotes = notes;
         
@@ -113,7 +112,6 @@ class NoteIndex extends React.Component {
         if (e.target.value !== "") {
 
             for(let i = 0; i < notes.length; i++){
-                debugger
             if(notes[i].title.includes(e.target.value)){
                 currentList.push(notes[i])
             }else if(notes[i].body.includes(e.target.value) && !currentList.includes(notes[i])){
