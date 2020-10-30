@@ -10,8 +10,15 @@ class EditNote extends React.Component {
 
     constructor(props) {
         super(props);
+        debugger
 
-        this.state = this.props.fetchNote(this.props.noteId);
+        let {note} = props
+        this.state = {
+            title: note.title,
+            body: note.body,
+            user_id: this.props.currentUser.id,
+            redirect: false
+        }
 
         this.formats = [
             'font',
@@ -30,6 +37,7 @@ class EditNote extends React.Component {
 
     componentDidMount(){
         this.setState(this.props.note);
+        this.state = this.props.fetchNote(this.props.noteId);
        
     }
 
@@ -38,11 +46,8 @@ class EditNote extends React.Component {
         debugger
         if(this.props.noteId !== prevProps.noteId ){
             this.props.fetchNote(this.props.noteId);
-            this.setState(this.props.fetchNote(this.props.noteId));
-   
+            this.setState(this.props.note);
         };
-
-        
     }
 
     createMarkupBody() {
@@ -146,14 +151,13 @@ class EditNote extends React.Component {
 
 
 const mSTP = (state, ownProps) => {
-    let note;
     const noteId = ownProps.match.params.noteId;
-    for(let i = 0; i < state.entities.notes.length; i++){
-        debugger
-        if(state.entities.notes[i].id === parseInt(ownProps.match.params.noteId)) {
-            note = state.entities.notes[i];
-        }
-    };
+    // for(let i = 0; i < state.entities.notes.length; i++){
+    //     if(state.entities.notes[i].id === parseInt(ownProps.match.params.noteId)) {
+    //         note = state.entities.notes[i];
+    //     }
+    // };
+    const note = state.entities.notes[noteId];
     const currentUser = state.entities.users[state.session.id]
     const notebooks = Object.values(state.entities.notebooks)
 
@@ -165,7 +169,6 @@ const mSTP = (state, ownProps) => {
             notebooks
         }
     )
-
 };
 
 const mDTP = dispatch => {

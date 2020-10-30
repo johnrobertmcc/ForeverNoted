@@ -154,7 +154,7 @@ class NoteIndex extends React.Component {
             <div className='allnotes'>
                 <div className='note-index-container'>
                     <div className='note-header'>
-                        <h3>All Notes</h3>
+                        <h3>Note Index</h3>
                             <p className="note-count">{noteCount()}</p>
                                
                         <div className='searchbarcontainer'>
