@@ -14,7 +14,6 @@ class EditNote extends React.Component {
         this.state = this.props.fetchNote(this.props.noteId);
 
         this.formats = [
-
             'font',
             'size',
             'bold', 'italic', 'underline', 'strike', 'code', 'blockquote',
