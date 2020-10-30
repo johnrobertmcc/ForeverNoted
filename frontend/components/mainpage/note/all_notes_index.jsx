@@ -31,12 +31,15 @@ class AllNotesIndex extends React.Component {
     }
 
 
-    currentDate(date) {
-        let temp = new Date().getMinutes();
-        if ((temp - date) === 1) {
-            return ((temp - date) + " minute ago")
-        } else {
-            return ((temp - date) + " minutes ago")
+    currentDate(note) {
+        if(note.created_at === note.updated_at){
+            return(
+                <Moment fromNow>{note.created_at}</Moment>
+            )
+        }else{
+            return(
+                <Moment fromNow>{note.updated_at}</Moment>
+            )
         }
     }
 
@@ -87,7 +90,7 @@ class AllNotesIndex extends React.Component {
                         <li
                             className="date"
                         >
-                            <Moment fromNow ago>{note.created_at}</Moment>
+                            {this.currentDate(note)}
                         </li>
                     </Link>
                     

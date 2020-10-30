@@ -33,7 +33,7 @@ class CreateNote extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updateQuill = this.updateQuill.bind(this);
         // this.notebookList = this.notebookList.bind(this)
-        this.setNotebookId = this.setNotebookId.bind(this);
+        this.setDefaultNotebookId = this.setDefaultNotebookId.bind(this);
         }
      
    
@@ -47,7 +47,7 @@ class CreateNote extends React.Component {
     }
 
 
-    setNotebookId(){
+    setDefaultNotebookId(){
 
         this.setState({
             notebook_id: this.props.notebooks[0].id,
@@ -139,7 +139,7 @@ class CreateNote extends React.Component {
                                 <select id="nb-btn" name="nb-btn">
                                 <option>{this.notebookList()}</option>
                             </select>
-                            <button onClick={this.setNotebookId}  className='create-btn'>Create Note</button>
+                            <button onClick={this.setDefaultNotebookId}  className='create-btn'>Create Note</button>
                            {/* {this.renderRedirect()} */}
                 
                         <ReactQuill
