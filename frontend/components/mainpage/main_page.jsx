@@ -27,3 +27,5 @@ const MainPage = () => {
 };
 
 export default MainPage;
+
+// this.prop.match.params.location

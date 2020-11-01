@@ -151,13 +151,17 @@ class EditNote extends React.Component {
 
 
 const mSTP = (state, ownProps) => {
+    debugger
+    const note;
     const noteId = ownProps.match.params.noteId;
-    // for(let i = 0; i < state.entities.notes.length; i++){
-    //     if(state.entities.notes[i].id === parseInt(ownProps.match.params.noteId)) {
-    //         note = state.entities.notes[i];
-    //     }
-    // };
-    const note = state.entities.notes[noteId];
+    // if(typeof state.entities.notes == "Array")
+        for(let i = 0; i < state.entities.notes.length; i++){
+            if(state.entities.notes[i].id === parseInt(ownProps.match.params.noteId)) {
+                note = state.entities.notes[i];
+            }
+        };
+            // else
+        note = state.entities.notes[noteId];
     const currentUser = state.entities.users[state.session.id]
     const notebooks = Object.values(state.entities.notebooks)
 
