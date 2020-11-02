@@ -1,9 +1,8 @@
 import React from 'react';
 import CreateNotebook from './create_notebook_container';
 import { connect } from 'react-redux';
-import {AllNotesIndex} from '../note/all_notes_index';
 import { fetchNotebooks } from '../../../actions/notebook_actions';
-import Moment from 'react-moment';
+import {Link} from 'react-router-dom'
 
 
 class AllNotebookIndex extends React.Component {
@@ -41,7 +40,6 @@ class AllNotebookIndex extends React.Component {
 
     }
 
-
     notebookIndex() {
         let { notebooks, currentUser } = this.props;
 
@@ -62,7 +60,11 @@ class AllNotebookIndex extends React.Component {
                     </thead>
                     <tbody className='row'>
                     <tr>
-                        <td><i className="fa fa-book" aria-hidden="true"></i>{notebook.title} ({notebook.notes.length})</td>
+                        <td>
+                            <i className="fa fa-book" aria-hidden="true"></i>
+                            <Link to={`/main/notebooks/${notebook.id}/notes`}>{notebook.title}</Link> 
+                            ({notebook.notes.length})
+                        </td>
                         <td>{currentUser.email}</td>
                         <td>{this.lastUpdated(notebook.id)}</td>
                     </tr>

@@ -11,6 +11,7 @@ class AllNotesIndex extends React.Component {
     constructor(props) {
         super(props);
 
+        debugger
         this.state = {
             filtered: this.props.notes,
             searched: false,
@@ -23,10 +24,9 @@ class AllNotesIndex extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
 
-        debugger
         if(prevProps.notes.length !== this.props.notes.length){
             this.props.fetchNotes(this.props.currentUser.id); //change this logic
-            // this.setState({filtered: this.props.notes})
+            this.setState({filtered: this.props.notes})
         } 
         // else if (!this.state.landing) {
         //     this.setState({
@@ -39,6 +39,7 @@ class AllNotesIndex extends React.Component {
     }
 
     componentDidMount() {
+        debugger
         this.setState({
             filtered: this.props.fetchNotes(this.props.currentUser.id),
             action: {type: 'create', note: ''} 
@@ -179,6 +180,7 @@ class AllNotesIndex extends React.Component {
 
 
     render() {
+        debugger
         let { notes } = this.props;
         let allNotes;
         this.state.searched ? allNotes = this.state.filtered :  allNotes = notes;
@@ -222,9 +224,18 @@ class AllNotesIndex extends React.Component {
 }
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+
+    let notes;
+    debugger
+    
+    if(typeof ownProps.notes !== 'undefined'){
+        notes = Object.values(ownProps.notes)
+    }else{
+        notes = Object.values(state.entities.notes)
+    }
     return {
-        notes: Object.values(state.entities.notes),
+        notes,
         notebooks: Object.values(state.entities.notebooks),
         currentUser: state.entities.users[state.session.id],
         action: {

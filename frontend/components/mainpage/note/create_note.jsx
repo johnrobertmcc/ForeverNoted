@@ -49,7 +49,7 @@ class CreateNote extends React.Component {
     setDefaultNotebookId(){
 
         this.setState({
-            notebook_id: this.props.notebooks[0].id,
+            notebook_id: this.props.notebooks[1].id,
             redirect: true
         } )
     }
