@@ -10,7 +10,6 @@ class EditNote extends React.Component {
 
     constructor(props) {
         super(props);
-        debugger
 
         let {note} = props
         this.state = {
@@ -43,7 +42,6 @@ class EditNote extends React.Component {
 
     componentDidUpdate(prevProps){
         // /is url matches note
-        debugger
         if(this.props.noteId !== prevProps.noteId ){
             this.props.fetchNote(this.props.noteId);
             this.setState(this.props.note);
@@ -152,16 +150,17 @@ class EditNote extends React.Component {
 
 const mSTP = (state, ownProps) => {
     debugger
-    const note;
+    // let note;
     const noteId = ownProps.match.params.noteId;
-    // if(typeof state.entities.notes == "Array")
+    debugger
+    if(typeof state.entities.notes == "Object" || typeof state.entities.notes == "object"){
         for(let i = 0; i < state.entities.notes.length; i++){
             if(state.entities.notes[i].id === parseInt(ownProps.match.params.noteId)) {
-                note = state.entities.notes[i];
+                const note = state.entities.notes[i];
             }
-        };
-            // else
-        note = state.entities.notes[noteId];
+        };}else{
+            return null
+        }
     const currentUser = state.entities.users[state.session.id]
     const notebooks = Object.values(state.entities.notebooks)
 
