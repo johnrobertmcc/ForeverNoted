@@ -10,14 +10,12 @@ class AllNotesIndex extends React.Component {
     constructor(props) {
         super(props);
 
+        debugger
 
         this.state = {
             filtered: this.props.notes,
             searched: false,
-            action: {
-                type: 'create',
-                note: ''
-            }
+            action: this.props.action
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -218,7 +216,11 @@ class AllNotesIndex extends React.Component {
 const mapStateToProps = (state) => {
     return {
         notes: Object.values(state.entities.notes),
-        currentUser: state.entities.users[state.session.id]
+        currentUser: state.entities.users[state.session.id],
+        action: {
+                type: 'create',
+                note: ''
+            } 
     }
 };
 

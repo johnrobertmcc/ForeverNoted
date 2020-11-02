@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
-import NoteIndex from './notes_index_container';
 import {Redirect} from "react-router-dom"
 
 

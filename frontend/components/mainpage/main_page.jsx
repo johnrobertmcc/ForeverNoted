@@ -4,7 +4,6 @@ import React from 'react';
 import NotebookIndex from './notebook/notebook_index_container';
 import SideBar from './sidebar/sidebar_container';
 import { Route } from "react-router-dom";
-import NoteShow from './note/notes_index_container';
 import AllNotebookIndex from './notebook/all_notebook_index';
 import AllNotesIndex from './note/all_notes_index';
 import CreateNote from './note/create_note_container';
