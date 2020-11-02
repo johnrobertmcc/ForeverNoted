@@ -3,34 +3,45 @@ import CreateNote from './create_note_container';
 import EditNote from './edit_note_container';
 import { connect } from 'react-redux';
 import { deleteNote, fetchNotes } from '../../../actions/note_actions';     
-import Moment from 'react-moment';  
+import Moment from 'react-moment';
+import { withRouter } from 'react-router-dom';
 
 class AllNotesIndex extends React.Component {
     
     constructor(props) {
         super(props);
 
-        debugger
-
         this.state = {
             filtered: this.props.notes,
             searched: false,
-            action: this.props.action
+            action: this.props.action,
+
         }
         this.handleChange = this.handleChange.bind(this);
     }
 
 
     componentDidUpdate(prevProps, prevState) {
+
         debugger
         if(prevProps.notes.length !== this.props.notes.length){
             this.props.fetchNotes(this.props.currentUser.id); //change this logic
-        }
+            // this.setState({filtered: this.props.notes})
+        } 
+        // else if (!this.state.landing) {
+        //     this.setState({
+        //         action: {
+        //             type: 'create',
+        //             note: ''
+        //         },
+        // })
+        // }
     }
 
     componentDidMount() {
         this.setState({
-            filtered: this.props.fetchNotes(this.props.currentUser.id) //change this logic
+            filtered: this.props.fetchNotes(this.props.currentUser.id),
+            action: {type: 'create', note: ''} 
         });
     }
 
@@ -48,7 +59,11 @@ class AllNotesIndex extends React.Component {
     }
 
     createMarkup(idx){
-        return { __html: this.props.notes[idx].body }
+        if(this.state.searched){
+            return { __html: this.state.filtered[idx].body }
+        }else{
+            return { __html: this.props.notes[idx].body }
+        }
     }
 
     sortByEdited(notes){
@@ -78,7 +93,6 @@ class AllNotesIndex extends React.Component {
     }
 
     switchButton(note){
-        debugger
         this.setState({
             action: {
                 type: 'edit',
@@ -107,12 +121,7 @@ class AllNotesIndex extends React.Component {
                 onClick={() => this.switchButton(note)}
                 >
                     
-                
-          
-                
-                 
-                   
-                    
+    
                     <li className='note-link'>
                         {note.title}
                     </li>
@@ -145,7 +154,7 @@ class AllNotesIndex extends React.Component {
 
     handleChange(e) {
         let {notes} = this.props
-
+ 
         let currentList = [];
 
         if (e.target.value !== "") {
@@ -216,6 +225,7 @@ class AllNotesIndex extends React.Component {
 const mapStateToProps = (state) => {
     return {
         notes: Object.values(state.entities.notes),
+        notebooks: Object.values(state.entities.notebooks),
         currentUser: state.entities.users[state.session.id],
         action: {
                 type: 'create',
@@ -231,4 +241,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AllNotesIndex); 
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AllNotesIndex)); 

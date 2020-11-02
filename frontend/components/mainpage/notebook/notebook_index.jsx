@@ -100,8 +100,7 @@ class NotebookIndex extends React.Component {
 
     handleChange(e) {
         let {notes} = this.props.notebook
-        debugger
-
+  
         let currentList = [];
 
         if (e.target.value !== "") {

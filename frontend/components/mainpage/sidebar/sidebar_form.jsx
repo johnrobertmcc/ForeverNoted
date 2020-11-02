@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class SideBar extends React.Component{
     
@@ -29,7 +29,12 @@ class SideBar extends React.Component{
                     </div>
                     
                     <ul className='links-home'>
-                        <li className='newnote-btn'><Link to={{pathname:'/main/notes'}}><i className="fa fa-plus" aria-hidden="true"></i><p className='btn-words'>New note</p></Link></li>
+                        <li className='newnote-btn'><Link to={{
+                            pathname:'/main/notes', 
+                            state: {newNote: true}
+                            }}><i className="fa fa-plus" aria-hidden="true"></i><p className='btn-words'>New note</p></Link>
+                        </li>
+                        
                         <li className='switch-links'><i className="fas fa-edit"></i><Link to='/main/notes'>All Notes</Link></li>
                         <li className='switch-links'><i className="fas fa-book"></i><Link to='/main/allnotebooks'>Notebooks</Link></li>
                     </ul>
@@ -53,4 +58,4 @@ class SideBar extends React.Component{
 
 
 
-export default SideBar;
+export default withRouter(SideBar);
