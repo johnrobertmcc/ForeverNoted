@@ -1,18 +1,22 @@
 import React from 'react';
 import CreateNote from './create_note_container';
+import EditNote from './edit_note_container';
 import { connect } from 'react-redux';
-import { deleteNote, fetchNotes } from '../../../actions/note_actions';    
-import { Link } from 'react-router-dom';   
+import { deleteNote, fetchNotes } from '../../../actions/note_actions';     
 import Moment from 'react-moment';  
-import SearchBar from '../search/search_bar';
 
 class AllNotesIndex extends React.Component {
     constructor(props) {
         super(props);
 
+        debugger
         this.state = {
             filtered: this.props.notes,
-            searched: false
+            searched: false,
+            action: {
+                type: 'create',
+                note: ''
+            }
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -58,6 +62,21 @@ class AllNotesIndex extends React.Component {
         }
     }
 
+    editor(action){
+        debugger
+        switch (action.type) {
+
+            case 'edit':
+                return <EditNote note={action.note}/>;
+            
+            case 'create':
+                return <CreateNote />;
+            
+            default:
+                return <CreateNote />;
+        }      
+    }
+
 
     noteIndex() {
         let { notes, deleteNote } = this.props;
@@ -72,10 +91,17 @@ class AllNotesIndex extends React.Component {
             
             let sortedNotes = this.sortByEdited(allNotes)
             return sortedNotes.map((note, i) => (
-                <div className='ind-note' key={note.id}>
-
-                    <Link to={`/main/notebooks/${note.notebook_id}/note/edit/${note.id}`}>
-
+                <div 
+                className='ind-note' 
+                key={note.id}
+                >
+                 {/* onClick={this.setState({
+                //     action: {
+                //         type: 'edit',
+                //         note: [note]
+                //     }
+                // })}*/}
+                    
                         <li
                             className='note-link'
                             >
@@ -92,7 +118,6 @@ class AllNotesIndex extends React.Component {
                         >
                             {this.currentDate(note)}
                         </li>
-                    </Link>
                     
                     <li>
                         <button 
@@ -138,6 +163,7 @@ class AllNotesIndex extends React.Component {
         });
     }
 
+
     render() {
         let { notes } = this.props;
         let allNotes;
@@ -174,7 +200,7 @@ class AllNotesIndex extends React.Component {
                 </div>
 
                 <div className='allnotes-create-form'>
-                    <CreateNote />
+                    {this.editor(this.state.action)}
                 </div>
             </div>
         )

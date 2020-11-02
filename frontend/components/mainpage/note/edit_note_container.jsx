@@ -36,14 +36,14 @@ class EditNote extends React.Component {
 
     componentDidMount(){
         this.setState(this.props.note);
-        this.state = this.props.fetchNote(this.props.noteId);
+        this.state = this.props.fetchNote(this.props.note.id);
        
     }
 
     componentDidUpdate(prevProps){
         // /is url matches note
-        if(this.props.noteId !== prevProps.noteId ){
-            this.props.fetchNote(this.props.noteId);
+        if(this.props.note.id !== prevProps.note.id ){
+            this.props.fetchNote(this.props.note.id);
             this.setState(this.props.note);
         };
     }
@@ -106,11 +106,9 @@ class EditNote extends React.Component {
         return( 
             
             <div className="create-note-main">
-
-                <div>
-                    <NoteIndex />
-                </div>
+                
                 <div className='note-editor'>
+                    
                     <form
                         className="note-form"
                         onSubmit={this.handleSubmit}>
@@ -150,24 +148,13 @@ class EditNote extends React.Component {
 
 const mSTP = (state, ownProps) => {
     debugger
-    // let note;
-    const noteId = ownProps.match.params.noteId;
-    debugger
-    if(typeof state.entities.notes == "Object" || typeof state.entities.notes == "object"){
-        for(let i = 0; i < state.entities.notes.length; i++){
-            if(state.entities.notes[i].id === parseInt(ownProps.match.params.noteId)) {
-                const note = state.entities.notes[i];
-            }
-        };}else{
-            return null
-        }
+    const note = ownProps.note;
     const currentUser = state.entities.users[state.session.id]
     const notebooks = Object.values(state.entities.notebooks)
 
     return (
         {
             currentUser,
-            noteId,
             note,
             notebooks
         }
