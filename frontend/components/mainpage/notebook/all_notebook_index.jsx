@@ -3,6 +3,7 @@ import CreateNotebook from './create_notebook_container';
 import { connect } from 'react-redux';
 import {AllNotesIndex} from '../note/all_notes_index';
 import { fetchNotebooks } from '../../../actions/notebook_actions';
+import Moment from 'react-moment';
 
 
 class AllNotebookIndex extends React.Component {
@@ -23,6 +24,23 @@ class AllNotebookIndex extends React.Component {
         }
     }
 
+    lastUpdated(notebookId){
+
+        let {notebooks} = this.props
+
+        for(let i = 0; i < notebooks.length; i++){
+            if (notebooks[i].id === notebookId){
+                if(notebooks[i].notes.length > 0){
+                    let temp = new Date((notebooks[i].notes[0].updated_at))
+                    debugger
+                    return temp.toDateString()
+                }else{ return 'No Notes Yet'}
+        }
+        }
+
+
+    }
+
 
     notebookIndex() {
         let { notebooks, currentUser } = this.props;
@@ -30,22 +48,7 @@ class AllNotebookIndex extends React.Component {
 
         //get an indiviual notebook's show page
         if (notebooks.length > 0) {
-            debugger
             return notebooks.map((notebook, i) => (
-                // <table 
-                // className='notebook-table'
-                // key={i}
-                // >
-                //     <tbody>
-
-                //         <td className='row'>
-                           
-                //             <th className='row-content'><i className="fa fa-book" aria-hidden="true"></i>{notebook.title}</th>
-                            
-                //         </td> 
-                //     </tbody>
-                // </table>
-
                 <table
                 className='notebook-table'
                 key={i}
@@ -57,11 +60,11 @@ class AllNotebookIndex extends React.Component {
                         <th>Last Updated At</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='row'>
                     <tr>
-                        <td>{notebook.title}</td>
-                        <td>{currentUser.name}</td>
-                        <td>timestamp here</td>
+                        <td><i className="fa fa-book" aria-hidden="true"></i>{notebook.title} ({notebook.notes.length})</td>
+                        <td>{currentUser.email}</td>
+                        <td>{this.lastUpdated(notebook.id)}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -94,7 +97,6 @@ class AllNotebookIndex extends React.Component {
 
 
 const mapStateToProps = (state, ownProps) => {
-    debugger
 
     return {
         notebooks: Object.values(state.entities.notebooks),

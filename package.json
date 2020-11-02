@@ -11,7 +11,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
-    "moment": "^2.29.0",
+    "moment": "^2.29.1",
     "react": "^15.3.0",
     "react-datetime": "^3.0.4",
     "react-dom": "^15.3.0",

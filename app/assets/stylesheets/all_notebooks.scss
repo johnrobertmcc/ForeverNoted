@@ -39,11 +39,16 @@
 
 .table{
     width: 100%;
+    table-layout: fixed;
+}
+
+.table > td{
+    max-width: 500px
 }
 
 .notebook-table{
     width: 100%;
-     border: .5px solid lightgrey;
+    border: .5px solid lightgrey;
     text-align: left;
    
 }
