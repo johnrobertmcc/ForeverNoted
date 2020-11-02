@@ -24,6 +24,7 @@ class AllNotesIndex extends React.Component {
 
 
     componentDidUpdate(prevProps, prevState) {
+        debugger
         if(prevProps.notes.length !== this.props.notes.length){
             this.props.fetchNotes(this.props.currentUser.id); //change this logic
         }
@@ -79,6 +80,7 @@ class AllNotesIndex extends React.Component {
     }
 
     switchButton(note){
+        debugger
         this.setState({
             action: {
                 type: 'edit',
@@ -104,12 +106,14 @@ class AllNotesIndex extends React.Component {
                 <div 
                 className='ind-note' 
                 key={note.id}
+                onClick={() => this.switchButton(note)}
                 >
-                    {/* <li>
-                        <button
-                        onClick={this.switchButton()}
-                        ></button>
-                    </li> */}
+                    
+                
+          
+                
+                 
+                   
                     
                     <li className='note-link'>
                         {note.title}

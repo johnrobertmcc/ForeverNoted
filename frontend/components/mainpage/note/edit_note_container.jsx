@@ -147,7 +147,7 @@ class EditNote extends React.Component {
 
 const mSTP = (state, ownProps) => {
     debugger
-    const note = ownProps.note;
+    const note = ownProps.note[0];
     const currentUser = state.entities.users[state.session.id]
     const notebooks = Object.values(state.entities.notebooks)
 
