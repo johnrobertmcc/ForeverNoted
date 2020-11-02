@@ -6,10 +6,11 @@ import { deleteNote, fetchNotes } from '../../../actions/note_actions';
 import Moment from 'react-moment';  
 
 class AllNotesIndex extends React.Component {
+    
     constructor(props) {
         super(props);
 
-        debugger
+
         this.state = {
             filtered: this.props.notes,
             searched: false,
@@ -24,14 +25,14 @@ class AllNotesIndex extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         if(prevProps.notes.length !== this.props.notes.length){
-            this.props.fetchNotes(this.props.currentUser.id);
+            this.props.fetchNotes(this.props.currentUser.id); //change this logic
         }
     }
 
     componentDidMount() {
-    this.setState({
-        filtered: this.props.fetchNotes(this.props.currentUser.id)
-    });
+        this.setState({
+            filtered: this.props.fetchNotes(this.props.currentUser.id) //change this logic
+        });
     }
 
 
@@ -63,7 +64,7 @@ class AllNotesIndex extends React.Component {
     }
 
     editor(action){
-        debugger
+
         switch (action.type) {
 
             case 'edit':
@@ -75,6 +76,15 @@ class AllNotesIndex extends React.Component {
             default:
                 return <CreateNote />;
         }      
+    }
+
+    switchButton(note){
+        this.setState({
+            action: {
+                type: 'edit',
+                note: [note]
+            }
+        })
     }
 
 
@@ -95,37 +105,34 @@ class AllNotesIndex extends React.Component {
                 className='ind-note' 
                 key={note.id}
                 >
-                 {/* onClick={this.setState({
-                //     action: {
-                //         type: 'edit',
-                //         note: [note]
-                //     }
-                // })}*/}
+                    {/* <li>
+                        <button
+                        onClick={this.switchButton()}
+                        ></button>
+                    </li> */}
                     
-                        <li
-                            className='note-link'
-                            >
-                            {note.title}
-                        </li>
-    
+                    <li className='note-link'>
+                        {note.title}
+                    </li>
 
-                        <li className='note-body'>
-                            <div dangerouslySetInnerHTML={this.createMarkup(i)} />
-                        </li>
-                        
-                        <li
-                            className="date"
-                        >
-                            {this.currentDate(note)}
-                        </li>
+                    <li className='note-body'>
+                        <div dangerouslySetInnerHTML={this.createMarkup(i)} />
+                    </li>
                     
+                    <li className="date">
+                        {this.currentDate(note)}
+                    </li>
+                
                     <li>
                         <button 
-                        onClick={() => deleteNote(note.id)}
-                        className='delete-btn'>
+                            onClick={() => deleteNote(note.id)}
+                            className='delete-btn'
+                        >
                             <i className="fas fa-trash"></i>
                         </button>
+
                     </li>
+
                 </div>
             ))
         } else {
@@ -134,32 +141,28 @@ class AllNotesIndex extends React.Component {
 
     }
 
-      handleChange(e) {
+    handleChange(e) {
         let {notes} = this.props
 
         let currentList = [];
 
         if (e.target.value !== "") {
-
             for(let i = 0; i < notes.length; i++){
     
-            if(notes[i].title.includes(e.target.value)){
-                currentList.push(notes[i])
-            }else if(notes[i].body.includes(e.target.value) && !currentList.includes(notes[i])){
-                currentList.push(notes[i])
-            }
-        }
+                if(notes[i].title.includes(e.target.value)){
+                    currentList.push(notes[i])
+                }else if(notes[i].body.includes(e.target.value) && !currentList.includes(notes[i])){
+                    currentList.push(notes[i])
+                }
+            };
 
-    
-        console.log(currentList)    
-       ;
         } else {
-        currentList = notes;
+            currentList = notes;
         };
 
         this.setState({
-        filtered: currentList,
-        searched: true
+            filtered: currentList,
+            searched: true
         });
     }
 
@@ -209,8 +212,6 @@ class AllNotesIndex extends React.Component {
 
 
 const mapStateToProps = (state) => {
-
-
     return {
         notes: Object.values(state.entities.notes),
         currentUser: state.entities.users[state.session.id]
@@ -218,8 +219,6 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => {
-
-
     return { 
         fetchNotes: id => dispatch(fetchNotes(id)),
         deleteNote: (id) => dispatch(deleteNote(id)), 

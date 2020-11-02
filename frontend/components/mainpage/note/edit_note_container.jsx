@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { fetchNote, updateNote, fetchNotes, deleteNote } from '../../../actions/note_actions';
 import {fetchNotebooks} from '../../../actions/notebook_actions';
 import ReactQuill from 'react-quill';
-import NoteIndex from './notes_index_container';
 
 class EditNote extends React.Component {
 

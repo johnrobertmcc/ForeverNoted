@@ -11,7 +11,7 @@
 
 .sidebar{
     width:360px;
-    // height: 110vh;
+    height: 100vh;
     z-index: 2;
     // bottom: -1px;
     right: -1px;
@@ -135,10 +135,17 @@
 
 .fab.fa-github{
     color: rgb(0,168,45);
+    cursor: pointer
 }
 
 .fab.fa-linkedin-in{
     color: rgb(0,168,45);
+    cursor: pointer
+}
+
+.fab.fa-angellist{
+    color: rgb(0,168,45);
+    cursor: pointer
 }
 
 .sidebar-icons{
@@ -147,18 +154,24 @@
 }
 
 .footer-sidebar{
-     margin-top: 77vh;
     border: 1px solid rgb(144, 240, 170);
+        opacity: 0.2;
+    width:90%;
+    display:flex;
+    justify-content: center;
 }
 
 .sig{
     color: rgb(144, 240, 170);
     font-size: 12px;
+    display:flex;
+    justify-content: center;
 }
 
-// .flex-footer{
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between;
-//     height: 100vh;
-// }
+.flex-footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: calc(100vh - 220px);
+    text-align: center
+}
