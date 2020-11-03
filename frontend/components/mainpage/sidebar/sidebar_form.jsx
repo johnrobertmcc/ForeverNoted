@@ -73,7 +73,7 @@ class SideBar extends React.Component{
                     <ul className='links-home'>
                         <li className='newnote-btn'><Link to={{
                             pathname:'/main/notes', 
-                            state: {newNote: true}
+                            // state: {newNote: true, fromNotebook: false}
                             }}><i className="fa fa-plus" aria-hidden="true"></i><p className='btn-words'>New note</p></Link>
                         </li>
                         

@@ -10,6 +10,7 @@ class EditNote extends React.Component {
     constructor(props) {
         super(props);
 
+        debugger
         let {note} = props
         this.state = {
             title: note.title,
@@ -147,7 +148,7 @@ class EditNote extends React.Component {
 
 const mSTP = (state, ownProps) => {
 
-    const note = ownProps.note[0];
+    const note = ownProps.note;
     const currentUser = state.entities.users[state.session.id]
     const notebooks = Object.values(state.entities.notebooks)
 

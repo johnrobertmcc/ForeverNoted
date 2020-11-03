@@ -35,7 +35,6 @@ class AllNotesIndex extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         
-        debugger
         if(prevProps.notes.length !== this.props.notes.length){
             this.props.fetchNotes(this.props.currentUser.id); //change this logic
             this.setState({filtered: this.props.notes})
@@ -47,7 +46,7 @@ class AllNotesIndex extends React.Component {
         this.props.fetchNotes(this.props.currentUser.id)
         this.setState({
             filtered: this.props.notes,
-            action: {type: 'create', note: ''} 
+            action: this.props.action
         });
     }
 
@@ -85,6 +84,7 @@ class AllNotesIndex extends React.Component {
 
     editor(action){
 
+        debugger
         switch (action.type) {
 
             case 'edit':
@@ -102,7 +102,7 @@ class AllNotesIndex extends React.Component {
         this.setState({
             action: {
                 type: 'edit',
-                note: [note]
+                note: note
             }
         })
     }
@@ -115,8 +115,6 @@ class AllNotesIndex extends React.Component {
         
         
         allNotes = this.state.searched ? this.state.filtered : notes;
-        
-        debugger
         
         if (allNotes.length > 0) {
             
@@ -245,23 +243,32 @@ const mapStateToProps = (state, ownProps) => {
     let notes;
     let fromNotebook;
     let notebook;
+    let action;
 
+    
     if(typeof ownProps.location.state !== 'undefined'){
         fromNotebook = true
     }else{
         fromNotebook = false
     }
-
+    
     if(typeof ownProps.notes !== 'undefined'){
         notes = Object.values(ownProps.notes)
     }else{
         notes = Object.values(state.entities.notes)
     }
-
+    
     if(fromNotebook){
         notebook = state.entities.notebooks[ownProps.match.params.notebookId]
     }else{
         notebook = false
+    }
+    
+    
+    if(ownProps.action){
+        action = ownProps.action
+    }else{
+        action = {type: 'create', note: ''} 
     }
     
     return {
@@ -269,11 +276,7 @@ const mapStateToProps = (state, ownProps) => {
         notebook,
         notebooks: Object.values(state.entities.notebooks),
         currentUser: state.entities.users[state.session.id],
-        action: {
-                type: 'create',
-                note: '',
-                notebook
-            },
+        action,
         fromNotebook
     }
 };

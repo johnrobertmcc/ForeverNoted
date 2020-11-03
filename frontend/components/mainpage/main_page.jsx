@@ -6,6 +6,7 @@ import SideBar from './sidebar/sidebar_container';
 import { Route } from "react-router-dom";
 import AllNotebookIndex from './notebook/all_notebook_index';
 import AllNotesIndex from './note/all_notes_index';
+import EditNote from './note/edit_note_container';
 
 
 const MainPage = () => {
@@ -15,7 +16,8 @@ const MainPage = () => {
             <SideBar />
             <Route exact path='/main/notes' component={AllNotesIndex} />
             <Route exact path='/main/allnotebooks' component={AllNotebookIndex} />            
-            <Route exact path='/main/notebooks/:notebookId/notes' component={NotebookIndex} />        
+            <Route exact path='/main/notebooks/:notebookId/notes' component={NotebookIndex} />
+            <Route exact path='/main/notebooks/:notebookId/notes/edit/:noteId' component={EditNote} />
         </div>
     )
 };

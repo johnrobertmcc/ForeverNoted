@@ -72,7 +72,6 @@ class AllNotebookIndex extends React.Component {
     }
 
     showCaret(id){
-        debugger
         if(this.state.showMenu.open && this.state.showMenu.id === id){
             return <i className="fas fa-caret-down"></i>
         }else{
