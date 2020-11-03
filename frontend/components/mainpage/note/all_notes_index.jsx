@@ -26,17 +26,12 @@ class AllNotesIndex extends React.Component {
 
 
     componentDidUpdate(prevProps, prevState) {
-
-        console.log(this.state.newNote)
-        
         
         if(prevProps.notes.length !== this.props.notes.length){
-
             this.props.fetchNotes(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
         if(prevState.filtered.length !== this.state.filtered.length){
-
             this.props.fetchNotes(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
@@ -85,7 +80,7 @@ class AllNotesIndex extends React.Component {
     editor(arg){
 
         let action = this.state.newNote ? {type: 'create', note: ''} : arg  
-        debugger
+        // debugger
         switch (action.type) {
 
             case 'edit':
@@ -187,6 +182,7 @@ class AllNotesIndex extends React.Component {
 
     indexTitle(){
         let {fromNotebook, notebook} = this.props;
+        debugger
 
         if(fromNotebook){
             return notebook.title
@@ -251,20 +247,13 @@ const mapStateToProps = (state, ownProps) => {
     
     
     if(typeof ownProps.location.state !== 'undefined'){
-        debugger
-        if(typeof ownProps.location.state.fromNotebook !== 'undefined'){
-            fromNotebook = true
-        }
-        if(typeof ownProps.location.state.newNote !== 'undefined'){
-            newNote = true
-        }
-
+        fromNotebook = true
+        newNote = true
     }else{
         fromNotebook = false;
         newNote = false
     }
-        
-   
+
     if(typeof ownProps.notes !== 'undefined'){
         notes = Object.values(ownProps.notes)
     }else{
@@ -284,6 +273,12 @@ const mapStateToProps = (state, ownProps) => {
         action = {type: 'create', note: '', notebook} 
     }
 
+    // debugger
+
+    console.log('ownProps.location.state:')
+    console.log(ownProps.location.state)
+    console.log('newNote:')
+    console.log(newNote)
     return {
         notes,
         notebook,

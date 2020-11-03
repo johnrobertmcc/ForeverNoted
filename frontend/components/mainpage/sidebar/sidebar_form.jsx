@@ -46,11 +46,28 @@ class SideBar extends React.Component{
         }
     }
 
-    
+    thisFunction(){
+        return(
+            <ul className='links-home'>
+                        <li className='newnote-btn'><Link to={{
+                            pathname:'/main/notes', 
+                            state: true,
+                            search: '?new=note'
+                            }}><i className="fa fa-plus" aria-hidden="true"></i><p className='btn-words'>New note</p></Link>
+                        </li>
+                        
+                        <li className='switch-links'><i className="fas fa-edit"></i><Link to='/main/notes'>All Notes</Link></li>
+                        <li className='switch-links' onClick={() =>this.setState({showMenu: !this.state.showMenu})}>{this.showCaret()}<Link to={{pathname:'/main/allnotebooks', state: {fromNotebook: true}}}>Notebooks</Link></li>
+                        <ul className='notebook-titles'>{this.showNotebooks()}</ul>
+            </ul>
+        )
+    }
 
     render(){
 
+
         const {logOut} = this.props;
+
 
 
         return(
@@ -70,17 +87,8 @@ class SideBar extends React.Component{
                         </button>
                     </div>
                     
-                    <ul className='links-home'>
-                        <li className='newnote-btn'><Link to={{
-                            pathname:'/main/notes', 
-                            state: {newNote: true}
-                            }}><i className="fa fa-plus" aria-hidden="true"></i><p className='btn-words'>New note</p></Link>
-                        </li>
-                        
-                        <li className='switch-links'><i className="fas fa-edit"></i><Link to='/main/notes'>All Notes</Link></li>
-                        <li className='switch-links' onClick={() =>this.setState({showMenu: !this.state.showMenu})}>{this.showCaret()}<Link to='/main/allnotebooks'>Notebooks</Link></li>
-                        <ul className='notebook-titles'>{this.showNotebooks()}</ul>
-                    </ul>
+                    {this.thisFunction()}
+                    
 
                     <div className='flex-footer'>
                         <hr className='footer-sidebar'></hr>

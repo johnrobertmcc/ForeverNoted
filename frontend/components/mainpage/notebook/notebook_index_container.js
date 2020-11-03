@@ -5,6 +5,7 @@ import {deleteNote} from '../../../actions/note_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
+    debugger
 
     const notebook = state.entities.notebooks[ownProps.match.params.notebookId]
     const {action} = ownProps.location.state

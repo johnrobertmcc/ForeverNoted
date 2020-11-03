@@ -4,8 +4,7 @@ import { logOut } from '../../../actions/session_actions';
 import {fetchNotebooks} from '../../../actions/notebook_actions';
 
 
-const mSTP = state => {
-
+const mSTP = (state, ownProps) => {
     return { 
         currentUser: state.entities.users[state.session.id],
         notebooks: Object.values(state.entities.notebooks)
