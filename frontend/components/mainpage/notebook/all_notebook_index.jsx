@@ -56,7 +56,7 @@ class AllNotebookIndex extends React.Component {
                  <Link to={{pathname:`/main/notebooks/${notebook.id}/notes`,
                             state: {
                                 action: {
-                                    type: edit,
+                                    type: 'edit',
                                     note
                                 }
                             }
@@ -144,7 +144,7 @@ const mapStateToProps = (state, ownProps) => {
         notebooks: Object.values(state.entities.notebooks),
         currentUser: state.entities.users[state.session.id],
         showMenu: false
-    }
+   }
 };
 
 const mapDispatchToProps = dispatch => {

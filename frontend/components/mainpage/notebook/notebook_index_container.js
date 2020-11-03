@@ -7,12 +7,12 @@ import {deleteNote} from '../../../actions/note_actions';
 const mapStateToProps = (state, ownProps) => {
 
     const notebook = state.entities.notebooks[ownProps.match.params.notebookId]
-    debugger
+    const {action} = ownProps.location.state
 
     if(typeof ownProps.location.state !== 'undefined'){
         return {
             notebook,
-            note: true
+            action
         }
     }else{ 
 

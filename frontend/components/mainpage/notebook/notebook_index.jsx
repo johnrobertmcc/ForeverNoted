@@ -6,7 +6,7 @@ import AllNotesIndex from '../note/all_notes_index';
 
 class NotebookIndex extends React.Component {
     constructor(props) {
-        
+
        super(props);
 
     }
@@ -14,7 +14,7 @@ class NotebookIndex extends React.Component {
     render() {
 
         return( 
-        <AllNotesIndex notes={this.props.notebook.notes}/>
+        <AllNotesIndex notes={this.props.notebook.notes} action={this.props.location.state.action}/>
         )
     }
 

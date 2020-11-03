@@ -10,8 +10,17 @@ class AllNotesIndex extends React.Component {
     
     constructor(props) {
         super(props);
-
         
+        // let action;
+        
+        // if(typeof props.location.state !== 'undefined'){
+        //     debugger
+        //     action = props.location.state.action
+        // }else{
+        //     debugger
+        //     action = props.action;
+        // }
+
         this.state = {
             filtered: this.props.notes,
             searched: false,
@@ -25,7 +34,8 @@ class AllNotesIndex extends React.Component {
 
 
     componentDidUpdate(prevProps, prevState) {
-
+        
+        debugger
         if(prevProps.notes.length !== this.props.notes.length){
             this.props.fetchNotes(this.props.currentUser.id); //change this logic
             this.setState({filtered: this.props.notes})
@@ -33,8 +43,9 @@ class AllNotesIndex extends React.Component {
     }
 
     componentDidMount() {
+        this.props.fetchNotes(this.props.currentUser.id)
         this.setState({
-            filtered: this.props.fetchNotes(this.props.currentUser.id),
+            filtered: this.props.notes,
             action: {type: 'create', note: ''} 
         });
     }
@@ -98,12 +109,13 @@ class AllNotesIndex extends React.Component {
 
     noteIndex() {
         let { notes, deleteNote } = this.props;
-
-        let allNotes;
-
-
-        this.state.searched ? allNotes = this.state.filtered :  allNotes = notes;
         
+        let allNotes;
+        
+        
+        allNotes = this.state.searched ? this.state.filtered : notes;
+        
+        debugger
         
         if (allNotes.length > 0) {
             
