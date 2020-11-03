@@ -21,7 +21,9 @@ class SideBar extends React.Component{
             return notebooks.map( notebook => {
 
             return(
-               <li>
+               <li
+               key={notebook.id}
+               ><i className="fas fa-book"/>
                  <Link to={{pathname:`/main/notebooks/${notebook.id}/notes`,
                                     state: {
                                       fromNotebook: true
@@ -47,8 +49,6 @@ class SideBar extends React.Component{
     
 
     render(){
-
-        
 
         const {logOut} = this.props;
 
@@ -78,8 +78,8 @@ class SideBar extends React.Component{
                         </li>
                         
                         <li className='switch-links'><i className="fas fa-edit"></i><Link to='/main/notes'>All Notes</Link></li>
-                        <li className='switch-links' onClick={() =>this.setState({showMenu: !this.state.showMenu})}>{this.showCaret()}<i className="fas fa-book"></i><Link to='/main/allnotebooks'>Notebooks</Link></li>
-                        <li className='notebook-titles'>{this.showNotebooks()}</li>
+                        <li className='switch-links' onClick={() =>this.setState({showMenu: !this.state.showMenu})}>{this.showCaret()}<Link to='/main/allnotebooks'>Notebooks</Link></li>
+                        <ul className='notebook-titles'>{this.showNotebooks()}</ul>
                     </ul>
 
                     <div className='flex-footer'>

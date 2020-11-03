@@ -10,10 +10,11 @@ class AllNotebookIndex extends React.Component {
         super(props);
 
         this.state = {
-            showMenu: false,
+            showMenu: {
+                open: false,
+                id: ''
+            }
         }
-
-
     }
 
     componentDidMount() {
@@ -35,7 +36,7 @@ class AllNotebookIndex extends React.Component {
         for(let i = 0; i < notebooks.length; i++){
             if (notebooks[i].id === notebookId){
                 if(notebooks[i].notes.length > 0){
-                    let temp = new Date((notebooks[i].notes[0].updated_at))
+                    let temp = new Date((notebooks[i].notes[notebooks[i].notes.length - 1].updated_at))
                     return temp.toDateString()
                 }else{ return 'No Notes Yet'}
         }
@@ -46,13 +47,12 @@ class AllNotebookIndex extends React.Component {
 
     showNotes(id){
 
-        if(this.state.showMenu){
+        if(this.state.showMenu.open && this.state.showMenu.id === id){
         let notebook = this.props.notebooks.find(notebook => notebook.id === id)
 
             return notebook.notes.map( note => {
 
             return(
-               <li>
                  <Link to={{pathname:`/main/notebooks/${notebook.id}/notes`,
                             state: {
                                 action: {
@@ -62,58 +62,68 @@ class AllNotebookIndex extends React.Component {
                             }
                         }}
                 >
-                    {note.title}
-                </Link> 
-               </li>    
+                        <li className='notebook-idx-show'>
+                        {note.title}
+                        </li>
+                </Link>  
             )
         })
         }
     }
 
-    showCaret(){
-        if(this.state.showMenu){
+    showCaret(id){
+        debugger
+        if(this.state.showMenu.open && this.state.showMenu.id === id){
             return <i className="fas fa-caret-down"></i>
         }else{
             return <i className="fas fa-caret-right"></i>
         }
     }
 
-    notebookIndex() {
-        let { notebooks, currentUser } = this.props;
+    newNotebookIndex(){
+          let { notebooks, currentUser } = this.props;
 
+          let noteBookMap= notebooks.map((notebook, i) => {
+                return(
+
+                    <tbody>
+
+                <tr>
+                    <td onClick={() =>this.setState({showMenu: {open: !this.state.showMenu.open, id: notebook.id}})}>
+                        {this.showCaret(notebook.id)}
+                        {notebook.title}
+                    </td>
+                    <td>{currentUser.email}</td>
+                    <td>{this.lastUpdated(notebook.id)}</td>
+                </tr>
+                <tr className='notebook-titles'>{this.showNotes(notebook.id)} </tr>
+                    </tbody>
+                )
+
+          })
 
         //get an indiviual notebook's show page
         if (notebooks.length > 0) {
-            return notebooks.map((notebook, i) => (
-                <table
-                className='notebook-table'
-                key={i}
-                >
-                    <thead>
+            return(
+            <table
+            className='notebook-table'
+            // key={i}
+            >
+                <thead>
+
                     <tr>
                         <th>Title</th>
                         <th>Created By</th>
                         <th>Last Updated At</th>
                     </tr>
-                    </thead>
-                    <tbody className='row'>
-                    <tr>
-                        <td>
-                            <div onClick={() =>this.setState({showMenu: !this.state.showMenu})}>{this.showCaret()}
-                              >
-                            </div>
-                        
-                        </td>
-                        <td className='notebook-titles'>{this.showNotes(notebook.id)} </td>
-                        <td>{currentUser.email}</td>
-                        <td>{this.lastUpdated(notebook.id)}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            ))
+                </thead>
+                    {noteBookMap}
+            </table>
+            )
         } else {
             return "no notebooks yet!"
         }
+
 
     }
 
@@ -129,7 +139,7 @@ class AllNotebookIndex extends React.Component {
                 <div className='create-note-index'>
                 </div>
                 <hr className='notebooks-index-line'></hr>
-                <ul className='all-notebooks'>{this.notebookIndex()}</ul>
+                <ul className='all-notebooks'>{this.newNotebookIndex()}</ul>
 
             </div>
         )
@@ -143,7 +153,6 @@ const mapStateToProps = (state, ownProps) => {
     return {
         notebooks: Object.values(state.entities.notebooks),
         currentUser: state.entities.users[state.session.id],
-        showMenu: false
    }
 };
 
