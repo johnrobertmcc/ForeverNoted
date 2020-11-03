@@ -5,6 +5,7 @@ import { fetchNotebook, fetchNotebooks } from '../../../actions/notebook_actions
 
 
 const mSTP = (state, ownProps) => {
+    debugger
     return { 
         
         currentUser: state.entities.users[state.session.id],

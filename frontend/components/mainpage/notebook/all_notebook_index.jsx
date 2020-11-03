@@ -31,7 +31,6 @@ class AllNotebookIndex extends React.Component {
             if (notebooks[i].id === notebookId){
                 if(notebooks[i].notes.length > 0){
                     let temp = new Date((notebooks[i].notes[0].updated_at))
-                    debugger
                     return temp.toDateString()
                 }else{ return 'No Notes Yet'}
         }
@@ -62,8 +61,16 @@ class AllNotebookIndex extends React.Component {
                     <tr>
                         <td>
                             <i className="fa fa-book" aria-hidden="true"></i>
-                            <Link to={`/main/notebooks/${notebook.id}/notes`}>{notebook.title}</Link> 
+                            <Link to={{pathname:`/main/notebooks/${notebook.id}/notes`,
+                                    state: {
+                                      fromNotebook: true
+                                    }
+                            }}>
+                                {notebook.title}
+                            </Link> 
+                            
                             ({notebook.notes.length})
+                        
                         </td>
                         <td>{currentUser.email}</td>
                         <td>{this.lastUpdated(notebook.id)}</td>

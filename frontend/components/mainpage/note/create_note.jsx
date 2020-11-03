@@ -31,7 +31,6 @@ class CreateNote extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updateQuill = this.updateQuill.bind(this);
-        // this.notebookList = this.notebookList.bind(this)
         this.setDefaultNotebookId = this.setDefaultNotebookId.bind(this);
         }
      
@@ -49,17 +48,10 @@ class CreateNote extends React.Component {
     setDefaultNotebookId(){
 
         this.setState({
-            notebook_id: this.props.notebooks[1].id,
+            notebook_id: this.props.notebooks[0].id,
             redirect: true
         } )
     }
-
-    renderRedirect(){
-    if (this.state.redirect) {
-    //   return <Redirect to={`/main/notebooks/${this.state.notebook_id}/notes`}/>
-    }
-    }
-
 
     updateQuill(html) {
 
@@ -73,17 +65,6 @@ class CreateNote extends React.Component {
         this.props.fetchNotebooks(this.props.currentUser.id);
     }
 
-
-    notebookList(){
-
-        let {notebooks} = this.props
-        notebooks.map(notebook => {
-            return (
-                <li>
-                    {notebook.title}
-                </li>
-            )})
-    }
 
     handleSubmit(e) {
         
@@ -112,6 +93,7 @@ class CreateNote extends React.Component {
             };
 
 
+
             return (
                 <div className="create-note-main">
                 <div className='note-editor'>
@@ -134,10 +116,6 @@ class CreateNote extends React.Component {
                                 value={this.state.title}
                                 />
                             
-                            <label htmlFor="nb-btn">Notebook?</label>
-                                <select id="nb-btn" name="nb-btn">
-                                <option>{this.notebookList()}</option>
-                            </select>
                             <button onClick={this.setDefaultNotebookId}  className='create-btn'>Create Note</button>
                            {/* {this.renderRedirect()} */}
                 

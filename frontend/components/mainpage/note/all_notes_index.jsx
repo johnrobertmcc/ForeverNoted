@@ -11,13 +11,15 @@ class AllNotesIndex extends React.Component {
     constructor(props) {
         super(props);
 
-        debugger
+        
         this.state = {
             filtered: this.props.notes,
             searched: false,
             action: this.props.action,
-
+            fromNotebook: this.props.fromNotebook
+            
         }
+
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -28,18 +30,9 @@ class AllNotesIndex extends React.Component {
             this.props.fetchNotes(this.props.currentUser.id); //change this logic
             this.setState({filtered: this.props.notes})
         } 
-        // else if (!this.state.landing) {
-        //     this.setState({
-        //         action: {
-        //             type: 'create',
-        //             note: ''
-        //         },
-        // })
-        // }
     }
 
     componentDidMount() {
-        debugger
         this.setState({
             filtered: this.props.fetchNotes(this.props.currentUser.id),
             action: {type: 'create', note: ''} 
@@ -178,9 +171,18 @@ class AllNotesIndex extends React.Component {
         });
     }
 
+    indexTitle(){
+        let {fromNotebook, notebook} = this.props;
+
+        if(fromNotebook){
+            return notebook.title
+        }else{
+            return "All Notes"
+        }
+    }
+
 
     render() {
-        debugger
         let { notes } = this.props;
         let allNotes;
         this.state.searched ? allNotes = this.state.filtered :  allNotes = notes;
@@ -200,7 +202,7 @@ class AllNotesIndex extends React.Component {
                 <div className='note-index-container'>
                     <div className='note-header'>
 
-                        <h3>All Notes Index</h3>
+                        <h3>{this.indexTitle()}</h3>
 
                         <p className="note-count">{noteCount()}</p>
                         
@@ -227,21 +229,37 @@ class AllNotesIndex extends React.Component {
 const mapStateToProps = (state, ownProps) => {
 
     let notes;
-    debugger
-    
+    let fromNotebook;
+    let notebook;
+
+    if(typeof ownProps.location.state !== 'undefined'){
+        fromNotebook = true
+    }else{
+        fromNotebook = false
+    }
+
     if(typeof ownProps.notes !== 'undefined'){
         notes = Object.values(ownProps.notes)
     }else{
         notes = Object.values(state.entities.notes)
     }
+
+    if(fromNotebook){
+        notebook = state.entities.notebooks[ownProps.match.params.notebookId]
+    }else{
+        notebook = false
+    }
+    
     return {
         notes,
+        notebook,
         notebooks: Object.values(state.entities.notebooks),
         currentUser: state.entities.users[state.session.id],
         action: {
                 type: 'create',
                 note: ''
-            } 
+            },
+        fromNotebook
     }
 };
 

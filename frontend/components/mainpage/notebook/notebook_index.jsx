@@ -13,7 +13,6 @@ class NotebookIndex extends React.Component {
 
     render() {
 
-
         return( 
         <AllNotesIndex notes={this.props.notebook.notes}/>
         )
