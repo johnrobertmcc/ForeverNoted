@@ -17,7 +17,6 @@ const receiveAllNotes = (notebooks) => {
 
 export const fetchNotebooks = (id) => dispatch => {
 
-
     return NoteBookUtil.fetchNotebooks(id).then(notebooks => dispatch(receiveAllNotes(notebooks)));
 };
 

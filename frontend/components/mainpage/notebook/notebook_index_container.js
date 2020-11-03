@@ -7,10 +7,19 @@ import {deleteNote} from '../../../actions/note_actions';
 const mapStateToProps = (state, ownProps) => {
 
     const notebook = state.entities.notebooks[ownProps.match.params.notebookId]
+    debugger
 
-    return { 
-        notebook
-     }
+    if(typeof ownProps.location.state !== 'undefined'){
+        return {
+            notebook,
+            note: true
+        }
+    }else{ 
+
+        return { 
+            notebook
+        }
+    }
 };
 
 const mapDispatchToProps = dispatch => {

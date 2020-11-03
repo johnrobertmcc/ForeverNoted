@@ -9,6 +9,11 @@ class AllNotebookIndex extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            showMenu: false,
+        }
+
+
     }
 
     componentDidMount() {
@@ -39,6 +44,40 @@ class AllNotebookIndex extends React.Component {
 
     }
 
+    showNotes(id){
+
+        if(this.state.showMenu){
+        let notebook = this.props.notebooks.find(notebook => notebook.id === id)
+
+            return notebook.notes.map( note => {
+
+            return(
+               <li>
+                 <Link to={{pathname:`/main/notebooks/${notebook.id}/notes`,
+                            state: {
+                                action: {
+                                    type: edit,
+                                    note
+                                }
+                            }
+                        }}
+                >
+                    {note.title}
+                </Link> 
+               </li>    
+            )
+        })
+        }
+    }
+
+    showCaret(){
+        if(this.state.showMenu){
+            return <i className="fas fa-caret-down"></i>
+        }else{
+            return <i className="fas fa-caret-right"></i>
+        }
+    }
+
     notebookIndex() {
         let { notebooks, currentUser } = this.props;
 
@@ -60,18 +99,12 @@ class AllNotebookIndex extends React.Component {
                     <tbody className='row'>
                     <tr>
                         <td>
-                            <i className="fa fa-book" aria-hidden="true"></i>
-                            <Link to={{pathname:`/main/notebooks/${notebook.id}/notes`,
-                                    state: {
-                                      fromNotebook: true
-                                    }
-                            }}>
-                                {notebook.title}
-                            </Link> 
-                            
-                            ({notebook.notes.length})
+                            <div onClick={() =>this.setState({showMenu: !this.state.showMenu})}>{this.showCaret()}
+                              >
+                            </div>
                         
                         </td>
+                        <td className='notebook-titles'>{this.showNotes(notebook.id)} </td>
                         <td>{currentUser.email}</td>
                         <td>{this.lastUpdated(notebook.id)}</td>
                     </tr>
@@ -109,7 +142,8 @@ const mapStateToProps = (state, ownProps) => {
 
     return {
         notebooks: Object.values(state.entities.notebooks),
-        currentUser: state.entities.users[state.session.id]
+        currentUser: state.entities.users[state.session.id],
+        showMenu: false
     }
 };
 

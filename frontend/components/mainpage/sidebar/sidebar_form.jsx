@@ -2,6 +2,48 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 class SideBar extends React.Component{
+
+
+    constructor(props){
+        super(props)
+
+        this.state = {
+            showMenu: false,
+        }
+
+        this.showNotebooks = this.showNotebooks.bind(this)
+    }
+    showNotebooks(){
+
+        let {notebooks} = this.props
+
+        if(this.state.showMenu){
+            return notebooks.map( notebook => {
+
+            return(
+               <li>
+                 <Link to={{pathname:`/main/notebooks/${notebook.id}/notes`,
+                                    state: {
+                                      fromNotebook: true
+                                    }
+                            }}
+                >
+                    {notebook.title}
+                </Link> 
+               </li>    
+            )
+        })
+        }
+    }
+
+    showCaret(){
+        if(this.state.showMenu){
+            return <i className="fas fa-caret-down"></i>
+        }else{
+            return <i className="fas fa-caret-right"></i>
+        }
+    }
+
     
 
     render(){
@@ -36,7 +78,8 @@ class SideBar extends React.Component{
                         </li>
                         
                         <li className='switch-links'><i className="fas fa-edit"></i><Link to='/main/notes'>All Notes</Link></li>
-                        <li className='switch-links'><i className="fas fa-book"></i><Link to='/main/allnotebooks'>Notebooks</Link></li>
+                        <li className='switch-links' onClick={() =>this.setState({showMenu: !this.state.showMenu})}>{this.showCaret()}<i className="fas fa-book"></i><Link to='/main/allnotebooks'>Notebooks</Link></li>
+                        <li className='notebook-titles'>{this.showNotebooks()}</li>
                     </ul>
 
                     <div className='flex-footer'>
