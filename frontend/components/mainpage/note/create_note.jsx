@@ -9,12 +9,15 @@ class CreateNote extends React.Component {
     constructor(props) {
 
         super(props)
+    
+        const {notebook} = this.props
 
         this.state = {
             title: '',
             body: '',
             user_id: this.props.currentUser.id,
-            redirect: false
+            redirect: false,
+            notebookId: notebook
              //this.props.note.notebook_id
         }
 
@@ -47,10 +50,17 @@ class CreateNote extends React.Component {
 
     setDefaultNotebookId(){
 
-        this.setState({
-            notebook_id: this.props.notebooks[0].id,
-            redirect: true
-        } )
+        if(this.state.notebookId !== false){
+            this.setState({
+                notebook_id: this.state.notebookId
+            })
+        }else{
+            this.setState({
+                notebook_id: this.props.notebooks[0].id,
+                redirect: true
+            } )
+    
+        }
     }
 
     updateQuill(html) {

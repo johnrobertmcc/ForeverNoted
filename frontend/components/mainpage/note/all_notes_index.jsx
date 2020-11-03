@@ -79,10 +79,10 @@ class AllNotesIndex extends React.Component {
                 return <EditNote note={action.note}/>;
             
             case 'create':
-                return <CreateNote />;
+                return <CreateNote notebook={action.notebook}/>;
             
             default:
-                return <CreateNote />;
+                return <CreateNote notebook={action.notebook}/>;
         }      
     }
 
@@ -220,6 +220,7 @@ class AllNotesIndex extends React.Component {
                 <div className='allnotes-create-form'>
                     {this.editor(this.state.action)}
                 </div>
+
             </div>
         )
     }
@@ -257,7 +258,8 @@ const mapStateToProps = (state, ownProps) => {
         currentUser: state.entities.users[state.session.id],
         action: {
                 type: 'create',
-                note: ''
+                note: '',
+                notebook
             },
         fromNotebook
     }
