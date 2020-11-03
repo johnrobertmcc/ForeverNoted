@@ -10,7 +10,6 @@ class EditNote extends React.Component {
     constructor(props) {
         super(props);
 
-        debugger
         let {note} = props
         this.state = {
             title: note.title,

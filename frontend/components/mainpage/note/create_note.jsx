@@ -17,8 +17,8 @@ class CreateNote extends React.Component {
             body: '',
             user_id: this.props.currentUser.id,
             redirect: false,
-            notebookId: notebook
-             //this.props.note.notebook_id
+            notebookId: notebook,
+            isSubmitted: false
         }
 
 
@@ -75,11 +75,26 @@ class CreateNote extends React.Component {
         this.props.fetchNotebooks(this.props.currentUser.id);
     }
 
+    componentDidUpdate(){
+        if(this.state.isSubmitted){
+            this.setState({
+                title: '',
+                body: '',
+                user_id: this.props.currentUser.id,
+                redirect: false,
+                notebookId: this.props.notebook,
+                isSubmitted: false
+
+            })
+        }
+
+    }
+
 
     handleSubmit(e) {
-        
         e.preventDefault();
         this.props.createNote(this.state);
+        this.setState({isSubmitted: true})
     }
     
 

@@ -11,21 +11,13 @@ class AllNotesIndex extends React.Component {
     constructor(props) {
         super(props);
         
-        // let action;
-        
-        // if(typeof props.location.state !== 'undefined'){
-        //     debugger
-        //     action = props.location.state.action
-        // }else{
-        //     debugger
-        //     action = props.action;
-        // }
 
         this.state = {
             filtered: this.props.notes,
             searched: false,
             action: this.props.action,
-            fromNotebook: this.props.fromNotebook
+            fromNotebook: this.props.fromNotebook,
+            newNote: this.props.newNote
             
         }
 
@@ -34,11 +26,19 @@ class AllNotesIndex extends React.Component {
 
 
     componentDidUpdate(prevProps, prevState) {
+
+        console.log(this.state.newNote)
+        
         
         if(prevProps.notes.length !== this.props.notes.length){
-            this.props.fetchNotes(this.props.currentUser.id); //change this logic
-            this.setState({filtered: this.props.notes})
-            this.forceUpdate()
+
+            this.props.fetchNotes(this.props.currentUser.id);
+            this.setState({filtered: this.props.notes, action: this.props.action})
+        } 
+        if(prevState.filtered.length !== this.state.filtered.length){
+
+            this.props.fetchNotes(this.props.currentUser.id);
+            this.setState({filtered: this.props.notes, action: this.props.action})
         } 
     }
 
@@ -82,8 +82,9 @@ class AllNotesIndex extends React.Component {
         }
     }
 
-    editor(action){
+    editor(arg){
 
+        let action = this.state.newNote ? {type: 'create', note: ''} : arg  
         debugger
         switch (action.type) {
 
@@ -103,7 +104,8 @@ class AllNotesIndex extends React.Component {
             action: {
                 type: 'edit',
                 note: note
-            }
+            },
+            newNote: false
         })
     }
 
@@ -115,6 +117,7 @@ class AllNotesIndex extends React.Component {
         
         
         allNotes = this.state.searched ? this.state.filtered : notes;
+
         
         if (allNotes.length > 0) {
             
@@ -244,14 +247,24 @@ const mapStateToProps = (state, ownProps) => {
     let fromNotebook;
     let notebook;
     let action;
-
+    let newNote;
+    
     
     if(typeof ownProps.location.state !== 'undefined'){
-        fromNotebook = true
+        debugger
+        if(typeof ownProps.location.state.fromNotebook !== 'undefined'){
+            fromNotebook = true
+        }
+        if(typeof ownProps.location.state.newNote !== 'undefined'){
+            newNote = true
+        }
+
     }else{
-        fromNotebook = false
+        fromNotebook = false;
+        newNote = false
     }
-    
+        
+   
     if(typeof ownProps.notes !== 'undefined'){
         notes = Object.values(ownProps.notes)
     }else{
@@ -265,19 +278,20 @@ const mapStateToProps = (state, ownProps) => {
     }
     
     
-    if(ownProps.action){
+    if(ownProps.action && !newNote){
         action = ownProps.action
     }else{
-        action = {type: 'create', note: ''} 
+        action = {type: 'create', note: '', notebook} 
     }
-    
+
     return {
         notes,
         notebook,
         notebooks: Object.values(state.entities.notebooks),
         currentUser: state.entities.users[state.session.id],
         action,
-        fromNotebook
+        fromNotebook,
+        newNote
     }
 };
 
