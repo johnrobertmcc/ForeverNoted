@@ -299,6 +299,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => {
+    debugger
     return { 
         fetchNotes: id => dispatch(fetchNotes(id)),
         deleteNote: (id) => dispatch(deleteNote(id)), 

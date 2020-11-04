@@ -40,6 +40,7 @@ export const updateNote = (note) => {
 };
 
 export const deleteNote = (noteId) => {
+    debugger
     return $.ajax(
         {
             url: `/api/notes/${noteId}`,
