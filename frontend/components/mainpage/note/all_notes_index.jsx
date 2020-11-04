@@ -31,10 +31,6 @@ class AllNotesIndex extends React.Component {
             this.props.fetchNotes(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
-        if(prevState.filtered.length !== this.state.filtered.length){
-            this.props.fetchNotes(this.props.currentUser.id);
-            this.setState({filtered: this.props.notes, action: this.props.action})
-        } 
     }
 
     componentDidMount() {
