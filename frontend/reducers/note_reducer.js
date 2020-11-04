@@ -10,7 +10,6 @@ const NotesReducer = (state = {}, action) => {
             return Object.assign({}, state, {[action.note.id] : action.note});
         
         case RECEIVE_ALL_NOTES:
-            // debugger
             return Object.assign({}, state, action.notes)
             // return action.notes
 

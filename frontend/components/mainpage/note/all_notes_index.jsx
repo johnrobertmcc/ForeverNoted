@@ -19,7 +19,6 @@ class AllNotesIndex extends React.Component {
             fromNotebook: this.props.fromNotebook,
             newNote: this.props.newNote
         }
-        debugger
 
         this.handleChange = this.handleChange.bind(this);
     }
@@ -33,6 +32,7 @@ class AllNotesIndex extends React.Component {
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
         if(prevState.filtered !== this.state.filtered && !this.state.searched){
+            debugger
             this.props.fetchNotes(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
@@ -81,14 +81,14 @@ class AllNotesIndex extends React.Component {
     editor(action){
 
         // let action = this.state.newNote ? {type: 'create', note: '', notebook: this.state.action.notebook} : arg  
-        // debugger
+
         switch (action.type) {
 
             case 'edit':
                 return <EditNote note={action.note}/>;
             
             case 'create':
-                debugger
+
                 return <CreateNote notebook={action.notebook}/>;
             
             default:
@@ -281,7 +281,6 @@ const mapStateToProps = (state, ownProps) => {
         action = {type: 'create', note: '', notebook} 
     }
 
-    debugger
 
     // console.log('ownProps.location.state:')
     // console.log(ownProps.location.state)

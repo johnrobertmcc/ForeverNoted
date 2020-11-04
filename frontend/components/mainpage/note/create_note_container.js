@@ -7,9 +7,9 @@ import { fetchNotebook, fetchNotebooks } from '../../../actions/notebook_actions
 const mSTP = (state, ownProps) => {
     let notebook;
     
-    debugger
+
     if(ownProps.notebook){
-        debugger
+    
         notebook = ownProps.notebook.id
     }else{
         notebook = false

@@ -12,8 +12,6 @@ class CreateNote extends React.Component {
     
         const {notebook} = this.props
 
-        debugger
-
         this.state = {
             title: '',
             body: '',
@@ -51,8 +49,6 @@ class CreateNote extends React.Component {
 
 
     setDefaultNotebookId(){
-        debugger
-
         if(this.state.notebookId !== false){
             this.setState({
                 notebook_id: this.state.notebookId
