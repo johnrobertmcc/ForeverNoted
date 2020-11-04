@@ -41,19 +41,17 @@ export const updateNote = note => dispatch => {
     return NoteUtil.updateNote(note).then(note => dispatch(receiveNote(note)));
 };
 
-const removeNote = noteId => {
-    debugger
+const removeNote = ({id}) => {
 
-    let temp = noteId;
     return (
         {
             type: REMOVE_NOTE,
-            temp
+            id
         }
     )
 };
 
 export const deleteNote = noteId => dispatch => {
-    debugger
+
     return NoteUtil.deleteNote(noteId).then(note=> dispatch(removeNote(note)))
 };

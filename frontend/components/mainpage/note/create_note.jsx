@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
 import {Redirect} from "react-router-dom"
+import { fetchNotes } from '../../../util/note_util';
 
 
 
@@ -92,8 +93,11 @@ class CreateNote extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.createNote(this.state);
-        this.setState({isSubmitted: true})
+        
+        debugger
+        this.props.createNote(this.state).then(this.props.fetchNotes(this.props.currentUser.id));
+
+        this.setState({isSubmitted: true});
     }
     
 

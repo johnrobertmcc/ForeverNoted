@@ -15,6 +15,10 @@ class Api::NotesController < ApplicationController
         @note = Note.find(params[:id])
         if !@note.destroy
             render json: [@note.errors.full_messages], status: 422
+
+        else
+            render :destroy
+
         end
         
     end

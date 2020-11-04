@@ -26,16 +26,21 @@ class AllNotesIndex extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
 
-        
         if(prevProps.notes.length !== this.props.notes.length){
             this.props.fetchNotes(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
         if(prevState.filtered !== this.state.filtered && !this.state.searched){
-            debugger
+     
             this.props.fetchNotes(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
+        // if(this.props.allNotes.length !== prevProps.notes.length){
+        //     debugger
+        //     this.props.fetchNotes(this.props.currentUser.id);
+        //     this.setState({filtered: this.props.notes, action: this.props.action})
+
+        // }
     }
 
     componentDidMount() {
@@ -286,6 +291,7 @@ const mapStateToProps = (state, ownProps) => {
     // console.log(ownProps.location.state)
     // console.log('newNote:')
     // console.log(newNote)
+    debugger
     return {
         notes,
         notebook,
@@ -294,12 +300,12 @@ const mapStateToProps = (state, ownProps) => {
         action,
         fromNotebook,
         newNote,
-        notebookId : notebook.id
+        notebookId : notebook.id,
+        allNotes: Object.values(state.entities.notes)
     }
 };
 
 const mapDispatchToProps = dispatch => {
-    debugger
     return { 
         fetchNotes: id => dispatch(fetchNotes(id)),
         deleteNote: (id) => dispatch(deleteNote(id)), 

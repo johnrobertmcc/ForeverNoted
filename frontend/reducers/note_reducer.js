@@ -10,6 +10,7 @@ const NotesReducer = (state = {}, action) => {
             return Object.assign({}, state, {[action.note.id] : action.note});
         
         case RECEIVE_ALL_NOTES:
+
             return Object.assign({}, state, action.notes)
             // return action.notes
 
@@ -17,7 +18,7 @@ const NotesReducer = (state = {}, action) => {
             return action.notebook.notes;
 
         case REMOVE_NOTE:
-            debugger
+    
             const temp = Object.assign({}, state)
             delete temp[action.noteId];
             return temp;

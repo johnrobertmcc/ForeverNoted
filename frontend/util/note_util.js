@@ -1,5 +1,6 @@
 
 export const fetchNotes = (userId) => {
+
     return $.ajax(
         {
             url: `/api/users/${userId}/notes`,
@@ -40,7 +41,6 @@ export const updateNote = (note) => {
 };
 
 export const deleteNote = (noteId) => {
-    debugger
     return $.ajax(
         {
             url: `/api/notes/${noteId}`,

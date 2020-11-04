@@ -1,11 +1,19 @@
+@keyframes slide{
+    0% { left: 0px}
+    25% { left: 100px}
+    50% { left: 200px}
+    75% { left: 300px}
+    100% { left: 360px}
+}
+
 .sidebar-extend{
     height: 100vh;
     border: 1px solid black;
     width: 360px;
     position: absolute;
-    /* opacity: 1; */
-    /* margin-top: 2vh; */
-    background-color: white
+    background-color: white;
+    animation-name: slide;
+    animation-duration: 4s;
 
 }
 
