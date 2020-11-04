@@ -44,7 +44,7 @@ class SideBar extends React.Component{
         if(this.state.showTags){
 
             return(
-                <div className='tags-sidebar'>
+                <div className='sidebar-extend'>
                     this is where the tags component is going
                 </div>
             )
@@ -90,42 +90,45 @@ class SideBar extends React.Component{
 
 
         return(
-
-            <div className="homepage">
-                
-                <div className='sidebar'>
-                   <div className='flex-side'>
-                        <p className='user-info'>
-                            <i className="fa fa-pagelines" aria-hidden="true"></i>
-                            <span className='username'> {this.props.currentUser.email}</span>
-                        </p>
-                        <button
-                            className='logout-btn'
-                            onClick={logOut}
-                            >LogOut
-                        </button>
-                    </div>
+            
+            <div className='testing'>
+                <div className="homepage">
                     
-                    {this.sidebarLinks()}
-                    
-
-                    <div className='flex-footer'>
-                        <hr className='footer-sidebar'></hr>
-                        <p className='sig'>created by <br></br>John Robert McCann</p>
-                        <br></br>
-                        <div className='sidebar-icons'>
-                            <a href='https://github.com/johnrobertmcc'><i className="fab fa-github"></i></a>
-                            <a href='https://www.linkedin.com/in/jrmcc/'><i className="fab fa-linkedin-in"></i></a>
-                            <a href='https://angel.co/u/john-robert-mccann'><i className="fab fa-angellist"></i></a>
+                    <div className='sidebar'>
+                    <div className='flex-side'>
+                            <p className='user-info'>
+                                <i className="fa fa-pagelines" aria-hidden="true"></i>
+                                <span className='username'> {this.props.currentUser.email}</span>
+                            </p>
+                            <button
+                                className='logout-btn'
+                                onClick={logOut}
+                                >LogOut
+                            </button>
                         </div>
-                         
+                        
+                        {this.sidebarLinks()}
+                        
+
+                        <div className='flex-footer'>
+                            <hr className='footer-sidebar'></hr>
+                            <p className='sig'>created by <br></br>John Robert McCann</p>
+                            <br></br>
+                            <div className='sidebar-icons'>
+                                <a href='https://github.com/johnrobertmcc'><i className="fab fa-github"></i></a>
+                                <a href='https://www.linkedin.com/in/jrmcc/'><i className="fab fa-linkedin-in"></i></a>
+                                <a href='https://angel.co/u/john-robert-mccann'><i className="fab fa-angellist"></i></a>
+                            </div>
+                            
+                        </div>
                     </div>
+
+
                 </div>
 
-                <div className='sidebar-extend'>
+                <div>
                     {this.openTags()}
                 </div>
-
             </div>
         )}
 }

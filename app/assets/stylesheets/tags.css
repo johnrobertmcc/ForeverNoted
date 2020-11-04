@@ -1,0 +1,14 @@
+.sidebar-extend{
+    height: 95vh;
+    border: 1px solid black;
+    width: 360px;
+    position: absolute;
+    /* opacity: 1; */
+    margin-top: 2vh;
+    background-color: white
+
+}
+
+.testing{
+    display: flex;
+}
