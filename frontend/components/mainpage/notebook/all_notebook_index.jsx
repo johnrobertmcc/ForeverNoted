@@ -2,6 +2,7 @@ import React from 'react';
 import CreateNotebook from './create_notebook_container';
 import { connect } from 'react-redux';
 import { fetchNotebooks } from '../../../actions/notebook_actions';
+import {fetchNotes} from '../../../actions/note_actions';
 import {Link} from 'react-router-dom'
 
 
@@ -20,12 +21,14 @@ class AllNotebookIndex extends React.Component {
     componentDidMount() {
 
         this.props.fetchNotebooks(this.props.currentUser.id);
+        this.props.fetchNotes(this.props.currentUser.id);
     }
 
     componentDidUpdate(prevProps, prevState) {
         
         if(prevProps.notebooks.length !== this.props.notebooks.length){
             this.props.fetchNotebooks(this.props.currentUser.id);
+               this.props.fetchNotes(this.props.currentUser.id);
         }
     }
 
@@ -45,6 +48,22 @@ class AllNotebookIndex extends React.Component {
 
     }
 
+    createdOn(notebookId){
+
+        let {notebooks} = this.props
+
+        for(let i = 0; i < notebooks.length; i++){
+            if (notebooks[i].id === notebookId){
+                if(notebooks[i].notes.length > 0){
+                    let temp = new Date((notebooks[i].notes[0].created_at))
+                    return temp.toDateString()
+                }else{ return 'No Notes Yet'}
+        }
+        }
+
+    }
+
+
     showNotes(id){
 
         if(this.state.showMenu.open && this.state.showMenu.id === id){
@@ -53,19 +72,26 @@ class AllNotebookIndex extends React.Component {
             return notebook.notes.map( note => {
 
             return(
-                 <Link to={{pathname:`/main/notebooks/${notebook.id}/notes`,
-                            state: {
-                                action: {
-                                    type: 'edit',
-                                    note
+    
+                    <tr
+                    key={note.id}
+                    >
+                        <Link to={{pathname:`/main/notebooks/${notebook.id}/notes`,
+                                state: {
+                                    action: {
+                                        type: 'edit',
+                                        note
+                                    }
                                 }
-                            }
-                        }}
-                >
-                        <li className='notebook-idx-show'>
-                        {note.title}
-                        </li>
-                </Link>  
+                            }}
+                            >
+                            <td className='notebook-idx-show'>
+                            {note.title}
+                            </td>
+
+                    </Link>  
+          
+                    </tr>
             )
         })
         }
@@ -85,18 +111,38 @@ class AllNotebookIndex extends React.Component {
           let noteBookMap= notebooks.map((notebook, i) => {
                 return(
 
-                    <tbody>
+                <tbody className='full-nb-idx'
+                key={notebook.id}
+                >
 
-                <tr>
-                    <td onClick={() =>this.setState({showMenu: {open: !this.state.showMenu.open, id: notebook.id}})}>
-                        {this.showCaret(notebook.id)}
-                        {notebook.title}
-                    </td>
-                    <td>{currentUser.email}</td>
-                    <td>{this.lastUpdated(notebook.id)}</td>
-                </tr>
-                <tr className='notebook-titles'>{this.showNotes(notebook.id)} </tr>
-                    </tbody>
+                    <tr className='full-nb-idx'
+                    key={i}
+                    >
+                        <td 
+                        onClick={() =>this.setState({showMenu: {open: !this.state.showMenu.open, id: notebook.id}})}
+                        className='notebook-link'
+                        >
+                            {this.showCaret(notebook.id)}
+                            <Link to={{pathname: `/main/notebooks/${notebook.id}/notes`,
+                                state: {
+                                    action: {
+                                        type: 'create',
+                                        note: ''
+                                    }
+                                }}}
+                            >
+                                {notebook.title}
+                            </Link>
+                        </td>
+
+                        <td>{this.createdOn(notebook.id)}</td>
+                        
+                        <td>{this.lastUpdated(notebook.id)}</td>
+                    
+                    </tr>
+
+                    <tr className='notebook-titles'>{this.showNotes(notebook.id)} </tr>
+                </tbody>
                 )
 
           })
@@ -112,11 +158,12 @@ class AllNotebookIndex extends React.Component {
 
                     <tr>
                         <th>Title</th>
-                        <th>Created By</th>
+                        <th>Created On</th>
                         <th>Last Updated At</th>
                     </tr>
                 </thead>
                     {noteBookMap}
+    
             </table>
             )
         } else {
@@ -130,6 +177,7 @@ class AllNotebookIndex extends React.Component {
 
         return (
             <div className='table'>
+                <div className='nbidx-header'>
 
                 <div className='all-notebook-header'>
                     <h3>Notebooks</h3>
@@ -138,6 +186,9 @@ class AllNotebookIndex extends React.Component {
                 <div className='create-note-index'>
                 </div>
                 <hr className='notebooks-index-line'></hr>
+                </div>
+
+                
                 <ul className='all-notebooks'>{this.newNotebookIndex()}</ul>
 
             </div>
@@ -150,6 +201,7 @@ class AllNotebookIndex extends React.Component {
 const mapStateToProps = (state, ownProps) => {
 
     return {
+
         notebooks: Object.values(state.entities.notebooks),
         currentUser: state.entities.users[state.session.id],
    }
@@ -159,7 +211,8 @@ const mapDispatchToProps = dispatch => {
 
     return { 
         fetchNotebooks: (id) => dispatch(fetchNotebooks(id)),
-        fetchNotebook: (id) => dispatch(fetchNotebooks(id))    
+        fetchNotebook: (id) => dispatch(fetchNotebooks(id)), 
+        fetchNotes: (id) => dispatch(fetchNotes(id))
     }
 };
 

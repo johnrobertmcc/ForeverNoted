@@ -36,6 +36,7 @@
     outline: none;
     justify-content: space-between;
     width: 300px;
+    height: calc(100vh - 220px);
         &:hover{
             outline: none;
         }
@@ -44,6 +45,10 @@
             background-color: transparent;
             outline: none;
         }
+}
+
+.sidebar:last-child{
+    bottom: 0
 }
 
 .newnote-btn{
@@ -172,6 +177,41 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: calc(100vh - 220px);
+
     text-align: center
+}
+.notebook-titles{
+    list-style: none;
+     &:active{
+        text-decoration: none;
+    }
+     &:visited{
+        text-decoration: none;
+        color: white
+    }
+}
+
+.notebook-titles > li{
+    padding: 4px;
+    font-size: 14px
+    
+}
+
+.notebook-title-font > i{
+    padding-right: 6px;
+}
+
+
+.notebook-title-font > a{
+
+    color: white;
+    opacity: 0.9;
+    &:active{
+        text-decoration: none;
+        color: white
+    }
+    &:visited{
+        text-decoration: none;
+        color: white
+    }
 }

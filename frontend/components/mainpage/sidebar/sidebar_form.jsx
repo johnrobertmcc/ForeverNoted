@@ -22,6 +22,7 @@ class SideBar extends React.Component{
 
             return(
                <li
+               className="notebook-title-font"
                key={notebook.id}
                ><i className="fas fa-book"/>
                  <Link to={{pathname:`/main/notebooks/${notebook.id}/notes`,
@@ -30,7 +31,7 @@ class SideBar extends React.Component{
                                     }
                             }}
                 >
-                    {notebook.title}
+                         {notebook.title}
                 </Link> 
                </li>    
             )

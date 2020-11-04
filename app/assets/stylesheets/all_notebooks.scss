@@ -40,6 +40,7 @@
 .table{
     width: 100%;
     table-layout: fixed;
+    overflow-y: scroll;
 }
 
 .table > td{
@@ -87,4 +88,40 @@
 .fa.fa-book{
     padding-right: 5px;
     // padding-left: 10px;
+}
+
+.notebook-idx-show{
+    text-decoration: none;
+    color: black;
+    padding-left: 10px;
+    &:hover{
+        color: rgb(0,168,45)
+    }
+}
+
+.notebook-link:hover{
+    color:rgb(0,168,45);
+    cursor:pointer
+}
+
+.notebook-link > a{
+    text-decoration: none;
+    font-size: 17px;
+    color: black;
+    padding-left: 10px;
+    &:hover{
+        color: rgb(0,168,45)
+    }
+}
+
+.full-nb-idx{
+    overflow-y: scroll;
+}
+
+.nbidx-header{
+    position: sticky
+}
+
+.new-nb-btn{
+    background:pink
 }
