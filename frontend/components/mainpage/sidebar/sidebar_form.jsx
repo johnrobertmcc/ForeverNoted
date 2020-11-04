@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import TagIndex from '../tag/tag_index';
 
 class SideBar extends React.Component{
 
@@ -45,7 +46,7 @@ class SideBar extends React.Component{
 
             return(
                 <div className='sidebar-extend'>
-                    this is where the tags component is going
+                    <TagIndex tags={this.props.tags} />
                 </div>
             )
 

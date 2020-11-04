@@ -1,14 +1,52 @@
 .sidebar-extend{
-    height: 95vh;
+    height: 100vh;
     border: 1px solid black;
     width: 360px;
     position: absolute;
     /* opacity: 1; */
-    margin-top: 2vh;
+    /* margin-top: 2vh; */
     background-color: white
 
 }
 
 .testing{
     display: flex;
+}
+
+.tag-idx-line{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.tag-header{
+    padding-left: 25px;
+    font-size: 20px;
+}
+
+.above-line{
+    display: flex;
+    /* justify-content: flex-end; */
+}
+
+.icon-placeholder{
+    padding-top: 25px;
+    margin-left: 250px;
+}
+
+.tag-search{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 30px 30px 30px;
+}
+
+.tag-searchbar{
+    width: 250px;
+    justify-content: center;
+    border: none;
+    
+}
+
+.waiting{
+    display: none
 }
