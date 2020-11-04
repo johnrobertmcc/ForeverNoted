@@ -19,6 +19,17 @@ class TagIndex extends React.Component{
         }
     }
 
+    tagList(){
+        let {tags} = this.props
+        
+        if(tags.length > 0){
+
+            tags.map(tag => {
+                return tag.name
+            }
+        })
+
+    }
     render(){
         console.log(this.state.openModal)
 
@@ -40,7 +51,7 @@ class TagIndex extends React.Component{
                     ></input>
 
                     <ul className={this.state.searched ? 'results' : 'waiting'}>
-                        these are the search results
+                        {this.tagList()}
                     </ul>
 
 
