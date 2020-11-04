@@ -18,16 +18,21 @@ class AllNotesIndex extends React.Component {
             action: this.props.action,
             fromNotebook: this.props.fromNotebook,
             newNote: this.props.newNote
-            
         }
+        debugger
 
         this.handleChange = this.handleChange.bind(this);
     }
 
 
     componentDidUpdate(prevProps, prevState) {
+
         
         if(prevProps.notes.length !== this.props.notes.length){
+            this.props.fetchNotes(this.props.currentUser.id);
+            this.setState({filtered: this.props.notes, action: this.props.action})
+        } 
+        if(prevState.filtered !== this.state.filtered && !this.state.searched){
             this.props.fetchNotes(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
@@ -73,9 +78,9 @@ class AllNotesIndex extends React.Component {
         }
     }
 
-    editor(arg){
+    editor(action){
 
-        let action = this.state.newNote ? {type: 'create', note: ''} : arg  
+        // let action = this.state.newNote ? {type: 'create', note: '', notebook: this.state.action.notebook} : arg  
         // debugger
         switch (action.type) {
 
@@ -83,6 +88,7 @@ class AllNotesIndex extends React.Component {
                 return <EditNote note={action.note}/>;
             
             case 'create':
+                debugger
                 return <CreateNote notebook={action.notebook}/>;
             
             default:
@@ -102,6 +108,8 @@ class AllNotesIndex extends React.Component {
 
 
     noteIndex() {
+                // console.log('note index')
+
         let { notes, deleteNote } = this.props;
         
         let allNotes;
@@ -178,7 +186,6 @@ class AllNotesIndex extends React.Component {
 
     indexTitle(){
         let {fromNotebook, notebook} = this.props;
-        debugger
 
         if(fromNotebook){
             return notebook.title
@@ -189,9 +196,13 @@ class AllNotesIndex extends React.Component {
 
 
     render() {
+                // console.log('render')
+
         let { notes } = this.props;
         let allNotes;
-        this.state.searched ? allNotes = this.state.filtered :  allNotes = notes;
+
+        allNotes = this.state.searched ? this.state.filtered : notes;
+        
         let noteCount = () => {
             if (allNotes.length === 1) {
                 return (allNotes.length + " note")
@@ -266,15 +277,16 @@ const mapStateToProps = (state, ownProps) => {
     if(ownProps.action && !newNote){
         action = ownProps.action
     }else{
+
         action = {type: 'create', note: '', notebook} 
     }
 
-    // debugger
+    debugger
 
-    console.log('ownProps.location.state:')
-    console.log(ownProps.location.state)
-    console.log('newNote:')
-    console.log(newNote)
+    // console.log('ownProps.location.state:')
+    // console.log(ownProps.location.state)
+    // console.log('newNote:')
+    // console.log(newNote)
     return {
         notes,
         notebook,
@@ -282,7 +294,8 @@ const mapStateToProps = (state, ownProps) => {
         currentUser: state.entities.users[state.session.id],
         action,
         fromNotebook,
-        newNote
+        newNote,
+        notebookId : notebook.id
     }
 };
 
