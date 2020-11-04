@@ -1,12 +1,17 @@
+@keyframes slide{
+    0%: {display: none}
+    25% { width: 100px; position: absolute}
+    50% { width: 200px;  position: absolute}
+    75% {width: 300px; position: absolute;}
+    /* 100% {width: 360px;} */
+}
+
 .sidebar-extend{
     height: 100vh;
     border: 1px solid black;
     width: 360px;
     position: absolute;
-    /* opacity: 1; */
-    /* margin-top: 2vh; */
-    background-color: white
-
+    background-color: white;
 }
 
 .testing{
@@ -49,4 +54,8 @@
 
 .waiting{
     display: none
+}
+
+.results{
+    background-color: pink
 }

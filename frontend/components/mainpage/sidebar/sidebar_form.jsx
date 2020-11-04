@@ -15,6 +15,11 @@ class SideBar extends React.Component{
 
         this.showNotebooks = this.showNotebooks.bind(this)
     }
+
+    componentDidMount(){
+        this.props.fetchTags(this.props.currentUser.id)
+    }
+
     showNotebooks(){
 
         let {notebooks} = this.props
@@ -43,6 +48,7 @@ class SideBar extends React.Component{
     openTags(){
 
         if(this.state.showTags){
+            debugger
 
             return(
                 <div className='sidebar-extend'>
