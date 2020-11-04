@@ -9,6 +9,7 @@ class SideBar extends React.Component{
 
         this.state = {
             showMenu: false,
+            showTags: false
         }
 
         this.showNotebooks = this.showNotebooks.bind(this)
@@ -38,6 +39,20 @@ class SideBar extends React.Component{
         })
         }
     }
+    openTags(){
+
+        if(this.state.showTags){
+
+            return(
+                <div className='tags-sidebar'>
+                    this is where the tags component is going
+                </div>
+            )
+
+        }else{
+            return null
+        }
+    }
 
     showCaret(){
         if(this.state.showMenu){
@@ -47,7 +62,8 @@ class SideBar extends React.Component{
         }
     }
 
-    thisFunction(){
+
+    sidebarLinks(){
         return(
             <ul className='links-home'>
                         <li className='newnote-btn'><Link to={{
@@ -60,6 +76,8 @@ class SideBar extends React.Component{
                         <li className='switch-links'><i className="fas fa-edit"></i><Link to='/main/notes'>All Notes</Link></li>
                         <li className='switch-links' onClick={() =>this.setState({showMenu: !this.state.showMenu})}>{this.showCaret()}<Link to={{pathname:'/main/allnotebooks', state: {fromNotebook: true}}}>Notebooks</Link></li>
                         <ul className='notebook-titles'>{this.showNotebooks()}</ul>
+                        <li className='switch-links' onClick={() =>this.setState({showTags: !this.state.showTags})}>Tags</li>
+                
             </ul>
         )
     }
@@ -88,7 +106,7 @@ class SideBar extends React.Component{
                         </button>
                     </div>
                     
-                    {this.thisFunction()}
+                    {this.sidebarLinks()}
                     
 
                     <div className='flex-footer'>
@@ -102,6 +120,10 @@ class SideBar extends React.Component{
                         </div>
                          
                     </div>
+                </div>
+
+                <div className='sidebar-extend'>
+                    {this.openTags()}
                 </div>
 
             </div>
