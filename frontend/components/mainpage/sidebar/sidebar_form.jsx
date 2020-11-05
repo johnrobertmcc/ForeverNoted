@@ -48,7 +48,7 @@ class SideBar extends React.Component{
     openTags(){
 
         if(this.state.showTags){
-            debugger
+
 
             return(
                 <div className='sidebar-extend'>

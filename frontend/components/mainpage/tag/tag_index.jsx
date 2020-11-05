@@ -5,7 +5,6 @@ class TagIndex extends React.Component{
     constructor(props){
         super(props)
 
-        debugger
 
         this.state = {
             tagList: this.props.tags,

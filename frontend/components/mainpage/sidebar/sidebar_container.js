@@ -6,7 +6,7 @@ import {fetchAllTags} from '../../../actions/tag_actions';
 
 
 const mSTP = (state, ownProps) => {
-    debugger
+
 
     return { 
         currentUser: state.entities.users[state.session.id],

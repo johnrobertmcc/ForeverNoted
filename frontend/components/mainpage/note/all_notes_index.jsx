@@ -17,7 +17,8 @@ class AllNotesIndex extends React.Component {
             searched: false,
             action: this.props.action,
             fromNotebook: this.props.fromNotebook,
-            newNote: this.props.newNote
+            newNote: this.props.newNote,
+            tuttoNoti: this.props.tuttoNoti
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -26,13 +27,21 @@ class AllNotesIndex extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
 
+
+        if(prevProps.tuttoNoti.length !== this.props.tuttoNoti.length){
+
+            let temp = this.state.tuttoNoti.reverse()[0]
+
+            this.setState({filtered: this.props.notes.push(temp), action: this.props.action})
         
-        if(prevProps.notes.length !== this.props.notes.length){
+        }
+
+        else if(prevProps.notes.length !== this.props.notes.length){
             this.props.fetchNotes(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
-        if(prevState.filtered !== this.state.filtered && !this.state.searched){
-            debugger
+        else if(prevState.filtered !== this.state.filtered && !this.state.searched){
+        
             this.props.fetchNotes(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
@@ -78,9 +87,9 @@ class AllNotesIndex extends React.Component {
         }
     }
 
-    editor(action){
+    editor(arg){
 
-        // let action = this.state.newNote ? {type: 'create', note: '', notebook: this.state.action.notebook} : arg  
+        let action = this.state.newNote ? {type: 'create', note: '', notebook: this.state.action.notebook} : arg  
 
         switch (action.type) {
 
@@ -174,14 +183,21 @@ class AllNotesIndex extends React.Component {
                 }
             };
 
+             this.setState({
+                searched: true
+            });
+
         } else {
             currentList = notes;
+             this.setState({
+                searched: false
+            });
         };
 
         this.setState({
             filtered: currentList,
-            searched: true
         });
+
     }
 
     indexTitle(){
@@ -294,12 +310,13 @@ const mapStateToProps = (state, ownProps) => {
         action,
         fromNotebook,
         newNote,
-        notebookId : notebook.id
+        notebookId : notebook.id,
+        tuttoNoti: Object.values(state.entities.notes)
     }
 };
 
 const mapDispatchToProps = dispatch => {
-    debugger
+
     return { 
         fetchNotes: id => dispatch(fetchNotes(id)),
         deleteNote: (id) => dispatch(deleteNote(id)), 

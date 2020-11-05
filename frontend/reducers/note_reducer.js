@@ -17,7 +17,7 @@ const NotesReducer = (state = {}, action) => {
             return action.notebook.notes;
 
         case REMOVE_NOTE:
-            debugger
+    
             const temp = Object.assign({}, state)
             delete temp[action.noteId];
             return temp;

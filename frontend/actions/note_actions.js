@@ -42,7 +42,6 @@ export const updateNote = note => dispatch => {
 };
 
 const removeNote = noteId => {
-    debugger
 
     let temp = noteId;
     return (
@@ -54,6 +53,6 @@ const removeNote = noteId => {
 };
 
 export const deleteNote = noteId => dispatch => {
-    debugger
+
     return NoteUtil.deleteNote(noteId).then(note=> dispatch(removeNote(note)))
 };
