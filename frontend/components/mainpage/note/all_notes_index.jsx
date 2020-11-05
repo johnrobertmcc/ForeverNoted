@@ -13,12 +13,12 @@ class AllNotesIndex extends React.Component {
         
 
         this.state = {
-            filtered: this.props.notes,
+            filtered: this.props.notes, //default
             searched: false,
             action: this.props.action,
             fromNotebook: this.props.fromNotebook,
             newNote: this.props.newNote,
-            tuttoNoti: this.props.tuttoNoti
+            tutto: this.props.tutto
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -28,11 +28,18 @@ class AllNotesIndex extends React.Component {
     componentDidUpdate(prevProps, prevState) {
 
 
-        if(prevProps.tuttoNoti.length !== this.props.tuttoNoti.length){
+        if(prevProps.tutto.length !== this.props.tutto.length){
 
-            let temp = this.state.tuttoNoti.reverse()[0]
+            let temp = this.props.tutto.reverse()[0]
+            let newArr;
 
-            this.setState({filtered: this.props.notes.push(temp), action: this.props.action})
+            if(!this.props.notes.includes(temp)){
+                newArr = this.props.notes.push(temp)
+            }else{
+                newArr = this.props.notes
+            }
+
+            this.setState({filtered: newArr, action: this.props.action})
         
         }
 
@@ -123,7 +130,7 @@ class AllNotesIndex extends React.Component {
         
         let allNotes;
         
-        
+        debugger
         allNotes = this.state.searched ? this.state.filtered : notes;
 
         
@@ -297,7 +304,6 @@ const mapStateToProps = (state, ownProps) => {
         action = {type: 'create', note: '', notebook} 
     }
 
-
     // console.log('ownProps.location.state:')
     // console.log(ownProps.location.state)
     // console.log('newNote:')
@@ -311,7 +317,7 @@ const mapStateToProps = (state, ownProps) => {
         fromNotebook,
         newNote,
         notebookId : notebook.id,
-        tuttoNoti: Object.values(state.entities.notes)
+        tutto: Object.values(state.entities.notes)
     }
 };
 
