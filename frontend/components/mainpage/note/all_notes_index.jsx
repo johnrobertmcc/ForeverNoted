@@ -76,6 +76,7 @@ class AllNotesIndex extends React.Component {
     }
 
     createMarkup(idx){
+        debugger
         if(this.state.searched){
             return { __html: this.state.filtered[idx].body }
         }else{
@@ -129,10 +130,12 @@ class AllNotesIndex extends React.Component {
         let { notes, deleteNote } = this.props;
         
         let allNotes;
-        
-        debugger
+
         allNotes = this.state.searched ? this.state.filtered : notes;
 
+        if(this.state.filtered.length > this.props.notes.length){
+            allNotes = this.state.filtered;
+        }
         
         if (allNotes.length > 0) {
             
