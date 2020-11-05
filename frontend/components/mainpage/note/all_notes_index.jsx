@@ -3,6 +3,7 @@ import CreateNote from './create_note_container';
 import EditNote from './edit_note_container';
 import { connect } from 'react-redux';
 import { deleteNote, fetchNotes } from '../../../actions/note_actions';     
+import { fetchNotebooks } from '../../../actions/notebook_actions';     
 import Moment from 'react-moment';
 import { withRouter } from 'react-router-dom';
 
@@ -27,29 +28,23 @@ class AllNotesIndex extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
 
-
+                                                                    
         if(prevProps.tutto.length !== this.props.tutto.length){
+              this.props.fetchNotes(this.props.currentUser.id);
+              this.props.fetchNotebooks(this.props.currentUser.id);
 
-            let temp = this.props.tutto.reverse()[0]
-            let newArr;
-
-            if(!this.props.notes.includes(temp)){
-                newArr = this.props.notes.push(temp)
-            }else{
-                newArr = this.props.notes
-            }
-
-            this.setState({filtered: newArr, action: this.props.action})
+            this.setState({filtered: this.props.notes, action: this.props.action})
         
         }
-
-        else if(prevProps.notes.length !== this.props.notes.length){
+        if(prevProps.notes.length !== this.props.notes.length){
             this.props.fetchNotes(this.props.currentUser.id);
+               this.props.fetchNotebooks(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
         else if(prevState.filtered !== this.state.filtered && !this.state.searched){
         
             this.props.fetchNotes(this.props.currentUser.id);
+               this.props.fetchNotebooks(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
     }
@@ -76,7 +71,7 @@ class AllNotesIndex extends React.Component {
     }
 
     createMarkup(idx){
-        debugger
+
         if(this.state.searched){
             return { __html: this.state.filtered[idx].body }
         }else{
@@ -278,7 +273,6 @@ const mapStateToProps = (state, ownProps) => {
     let action;
     let newNote;
     
-    
     if(typeof ownProps.location.state !== 'undefined'){
         fromNotebook = true
         newNote = true
@@ -286,27 +280,23 @@ const mapStateToProps = (state, ownProps) => {
         fromNotebook = false;
         newNote = false
     }
-
-    if(typeof ownProps.notes !== 'undefined'){
-        notes = Object.values(ownProps.notes)
-    }else{
-        notes = Object.values(state.entities.notes)
-    }
     
     if(fromNotebook){
         notebook = state.entities.notebooks[ownProps.match.params.notebookId]
+        notes = Object.values(state.entities.notebooks[ownProps.match.params.notebookId].notes)
     }else{
         notebook = false
+        notes = Object.values(state.entities.notes)
     }
     
     
     if(ownProps.action && !newNote){
         action = ownProps.action
     }else{
-
+        
         action = {type: 'create', note: '', notebook} 
     }
-
+    
     // console.log('ownProps.location.state:')
     // console.log(ownProps.location.state)
     // console.log('newNote:')
@@ -328,6 +318,7 @@ const mapDispatchToProps = dispatch => {
 
     return { 
         fetchNotes: id => dispatch(fetchNotes(id)),
+        fetchNotebooks: id => dispatch(fetchNotebooks(id)),
         deleteNote: (id) => dispatch(deleteNote(id)), 
     }
 };

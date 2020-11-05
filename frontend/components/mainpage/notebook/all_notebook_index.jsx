@@ -65,12 +65,13 @@ class AllNotebookIndex extends React.Component {
 
 
     showNotes(id){
-
+        
         if(this.state.showMenu.open && this.state.showMenu.id === id){
-        let notebook = this.props.notebooks.find(notebook => notebook.id === id)
-
+            let notebook = this.props.notebooks.find(notebook => notebook.id === id)
+            
             return notebook.notes.map( note => {
-
+    
+                
             return(
     
                     <tr
