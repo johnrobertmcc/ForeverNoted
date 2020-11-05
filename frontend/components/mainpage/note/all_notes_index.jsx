@@ -28,23 +28,21 @@ class AllNotesIndex extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
 
-                                                                    
+        debugger      
         if(prevProps.tutto.length !== this.props.tutto.length){
-              this.props.fetchNotes(this.props.currentUser.id);
-              this.props.fetchNotebooks(this.props.currentUser.id);
-
+            this.props.fetchNotes(this.props.currentUser.id);
+            this.props.fetchNotebooks(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
-        
         }
         if(prevProps.notes.length !== this.props.notes.length){
             this.props.fetchNotes(this.props.currentUser.id);
-               this.props.fetchNotebooks(this.props.currentUser.id);
+            this.props.fetchNotebooks(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
         else if(prevState.filtered !== this.state.filtered && !this.state.searched){
         
             this.props.fetchNotes(this.props.currentUser.id);
-               this.props.fetchNotebooks(this.props.currentUser.id);
+            this.props.fetchNotebooks(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
     }
