@@ -69,6 +69,13 @@ class SideBar extends React.Component{
         }
     }
 
+    showIcons(){
+        if(this.state.showTags){
+            return  <i className="fa fa-window-close" aria-hidden="true"></i>
+        }else{
+            return <i className="far fa-caret-square-right"></i>
+        }
+    }
 
     sidebarLinks(){
         return(
@@ -83,7 +90,10 @@ class SideBar extends React.Component{
                         <li className='switch-links'><i className="fas fa-edit"></i><Link to='/main/notes'>All Notes</Link></li>
                         <li className='switch-links' onClick={() =>this.setState({showMenu: !this.state.showMenu})}>{this.showCaret()}<Link to={{pathname:'/main/allnotebooks', state: {fromNotebook: true}}}>Notebooks</Link></li>
                         <ul className='notebook-titles'>{this.showNotebooks()}</ul>
-                        <li className='switch-links' onClick={() =>this.setState({showTags: !this.state.showTags})}>Tags</li>
+                        <div>
+                        
+                        <li className='switch-links' onClick={() =>this.setState({showTags: !this.state.showTags})}>{this.showIcons()}   Tags </li>
+                        </div>
                 
             </ul>
         )

@@ -95,6 +95,7 @@ class TagIndex extends React.Component{
 
                     <h2 className='tag-header'>Tags</h2>
                     <div className='icon-placeholder' onClick={() => this.setState({openModal: !this.state.openModal})}>{this.plusSign()}</div>
+           
                 </div>
 
                 <hr className='tag-idx-line'></hr>

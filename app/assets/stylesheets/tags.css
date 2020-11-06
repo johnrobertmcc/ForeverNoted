@@ -8,6 +8,7 @@
 
 .sidebar-extend{
     height: 100vh;
+    z-index: 99;
     border: 1px solid black;
     width: 360px;
     position: absolute;
