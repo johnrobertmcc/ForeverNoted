@@ -1,4 +1,5 @@
 import React from 'react';
+import TagModalContainer from './tag_modal_container';
 
 class TagIndex extends React.Component{
 
@@ -75,10 +76,20 @@ class TagIndex extends React.Component{
         }
     }
 
+    tagModal(){
+        if(this.state.openModal){
+            return(
+                <TagModalContainer />
+            )
+        }
+    }
+
     render(){
-        console.log(this.state.searched)
+        console.log(this.state.openModal)
 
         return(
+
+
             <div>
                 <div className='above-line'>
 
@@ -94,7 +105,7 @@ class TagIndex extends React.Component{
                         placeholder='Search for tags...'
                         className='tag-searchbar'
                         onChange={this.handleSearch}
-                    ></input>
+                        ></input>
 
                     <ul 
                     className={this.changeClass()} 
@@ -105,7 +116,12 @@ class TagIndex extends React.Component{
 
 
                 </div>
+                <div className={this.state.openModal ? 'tag-modal' : 'none'}>
+
+                    {this.tagModal()}
+                </div>
             </div>
+
         )
     }
 

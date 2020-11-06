@@ -28,7 +28,6 @@ class AllNotesIndex extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
 
-        debugger      
         if(prevProps.tutto.length !== this.props.tutto.length){
             this.props.fetchNotes(this.props.currentUser.id);
             this.props.fetchNotebooks(this.props.currentUser.id);
@@ -254,9 +253,9 @@ class AllNotesIndex extends React.Component {
                 </div>
 
                 <div className='allnotes-create-form'>
+                    {/* <div className='new-header'>Header goes here</div> */}
                     {this.editor(this.state.action)}
                 </div>
-
             </div>
         )
     }

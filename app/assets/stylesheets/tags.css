@@ -59,3 +59,30 @@
 .results{
     background-color: pink
 }
+
+.tag-modal{
+    margin-left: 500px;
+    height: 300px;
+    width: 400px;
+    /* border: 1px solid rgb(107, 233, 140, 0.5); */
+    /* z-index: 100; */
+    background-color: white;
+    -webkit-box-shadow: 11px 20px 30px 0px rgba(50, 50, 50, 0.52);
+    -moz-box-shadow:    11px 20px 30px 0px rgba(50, 50, 50, 0.52);
+    box-shadow:         11px 20px 30px 0px rgba(50, 50, 50, 0.52);
+}
+
+.tag-header{
+    text-align:center;
+    padding-top: 15px;
+}
+
+.tag-input{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black
+}
+
+.tag-line{
+    border: 1px solid rgba(40, 155, 71, 0.48);
+}

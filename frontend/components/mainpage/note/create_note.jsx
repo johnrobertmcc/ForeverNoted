@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
-import {Redirect} from "react-router-dom"
 
 
 
@@ -18,7 +17,8 @@ class CreateNote extends React.Component {
             user_id: this.props.currentUser.id,
             redirect: false,
             notebookId: notebook,
-            isSubmitted: false
+            isSubmitted: false,
+            tag: '',
         }
 
 
@@ -82,7 +82,8 @@ class CreateNote extends React.Component {
                 user_id: this.props.currentUser.id,
                 redirect: false,
                 notebookId: this.props.notebook,
-                isSubmitted: false
+                isSubmitted: false,
+                tag: ''
 
             })
         }
@@ -93,6 +94,7 @@ class CreateNote extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.createNote(this.state);
+        debugger
         this.setState({isSubmitted: true})
     }
     
@@ -119,6 +121,7 @@ class CreateNote extends React.Component {
 
 
             return (
+
                 <div className="create-note-main">
                 <div className='note-editor'>
 
@@ -131,6 +134,7 @@ class CreateNote extends React.Component {
 
 
                           
+                        <div className='header-buttons'>
                             <input
                                 type="text"
                                 className='header-title'
@@ -138,11 +142,21 @@ class CreateNote extends React.Component {
                                 onChange={this.update('title')}
                                 placeholder='Untitled'
                                 value={this.state.title}
-                                />
+                            />
+                            <input
+                                type="text"
+                                // className='header-title'
+                                onChange={this.update('tag')}
+                                id="tag-name"
+                                placeholder='Add a tag?(optional)'
+                                value={this.state.tag}
+                            />
                             
-                            <button onClick={this.setDefaultNotebookId}  className='create-btn'>Create Note</button>
-                           {/* {this.renderRedirect()} */}
-                
+                                <button onClick={this.setDefaultNotebookId}  className='note-btn create-btn'>Create Note</button>
+                                {/* <button onClick={this.tagModal()}  className='note-btn'>Create Tag</button> */}
+
+                            </div>
+    
                         <ReactQuill
                             className="quill-editor"
                             modules={modules}
@@ -159,6 +173,7 @@ class CreateNote extends React.Component {
        
             </div>
             
+
             );
 
     }
