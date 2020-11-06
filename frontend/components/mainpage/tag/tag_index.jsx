@@ -32,7 +32,7 @@ class TagIndex extends React.Component{
         if(allTags.length > 0){
 
             return allTags.map(tag => {
-                return <li>{tag.name}</li>
+                return <li key={tag.id}>{tag.name}</li>
             }
          )
         }
