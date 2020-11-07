@@ -16,7 +16,7 @@ const receiveAllTags = tags => {
 }
 
 export const fetchAllTags = (userId) => dispatch => {
-    return NoteUtil.fetchAllTags(userId).then(tags => dispatch(receiveAllTags(tags)))
+    return TagUtil.fetchAllTags(userId).then(tags => dispatch(receiveAllTags(tags)))
 }
 
 const receiveTag = tag => {
@@ -50,5 +50,5 @@ const removeTag = tagId => {
 };
 
 export const deleteTag = tag => dispatch => {
-    return NoteUtil.deleteTag(tag.id).then(tag=> dispatch(removeTag(tag)))
+    return TagUtil.deleteTag(tag.id).then(tag=> dispatch(removeTag(tag)))
 };

@@ -3,6 +3,7 @@ import CreateNote from './create_note_container';
 import EditNote from './edit_note_container';
 import { connect } from 'react-redux';
 import { deleteNote, fetchNotes } from '../../../actions/note_actions';     
+import { fetchNotebooks } from '../../../actions/notebook_actions';     
 import Moment from 'react-moment';
 import { withRouter } from 'react-router-dom';
 
@@ -13,11 +14,12 @@ class AllNotesIndex extends React.Component {
         
 
         this.state = {
-            filtered: this.props.notes,
+            filtered: this.props.notes, //default
             searched: false,
             action: this.props.action,
             fromNotebook: this.props.fromNotebook,
-            newNote: this.props.newNote
+            newNote: this.props.newNote,
+            tutto: this.props.tutto
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -26,13 +28,28 @@ class AllNotesIndex extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
 
+<<<<<<< HEAD
+=======
+        if(prevProps.tutto.length !== this.props.tutto.length){
+            this.props.fetchNotes(this.props.currentUser.id);
+            this.props.fetchNotebooks(this.props.currentUser.id);
+            this.setState({filtered: this.props.notes, action: this.props.action})
+        }
+>>>>>>> tags
         if(prevProps.notes.length !== this.props.notes.length){
             this.props.fetchNotes(this.props.currentUser.id);
+            this.props.fetchNotebooks(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
+<<<<<<< HEAD
         if(prevState.filtered !== this.state.filtered && !this.state.searched){
      
+=======
+        else if(prevState.filtered !== this.state.filtered && !this.state.searched){
+        
+>>>>>>> tags
             this.props.fetchNotes(this.props.currentUser.id);
+            this.props.fetchNotebooks(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
         // if(this.props.allNotes.length !== prevProps.notes.length){
@@ -65,6 +82,7 @@ class AllNotesIndex extends React.Component {
     }
 
     createMarkup(idx){
+
         if(this.state.searched){
             return { __html: this.state.filtered[idx].body }
         }else{
@@ -83,9 +101,9 @@ class AllNotesIndex extends React.Component {
         }
     }
 
-    editor(action){
+    editor(arg){
 
-        // let action = this.state.newNote ? {type: 'create', note: '', notebook: this.state.action.notebook} : arg  
+        let action = this.state.newNote ? {type: 'create', note: '', notebook: this.state.action.notebook} : arg  
 
         switch (action.type) {
 
@@ -118,10 +136,12 @@ class AllNotesIndex extends React.Component {
         let { notes, deleteNote } = this.props;
         
         let allNotes;
-        
-        
+
         allNotes = this.state.searched ? this.state.filtered : notes;
 
+        if(this.state.filtered.length > this.props.notes.length){
+            allNotes = this.state.filtered;
+        }
         
         if (allNotes.length > 0) {
             
@@ -179,14 +199,21 @@ class AllNotesIndex extends React.Component {
                 }
             };
 
+             this.setState({
+                searched: true
+            });
+
         } else {
             currentList = notes;
+             this.setState({
+                searched: false
+            });
         };
 
         this.setState({
             filtered: currentList,
-            searched: true
         });
+
     }
 
     indexTitle(){
@@ -240,9 +267,9 @@ class AllNotesIndex extends React.Component {
                 </div>
 
                 <div className='allnotes-create-form'>
+                    {/* <div className='new-header'>Header goes here</div> */}
                     {this.editor(this.state.action)}
                 </div>
-
             </div>
         )
     }
@@ -257,7 +284,6 @@ const mapStateToProps = (state, ownProps) => {
     let action;
     let newNote;
     
-    
     if(typeof ownProps.location.state !== 'undefined'){
         fromNotebook = true
         newNote = true
@@ -265,28 +291,23 @@ const mapStateToProps = (state, ownProps) => {
         fromNotebook = false;
         newNote = false
     }
-
-    if(typeof ownProps.notes !== 'undefined'){
-        notes = Object.values(ownProps.notes)
-    }else{
-        notes = Object.values(state.entities.notes)
-    }
     
     if(fromNotebook){
         notebook = state.entities.notebooks[ownProps.match.params.notebookId]
+        notes = Object.values(state.entities.notebooks[ownProps.match.params.notebookId].notes)
     }else{
         notebook = false
+        notes = Object.values(state.entities.notes)
     }
     
     
     if(ownProps.action && !newNote){
         action = ownProps.action
     }else{
-
+        
         action = {type: 'create', note: '', notebook} 
     }
-
-
+    
     // console.log('ownProps.location.state:')
     // console.log(ownProps.location.state)
     // console.log('newNote:')
@@ -301,13 +322,22 @@ const mapStateToProps = (state, ownProps) => {
         fromNotebook,
         newNote,
         notebookId : notebook.id,
+<<<<<<< HEAD
         allNotes: Object.values(state.entities.notes)
+=======
+        tutto: Object.values(state.entities.notes)
+>>>>>>> tags
     }
 };
 
 const mapDispatchToProps = dispatch => {
+<<<<<<< HEAD
+=======
+
+>>>>>>> tags
     return { 
         fetchNotes: id => dispatch(fetchNotes(id)),
+        fetchNotebooks: id => dispatch(fetchNotebooks(id)),
         deleteNote: (id) => dispatch(deleteNote(id)), 
     }
 };

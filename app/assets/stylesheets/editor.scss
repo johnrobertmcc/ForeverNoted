@@ -1,4 +1,48 @@
-// .quill-editor{
-//     height: 80vh;
-//     width: 100%;
-// }
+.quill-editor{
+    height: 80vh;
+    width: 100%;
+}
+
+.open-nb-modal{
+    z-index: 99;
+    overflow-y: scroll;
+    border: 1px solid black;
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 400px;
+    height: auto;
+    width: 300px;
+    background-color: white;
+    -webkit-box-shadow: 11px 20px 30px 0px rgba(50, 50, 50, 0.52);
+    -moz-box-shadow:    11px 20px 30px 0px rgba(50, 50, 50, 0.52);
+    box-shadow:         11px 20px 30px 0px rgba(50, 50, 50, 0.52);
+}
+
+.nbidx-list{
+    list-style: none;
+    padding: 2px;
+    text-align:center;
+    cursor: pointer;
+    &:hover{
+        color: rgba(40, 155, 71, 0.48)
+    }
+}
+
+.nb-title{
+    text-align: center
+}
+
+.open-tag-modal{
+    z-index: 99;
+    overflow-y: scroll;
+    border: 1px solid black;
+    position: absolute;
+    margin-top: 200px;
+    margin-left: 400px;
+    height: auto;
+    width: 300px;
+    background-color: white;
+    -webkit-box-shadow: 11px 20px 30px 0px rgba(50, 50, 50, 0.52);
+    -moz-box-shadow:    11px 20px 30px 0px rgba(50, 50, 50, 0.52);
+    box-shadow:         11px 20px 30px 0px rgba(50, 50, 50, 0.52);
+}

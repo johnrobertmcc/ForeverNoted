@@ -65,12 +65,13 @@ class AllNotebookIndex extends React.Component {
 
 
     showNotes(id){
-
+        
         if(this.state.showMenu.open && this.state.showMenu.id === id){
-        let notebook = this.props.notebooks.find(notebook => notebook.id === id)
-
+            let notebook = this.props.notebooks.find(notebook => notebook.id === id)
+            
             return notebook.notes.map( note => {
-
+    
+                
             return(
     
                     <tr
@@ -110,11 +111,9 @@ class AllNotebookIndex extends React.Component {
 
           let noteBookMap= notebooks.map((notebook, i) => {
                 return(
-
                 <tbody className='full-nb-idx'
                 key={notebook.id}
                 >
-
                     <tr className='full-nb-idx'
                     key={i}
                     >
@@ -131,7 +130,7 @@ class AllNotebookIndex extends React.Component {
                                     }
                                 }}}
                             >
-                                {notebook.title}
+                            {notebook.title} <span className='notebook-count'>({notebook.notes.length})</span>
                             </Link>
                         </td>
 

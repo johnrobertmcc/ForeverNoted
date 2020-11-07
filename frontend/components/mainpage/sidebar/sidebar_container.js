@@ -2,9 +2,11 @@ import { connect } from 'react-redux';
 import SideBar from './sidebar_form';
 import { logOut } from '../../../actions/session_actions';
 import {fetchNotebooks} from '../../../actions/notebook_actions';
+import {fetchAllTags} from '../../../actions/tag_actions';
 
 
 const mSTP = (state, ownProps) => {
+
 
     return { 
         currentUser: state.entities.users[state.session.id],
@@ -16,7 +18,8 @@ const mSTP = (state, ownProps) => {
 const mDTP = dispatch => {
     return ({
         logOut: () => dispatch(logOut()),
-        fetchNotebooks: (id) => dispatch(fetchNotebooks(id))
+        fetchNotebooks: (id) => dispatch(fetchNotebooks(id)),
+        fetchTags: (id) => dispatch(fetchAllTags(id))
     })
 }
 

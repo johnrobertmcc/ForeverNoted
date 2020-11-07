@@ -41,7 +41,11 @@ export const updateNote = note => dispatch => {
     return NoteUtil.updateNote(note).then(note => dispatch(receiveNote(note)));
 };
 
+<<<<<<< HEAD
 const removeNote = ({id}) => {
+=======
+const removeNote = noteId => {
+>>>>>>> tags
 
     return (
         {

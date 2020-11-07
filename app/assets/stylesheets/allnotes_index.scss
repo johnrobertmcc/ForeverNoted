@@ -28,7 +28,7 @@ body{
 
 
 .allnotes-create-form{
-    width: 1400px;
+    width: 68vw;
 
 }
 
@@ -42,24 +42,27 @@ body{
 }
 
 .create-note-main{
-    width: 100%;
+    width: 69vw;
+    // height: 40px;
 }
 
 .quill-editor {
     width: 100%;
-    height: 100vh;
+    height: calcl(100vh-30);
 }
 
 .note-editor{
     width: 100%;
+    height: 90vh
 }
 
-.create-btn{
+.note-btn{
     z-index:1;
     cursor: pointer;
     background-color: rgb(0,168,45);
     color: white;
     border-style: none;
+    // padding: 20px
 }
 
 .notebook-title-create{
@@ -68,13 +71,18 @@ body{
 
 .create-head{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .header-title{
     width: 25%;
     // font-weight: 700;
-    font-size: 20px;
+    font-size: 30px;
+    border:none;
+    padding: 10px;
+    &:clicked{
+        border:none;
+    }
 }
 
 .fas.fa-trash{
@@ -170,4 +178,37 @@ body{
     z-index: 5;
     text-decoration: none;
     color: black;
+}
+
+.new-header{
+    // background-color:pink;
+    // z-index: 99;
+    height: 50px;
+}
+.new-footer{
+    // background-color:pink;
+    border: 2px solid black;
+    // display
+    z-index: 99;
+    width: 68vw;
+    height: 50px;
+    display:flex;
+    justify-content: flex-end;
+}
+
+.note-form{
+    height: auto
+}
+
+.header-buttons{
+    display: flex;
+    justify-content: space-between;
+    width:68vw;
+}
+
+input[type="text"], textarea, select { 
+    outline: none;
+}
+
+.none{
 }

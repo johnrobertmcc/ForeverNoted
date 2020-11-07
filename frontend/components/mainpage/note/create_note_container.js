@@ -18,6 +18,7 @@ const mSTP = (state, ownProps) => {
         notebook,   
         currentUser: state.entities.users[state.session.id],
         notebooks: Object.values(state.entities.notebooks),
+        tags: Object.values(state.entities.tags)
     }
 };
 

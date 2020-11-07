@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
+<<<<<<< HEAD
 import {Redirect} from "react-router-dom"
 import { fetchNotes } from '../../../util/note_util';
+=======
+import NotebookAssign from './notebook_assign_container';
+>>>>>>> tags
 
 
 
@@ -19,7 +23,9 @@ class CreateNote extends React.Component {
             user_id: this.props.currentUser.id,
             redirect: false,
             notebookId: notebook,
-            isSubmitted: false
+            isSubmitted: false,
+            tag: '',
+            assignNotebook: false
         }
 
 
@@ -83,7 +89,9 @@ class CreateNote extends React.Component {
                 user_id: this.props.currentUser.id,
                 redirect: false,
                 notebookId: this.props.notebook,
-                isSubmitted: false
+                isSubmitted: false,
+                tag: '',
+                assignTag: false
 
             })
         }
@@ -100,10 +108,88 @@ class CreateNote extends React.Component {
         this.setState({isSubmitted: true});
     }
     
+    changeNotebook(){
+        this.setState({assignNotebook: !this.state.assignNotebook})
+    }
 
-    render() {
+    notebookIndex(){
+        let {notebooks} = this.props
+        
+        return notebooks.map(notebook=> {
+            return(
+                <li 
+                onClick={() => this.setState({notebookId: notebook.id, assignNotebook: false})}
+                className='nbidx-list'
+                key={notebook.id}
+                >
+                    {notebook.title}
+                </li>
+            )
+        })
+    }
 
-            
+
+    assignNB(){
+        if(this.state.assignNotebook){
+            return (
+            <div className='nb-modal'>
+                <i 
+                className="fa fa-window-close" 
+                aria-hidden="true"
+                onClick={() => this.setState({assignNotebook: false})}
+                ></i>
+                <h1 className='nb-title'>Select a Notebook</h1>
+                 <hr className='tag-line'></hr>
+                {this.notebookIndex()}
+            </div>
+            )
+        }else{
+            return null
+        }
+    }
+    toggleTag(){
+        this.setState({assignTag: !this.state.assignTag})
+    }
+
+    tagIndex(){
+        let {tags} = this.props
+        debugger
+        
+        return tags.map(tag=> {
+            return(
+                <li 
+                onClick={() => this.setState({tag: tag.name, assignTag: false})}
+                className='nbidx-list'
+                key={tag.id}>
+                    {tag.name}
+                
+                </li>
+            )
+        })
+    }
+
+
+    assignTag(){
+        if(this.state.assignTag){
+            return (
+            <div className='nb-modal'>
+                <i 
+                className="fa fa-window-close" 
+                aria-hidden="true"
+                onClick={() => this.setState({assignTag: false})}
+                ></i>
+                <h1 className='nb-title'>Select a Tag</h1>
+                 <hr className='tag-line'></hr>
+                {this.tagIndex()}
+            </div>
+            )
+        }else{
+            return null
+        }
+    }
+
+
+    render() {         
             const modules = {
                 toolbar: [
                     ["bold", "italic", "underline", "strike"],
@@ -121,48 +207,61 @@ class CreateNote extends React.Component {
             };
 
 
-
             return (
+
                 <div className="create-note-main">
-                <div className='note-editor'>
+                    <div className='note-editor'>
 
-                    <form
-                        className="note-form"
-                        onSubmit={this.handleSubmit}>
-                        <div className='create-head'>
-                            
+                        <div className={this.state.assignNotebook ? 'open-nb-modal' : 'none'}>
+                           {this.assignNB()}
                         </div>
+                        <div className={this.state.assignTag ? 'open-tag-modal' : 'none'}>
+                           {this.assignTag()}
+                        </div>
+                        
+                        <div className='create-head'>
+                            <button className='note-btn' onClick={() => this.changeNotebook()}>Change Notebook</button>
+                            <button className='note-btn' onClick={() => this.toggleTag()}>Change Tag</button>
 
+                            <form
+                                className="note-form"
+                                onSubmit={this.handleSubmit}>
+                            </form>
 
-                          
-                            <input
-                                type="text"
-                                className='header-title'
-                                id="note-title"
-                                onChange={this.update('title')}
-                                placeholder='Untitled'
-                                value={this.state.title}
+                        </div>
+                        <form
+                            className="note-form"
+                            onSubmit={this.handleSubmit}>   
+                            <div className='header-buttons'>
+                                <input
+                                    type="text"
+                                    className='header-title'
+                                    id="note-title"
+                                    onChange={this.update('title')}
+                                    placeholder='Untitled'
+                                    value={this.state.title}
                                 />
-                            
-                            <button onClick={this.setDefaultNotebookId}  className='create-btn'>Create Note</button>
-                           {/* {this.renderRedirect()} */}
-                
-                        <ReactQuill
-                            className="quill-editor"
-                            modules={modules}
-                            formats={this.formats}
-                            value={this.state.body}
-                            onChange={this.updateQuill}
-                            placeholder="Start writing..."
-                        />
+                                <button onClick={this.setDefaultNotebookId}  className='note-btn create-btn'>Create Note</button>
 
-                       
-                    </form>
+                                </div>
+        
+                            <ReactQuill
+                                className="quill-editor"
+                                modules={modules}
+                                formats={this.formats}
+                                value={this.state.body}
+                                onChange={this.updateQuill}
+                                placeholder="Start writing..."
+                            />
 
+                        
+                        </form>
+
+                    </div>
+        
                 </div>
-       
-            </div>
             
+
             );
 
     }
