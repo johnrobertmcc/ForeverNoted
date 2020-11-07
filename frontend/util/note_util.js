@@ -41,10 +41,7 @@ export const updateNote = (note) => {
 };
 
 export const deleteNote = (noteId) => {
-<<<<<<< HEAD
-=======
     
->>>>>>> tags
     return $.ajax(
         {
             url: `/api/notes/${noteId}`,

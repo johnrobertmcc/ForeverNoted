@@ -1,11 +1,6 @@
 import React from 'react';
 import ReactQuill from 'react-quill';
-<<<<<<< HEAD
-import {Redirect} from "react-router-dom"
-import { fetchNotes } from '../../../util/note_util';
-=======
 import NotebookAssign from './notebook_assign_container';
->>>>>>> tags
 
 
 

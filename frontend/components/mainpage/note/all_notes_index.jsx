@@ -28,26 +28,18 @@ class AllNotesIndex extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
 
-<<<<<<< HEAD
-=======
         if(prevProps.tutto.length !== this.props.tutto.length){
             this.props.fetchNotes(this.props.currentUser.id);
             this.props.fetchNotebooks(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         }
->>>>>>> tags
         if(prevProps.notes.length !== this.props.notes.length){
             this.props.fetchNotes(this.props.currentUser.id);
             this.props.fetchNotebooks(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
-<<<<<<< HEAD
-        if(prevState.filtered !== this.state.filtered && !this.state.searched){
-     
-=======
         else if(prevState.filtered !== this.state.filtered && !this.state.searched){
         
->>>>>>> tags
             this.props.fetchNotes(this.props.currentUser.id);
             this.props.fetchNotebooks(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
@@ -322,19 +314,11 @@ const mapStateToProps = (state, ownProps) => {
         fromNotebook,
         newNote,
         notebookId : notebook.id,
-<<<<<<< HEAD
-        allNotes: Object.values(state.entities.notes)
-=======
         tutto: Object.values(state.entities.notes)
->>>>>>> tags
     }
 };
 
 const mapDispatchToProps = dispatch => {
-<<<<<<< HEAD
-=======
-
->>>>>>> tags
     return { 
         fetchNotes: id => dispatch(fetchNotes(id)),
         fetchNotebooks: id => dispatch(fetchNotebooks(id)),
