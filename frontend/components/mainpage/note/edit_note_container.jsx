@@ -15,7 +15,9 @@ class EditNote extends React.Component {
             title: note.title,
             body: note.body,
             user_id: this.props.currentUser.id,
-            redirect: false
+            redirect: false,
+            tag: '',
+            assignNotebook: false
         }
 
         this.formats = [
@@ -77,8 +79,87 @@ class EditNote extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        this.props.updateNote(this.state).then(this.props.fetchNotebooks(this.props.user_id))
+    }
 
-        this.props.updateNote(this.state);
+        changeNotebook(){
+        this.setState({assignNotebook: !this.state.assignNotebook})
+    }
+
+    notebookIndex(){
+        let {notebooks} = this.props
+        
+        return notebooks.map(notebook=> {
+            return(
+                <li 
+                onClick={() => this.setState({notebookId: notebook.id, assignNotebook: false})}
+                className='nbidx-list'
+                key={notebook.id}
+                >
+                    {notebook.title}
+                </li>
+            )
+        })
+    }
+
+
+    assignNB(){
+        if(this.state.assignNotebook){
+            return (
+            <div className='nb-modal'>
+                <i 
+                className="fa fa-window-close" 
+                aria-hidden="true"
+                onClick={() => this.setState({assignNotebook: false})}
+                ></i>
+                <h1 className='nb-title'>Select a Notebook</h1>
+                 <hr className='tag-line'></hr>
+                {this.notebookIndex()}
+            </div>
+            )
+        }else{
+            return null
+        }
+    }
+    toggleTag(){
+        this.setState({assignTag: !this.state.assignTag})
+    }
+
+    tagIndex(){
+        let {tags} = this.props
+        debugger
+        
+        return tags.map(tag=> {
+            return(
+                <li 
+                onClick={() => this.setState({tag: tag.name, assignTag: false})}
+                className='nbidx-list'
+                key={tag.id}>
+                    {tag.name}
+                
+                </li>
+            )
+        })
+    }
+
+
+    assignTag(){
+        if(this.state.assignTag){
+            return (
+            <div className='nb-modal'>
+                <i 
+                className="fa fa-window-close" 
+                aria-hidden="true"
+                onClick={() => this.setState({assignTag: false})}
+                ></i>
+                <h1 className='nb-title'>Select a Tag</h1>
+                 <hr className='tag-line'></hr>
+                {this.tagIndex()}
+            </div>
+            )
+        }else{
+            return null
+        }
     }
 
 
@@ -107,13 +188,29 @@ class EditNote extends React.Component {
             <div className="create-note-main">
                 
                 <div className='note-editor'>
+
+                       <div className={this.state.assignNotebook ? 'open-nb-modal' : 'none'}>
+                           {this.assignNB()}
+                        </div>
+                        <div className={this.state.assignTag ? 'open-tag-modal' : 'none'}>
+                           {this.assignTag()}
+                        </div>
+
+                        <div className='create-head'>
+                            <button className='note-btn' onClick={() => this.changeNotebook()}>Change Notebook</button>
+                            <button className='note-btn' onClick={() => this.toggleTag()}>Change Tag</button>
                     
                     <form
                         className="note-form"
                         onSubmit={this.handleSubmit}>
-                        <div className='create-head'>
+                    </form>
                         </div>
 
+                    <form
+                        className="note-form"
+                        onSubmit={this.handleSubmit}>
+
+                    <div className='header-buttons'>
 
                         <input
                             type="text"
@@ -121,10 +218,11 @@ class EditNote extends React.Component {
                             id="note-title"
                             onChange={this.update('title')}
                             value={this.state.title}
-                        />
+                            />
 
-                        <button className='create-btn'>Edit Note</button>
+                        <button className='note-btn edit-btn'>Edit Note</button>
     
+                    </div>
                         <ReactQuill
                             className="quill-editor"
                             modules={modules}
@@ -155,7 +253,8 @@ const mSTP = (state, ownProps) => {
         {
             currentUser,
             note,
-            notebooks
+            notebooks,
+            tags: Object.values(state.entities.tags)
         }
     )
 };

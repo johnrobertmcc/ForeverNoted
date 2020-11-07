@@ -22,8 +22,6 @@ class Api::TagsController < ApplicationController
     def create
         @tag = Tag.new(tag_params)
 
-        debugger
-
         if @tag.save
             render 'api/tags/show'
         else  

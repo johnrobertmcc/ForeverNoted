@@ -28,7 +28,7 @@ body{
 
 
 .allnotes-create-form{
-    width: 1400px;
+    width: 68vw;
 
 }
 
@@ -71,7 +71,7 @@ body{
 
 .create-head{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .header-title{
@@ -202,9 +202,13 @@ body{
 
 .header-buttons{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    width:68vw;
 }
 
 input[type="text"], textarea, select { 
     outline: none;
+}
+
+.none{
 }
