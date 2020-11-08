@@ -17,7 +17,8 @@ class EditNote extends React.Component {
             user_id: this.props.currentUser.id,
             redirect: false,
             tag: '',
-            assignNotebook: false
+            assignNotebook: false,
+            notebook_id: note.notebook_id
         }
 
         this.formats = [
@@ -127,7 +128,6 @@ class EditNote extends React.Component {
 
     tagIndex(){
         let {tags} = this.props
-        debugger
         
         return tags.map(tag=> {
             return(
@@ -163,6 +163,31 @@ class EditNote extends React.Component {
     }
 
 
+    footer(){
+        let {notebooks} = this.props;
+        // debugger
+        let title = notebooks.find(notebook=> {
+            return notebook.id === this.state.notebook_id}
+            ).title
+
+        return(
+            <div className='note-footer'>
+               <div>
+                   Notebook: {title}
+                </div>
+               
+               <button
+               onClick={() => this.props.deleteNote}
+               >
+                   Delete Note
+               </button>
+            
+            </div>
+        )
+    }
+
+
+
     render() {
 
        const modules = {
@@ -184,60 +209,62 @@ class EditNote extends React.Component {
 
 
         return( 
-            
-            <div className="create-note-main">
-                
-                <div className='note-editor'>
-
-                       <div className={this.state.assignNotebook ? 'open-nb-modal' : 'none'}>
-                           {this.assignNB()}
-                        </div>
-                        <div className={this.state.assignTag ? 'open-tag-modal' : 'none'}>
-                           {this.assignTag()}
-                        </div>
-
-                        <div className='create-head'>
-                            <button className='note-btn' onClick={() => this.changeNotebook()}>Change Notebook</button>
-                            <button className='note-btn' onClick={() => this.toggleTag()}>Change Tag</button>
+            <div>            
+                <div className="create-note-main">
                     
-                    <form
-                        className="note-form"
-                        onSubmit={this.handleSubmit}>
-                    </form>
+                    <div className='note-editor'>
+
+                        <div className={this.state.assignNotebook ? 'open-nb-modal' : 'none'}>
+                            {this.assignNB()}
+                            </div>
+                            <div className={this.state.assignTag ? 'open-tag-modal' : 'none'}>
+                            {this.assignTag()}
+                            </div>
+
+                            <div className='create-head'>
+                                <button className='note-btn' onClick={() => this.changeNotebook()}>Change Notebook</button>
+                                <button className='note-btn' onClick={() => this.toggleTag()}>Change Tag</button>
+                        
+                        <form
+                            className="note-form"
+                            onSubmit={this.handleSubmit}>
+                        </form>
+                            </div>
+
+                        <form
+                            className="note-form"
+                            onSubmit={this.handleSubmit}>
+
+                        <div className='header-buttons'>
+
+                            <input
+                                type="text"
+                                className='header-title'
+                                id="note-title"
+                                onChange={this.update('title')}
+                                value={this.state.title}
+                                />
+
+                            <button className='note-btn edit-btn'>Edit Note</button>
+        
                         </div>
-
-                    <form
-                        className="note-form"
-                        onSubmit={this.handleSubmit}>
-
-                    <div className='header-buttons'>
-
-                        <input
-                            type="text"
-                            className='header-title'
-                            id="note-title"
-                            onChange={this.update('title')}
-                            value={this.state.title}
+                            <ReactQuill
+                                className="quill-editor"
+                                modules={modules}
+                                theme={'snow'}
+                                formats={this.formats}
+                                value={this.state.body || ''}
+                                onChange={this.updateQuill}
                             />
 
-                        <button className='note-btn edit-btn'>Edit Note</button>
-    
+
+                        </form>
+
                     </div>
-                        <ReactQuill
-                            className="quill-editor"
-                            modules={modules}
-                            theme={'snow'}
-                            formats={this.formats}
-                            value={this.state.body || ''}
-                            onChange={this.updateQuill}
-                        />
-
-
-                    </form>
-
                 </div>
-
-            </div>
+                {this.footer()}
+        </div>
+            
         );
     }
 }

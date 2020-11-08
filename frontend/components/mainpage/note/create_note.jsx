@@ -37,6 +37,7 @@ class CreateNote extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updateQuill = this.updateQuill.bind(this);
         this.setDefaultNotebookId = this.setDefaultNotebookId.bind(this);
+        this.footer = this.footer.bind(this);
         }
      
    
@@ -96,8 +97,7 @@ class CreateNote extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        
-        debugger
+
         this.props.createNote(this.state).then(this.props.fetchNotes(this.props.currentUser.id));
 
         this.setState({isSubmitted: true});
@@ -148,7 +148,6 @@ class CreateNote extends React.Component {
 
     tagIndex(){
         let {tags} = this.props
-        debugger
         
         return tags.map(tag=> {
             return(
@@ -184,6 +183,21 @@ class CreateNote extends React.Component {
     }
 
 
+
+    footer(){
+        let {notebooks} = this.props;
+        notebooks.find(notebook=> {
+            notebook.id === this.props.notebook  
+        })
+
+        return(
+              <div className='note-footer'>
+                
+            </div>
+        )
+    }
+
+
     render() {         
             const modules = {
                 toolbar: [
@@ -202,58 +216,63 @@ class CreateNote extends React.Component {
             };
 
 
+
             return (
 
-                <div className="create-note-main">
-                    <div className='note-editor'>
+                <div>
+                    <div className="create-note-main">
+                        <div className='note-editor'>
 
-                        <div className={this.state.assignNotebook ? 'open-nb-modal' : 'none'}>
-                           {this.assignNB()}
-                        </div>
-                        <div className={this.state.assignTag ? 'open-tag-modal' : 'none'}>
-                           {this.assignTag()}
-                        </div>
-                        
-                        <div className='create-head'>
-                            <button className='note-btn' onClick={() => this.changeNotebook()}>Change Notebook</button>
-                            <button className='note-btn' onClick={() => this.toggleTag()}>Change Tag</button>
+                            <div className={this.state.assignNotebook ? 'open-nb-modal' : 'none'}>
+                            {this.assignNB()}
+                            </div>
+                            <div className={this.state.assignTag ? 'open-tag-modal' : 'none'}>
+                            {this.assignTag()}
+                            </div>
+                            
+                            <div className='create-head'>
+                                <button className='note-btn' onClick={() => this.changeNotebook()}>Change Notebook</button>
+                                <button className='note-btn' onClick={() => this.toggleTag()}>Change Tag</button>
 
+                                <form
+                                    className="note-form"
+                                    onSubmit={this.handleSubmit}>
+                                </form>
+
+                            </div>
                             <form
                                 className="note-form"
-                                onSubmit={this.handleSubmit}>
+                                onSubmit={this.handleSubmit}>   
+                                <div className='header-buttons'>
+                                    <input
+                                        type="text"
+                                        className='header-title'
+                                        id="note-title"
+                                        onChange={this.update('title')}
+                                        placeholder='Untitled'
+                                        value={this.state.title}
+                                    />
+                                    <button onClick={this.setDefaultNotebookId}  className='note-btn create-btn'>Create Note</button>
+
+                                    </div>
+            
+                                <ReactQuill
+                                    className="quill-editor"
+                                    modules={modules}
+                                    formats={this.formats}
+                                    value={this.state.body}
+                                    onChange={this.updateQuill}
+                                    placeholder="Start writing..."
+                                />
+
+                            
                             </form>
 
                         </div>
-                        <form
-                            className="note-form"
-                            onSubmit={this.handleSubmit}>   
-                            <div className='header-buttons'>
-                                <input
-                                    type="text"
-                                    className='header-title'
-                                    id="note-title"
-                                    onChange={this.update('title')}
-                                    placeholder='Untitled'
-                                    value={this.state.title}
-                                />
-                                <button onClick={this.setDefaultNotebookId}  className='note-btn create-btn'>Create Note</button>
-
-                                </div>
-        
-                            <ReactQuill
-                                className="quill-editor"
-                                modules={modules}
-                                formats={this.formats}
-                                value={this.state.body}
-                                onChange={this.updateQuill}
-                                placeholder="Start writing..."
-                            />
-
-                        
-                        </form>
-
+            
                     </div>
-        
+                        {this.footer()}
+                    
                 </div>
             
 

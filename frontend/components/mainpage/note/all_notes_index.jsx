@@ -45,7 +45,6 @@ class AllNotesIndex extends React.Component {
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
         // if(this.props.allNotes.length !== prevProps.notes.length){
-        //     debugger
         //     this.props.fetchNotes(this.props.currentUser.id);
         //     this.setState({filtered: this.props.notes, action: this.props.action})
 
@@ -219,6 +218,7 @@ class AllNotesIndex extends React.Component {
     }
 
 
+
     render() {
                 // console.log('render')
 
@@ -257,11 +257,8 @@ class AllNotesIndex extends React.Component {
 
                     </div>
                 </div>
-
-                <div className='allnotes-create-form'>
                     {/* <div className='new-header'>Header goes here</div> */}
                     {this.editor(this.state.action)}
-                </div>
             </div>
         )
     }
@@ -304,7 +301,6 @@ const mapStateToProps = (state, ownProps) => {
     // console.log(ownProps.location.state)
     // console.log('newNote:')
     // console.log(newNote)
-    debugger
     return {
         notes,
         notebook,
