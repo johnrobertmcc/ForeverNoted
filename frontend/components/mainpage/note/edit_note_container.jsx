@@ -33,6 +33,7 @@ class EditNote extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updateQuill = this.updateQuill.bind(this);
+        this.deleteBtn = this.deleteBtn.bind(this);
     }
 
 
@@ -80,13 +81,15 @@ class EditNote extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.updateNote(this.state).then(this.props.fetchNotebooks(this.props.user_id))
+        this.props.updateNote(this.state).then(this.props.fetchNotebooks(this.state.user_id)).then(this.props.fetchNotes(this.state.user_id))
     }
 
-        changeNotebook(){
+    
+    changeNotebook(){
         this.setState({assignNotebook: !this.state.assignNotebook})
     }
 
+    
     notebookIndex(){
         let {notebooks} = this.props
         
@@ -186,6 +189,10 @@ class EditNote extends React.Component {
         )
     }
 
+    deleteBtn(id){
+        this.props.deleteNote(id).then(this.props.fetchNotebooks(this.props.currentUser.id))
+    }
+
 
 
     render() {
@@ -224,6 +231,8 @@ class EditNote extends React.Component {
                             <div className='create-head'>
                                 <button className='note-btn' onClick={() => this.changeNotebook()}>Change Notebook</button>
                                 <button className='note-btn' onClick={() => this.toggleTag()}>Change Tag</button>
+                                <button className='note-btn' onClick={() => this.deleteBtn(this.props.note.id)}>delete</button>
+                                {/* <button className='note-btn' onClick=(() => this.props.deleteNote())>Delete Note</button> */}
                         
                         <form
                             className="note-form"
