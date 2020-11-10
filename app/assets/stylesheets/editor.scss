@@ -48,7 +48,21 @@
 }
 
 .note-footer{
-    background: pink;
-    height:100%;
-    z-index: 99
+    justify-content: space-evenly;
+    display: flex;
+    // height:100%;
+    // padding: 20px;
+    z-index: 99;
+}
+
+.note-footer-line{
+    border: 1px solid rgba(40, 155, 71, 0.48);
+    // padding-bottom: 20px;
+}
+
+.footer-nb-title{
+    font-size: 15px;
+}
+.actualtitle{
+    font-size: 18px;
 }

@@ -81,7 +81,7 @@ class EditNote extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.updateNote(this.state).then(this.props.fetchNotebooks(this.state.user_id)).then(this.props.fetchNotes(this.state.user_id))
+        this.props.updateNote(this.state).then(this.props.fetchNotebooks(this.state.user_id))
     }
 
     
@@ -175,24 +175,12 @@ class EditNote extends React.Component {
 
         return(
             <div className='note-footer'>
-               <div>
-                   Notebook: {title}
+               <div className='footer-nb-title'>
+                   Current Notebook: <p className='actualtitle'>{title}</p>
                 </div>
-               
-               <button
-               onClick={() => this.props.deleteNote}
-               >
-                   Delete Note
-               </button>
-            
             </div>
         )
     }
-
-    deleteBtn(id){
-        this.props.deleteNote(id).then(this.props.fetchNotebooks(this.props.currentUser.id))
-    }
-
 
 
     render() {
@@ -231,7 +219,6 @@ class EditNote extends React.Component {
                             <div className='create-head'>
                                 <button className='note-btn' onClick={() => this.changeNotebook()}>Change Notebook</button>
                                 <button className='note-btn' onClick={() => this.toggleTag()}>Change Tag</button>
-                                <button className='note-btn' onClick={() => this.deleteBtn(this.props.note.id)}>delete</button>
                                 {/* <button className='note-btn' onClick=(() => this.props.deleteNote())>Delete Note</button> */}
                         
                         <form
@@ -271,6 +258,7 @@ class EditNote extends React.Component {
 
                     </div>
                 </div>
+                <hr className='note-footer-line'></hr>
                 {this.footer()}
         </div>
             

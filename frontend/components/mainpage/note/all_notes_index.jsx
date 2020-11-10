@@ -124,7 +124,7 @@ class AllNotesIndex extends React.Component {
     noteIndex() {
                 // console.log('note index')
 
-        let { notes, deleteNote } = this.props;
+        let { notes } = this.props;
         
         let allNotes;
 
@@ -155,16 +155,6 @@ class AllNotesIndex extends React.Component {
                     
                     <li className="date">
                         {this.currentDate(note)}
-                    </li>
-                
-                    <li>
-                        <button 
-                            onClick={() => deleteNote(note.id)}
-                            className='delete-btn'
-                        >
-                            <i className="fas fa-trash"></i>
-                        </button>
-
                     </li>
 
                 </div>
