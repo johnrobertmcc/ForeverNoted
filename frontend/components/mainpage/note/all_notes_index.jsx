@@ -130,7 +130,6 @@ class AllNotesIndex extends React.Component {
 
         allNotes = this.state.searched ? this.state.filtered : notes;
 
-        debugger
         if (allNotes.length > 0) {
             
             let sortedNotes = this.sortByEdited(allNotes)

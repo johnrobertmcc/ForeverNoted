@@ -24,8 +24,6 @@ class SideBar extends React.Component{
 
         let {notebooks} = this.props;
 
-        // debugger
-
         if(this.state.showMenu){
             return notebooks.map( notebook => {
 

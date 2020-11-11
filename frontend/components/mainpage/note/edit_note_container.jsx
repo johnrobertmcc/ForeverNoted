@@ -80,7 +80,6 @@ class EditNote extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        debugger
         this.props.updateNote(this.state).then(this.props.fetchNotebooks(this.state.user_id))
     }
 
@@ -169,12 +168,9 @@ class EditNote extends React.Component {
 
     footer(){
         let {notebooks} = this.props;
-        // debugger
         let title = notebooks.find(notebook=> {
             return notebook.id === this.state.notebook_id}
             ).title
-
-            debugger
 
         return(
             <div className='note-footer'>
