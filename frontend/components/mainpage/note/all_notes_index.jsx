@@ -122,7 +122,6 @@ class AllNotesIndex extends React.Component {
 
 
     noteIndex() {
-                // console.log('note index')
 
         let { notes } = this.props;
         
@@ -131,11 +130,6 @@ class AllNotesIndex extends React.Component {
 
         allNotes = this.state.searched ? this.state.filtered : notes;
 
-
-        // if(this.state.filtered.length > this.props.notes.length){
-        //     allNotes = this.state.filtered;
-        // }
-        
         debugger
         if (allNotes.length > 0) {
             

@@ -59,7 +59,6 @@ class EditNote extends React.Component {
         return { __html: this.props.note.title }
     }
 
-
     update(str) {
 
         return (e) => {
@@ -81,6 +80,7 @@ class EditNote extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        debugger
         this.props.updateNote(this.state).then(this.props.fetchNotebooks(this.state.user_id))
     }
 
@@ -96,7 +96,7 @@ class EditNote extends React.Component {
         return notebooks.map(notebook=> {
             return(
                 <li 
-                onClick={() => this.setState({notebookId: notebook.id, assignNotebook: false})}
+                onClick={() => this.setState({notebook_id: notebook.id, assignNotebook: false})}
                 className='nbidx-list'
                 key={notebook.id}
                 >
