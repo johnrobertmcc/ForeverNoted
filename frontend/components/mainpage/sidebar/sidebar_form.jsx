@@ -22,7 +22,9 @@ class SideBar extends React.Component{
 
     showNotebooks(){
 
-        let {notebooks} = this.props
+        let {notebooks} = this.props;
+
+        // debugger
 
         if(this.state.showMenu){
             return notebooks.map( notebook => {

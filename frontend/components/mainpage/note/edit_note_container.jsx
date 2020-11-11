@@ -33,7 +33,7 @@ class EditNote extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updateQuill = this.updateQuill.bind(this);
-        this.deleteBtn = this.deleteBtn.bind(this);
+        // this.deleteBtn = this.deleteBtn.bind(this);
     }
 
 
@@ -105,6 +105,7 @@ class EditNote extends React.Component {
             )
         })
     }
+    
 
 
     assignNB(){
@@ -172,6 +173,8 @@ class EditNote extends React.Component {
         let title = notebooks.find(notebook=> {
             return notebook.id === this.state.notebook_id}
             ).title
+
+            debugger
 
         return(
             <div className='note-footer'>

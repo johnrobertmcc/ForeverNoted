@@ -128,12 +128,15 @@ class AllNotesIndex extends React.Component {
         
         let allNotes;
 
+
         allNotes = this.state.searched ? this.state.filtered : notes;
 
-        if(this.state.filtered.length > this.props.notes.length){
-            allNotes = this.state.filtered;
-        }
+
+        // if(this.state.filtered.length > this.props.notes.length){
+        //     allNotes = this.state.filtered;
+        // }
         
+        debugger
         if (allNotes.length > 0) {
             
             let sortedNotes = this.sortByEdited(allNotes)
@@ -262,6 +265,7 @@ const mapStateToProps = (state, ownProps) => {
     let notebook;
     let action;
     let newNote;
+
     
     if(typeof ownProps.location.state !== 'undefined'){
         fromNotebook = true
