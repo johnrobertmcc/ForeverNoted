@@ -1,17 +1,9 @@
 @keyframes slide{
-<<<<<<< HEAD
-    0% { left: 0px}
-    25% { left: 100px}
-    50% { left: 200px}
-    75% { left: 300px}
-    100% { left: 360px}
-=======
     0%: {display: none}
     25% { width: 100px; position: absolute}
     50% { width: 200px;  position: absolute}
     75% {width: 300px; position: absolute;}
     /* 100% {width: 360px;} */
->>>>>>> tags
 }
 
 .sidebar-extend{
@@ -21,12 +13,6 @@
     width: 360px;
     position: absolute;
     background-color: white;
-<<<<<<< HEAD
-    animation-name: slide;
-    animation-duration: 4s;
-
-=======
->>>>>>> tags
 }
 
 .testing{
