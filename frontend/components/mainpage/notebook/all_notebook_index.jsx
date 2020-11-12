@@ -81,7 +81,8 @@ class AllNotebookIndex extends React.Component {
                                 state: {
                                     action: {
                                         type: 'edit',
-                                        note
+                                        note,
+                                        notebook
                                     }
                                 }
                             }}

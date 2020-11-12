@@ -6,6 +6,7 @@ export const RECEIVE_NOTE = 'RECEIVE_NOTE';
 export const REMOVE_NOTE = 'REMOVE_NOTE';
 
 const receiveAllNotes= (notes) =>{
+
     return(
         {
             type: RECEIVE_ALL_NOTES,
@@ -15,9 +16,9 @@ const receiveAllNotes= (notes) =>{
 }
 
 
-export const fetchNotes = () => dispatch => {
+export const fetchNotes = (userId) => dispatch => {
 
-    return NoteUtil.fetchNotes().then(notes => dispatch(receiveAllNotes(notes)));
+    return NoteUtil.fetchNotes(userId).then(notes => dispatch(receiveAllNotes(notes)));
 };
 
 const receiveNote = note => {

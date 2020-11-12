@@ -20,7 +20,9 @@ class CreateNote extends React.Component {
             notebookId: notebook,
             isSubmitted: false,
             tag: '',
-            assignNotebook: false
+            assignNotebook: false,
+            saved: false,
+            // notebook_id: this.props.notebooks[0].id
         }
 
 
@@ -37,14 +39,17 @@ class CreateNote extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.updateQuill = this.updateQuill.bind(this);
         this.setDefaultNotebookId = this.setDefaultNotebookId.bind(this);
-        this.footer = this.footer.bind(this);
+        // this.footer = this.footer.bind(this);
         }
      
    
     update(str) {
         return (e) => {
             this.setState(
-                { [str]: e.target.value }
+                { 
+                    [str]: e.target.value,
+                    saved: false 
+                }
             );
         };
     
@@ -59,7 +64,8 @@ class CreateNote extends React.Component {
         }else{
             this.setState({
                 notebook_id: this.props.notebooks[0].id,
-                redirect: true
+                redirect: true,
+                saved: true
             } )
     
         }
@@ -68,7 +74,10 @@ class CreateNote extends React.Component {
     updateQuill(html) {
 
         return this.setState(
-            { body: html }
+            { 
+                body: html,
+                saved: false
+             }
         )
 
     }
@@ -87,7 +96,8 @@ class CreateNote extends React.Component {
                 notebookId: this.props.notebook,
                 isSubmitted: false,
                 tag: '',
-                assignTag: false
+                assignTag: false,
+                saved: false
 
             })
         }
@@ -186,13 +196,18 @@ class CreateNote extends React.Component {
 
     footer(){
         let {notebooks} = this.props;
-        notebooks.find(notebook=> {
-            notebook.id === this.props.notebook  
-        })
+        let title = ''
 
         return(
-              <div className='note-footer'>
-                
+            <div className='note-footer'>
+               <div className='footer-nb-title'>
+                   Current Notebook: <p className='actualtitle'>{title}</p>
+                   testing
+                </div>
+                {this.state.saved ? 
+                <div className='saved'>All Changes Saved </div> :
+                <div className='not-saved'> Changes not yet saved </div>
+                }
             </div>
         )
     }
@@ -252,7 +267,7 @@ class CreateNote extends React.Component {
                                         placeholder='Untitled'
                                         value={this.state.title}
                                     />
-                                    <button onClick={this.setDefaultNotebookId}  className='note-btn create-btn'>Create Note</button>
+                                    <button onClick={this.setDefaultNotebookId}  className='note-btn create-btn' >Create Note</button>
 
                                     </div>
             
@@ -271,6 +286,7 @@ class CreateNote extends React.Component {
                         </div>
             
                     </div>
+                     <hr className='note-footer-line'></hr>
                         {this.footer()}
                     
                 </div>

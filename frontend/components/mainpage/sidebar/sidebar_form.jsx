@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import TagIndex from '../tag/tag_index';
+import AllNotesIndex from '../note/all_notes_index';
 
 class SideBar extends React.Component{
 
@@ -80,11 +81,8 @@ class SideBar extends React.Component{
     sidebarLinks(){
         return(
             <ul className='links-home'>
-                        <li className='newnote-btn'><Link to={{
-                            pathname:'/main/notes', 
-                            state: true,
-                            search: '?new=note'
-                            }}><i className="fa fa-plus" aria-hidden="true"></i><p className='btn-words'>New note</p></Link>
+                        <li className='newnote-btn' onClick={() =>this.changeEditor()}>
+                            <i className="fa fa-plus" aria-hidden="true"></i><p className='btn-words'>New note</p>
                         </li>
                         
                         <li className='switch-links'><i className="fas fa-edit"></i><Link to='/main/notes'>All Notes</Link></li>
@@ -97,6 +95,11 @@ class SideBar extends React.Component{
                 
             </ul>
         )
+    }
+
+    changeEditor(){
+        return <AllNotesIndex />
+        // this.forceUpdate()
     }
 
     render(){

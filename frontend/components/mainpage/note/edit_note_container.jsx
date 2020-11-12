@@ -18,7 +18,8 @@ class EditNote extends React.Component {
             redirect: false,
             tag: '',
             assignNotebook: false,
-            notebook_id: note.notebook_id
+            notebook_id: note.notebook_id,
+            saved: true
         }
 
         this.formats = [
@@ -48,6 +49,7 @@ class EditNote extends React.Component {
         if(this.props.note.id !== prevProps.note.id ){
             this.props.fetchNote(this.props.note.id);
             this.setState(this.props.note);
+            this.setState({saved: false})
         };
     }
 
@@ -64,7 +66,9 @@ class EditNote extends React.Component {
         return (e) => {
 
             this.setState(
-                { [str]: e.target.value }
+            { [str]: e.target.value,
+                saved: false 
+            }
             );
         };
 
@@ -73,7 +77,10 @@ class EditNote extends React.Component {
     updateQuill(html){
 
         return this.setState(
-            {body: html}
+            {
+                body: html,
+                saved: false
+            }
         ) 
     
     }
@@ -95,7 +102,7 @@ class EditNote extends React.Component {
         return notebooks.map(notebook=> {
             return(
                 <li 
-                onClick={() => this.setState({notebook_id: notebook.id, assignNotebook: false})}
+                onClick={() => this.setState({notebook_id: notebook.id, assignNotebook: false, saved: false})}
                 className='nbidx-list'
                 key={notebook.id}
                 >
@@ -135,7 +142,7 @@ class EditNote extends React.Component {
         return tags.map(tag=> {
             return(
                 <li 
-                onClick={() => this.setState({tag: tag.name, assignTag: false})}
+                onClick={() => this.setState({tag: tag.name, assignTag: false, saved: false})}
                 className='nbidx-list'
                 key={tag.id}>
                     {tag.name}
@@ -177,6 +184,10 @@ class EditNote extends React.Component {
                <div className='footer-nb-title'>
                    Current Notebook: <p className='actualtitle'>{title}</p>
                 </div>
+                {this.state.saved ? 
+                <div className='saved'>All Changes Saved </div> :
+                <div className='not-saved'> Changes not yet saved </div>
+                }
             </div>
         )
     }
@@ -240,7 +251,7 @@ class EditNote extends React.Component {
                                 value={this.state.title}
                                 />
 
-                            <button className='note-btn edit-btn'>Edit Note</button>
+                            <button className='note-btn edit-btn' onClick={() => this.setState({saved:true})}>Save Changes</button>
         
                         </div>
                             <ReactQuill

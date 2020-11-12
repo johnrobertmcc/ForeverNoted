@@ -94,6 +94,7 @@ class AllNotesIndex extends React.Component {
 
     editor(arg){
 
+
         let action = this.state.newNote ? {type: 'create', note: '', notebook: this.state.action.notebook} : arg  
 
         switch (action.type) {
@@ -262,7 +263,7 @@ const mapStateToProps = (state, ownProps) => {
     
     if(typeof ownProps.location.state !== 'undefined'){
         fromNotebook = true
-        newNote = true
+        // newNote = true
     }else{
         fromNotebook = false;
         newNote = false
@@ -276,18 +277,12 @@ const mapStateToProps = (state, ownProps) => {
         notes = Object.values(state.entities.notes)
     }
     
-    
     if(ownProps.action && !newNote){
         action = ownProps.action
     }else{
-        
         action = {type: 'create', note: '', notebook} 
     }
-    
-    // console.log('ownProps.location.state:')
-    // console.log(ownProps.location.state)
-    // console.log('newNote:')
-    // console.log(newNote)
+
     return {
         notes,
         notebook,
