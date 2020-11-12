@@ -30,11 +30,20 @@ class SignUpForm extends React.Component {
         )
     }
 
+    newNotebook(userId){
+        const firstNotebook = {
+            title: 'My First Notebook',
+            user_id: userId
+        }
+
+        this.props.createNotebook(firstNotebook);
+    }
+
     
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.signUp(user);
+        this.props.signUp(user).then(this.newNotebook(user.id));
     }
 
     demoLogin(e) {
