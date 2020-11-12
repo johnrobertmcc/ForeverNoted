@@ -194,15 +194,28 @@ class CreateNote extends React.Component {
 
 
 
-    footer(){
+    notebookTitle(){
+
         let {notebooks} = this.props;
-        let title = ''
+        if(this.state.notebookId){
+            return(
+            <div className='assigned-nb'>{notebooks.find(notebook => notebook.id == this.state.notebookId).title}</div> 
+                )
+        }else{
+            return (
+                <div className='unassigned'> No notebook yet assigned </div>
+            )
+        }
+
+
+    }
+    footer(){
 
         return(
             <div className='note-footer'>
                <div className='footer-nb-title'>
-                   Current Notebook: <p className='actualtitle'>{title}</p>
-                   testing
+                   Current Notebook: {this.notebookTitle()}
+                   
                 </div>
                 {this.state.saved ? 
                 <div className='saved'>All Changes Saved </div> :
