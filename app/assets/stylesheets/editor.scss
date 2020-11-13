@@ -50,14 +50,15 @@
 .note-footer{
     justify-content: space-evenly;
     display: flex;
-    // height:100%;
-    // padding: 20px;
     z-index: 99;
+    font-size: 12px;
+    margin-top: 0;
 }
 
 .note-footer-line{
     border: 1px solid rgba(40, 155, 71, 0.48);
-    // padding-bottom: 20px;
+    margin-top: 45px;
+    // margin-bottom:0;
 }
 
 .footer-nb-title{

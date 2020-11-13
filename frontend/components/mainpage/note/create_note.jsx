@@ -19,9 +19,9 @@ class CreateNote extends React.Component {
             redirect: false,
             notebookId: notebook,
             isSubmitted: false,
-            tag: '',
+            tag_id: '',
             assignNotebook: false,
-            saved: false,
+            saved: true,
             // notebook_id: this.props.notebooks[0].id
         }
 
@@ -95,7 +95,7 @@ class CreateNote extends React.Component {
                 redirect: false,
                 notebookId: this.props.notebook,
                 isSubmitted: false,
-                tag: '',
+                tag_id: '',
                 assignTag: false,
                 saved: false
 
@@ -162,7 +162,7 @@ class CreateNote extends React.Component {
         return tags.map(tag=> {
             return(
                 <li 
-                onClick={() => this.setState({tag: tag.name, assignTag: false})}
+                onClick={() => this.setState({tag_id: tag.id, assignTag: false})}
                 className='nbidx-list'
                 key={tag.id}>
                     {tag.name}
@@ -199,28 +199,40 @@ class CreateNote extends React.Component {
         let {notebooks} = this.props;
         if(this.state.notebookId){
             return(
-            <div className='assigned-nb'>{notebooks.find(notebook => notebook.id == this.state.notebookId).title}</div> 
+            <div className='assigned-nb'><i className="fas fa-book"></i>  {notebooks.find(notebook => notebook.id == this.state.notebookId).title}</div> 
                 )
         }else{
             return (
-                <div className='unassigned'> No notebook yet assigned </div>
+                <div className='unassigned'> No notebook assigned </div>
             )
         }
 
-
     }
+
     footer(){
+
+        const {tags} = this.props
+
+        let tag;
+
+        if(this.state.tag_id !== ''){
+            debugger
+            tag = tags.find(tag => tag.id == this.state.tag_id).name
+
+        }else{
+            tag='No tag assigned yet!'
+        }
 
         return(
             <div className='note-footer'>
-               <div className='footer-nb-title'>
-                   Current Notebook: {this.notebookTitle()}
-                   
-                </div>
+    
+                {this.notebookTitle()}
+                <div><i className="fas fa-tags"></i>{tag}</div>
                 {this.state.saved ? 
-                <div className='saved'>All Changes Saved </div> :
-                <div className='not-saved'> Changes not yet saved </div>
+                <div className='saved'><i className="fas fa-save"></i> All Changes Saved </div> :
+                <div className='not-saved'> <i className="fas fa-exclamation"></i><i className="fas fa-exclamation"></i> Changes not yet saved </div>
                 }
+
             </div>
         )
     }
@@ -259,8 +271,8 @@ class CreateNote extends React.Component {
                             </div>
                             
                             <div className='create-head'>
-                                <button className='note-btn' onClick={() => this.changeNotebook()}>Change Notebook</button>
-                                <button className='note-btn' onClick={() => this.toggleTag()}>Change Tag</button>
+                                <button className='note-btn note-edits' onClick={() => this.changeNotebook()}>Assign Notebook</button>
+                                <button className='note-btn note-edits' onClick={() => this.toggleTag()}>Assign Tag</button>
 
                                 <form
                                     className="note-form"

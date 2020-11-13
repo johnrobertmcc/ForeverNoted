@@ -89,6 +89,10 @@ class TagIndex extends React.Component{
 
     notesByTag(tagId){
         // debugger
+
+        return(
+        <div>Search for a tag above to see the notes associated</div>
+            )
     }
 
     render(){
@@ -121,9 +125,6 @@ class TagIndex extends React.Component{
                     >
                         {this.tagList()}
                     </ul>
-
-                    {this.notesByTag()}
-
 
                 </div>
                 <div className={this.state.openModal ? 'tag-modal' : 'none'}>

@@ -16,7 +16,7 @@ class EditNote extends React.Component {
             body: note.body,
             user_id: this.props.currentUser.id,
             redirect: false,
-            tag: '',
+            tag_id: '',
             assignNotebook: false,
             notebook_id: note.notebook_id,
             saved: true
@@ -87,6 +87,7 @@ class EditNote extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        debugger
         this.props.updateNote(this.state).then(this.props.fetchNotebooks(this.state.user_id))
     }
 
@@ -142,7 +143,7 @@ class EditNote extends React.Component {
         return tags.map(tag=> {
             return(
                 <li 
-                onClick={() => this.setState({tag: tag.name, assignTag: false, saved: false})}
+                onClick={() => this.setState({tag_id: tag.id, assignTag: false, saved: false})}
                 className='nbidx-list'
                 key={tag.id}>
                     {tag.name}
@@ -174,20 +175,34 @@ class EditNote extends React.Component {
 
 
     footer(){
-        let {notebooks} = this.props;
+        let {tags, notebooks, note} = this.props;
         let title = notebooks.find(notebook=> {
             return notebook.id === this.state.notebook_id}
             ).title
 
+        let tag;
+
+        if(this.props.note.tag_id){
+            tag = tags.find(tag => tag.id == note.tag_id).name
+
+        }else{
+            tag='No tag assigned yet!'
+        }
+
         return(
             <div className='note-footer'>
                <div className='footer-nb-title'>
-                   Current Notebook: <p className='actualtitle'>{title}</p>
+                   <i className="fas fa-book"></i> {title}
                 </div>
+              
+                <div className='tag-container'><i className="fas fa-tags"></i> {tag} </div>
+              
                 {this.state.saved ? 
-                <div className='saved'>All Changes Saved </div> :
-                <div className='not-saved'> Changes not yet saved </div>
+                    <div className='saved'><i className="fas fa-save"></i>All Changes Saved </div> :
+                    <div className='not-saved'> <i className="fas fa-exclamation"></i><i className="fas fa-exclamation"></i> Changes not yet saved </div>
                 }
+                
+                
             </div>
         )
     }
@@ -227,8 +242,8 @@ class EditNote extends React.Component {
                             </div>
 
                             <div className='create-head'>
-                                <button className='note-btn' onClick={() => this.changeNotebook()}>Change Notebook</button>
-                                <button className='note-btn' onClick={() => this.toggleTag()}>Change Tag</button>
+                                <button className='note-btn note-edits' onClick={() => this.changeNotebook()}>Change Notebook</button>
+                                <button className='note-btn note-edits' onClick={() => this.toggleTag()}>Change Tag</button>
                                 {/* <button className='note-btn' onClick=(() => this.props.deleteNote())>Delete Note</button> */}
                         
                         <form
@@ -251,7 +266,7 @@ class EditNote extends React.Component {
                                 value={this.state.title}
                                 />
 
-                            <button className='note-btn edit-btn' onClick={() => this.setState({saved:true})}>Save Changes</button>
+                            <button className='note-btn create-btn' onClick={() => this.setState({saved:true})}>Save Changes</button>
         
                         </div>
                             <ReactQuill

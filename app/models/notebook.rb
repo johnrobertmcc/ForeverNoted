@@ -10,7 +10,6 @@ class Notebook < ApplicationRecord
 
     def notes_with_tags
         fin = []
-        debugger
         
         notes.each do |note|
             debugger

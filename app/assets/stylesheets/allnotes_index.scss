@@ -70,8 +70,12 @@ body{
 }
 
 .create-head{
-    display: flex;
-    justify-content: center;
+   display: flex;
+    justify-content: flex-start;
+}
+
+.create-head > button{
+    margin-right:10px;
 }
 
 .header-title{
@@ -212,3 +216,16 @@ input[type="text"], textarea, select {
 
 .none{
 }
+
+.note-btn.note-edits{
+    background: rgba(89, 196, 89, 0.9);
+    // border-radius: 6px;
+}
+
+.note-btn.create-btn{
+    font-size: 18px;
+    outline: none;
+    border-radius: 10px;
+
+}
+
