@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { deleteNote, fetchNotes } from '../../../actions/note_actions';     
 import { fetchNotebooks } from '../../../actions/notebook_actions';     
 import Moment from 'react-moment';
+import {fetchAllTags} from '../../../actions/tag_actions';
 import { withRouter } from 'react-router-dom';
 
 class AllNotesIndex extends React.Component {
@@ -31,24 +32,22 @@ class AllNotesIndex extends React.Component {
         if(prevProps.tutto.length !== this.props.tutto.length){
             this.props.fetchNotes(this.props.currentUser.id);
             this.props.fetchNotebooks(this.props.currentUser.id);
+            this.props.fetchAllTags(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         }
         if(prevProps.notes.length !== this.props.notes.length){
             this.props.fetchNotes(this.props.currentUser.id);
             this.props.fetchNotebooks(this.props.currentUser.id);
+            this.props.fetchAllTags(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
         else if(prevState.filtered !== this.state.filtered && !this.state.searched){
         
             this.props.fetchNotes(this.props.currentUser.id);
             this.props.fetchNotebooks(this.props.currentUser.id);
+            this.props.fetchAllTags(this.props.currentUser.id);
             this.setState({filtered: this.props.notes, action: this.props.action})
         } 
-        // if(this.props.allNotes.length !== prevProps.notes.length){
-        //     this.props.fetchNotes(this.props.currentUser.id);
-        //     this.setState({filtered: this.props.notes, action: this.props.action})
-
-        // }
     }
 
     componentDidMount() {
@@ -268,32 +267,37 @@ const mapStateToProps = (state, ownProps) => {
     if(typeof ownProps.location.state !== 'undefined'){
 
         if(ownProps.location.state.fromNotebook){     
-            fromNotebook = true
+            fromNotebook = true;
+            fromTags = false;
         }else if(ownProps.location.state.fromTags){
-            fromTags = true
+            fromTags = true;
+            fromNotebook = false;
         }
     }else{
         fromNotebook = false;
         newNote = false;
         fromTags = false
     }
-    
+    debugger
     if(fromNotebook){
         notebook = state.entities.notebooks[ownProps.match.params.notebookId]
         notes = Object.values(state.entities.notebooks[ownProps.match.params.notebookId].notes)
     }else if(fromTags){
+        notebook = false;
         notes = Object.values(state.entities.notes)
     }else{
         notebook = false;
         tag = false;
         notes = Object.values(state.entities.notes)
     }
-    
+    debugger
     if(ownProps.action && !newNote){
         action = ownProps.action
     }else{
         action = {type: 'create', note: '', notebook} 
     }
+
+    debugger
 
     return {
         notes,
@@ -311,6 +315,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return { 
         fetchNotes: id => dispatch(fetchNotes(id)),
+        fetchAllTags: id => dispatch(fetchAllTags(id)),
         fetchNotebooks: id => dispatch(fetchNotebooks(id)),
         deleteNote: (id) => dispatch(deleteNote(id)), 
     }

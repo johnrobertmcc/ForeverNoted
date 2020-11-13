@@ -1,4 +1,4 @@
 class Tag < ApplicationRecord
-    # has_many :note
+    has_many :notes
     belongs_to :user
 end

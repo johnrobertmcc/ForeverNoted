@@ -187,8 +187,8 @@ class EditNote extends React.Component {
 
         let tag;
 
-        if(this.props.note.tag_id){
-            tag = tags.find(tag => tag.id == this.props.note.tag_id).name
+        if(this.state.tag_id){
+            tag = tags.find(tag => tag.id === this.state.tag_id).name
 
         }else{
             tag='No tag assigned yet!'
