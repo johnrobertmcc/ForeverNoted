@@ -42,7 +42,8 @@ class TagIndex extends React.Component{
                 <li key={tag.id} className='ind-tag'>
                     <Link to={{pathname:`/main/notes`,
                                     state: {
-                                        fromTags: true
+                                        fromTags: true,
+                                        tagId: tag.id
                                     }
                                 }}
                     >

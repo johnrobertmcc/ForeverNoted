@@ -194,11 +194,15 @@ class AllNotesIndex extends React.Component {
     }
 
     indexTitle(){
-        let {fromNotebook, notebook} = this.props;
-
+        let {fromNotebook, fromTags, notebook, tag} = this.props;
+        debugger
         if(fromNotebook){
             return notebook.title
-        }else{
+        }else if(fromTags){
+            debugger
+            return tag.name
+        }
+        else{
             return "All Notes"
         }
     }
@@ -261,8 +265,6 @@ const mapStateToProps = (state, ownProps) => {
     let fromTags;
     let tag;
 
-    debugger
-
     
     if(typeof ownProps.location.state !== 'undefined'){
 
@@ -272,32 +274,42 @@ const mapStateToProps = (state, ownProps) => {
         }else if(ownProps.location.state.fromTags){
             fromTags = true;
             fromNotebook = false;
+        }else{
+        fromNotebook = false;
+        newNote = false;
+        fromTags = false
         }
     }else{
         fromNotebook = false;
         newNote = false;
         fromTags = false
     }
-    debugger
+
     if(fromNotebook){
         notebook = state.entities.notebooks[ownProps.match.params.notebookId]
         notes = Object.values(state.entities.notebooks[ownProps.match.params.notebookId].notes)
     }else if(fromTags){
         notebook = false;
-        notes = Object.values(state.entities.notes)
+        tag = state.entities.tags[ownProps.location.state.tagId];
+        let temp = [];
+        
+        let tagLength = state.entities.tags[tag.id].note_ids.length
+
+        for(let i = 0; i < tagLength; i++){
+            temp.push(state.entities.notes[state.entities.tags[tag.id].note_ids[i]])
+        }
+        notes = temp;
     }else{
         notebook = false;
         tag = false;
         notes = Object.values(state.entities.notes)
     }
-    debugger
     if(ownProps.action && !newNote){
         action = ownProps.action
     }else{
         action = {type: 'create', note: '', notebook} 
     }
 
-    debugger
 
     return {
         notes,
@@ -306,10 +318,12 @@ const mapStateToProps = (state, ownProps) => {
         currentUser: state.entities.users[state.session.id],
         action,
         fromNotebook,
+        fromTags,
         newNote,
         notebookId : notebook.id,
-        tutto: Object.values(state.entities.notes)
-    }
+        tutto: Object.values(state.entities.notes),
+        tag
+        }
 };
 
 const mapDispatchToProps = dispatch => {
