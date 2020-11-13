@@ -35,7 +35,7 @@ class TagIndex extends React.Component{
 
             return allTags.map(tag => {
                 debugger
-                return <li key={tag.id className='ind-tag'>{tag.name}</li>
+                return <li key={tag.id} className='ind-tag'>{tag.name}</li>
             }
          )
         }
