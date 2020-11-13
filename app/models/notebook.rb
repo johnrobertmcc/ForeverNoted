@@ -10,16 +10,18 @@ class Notebook < ApplicationRecord
 
     def notes_with_tags
         fin = []
+        debugger
         
         notes.each do |note|
+            debugger
 
-            tag = {}
+            # tag = {}
             
-            if note.tag
-                tag['id'] = note.tag.id
-                tag['note_id'] = note.id
-                fin << tag
-            end
+            # if note.tag_id
+            #     tag['id'] = note.tag.id
+            #     tag['note_ids'] = note.id
+            #     fin << tag
+            # end
 
         end 
 
