@@ -60,10 +60,8 @@ class AllNotebookIndex extends React.Component {
 
         for(let i = 0; i < notebooks.length; i++){
             if (notebooks[i].id === notebookId){
-                if(notebooks[i].notes.length > 0){
-                    let temp = new Date((notebooks[i].notes[0].created_at))
+                    let temp = new Date((notebooks[i].created_at))
                     return temp.toDateString()
-                }else{ return 'No Notes Yet'}
         }
         }
 
