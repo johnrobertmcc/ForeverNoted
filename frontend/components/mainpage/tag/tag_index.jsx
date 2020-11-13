@@ -1,5 +1,6 @@
 import React from 'react';
 import TagModalContainer from './tag_modal_container';
+import {connect} from 'react-redux'
 
 class TagIndex extends React.Component{
 
@@ -29,10 +30,12 @@ class TagIndex extends React.Component{
         let allTags;
 
         allTags = this.state.searched ? this.state.tagList : tags
+        debugger
         if(allTags.length > 0){
 
             return allTags.map(tag => {
-                return <li key={tag.id}>{tag.name}</li>
+                debugger
+                return <li key={tag.id className='ind-tag'>{tag.name}</li>
             }
          )
         }
@@ -84,6 +87,10 @@ class TagIndex extends React.Component{
         }
     }
 
+    notesByTag(tagId){
+        // debugger
+    }
+
     render(){
         console.log(this.state.openModal)
 
@@ -115,6 +122,8 @@ class TagIndex extends React.Component{
                         {this.tagList()}
                     </ul>
 
+                    {this.notesByTag()}
+
 
                 </div>
                 <div className={this.state.openModal ? 'tag-modal' : 'none'}>
@@ -129,4 +138,12 @@ class TagIndex extends React.Component{
 
 }
 
-export default TagIndex;
+
+const mSTP = (state, ownProps) => {
+    return(
+        {notes: state.entities.notes}
+    )
+}
+
+
+export default connect(mSTP, null)(TagIndex);

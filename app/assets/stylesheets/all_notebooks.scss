@@ -12,7 +12,12 @@
     height: 1px;
     width: 100%;
     border: none;
+}
 
+.border-nbidx{
+    padding-left: 28px;
+    font-size: 13px;
+    font-weight: 700;
 }
 
 
@@ -63,7 +68,8 @@
 }
 
 .all-notebook-header > h3{
-    font-size: 15px;
+    font-size: 20px;
+    font-weight: 300;
 
 }
 
@@ -125,4 +131,63 @@
 
 .notebook-count{
     font-size: 12px
+}
+
+.nb-search >input{
+    width: 220px;
+    margin-top: 20px;
+    border-radius:5px;
+    padding: 2px;
+    &:focus{
+        border-radius:5px;
+        border-color: rgb(111, 209, 111);
+    }
+}
+
+.lower-portion{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nb-idx-title{
+    font-size: 18px;
+    text-align: center;
+}
+
+.input-new-notebook >input{
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-left: 13px;
+}
+
+.notebook-title{
+    padding: 20px;
+}
+
+.input-new-notebook{
+    margin:20px;
+}
+
+.notebook-form >button{
+    background-color: rgb(49, 182, 49);
+    color: white;
+    outline: none;
+    border: none;
+}
+
+.notebook-form{
+    margin:12px;
+}
+
+.testing2 {
+    justify-content: flex-end;
+    display: flex;
+    padding-right:15px;
+    font-weight: 500;
+    font-size: 17px;
+    color:rgb(83, 196, 83);
+}
+
+.fas.fa-pencil-alt:hover{
+    cursor:pointer;
 }

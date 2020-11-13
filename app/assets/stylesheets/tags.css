@@ -1,3 +1,4 @@
+
 .sidebar-extend{
     height: 100vh;
     z-index: 99;
@@ -50,12 +51,12 @@
 }
 
 .results{
-    background-color: pink
+    /* background-color: pink */
 }
 
 .tag-modal{
     margin-left: 500px;
-    height: 300px;
+    height: 200px;
     width: 400px;
     /* border: 1px solid rgb(107, 233, 140, 0.5); */
     /* z-index: 100; */
@@ -78,4 +79,21 @@
 
 .tag-line{
     border: 1px solid rgba(40, 155, 71, 0.48);
+}
+
+.teste500{
+    margin-right:1200px;
+}
+
+.header-buttons > input{
+    margin-left:60px;
+}
+
+.ind-tag{
+    list-style: none;
+}
+
+.ind-tag:hover{
+    background-color: rgb(247, 234, 234);
+    cursor:pointer;
 }

@@ -14,8 +14,13 @@ class AllNotebookIndex extends React.Component {
             showMenu: {
                 open: false,
                 id: ''
-            }
+            },
+            searched: false,
+            filtered: this.props.notebooks,
+            openModal: false
         }
+
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
@@ -28,7 +33,8 @@ class AllNotebookIndex extends React.Component {
         
         if(prevProps.notebooks.length !== this.props.notebooks.length){
             this.props.fetchNotebooks(this.props.currentUser.id);
-               this.props.fetchNotes(this.props.currentUser.id);
+            this.props.fetchNotes(this.props.currentUser.id);
+            this.setState({filtered: this.props.notebooks})
         }
     }
 
@@ -110,7 +116,7 @@ class AllNotebookIndex extends React.Component {
     newNotebookIndex(){
           let { notebooks, currentUser } = this.props;
 
-          let noteBookMap= notebooks.map((notebook, i) => {
+          let noteBookMap= this.state.filtered.map((notebook, i) => {
                 return(
                 <tbody className='full-nb-idx'
                 key={notebook.id}
@@ -163,15 +169,70 @@ class AllNotebookIndex extends React.Component {
                     </tr>
                 </thead>
                     {noteBookMap}
-    
             </table>
             )
         } else {
             return "no notebooks yet!"
         }
 
+    }
+
+    toggleModal(){
+        this.setState({openModal: !this.state.openModal})
+    }
+
+
+    newNotebook(){
+        if(this.state.openModal){
+            return (
+            <div className='nb-modal'>
+                <i 
+                className="fa fa-window-close" 
+                aria-hidden="true"
+                onClick={() => this.setState({openModal: false})}
+                ></i>
+                <h1 className='nb-idx-title'>Create a Notebook</h1>
+                 <hr className='tag-line'></hr>
+                 <div className="input-new-nb"><CreateNotebook/></div>
+            </div>
+            )
+        }else{
+            return null
+        }
+    }
+
+
+    handleChange(e) {
+
+        let {notebooks} = this.props
+ 
+        let currentList = [];
+
+        if (e.target.value !== "") {
+            for(let i = 0; i < notebooks.length; i++){
+    
+                if(notebooks[i].title.includes(e.target.value)){
+                    currentList.push(notebooks[i])
+                }
+            };
+
+             this.setState({
+                searched: true
+            });
+
+        } else {
+            currentList = notebooks;
+             this.setState({
+                searched: false
+            });
+        };
+
+        this.setState({
+            filtered: currentList,
+        });
 
     }
+
 
     render() {
 
@@ -180,10 +241,16 @@ class AllNotebookIndex extends React.Component {
                 <div className='nbidx-header'>
 
                 <div className='all-notebook-header'>
-                    <h3>Notebooks</h3>
-                    <div className='new-nb-btn'><CreateNotebook /></div>
+                    <h3 className='nb-idx'>Notebooks</h3>
+                    <div className='nb-search'>
+                        <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." />
+                    </div>
                 </div>
-                <div className='create-note-index'>
+    
+                    <div className='border-nbidx'>My notebook list</div>
+                    <div className='testing2'><i className="fas fa-pencil-alt" onClick={()=>this.setState({openModal: true})}>New Notebook</i></div>
+                    <div className={this.state.openModal ? 'open-nb-modal' : 'none-nb'}>
+                            {this.newNotebook()}
                 </div>
                 <hr className='notebooks-index-line'></hr>
                 </div>

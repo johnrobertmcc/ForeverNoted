@@ -59,7 +59,7 @@ class TagModal extends React.Component{
                                 value={this.state.name}
                             />
                             
-                                <button className='note-btn tag'> Create </button>
+                            <button className='teste500'> Create </button>
                                 {/* <button onClick={this.tagModal()}  className='note-btn'>Create Tag</button> */}
 
                             </div>
