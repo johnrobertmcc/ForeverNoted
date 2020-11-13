@@ -104,12 +104,23 @@ class TagIndex extends React.Component{
 
     allTags(){
        return( this.props.tags.map(tag => {
-            return(
-                <ul className='alltaglist'>
-                    <li>{tag.name}</li>
-                </ul>
-            )
-            }))
+        return(
+            <li key={tag.id} className='alltaglist'>
+                <Link to={{pathname:`/main/notes`,
+                                state: {
+                                    fromTags: true,
+                                    tagId: tag.id
+                                }
+                            }}
+                >
+                    {tag.name}
+                </Link>
+            </li>
+              
+        )
+            })
+        )
+        
     }
 
     render(){
