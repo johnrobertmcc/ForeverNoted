@@ -25,7 +25,7 @@ class TagModal extends React.Component{
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.createTag(this.state);
+        this.props.createTag(this.state).then(this.setState({name: ''}));
     }
 
     render(){
