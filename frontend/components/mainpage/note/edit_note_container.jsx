@@ -51,6 +51,11 @@ class EditNote extends React.Component {
             this.setState(this.props.note);
             this.setState({saved: false})
         };
+
+        // if(this.props.note.tag_id !== prevProps.note.tag_id){
+        //     this.props.fetchNote(this.props.note.id);
+        //     this.setState({saved: true})
+        // }
     }
 
     createMarkupBody() {
@@ -87,7 +92,7 @@ class EditNote extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        debugger
+
         this.props.updateNote(this.state).then(this.props.fetchNotebooks(this.state.user_id))
     }
 
@@ -183,7 +188,7 @@ class EditNote extends React.Component {
         let tag;
 
         if(this.props.note.tag_id){
-            tag = tags.find(tag => tag.id == note.tag_id).name
+            tag = tags.find(tag => tag.id == this.props.note.tag_id).name
 
         }else{
             tag='No tag assigned yet!'

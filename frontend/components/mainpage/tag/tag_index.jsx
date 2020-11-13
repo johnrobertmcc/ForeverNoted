@@ -1,6 +1,7 @@
 import React from 'react';
 import TagModalContainer from './tag_modal_container';
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 class TagIndex extends React.Component{
 
@@ -17,6 +18,10 @@ class TagIndex extends React.Component{
         this.handleSearch = this.handleSearch.bind(this)
     }
 
+    componentDidUpdate(){
+        console.log(this.state.openModal)
+    }
+
     plusSign(){
         if(!this.state.openModal){
             return <i className="fas fa-plus"></i>
@@ -30,12 +35,21 @@ class TagIndex extends React.Component{
         let allTags;
 
         allTags = this.state.searched ? this.state.tagList : tags
-        debugger
         if(allTags.length > 0){
 
             return allTags.map(tag => {
-                debugger
-                return <li key={tag.id} className='ind-tag'>{tag.name}</li>
+                return (
+                <li key={tag.id} className='ind-tag'>
+                    <Link to={{pathname:`/main/notes`,
+                                    state: {
+                                        fromTags: true
+                                    }
+                                }}
+                    >
+                    {tag.name}
+                    </Link>
+                    
+                </li>)
             }
          )
         }
@@ -88,7 +102,6 @@ class TagIndex extends React.Component{
     }
 
     notesByTag(tagId){
-        // debugger
 
         return(
         <div>Search for a tag above to see the notes associated</div>

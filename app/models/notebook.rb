@@ -12,7 +12,6 @@ class Notebook < ApplicationRecord
         fin = []
         
         notes.each do |note|
-            debugger
 
             # tag = {}
             

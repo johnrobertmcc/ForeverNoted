@@ -259,21 +259,33 @@ const mapStateToProps = (state, ownProps) => {
     let notebook;
     let action;
     let newNote;
+    let fromTags;
+    let tag;
+
+    debugger
 
     
     if(typeof ownProps.location.state !== 'undefined'){
-        fromNotebook = true
-        // newNote = true
+
+        if(ownProps.location.state.fromNotebook){     
+            fromNotebook = true
+        }else if(ownProps.location.state.fromTags){
+            fromTags = true
+        }
     }else{
         fromNotebook = false;
-        newNote = false
+        newNote = false;
+        fromTags = false
     }
     
     if(fromNotebook){
         notebook = state.entities.notebooks[ownProps.match.params.notebookId]
         notes = Object.values(state.entities.notebooks[ownProps.match.params.notebookId].notes)
+    }else if(fromTags){
+        notes = Object.values(state.entities.notes)
     }else{
-        notebook = false
+        notebook = false;
+        tag = false;
         notes = Object.values(state.entities.notes)
     }
     

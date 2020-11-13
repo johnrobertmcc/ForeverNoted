@@ -216,7 +216,6 @@ class CreateNote extends React.Component {
         let tag;
 
         if(this.state.tag_id !== ''){
-            debugger
             tag = tags.find(tag => tag.id == this.state.tag_id).name
 
         }else{

@@ -21,6 +21,12 @@ class SideBar extends React.Component{
         this.props.fetchTags(this.props.currentUser.id)
     }
 
+    componentDidUpdate(prevState){
+        if(this.props.history.location.pathname !== prevState.location.pathname){
+            this.setState({showTags: false})
+        }
+    }
+
     showNotebooks(){
 
         let {notebooks} = this.props;
