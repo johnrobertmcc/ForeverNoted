@@ -87,7 +87,7 @@ class SideBar extends React.Component{
     sidebarLinks(){
         return(
             <ul className='links-home'>
-                        <li className='newnote-btn'>
+                        <li className='newnote-btn' onClick={()=> window.location.reload(false)}>
                             <i className="fa fa-plus" aria-hidden="true"></i><p className='btn-words'>New note</p>
                         </li>
                         
