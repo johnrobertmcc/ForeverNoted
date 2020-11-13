@@ -33,6 +33,7 @@ class EditNote extends React.Component {
 
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
         this.updateQuill = this.updateQuill.bind(this);
         // this.deleteBtn = this.deleteBtn.bind(this);
     }
@@ -52,7 +53,7 @@ class EditNote extends React.Component {
             this.setState(this.props.note);
             this.setState({saved: true})
         };
-
+        
         // if(this.props.note.tag_id !== prevProps.note.tag_id){
         //     this.props.fetchNote(this.props.note.id);
         //     this.setState({saved: true})
@@ -95,6 +96,11 @@ class EditNote extends React.Component {
         e.preventDefault();
 
         this.props.updateNote(this.state).then(this.props.fetchNotebooks(this.state.user_id))
+    }
+
+    handleDelete(e){
+        e.preventDefault;
+        this.props.deleteNote(this.props.note.id).then(this.props.fetchNotes(this.state.user_id))
     }
 
     
@@ -197,6 +203,9 @@ class EditNote extends React.Component {
 
         return(
             <div className='note-footer'>
+
+                <div onClick={this.handleDelete} className='testing-nb-assign'><i className="fa fa-trash" aria-hidden="true"></i></div>
+
                <div onClick={() => this.changeNotebook()} className='testing-nb-assign'>
                    <i className="fas fa-book"></i> {title}
                 </div>

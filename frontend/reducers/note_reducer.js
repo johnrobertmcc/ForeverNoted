@@ -1,5 +1,6 @@
 import { RECEIVE_NOTE, RECEIVE_ALL_NOTES, REMOVE_NOTE } from "../actions/note_actions";
 import {RECEIVE_NOTEBOOK} from '../actions/notebook_actions';
+import {LOGOUT_CURRENT_USER} from '../actions/session_actions';
 
 const NotesReducer = (state = {}, action) => {
 
@@ -16,6 +17,9 @@ const NotesReducer = (state = {}, action) => {
 
         case RECEIVE_NOTEBOOK:
             return action.notebook.notes;
+        
+        case LOGOUT_CURRENT_USER:
+            return {};
 
         case REMOVE_NOTE:
     

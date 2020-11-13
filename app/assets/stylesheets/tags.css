@@ -97,3 +97,7 @@
     background-color: rgb(247, 234, 234);
     cursor:pointer;
 }
+
+.alltaglist{
+    list-style:none;
+}

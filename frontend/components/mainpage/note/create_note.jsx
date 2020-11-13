@@ -60,7 +60,7 @@ class CreateNote extends React.Component {
         if(this.state.notebookId !== false){
             this.setState({
                 notebook_id: this.state.notebookId,
-                saved: false
+                saved: true
             })
         }else{
             this.setState({
@@ -98,7 +98,7 @@ class CreateNote extends React.Component {
                 isSubmitted: false,
                 tag_id: '',
                 assignTag: false,
-                saved: false
+                saved: true
 
             })
         }

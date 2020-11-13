@@ -51,11 +51,13 @@ class AllNotesIndex extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchNotes(this.props.currentUser.id)
-        this.setState({
-            filtered: this.props.notes,
+        this.props.fetchNotes(this.props.currentUser.id).then((notes) => {
+            // console.log(notes) 
+            this.setState({
+            filtered: notes.notes,
             action: this.props.action
-        });
+        })}
+        )
     }
 
 
@@ -134,6 +136,7 @@ class AllNotesIndex extends React.Component {
             
             let sortedNotes = this.sortByEdited(allNotes)
             return sortedNotes.map((note, i) => (
+                
                 <div 
                 className='ind-note' 
                 key={note.id}
@@ -154,6 +157,7 @@ class AllNotesIndex extends React.Component {
                     </li>
 
                 </div>
+
             ))
         } else {
             return "no notes yet!"

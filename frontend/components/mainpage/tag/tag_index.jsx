@@ -33,7 +33,6 @@ class TagIndex extends React.Component{
     tagList(){
         let {tags} = this.props
         let allTags;
-        debugger
 
         allTags = this.state.searched ? this.state.tagList : tags
         if(allTags.length > 0){
@@ -103,11 +102,14 @@ class TagIndex extends React.Component{
         }
     }
 
-    notesByTag(tagId){
-
-        return(
-        <div>Search for a tag above to see the notes associated</div>
+    allTags(){
+       return( this.props.tags.map(tag => {
+            return(
+                <ul className='alltaglist'>
+                    <li>{tag.name}</li>
+                </ul>
             )
+            }))
     }
 
     render(){
@@ -145,6 +147,7 @@ class TagIndex extends React.Component{
                 <div className={this.state.openModal ? 'tag-modal' : 'none'}>
 
                     {this.tagModal()}
+                    {this.allTags()}
                 </div>
             </div>
 
