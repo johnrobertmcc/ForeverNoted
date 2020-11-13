@@ -33,6 +33,7 @@ class TagIndex extends React.Component{
     tagList(){
         let {tags} = this.props
         let allTags;
+        debugger
 
         allTags = this.state.searched ? this.state.tagList : tags
         if(allTags.length > 0){

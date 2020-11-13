@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import TagIndex from '../tag/tag_index';
 import AllNotesIndex from '../note/all_notes_index';
 
@@ -84,12 +84,24 @@ class SideBar extends React.Component{
         }
     }
 
+    reload(){
+        debugger
+        if(this.props.location.pathname === '/main/notes'){
+            window.location.reload(false)
+        }else{
+            <Redirect to='/main/notes'></Redirect>
+        }
+    }
+
     sidebarLinks(){
         return(
             <ul className='links-home'>
-                        <li className='newnote-btn' onClick={()=> window.location.reload(false)}>
-                            <i className="fa fa-plus" aria-hidden="true"></i><p className='btn-words'>New note</p>
-                        </li>
+                        <Link to='/main/notes' onClick={()=> this.reload()}>
+                            <li className='newnote-btn'>
+
+                                <i className="fa fa-plus" aria-hidden="true"></i><p className='btn-words'>New note</p>
+                            </li>
+                        </Link>
                         
                         <li className='switch-links'><i className="fas fa-edit"></i><Link to='/main/notes'>All Notes</Link></li>
                         <div className='sidebar-new'>
