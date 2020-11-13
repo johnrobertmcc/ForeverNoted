@@ -41,6 +41,7 @@ class EditNote extends React.Component {
     componentDidMount(){
         this.setState(this.props.note);
         this.state = this.props.fetchNote(this.props.note.id);
+        this.setState({saved: true})
        
     }
 
@@ -49,7 +50,7 @@ class EditNote extends React.Component {
         if(this.props.note.id !== prevProps.note.id ){
             this.props.fetchNote(this.props.note.id);
             this.setState(this.props.note);
-            this.setState({saved: false})
+            this.setState({saved: true})
         };
 
         // if(this.props.note.tag_id !== prevProps.note.tag_id){
@@ -196,11 +197,11 @@ class EditNote extends React.Component {
 
         return(
             <div className='note-footer'>
-               <div className='footer-nb-title'>
+               <div onClick={() => this.changeNotebook()} className='testing-nb-assign'>
                    <i className="fas fa-book"></i> {title}
                 </div>
               
-                <div className='tag-container'><i className="fas fa-tags"></i> {tag} </div>
+                <div onClick={() => this.toggleTag()} className='testing-nb-assign'><i className="fas fa-tags"></i> {tag} </div>
               
                 {this.state.saved ? 
                     <div className='saved'><i className="fas fa-save"></i>All Changes Saved </div> :
@@ -247,8 +248,8 @@ class EditNote extends React.Component {
                             </div>
 
                             <div className='create-head'>
-                                <button className='note-btn note-edits' onClick={() => this.changeNotebook()}>Change Notebook</button>
-                                <button className='note-btn note-edits' onClick={() => this.toggleTag()}>Change Tag</button>
+                                {/* <button className='note-btn note-edits' onClick={() => this.changeNotebook()}>Change Notebook</button>
+                                <button className='note-btn note-edits' onClick={() => this.toggleTag()}>Change Tag</button> */}
                                 {/* <button className='note-btn' onClick=(() => this.props.deleteNote())>Delete Note</button> */}
                         
                         <form
@@ -265,7 +266,7 @@ class EditNote extends React.Component {
 
                             <input
                                 type="text"
-                                className='header-title'
+                                className='header-title form'
                                 id="note-title"
                                 onChange={this.update('title')}
                                 value={this.state.title}

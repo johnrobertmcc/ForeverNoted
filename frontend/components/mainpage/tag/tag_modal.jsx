@@ -49,7 +49,7 @@ class TagModal extends React.Component{
 
 
                           
-                        <div className='header-buttons'>
+                        <div className='header-buttons tags'>
                             <input
                                 type="text"
                                 className='tag-input'

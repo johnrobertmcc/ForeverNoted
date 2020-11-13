@@ -59,7 +59,8 @@ class CreateNote extends React.Component {
     setDefaultNotebookId(){
         if(this.state.notebookId !== false){
             this.setState({
-                notebook_id: this.state.notebookId
+                notebook_id: this.state.notebookId,
+                saved: false
             })
         }else{
             this.setState({
@@ -209,6 +210,7 @@ class CreateNote extends React.Component {
 
     }
 
+
     footer(){
 
         const {tags} = this.props
@@ -225,8 +227,8 @@ class CreateNote extends React.Component {
         return(
             <div className='note-footer'>
     
-                {this.notebookTitle()}
-                <div><i className="fas fa-tags"></i>{tag}</div>
+                <div onClick={() => this.changeNotebook()} className='testing-nb-assign'>{this.notebookTitle()}</div>
+                <div onClick={() => this.toggleTag()} className='testing-nb-assign'><i className="fas fa-tags"></i>{tag}</div>
                 {this.state.saved ? 
                 <div className='saved'><i className="fas fa-save"></i> All Changes Saved </div> :
                 <div className='not-saved'> <i className="fas fa-exclamation"></i><i className="fas fa-exclamation"></i> Changes not yet saved </div>
@@ -270,8 +272,8 @@ class CreateNote extends React.Component {
                             </div>
                             
                             <div className='create-head'>
-                                <button className='note-btn note-edits' onClick={() => this.changeNotebook()}>Assign Notebook</button>
-                                <button className='note-btn note-edits' onClick={() => this.toggleTag()}>Assign Tag</button>
+                                {/* <button className='note-btn note-edits' onClick={() => this.changeNotebook()}>Assign Notebook</button>
+                                <button className='note-btn note-edits' onClick={() => this.toggleTag()}>Assign Tag</button> */}
 
                                 <form
                                     className="note-form"
@@ -285,7 +287,7 @@ class CreateNote extends React.Component {
                                 <div className='header-buttons'>
                                     <input
                                         type="text"
-                                        className='header-title'
+                                        className='header-title form'
                                         id="note-title"
                                         onChange={this.update('title')}
                                         placeholder='Untitled'

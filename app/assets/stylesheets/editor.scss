@@ -67,3 +67,22 @@
 .actualtitle{
     font-size: 18px;
 }
+
+.testing-nb-assign{
+    z-index: 99;
+    cursor: pointer;
+    &:hover{
+        color: rgb(96, 211, 96);
+    }
+}
+
+.header-buttons >input{
+    margin:10px;
+}
+
+.teste500{
+    background: rgb(96, 211, 96);
+    outline: none;
+    border: none;
+    color: white;
+}

@@ -200,7 +200,7 @@ class AllNotesIndex extends React.Component {
             return notebook.title
         }else if(fromTags){
             debugger
-            return tag.name
+            return( <div className='tag-container'><i className="fas fa-tags"></i> {tag.name} </div>)
         }
         else{
             return "All Notes"
@@ -265,7 +265,7 @@ const mapStateToProps = (state, ownProps) => {
     let fromTags;
     let tag;
 
-    
+    debugger
     if(typeof ownProps.location.state !== 'undefined'){
 
         if(ownProps.location.state.fromNotebook){     

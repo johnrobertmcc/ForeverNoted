@@ -87,12 +87,16 @@ class SideBar extends React.Component{
     sidebarLinks(){
         return(
             <ul className='links-home'>
-                        <li className='newnote-btn' onClick={() =>this.changeEditor()}>
+                        <li className='newnote-btn'>
                             <i className="fa fa-plus" aria-hidden="true"></i><p className='btn-words'>New note</p>
                         </li>
                         
                         <li className='switch-links'><i className="fas fa-edit"></i><Link to='/main/notes'>All Notes</Link></li>
-                        <li className='switch-links' onClick={() =>this.setState({showMenu: !this.state.showMenu})}>{this.showCaret()}<Link to={{pathname:'/main/allnotebooks', state: {fromNotebook: true}}}>Notebooks</Link></li>
+                        <div className='sidebar-new'>
+                            <li className='switch-links nb-caret' onClick={() =>this.setState({showMenu: !this.state.showMenu})}>{this.showCaret()}
+                            <Link to={{pathname:'/main/allnotebooks', state: {fromNotebook: true}}} className='nb-idx-link'>Notebooks</Link>
+                            </li>
+                        </div>
                         <ul className='notebook-titles'>{this.showNotebooks()}</ul>
                         <div>
                         
@@ -103,10 +107,6 @@ class SideBar extends React.Component{
         )
     }
 
-    changeEditor(){
-        return <AllNotesIndex />
-        // this.forceUpdate()
-    }
 
     render(){
 
