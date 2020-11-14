@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchNote, updateNote, fetchNotes, deleteNote } from '../../../actions/note_actions';
 import {fetchNotebooks} from '../../../actions/notebook_actions';
 import ReactQuill from 'react-quill';
+import {Redirect} from 'react-router-dom'
 
 class EditNote extends React.Component {
 
@@ -34,9 +35,8 @@ class EditNote extends React.Component {
 
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
+        this.deleteBtn = this.deleteBtn.bind(this);
         this.updateQuill = this.updateQuill.bind(this);
-        // this.deleteBtn = this.deleteBtn.bind(this);
     }
 
 
@@ -54,11 +54,6 @@ class EditNote extends React.Component {
             this.setState(this.props.note);
             this.setState({saved: true})
         };
-        
-        // if(this.props.note.tag_id !== prevProps.note.tag_id){
-        //     this.props.fetchNote(this.props.note.id);
-        //     this.setState({saved: true})
-        // }
     }
 
     createMarkupBody() {
@@ -93,15 +88,25 @@ class EditNote extends React.Component {
     
     }
 
+
     handleSubmit(e) {
         e.preventDefault();
 
         this.props.updateNote(this.state).then(this.props.fetchNotebooks(this.state.user_id))
     }
 
-    handleDelete(e){
-        e.preventDefault;
-        this.props.deleteNote(this.props.note.id).then(this.props.fetchNotes(this.state.user_id))
+    reload(){
+        if(window.location.hash === "#/main/notes"){
+            window.location.reload(false)
+        }else{
+            window.location.hash = '#/main/notes'
+        }
+    }
+    
+    deleteBtn(noteId){
+         this.props.deleteNote(noteId).then( () => {
+            this.reload();
+        })
     }
 
     
@@ -205,7 +210,7 @@ class EditNote extends React.Component {
         return(
             <div className='note-footer'>
 
-                <div onClick={this.handleDelete} className='testing-nb-assign'><i className="fa fa-trash" aria-hidden="true"></i></div>
+                <div onClick={() => this.deleteBtn(note.id)} className='testing-nb-assign'><i className="fa fa-trash" aria-hidden="true"></i></div>
 
                <div onClick={() => this.changeNotebook()} className='testing-nb-assign'>
                    <i className="fas fa-book"></i> {title}
@@ -244,7 +249,6 @@ class EditNote extends React.Component {
             };
 
 
-
         return( 
             <div>            
                 <div className="create-note-main">
@@ -259,9 +263,6 @@ class EditNote extends React.Component {
                             </div>
 
                             <div className='create-head'>
-                                {/* <button className='note-btn note-edits' onClick={() => this.changeNotebook()}>Change Notebook</button>
-                                <button className='note-btn note-edits' onClick={() => this.toggleTag()}>Change Tag</button> */}
-                                {/* <button className='note-btn' onClick=(() => this.props.deleteNote())>Delete Note</button> */}
                         
                         <form
                             className="note-form"

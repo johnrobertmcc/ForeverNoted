@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 
@@ -22,11 +22,23 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => (
     />
 );
 
+const RefreshRoute = () => (
+        <Redirect
+          to={{
+            pathname: "/main/notes"
+          }}
+        />
+      
+);
+
+
 const mapStateToProps = state => {
 
-    return { loggedIn: Boolean(state.session.id) }
+    return { loggedIn: Boolean(state.session.id)}
 };
 
 export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
 
 export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));
+
+export const Refresh = withRouter(connect(mapStateToProps)(RefreshRoute));
