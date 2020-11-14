@@ -36,14 +36,32 @@ class SignUpForm extends React.Component {
             user_id: userId
         }
 
-        this.props.createNotebook(firstNotebook);
+        this.props.createNotebook(firstNotebook).then(res =>{
+            let notebookId = res.notebook.id;
+            let userId = res.notebook.user_id;
+            return this.newNote(notebookId, userId)
+        });
+    }
+
+    newNote(notebookId, userId){
+        const welcome = {
+            title: "Welcome to ForeverNoted!",
+            body: "<p>Hey! Thanks for using <strong style=\"color: rgb(0, 138, 0);\">ForeverNoted</strong><strong>.</strong> This is a place for you to store all your notes to help you keep your life organized. It can be used for:</p><ul><li>Grocery Lists</li><li>Recipes</li><li>Study sessions</li><li>Memoirs</li><li>General thoughts</li><li>anything you'd put in Evernote</li></ul><p><br></p><p>Feel free to log in as the Demo User if you need more inspiration!</p><p><br></p><p><strong>Hopefully the interface is intuitive to you, but if not:</strong></p><ol><li>Create your notes by writing in this editor (don't forget to give it a title!)</li><li>Your notes will appear on the left once you've hit that big green \"Create Note\" button. <strong><u>~Please don't forget to save~</u></strong></li><li>You can create a new notebook if you'd like by clicking on the 'Notebook' link in the sidebar over there &lt;--</li><li>Once a new notebook has been created, click in the footer below to assign any notes you create to any notebook</li><li><em> Not sure what notebook to put your note in? Tag it!</em></li><li>Similar to creating a notebook, click the 'Tags' link over there, and then click the \"+\" button on the new sidebar the pops up to make a new tag.</li><li>Then just assign your tag in the footer below!</li><li><em> Lost your note? Search for it!</em></li><li>You can search through your notes, for your specific tags, or for your notebooks. Give it a try</li></ol><p><br></p><p>If you have any criticisms (preferably constructive), concerns, questions, etc. feel free to reach out to me at:</p><p><br></p><p><span style=\"color: rgb(0, 41, 102);\">john.robert.mcc@gmail.com</span></p><p><br></p><p>And feel free to check out my other projects and work!</p><ul><li><a href=\"https://github.com/johnrobertmcc\" rel=\"noopener noreferrer\" target=\"_blank\">https://github.com/johnrobertmcc</a></li><li><a href=\"https://www.linkedin.com/in/jrmcc/\" rel=\"noopener noreferrer\" target=\"_blank\">https://www.linkedin.com/in/jrmcc/</a></li><li><a href=\"https://angel.co/u/john-robert-mccann\" rel=\"noopener noreferrer\" target=\"_blank\">https://angel.co/u/john-robert-mccann</a></li></ul><p><br></p><p>I've also put these links on the sidebar in case you lose them ;)</p><p><br></p><p>Stay Organized!</p><p><br></p><p><strong>-J.R.</strong></p>",
+            user_id: userId,
+            notebook_id: notebookId
+        }
+        this.props.createNote(welcome);
+
     }
 
     
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.signUp(user).then(this.newNotebook(user.id));
+        this.props.signUp(user).then(res => {
+            let userId = res.currentUser.id;
+            return this.newNotebook(userId)
+        })
     }
 
     demoLogin(e) {

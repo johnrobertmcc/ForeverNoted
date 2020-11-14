@@ -28,7 +28,8 @@ class EditNote extends React.Component {
             'bold', 'italic', 'underline', 'strike', 'code', 'blockquote',
             'list', 'bullet',
             'align',
-            'color', 'background'
+            'color', 'background',
+            'link', 'image', 'video'
         ];
 
 
@@ -238,6 +239,7 @@ class EditNote extends React.Component {
                         },
                     ],
                     [{ 'color': [] }, { 'background': [] }],
+                    ['link', 'image', 'video'],
                 ]
             };
 

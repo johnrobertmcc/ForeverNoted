@@ -33,7 +33,8 @@ class CreateNote extends React.Component {
             'bold', 'italic', 'underline', 'strike', 'code', 'blockquote',
             'list', 'bullet',
             'align',
-            'color', 'background'
+            'color', 'background',
+            'link', 'image', 'video'
         ];
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -253,6 +254,7 @@ class CreateNote extends React.Component {
                         },
                     ],
                     [{ 'color': [] }, { 'background': [] }],
+                    ['link', 'image', 'video'],
                 ]
             };
 
