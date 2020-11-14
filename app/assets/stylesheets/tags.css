@@ -50,9 +50,6 @@
     display: none
 }
 
-.results{
-    /* background-color: pink */
-}
 
 .tag-modal{
     margin-left: 500px;
@@ -91,14 +88,37 @@
 
 .ind-tag{
     list-style: none;
+    padding-top: 4px;
 }
 
-.ind-tag:hover{
-    background-color: rgb(247, 234, 234);
+.ind-tag >a{
+     text-decoration:none;
+    color:black;
+}
+.ind-tag >a:hover{
+    color: rgb(110, 221, 115);
     cursor:pointer;
 }
 
-.alltaglist{
+.alltaglist {
     list-style:none;
-    padding-left:30px;
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+    padding-left:35px;
+    padding-top: 5px;
+
+}
+
+.alltaglist >a{
+    text-decoration:none;
+    color:black;
+}
+.alltaglist >a:hover{
+    color: rgb(110, 221, 115);
+}
+
+.results{
+    border: 1px solid black;
+    margin:0
 }

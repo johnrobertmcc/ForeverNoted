@@ -199,11 +199,11 @@ class AllNotesIndex extends React.Component {
 
     indexTitle(){
         let {fromNotebook, fromTags, notebook, tag} = this.props;
-        debugger
+
         if(fromNotebook){
             return notebook.title
         }else if(fromTags){
-            debugger
+
             return( <div className='tag-container'><i className="fas fa-tags"></i> {tag.name} </div>)
         }
         else{
@@ -269,7 +269,6 @@ const mapStateToProps = (state, ownProps) => {
     let fromTags;
     let tag;
 
-    debugger
     if(typeof ownProps.location.state !== 'undefined'){
 
         if(ownProps.location.state.fromNotebook){     

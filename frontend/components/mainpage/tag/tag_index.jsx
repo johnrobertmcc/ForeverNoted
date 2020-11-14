@@ -40,7 +40,7 @@ class TagIndex extends React.Component{
             return allTags.map(tag => {
                 return (
                 <li key={tag.id} className='ind-tag'>
-                    <Link to={{pathname:`/main/notes`,
+                    <Link to={{pathname:`/main/notes/tags/${tag.id}`,
                                     state: {
                                         fromTags: true,
                                         tagId: tag.id
@@ -102,13 +102,15 @@ class TagIndex extends React.Component{
         }
     }
 
+
     allTags(){
-        
-    if(!this.state.openModal){
+
+    if(!this.state.openModal && !this.state.searched){
+
         return( this.props.tags.map(tag => {
             return(
                 <li key={tag.id} className='alltaglist'>
-                    <Link to={{pathname:`/main/notes`,
+                    <Link to={{pathname:`/main/notes/tags/${tag.id}`,
                                     state: {
                                         fromTags: true,
                                         tagId: tag.id
@@ -119,14 +121,14 @@ class TagIndex extends React.Component{
                     </Link>
                 </li>
                 
+                )
+            })
             )
-                })
-        )}
+        }
         
     }
 
     render(){
-        console.log(this.state.openModal)
 
         return(
 
@@ -172,8 +174,14 @@ class TagIndex extends React.Component{
 
 
 const mSTP = (state, ownProps) => {
+
+    let tags = Object.values(state.entities.tags)
+    
     return(
-        {notes: state.entities.notes}
+        {
+            notes: state.entities.notes, 
+            tags
+        }
     )
 }
 

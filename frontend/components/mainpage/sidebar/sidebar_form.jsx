@@ -85,7 +85,7 @@ class SideBar extends React.Component{
     }
 
     reload(){
-        debugger
+
         if(this.props.location.pathname === '/main/notes'){
             window.location.reload(false)
         }else{
