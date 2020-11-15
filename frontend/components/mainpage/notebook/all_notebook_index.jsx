@@ -129,6 +129,7 @@ class AllNotebookIndex extends React.Component {
                             {this.showCaret(notebook.id)}
                             <Link to={{pathname: `/main/notebooks/${notebook.id}/notes`,
                                 state: {
+                                    fromNotebook: true,
                                     action: {
                                         type: 'create',
                                         note: ''
