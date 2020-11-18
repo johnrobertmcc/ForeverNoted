@@ -100,6 +100,7 @@ class AllNotesIndex extends React.Component {
         switch (action.type) {
 
             case 'edit':
+                debugger
                 return <EditNote note={action.note}/>;
             
             case 'create':
@@ -267,6 +268,8 @@ const mapStateToProps = (state, ownProps) => {
     let newNote;
     let fromTags;
     let tag;
+
+    debugger
 
     if(typeof ownProps.location.state !== 'undefined'){
 

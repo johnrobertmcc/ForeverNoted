@@ -84,19 +84,15 @@ class SideBar extends React.Component{
         }
     }
 
-    reload(){
-
-        if(this.props.location.pathname === '/main/notes'){
-            window.location.reload(false)
-        }else{
-            <Redirect to='/main/notes'></Redirect>
-        }
-    }
-
+    
     sidebarLinks(){
+
+        let path = window.location.hash === '#/main/notes/createnote' ? '' : 'createnote'
+        debugger
+
         return(
             <ul className='links-home'>
-                        <Link to='/main/notes' onClick={()=> this.reload()}>
+                        <Link to={`/main/notes/${path}`}>
                             <li className='newnote-btn'>
 
                                 <i className="fa fa-plus" aria-hidden="true"></i><p className='btn-words'>New note</p>
@@ -127,11 +123,6 @@ class SideBar extends React.Component{
 
 
     render(){
-
-
-        const {logOut} = this.props;
-
-
 
         return(
             
