@@ -172,10 +172,10 @@ class AllNotesIndex extends React.Component {
 
         if (e.target.value !== "") {
             for(let i = 0; i < notes.length; i++){
-    
-                if(notes[i].title.includes(e.target.value)){
+                if(notes[i].title.toLowerCase().includes(e.target.value.toLowerCase())){
+                    debugger
                     currentList.push(notes[i])
-                }else if(notes[i].body.includes(e.target.value) && !currentList.includes(notes[i])){
+                }else if(notes[i].body.toLowerCase().includes(e.target.value.toLowerCase()) && !currentList.includes(notes[i])){
                     currentList.push(notes[i])
                 }
             };
