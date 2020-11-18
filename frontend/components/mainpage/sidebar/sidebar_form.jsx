@@ -119,6 +119,12 @@ class SideBar extends React.Component{
         )
     }
 
+    logOut(){
+        this.props.logOut().then( res => {
+            window.location.reload(false)
+        })
+    }
+
 
     render(){
 
@@ -140,7 +146,7 @@ class SideBar extends React.Component{
                             </p>
                             <button
                                 className='logout-btn'
-                                onClick={logOut}
+                                onClick={() => this.logOut()}
                                 >LogOut
                             </button>
                         </div>
