@@ -289,6 +289,7 @@ class EditNote extends React.Component {
                         </div>
                             <ReactQuill
                                 className="quill-editor"
+                                id='test1234'
                                 modules={modules}
                                 theme={'snow'}
                                 formats={this.formats}
