@@ -18,7 +18,7 @@ const configureStore = (preloadedState = {}) => (
     createStore(
         rootReducer,
         preloadedState,
-        applyMiddleware(thunk, logger)
+        applyMiddleware(...middleware)
         // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
     )
