@@ -5,35 +5,27 @@
 
 
 .top-level {
-        margin-left:22px;
-
-     padding-right: 300px;
-    padding-left: 300px;
+     padding-right: 20%;
+    padding-left: 20%;
     height: 100px;
-    // position: fixed;
+    position: relative;
 }
 .first-level{
-    margin-left:22px;
-    padding-right: 380px;
-    padding-left: 300px;
-    height: 487px;
+    padding-right: 20%;
+    padding-left: 20%;
+    height: 589px;
     display: flex;
     align-items: center;
 }
 .second-level{
-    margin-left:22px;
-
-    padding-right: 360px;
-    padding-left: 300px;
+    padding-right: 20%;
+    padding-left: 20%;
     background-color: ghostwhite;
     height: 589px;
-    min-width: 400px;
 }
 .third-level{
-    margin-left:22px;
-
-    padding-right: 360px;
-    padding-left: 300px;
+    padding-right: 20%;
+    padding-left: 20%;
     height: 589px;
 }
 
@@ -59,7 +51,6 @@
 .right-home {
     // width: 400px;
     padding-bottom: 100px;;
-    text-align: justify;
 }
 
 .home-image {

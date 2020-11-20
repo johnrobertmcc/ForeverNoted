@@ -19,29 +19,30 @@ export const MenuItems =[
                         id: 2
         },
 
-        // {
-        //     title: 'About Me',
-        //         url: '#',
-        //             cName: 'nav-links',
-        //                 id: 4
-        // },
+        {
+            title: 'Personal Site',
+                url: 'https://www.johnrobertmcc.com/#',
+                    cName: 'nav-links',
+                        id: 4
+        },
 
         {
             title: '    Sign Up    ',
                 url: '#/signup',
                     cName: 'nav-links-signup',
-                        id: 5
+                        id: 'signup-id'
         },
         {
             title: 'or',
                 url: '',
                     cName: 'nav-links-or',
+                    id: 'or-id'
         },
         {
             title: 'Log in',
                 url: '#/login',
                     cName: 'nav-links-logIn',
-                        id: 6
+                        id: 'login-id'
         }
  ];
 
