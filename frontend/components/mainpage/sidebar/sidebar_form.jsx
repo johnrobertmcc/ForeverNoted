@@ -88,7 +88,6 @@ class SideBar extends React.Component{
     sidebarLinks(){
 
         let path = window.location.hash === '#/main/notes/createnote' ? '' : 'createnote'
-        debugger
 
         return(
             <ul className='links-home'>

@@ -2,6 +2,8 @@
 
 ForeverNoted is a note-taking app that offers the ability to take, edit, and delete notes to help better organize your day. Cloned from Evernote. [Try ForeverNoted](https://forevernoted.herokuapp.com/#/)
 
+![alt-text](https://github.com/johnrobertmcc/ForeverNoted/blob/master/app/assets/images/screenshot.png "homepage")
+
 ## Technology Stack
 
 <hr></hr>
@@ -25,7 +27,7 @@ The rich-text editor used inside of ForeverNoted was stylized and prepared using
 
 ForeverNoted features one, single note index that is updating in real time based on what the user desires to see, whether that is a specific Notebook, a specific Tag, or any specific search terms.
 
-This was achieved by passing information seamlessly through ownProps, as well as Link locations. This information then gets passed to the AllNotesIndex, which is filtered through in the component's mapStateTo Props through conditional arguments. This information is then taken from the component's props and put onto the state, where it can then be manipulated furtherif the user desires through searches.
+This was achieved by passing information seamlessly through ownProps, as well as Link locations. This information then gets passed to the AllNotesIndex, which is filtered through in the component's mapStateTo Props through conditional arguments. This information is then taken from the component's props and put onto the state, where it can then be manipulated further if the user desires through searches.
 
 Below is an example of how information is passed into mapStateToProps of AllNotesIndex.jsx
 
@@ -116,7 +118,7 @@ Above is an example of how the editor is switched from the AllNotesIndex. On the
         switch (action.type) {
 
             case 'edit':
-                debugger
+                
                 return <EditNote note={action.note}/>;
             
             case 'create':
@@ -282,7 +284,6 @@ This pattern below is repeated similarly for tags and notebooks.
         if (e.target.value !== "") {
             for(let i = 0; i < notes.length; i++){
                 if(notes[i].title.toLowerCase().includes(e.target.value.toLowerCase())){
-                    debugger
                     currentList.push(notes[i])
                 }else if(notes[i].body.toLowerCase().includes(e.target.value.toLowerCase()) && !currentList.includes(notes[i])){
                     currentList.push(notes[i])
