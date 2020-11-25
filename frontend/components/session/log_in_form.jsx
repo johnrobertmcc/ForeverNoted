@@ -103,10 +103,10 @@ class LogInForm extends React.Component {
                     </form>
                         <br></br>
                         <br></br>
-                        <div className="remember">
+                        {/* <div className="remember">
                         <input type="checkbox" value="remember" />
                             Remember me for 30 days
-                        </div>
+                        </div> */}
 
                     
                     <p className='redirect'>Don't have an account?</p>
