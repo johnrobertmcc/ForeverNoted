@@ -169,7 +169,7 @@
 .sig{
     color: rgb(144, 240, 170);
     font-size: 12px;
-    display:flex;
+    display:block;
     justify-content: center;
 }
 
@@ -237,4 +237,14 @@
   .fa.fa.fa-pagelines{
       display: none;
   }
+}
+
+.personal{
+    text-decoration: none;
+    display: block;
+    color: rgb(144, 240, 170);
+}
+
+.personal:active{
+       text-decoration: none;
 }

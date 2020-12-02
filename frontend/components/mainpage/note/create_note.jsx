@@ -301,6 +301,7 @@ class CreateNote extends React.Component {
             
                                 <ReactQuill
                                     className="quill-editor"
+                                    id="test1234"
                                     modules={modules}
                                     formats={this.formats}
                                     value={this.state.body}

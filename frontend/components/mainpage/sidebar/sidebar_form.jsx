@@ -146,12 +146,12 @@ class SideBar extends React.Component{
 
                         <div className='flex-footer'>
                             <hr className='footer-sidebar'></hr>
-                            <p className='sig'>created by <br></br>John Robert McCann</p>
+                            <p className='sig'>created by <br></br><a className="personal" href="https://www.johnrobertmcc.com/" target="_blank">John Robert McCann</a></p>
                             <br></br>
                             <div className='sidebar-icons'>
-                                <a href='https://github.com/johnrobertmcc'><i className="fab fa-github"></i></a>
-                                <a href='https://www.linkedin.com/in/jrmcc/'><i className="fab fa-linkedin-in"></i></a>
-                                <a href='https://angel.co/u/john-robert-mccann'><i className="fab fa-angellist"></i></a>
+                                <a href='https://github.com/johnrobertmcc' target="_blank"><i className="fab fa-github"></i></a>
+                                <a href='https://www.linkedin.com/in/jrmcc/' target="_blank"><i className="fab fa-linkedin-in"></i></a>
+                                <a href='https://angel.co/u/john-robert-mccann' target="_blank"><i className="fab fa-angellist"></i></a>
                             </div>
                             
                         </div>
